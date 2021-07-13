@@ -1,0 +1,42 @@
+fastlane_require 'dotenv'
+
+default_platform(:android)
+
+platform :android do
+  VERSION = ENV['VERSION']
+  RELEASE_NOTES = ENV['RELEASE_NOTES']
+  FIREBASE_TOKEN = ENV['FIREBASE_TOKEN']
+  LIFE_CYCLE = ENV['LIFE_CYCLE']
+  TESTERS = ENV['TESTERS']
+  GROUPS = ENV['GROUPS']
+  PROD_RELEASE = LIFE_CYCLE === 'prod'
+
+  desc "Submit a new Release Build to #{GROUPS} group"
+  lane :distribute_release do
+    puts "distribute release"
+    gradle(task: "clean #{PROD_RELEASE ? 'bundle' : 'assemble'}#{LIFE_CYCLE}Release")
+
+    android_set_version_code(
+      gradle_file: "app/build.gradle"
+    )
+
+    android_set_version_name(
+      version_name: VERSION,
+      gradle_file: "app/build.gradle"
+    )
+
+    gradle(task: "#{PROD_RELEASE ? 'bundle' : 'assemble'}", build_type: "#{LIFE_CYCLE}Release")
+
+    if (!PROD_RELEASE)
+      firebase_app_distribution(
+        app: "???",
+        testers: TESTERS,
+        groups: GROUPS,
+        release_notes: RELEASE_NOTES,
+        firebase_cli_token: FIREBASE_TOKEN
+      )
+    else
+      upload_to_play_store(track: 'production')
+    end
+  end
+end

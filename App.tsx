@@ -20,7 +20,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const Section: React.FC<{
-  title
+  title: string;
 }> = ({ children, title }) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -45,7 +45,7 @@ const Section: React.FC<{
       >
         {children}
       </Text>
-    </View>
+
   );
 };
 

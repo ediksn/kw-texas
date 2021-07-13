@@ -7,10 +7,19 @@ module.exports = {
     browser: true,
     jest: true,
   },
-  extends: ['airbnb', 'prettier', 'prettier/react', 'plugin:prettier/recommended', 'eslint-config-prettier'],
+  extends: [
+    'airbnb-typescript',
+    'prettier',
+    'prettier/react',
+    'plugin:prettier/recommended',
+    'eslint-config-prettier',
+    'plugin:import/typescript',
+  ],
   plugins: ['react', 'prettier'],
-  parser: 'babel-eslint', // this parser is usually used instead of espree, the eslint default one. We can change it later and adjust the rules, if necessary
+  parser: '@typescript-eslint/parser',
   parserOptions: {
+    project: './tsconfig.json',
+    createDefaultProgram: true,
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
       jsx: true,

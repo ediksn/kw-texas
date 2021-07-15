@@ -30,15 +30,12 @@ jobs:
 
       - name: Update bundle
         run: |
-          cd android
           bundle config set path 'vendor/bundle'
           bundle install
-          cd ..
 
       - name: Distribute App to Firebase App Distribution
         run: |
-          cd android
+          echo ${{ secrets.FIREBASE_TOKEN }}
           bundle exec fastlane distribute_release version:'0.0.0' release_notes:'' firebase_token:'${{ secrets.FIREBASE_TOKEN }}' life_cycle:'' testers:'' groups:''
-          cd ..
 
 # bundle exec fastlane distribute_release version:'0.0.0' release_notes:'${{ GITHUB_BASE_REF }}' firebase_token:'${{ secrets.FIREBASE_TOKEN }}' life_cycle:'' testers:'' groups:''

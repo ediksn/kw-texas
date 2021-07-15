@@ -17,6 +17,8 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build-android:
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -29,9 +31,7 @@ jobs:
         run: yarn
 
       - name: Test secrets values
-        run: echo "$FIREBASE_TOKEN"
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: echo $FIREBASE_TOKEN
 
 
       - name: Update bundle

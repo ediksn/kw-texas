@@ -26,18 +26,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
 
       - name: Update libraries
         run: yarn
 
-      - name: Test secrets values
-        run: echo $FIREBASE_TOKEN
-
-
       - name: Update bundle
         run: |
-          gem install bundler
-          sudo gem install fastlane
           bundle config set path 'vendor/bundle'
           bundle install
         working-directory: android

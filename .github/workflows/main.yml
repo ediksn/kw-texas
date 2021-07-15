@@ -8,7 +8,7 @@ on:
   push:
     branches: [ feature/CNT-7361_setup-firebase-fastlane ]
     # branches: 
-    # - 'CNT-*'
+    # - '*/CNT-*'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -18,7 +18,9 @@ jobs:
   # This workflow contains a single job called "build"
   build-android:
     env:
-      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      FIREBASE_TOKEN: 1//0hAtcQp9HqyW4CgYIARAAGBESNwF-L9IrGasEvJ2zDB3JCFtE_sY46kE2zXLXqsWDENLnKQccTcs_djmiMjk3HgbJeY43lyppAyE
+      # FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      TITLE: ${{ GITHUB_REF }}
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -41,7 +43,5 @@ jobs:
 
       - name: Distribute App to Firebase App Distribution
         run: |
-          bundle exec fastlane distribute_release version:'0.0.0' release_notes:'' firebase_token:'env.FIREBASE_TOKEN' life_cycle:'' testers:'' groups:''
+          bundle exec fastlane distribute_release title:'env.TITLE' firebase_token:'env.FIREBASE_TOKEN' testers:'' groups:'cnt-releases' version:'' life_cycle=''
         working-directory: android
-
-# bundle exec fastlane distribute_release version:'0.0.0' release_notes:'${{ GITHUB_BASE_REF }}' firebase_token:'${{ secrets.FIREBASE_TOKEN }}' life_cycle:'' testers:'' groups:''

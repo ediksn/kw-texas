@@ -7,7 +7,7 @@ platform :ios do
   desc "Submit a new Release Build"
   lane :distribute_release do |options|
     VERSION = options[:version]
-    RELEASE_NOTES = options[:release_notes]
+    TITLE = options[:title]
     FIREBASE_TOKEN = options[:firebase_token]
     LIFE_CYCLE = options[:life_cycle]
     TESTERS = options[:testers]
@@ -48,7 +48,7 @@ platform :ios do
         app: "???",
         testers: TESTERS,
         groups: GROUPS,
-        release_notes: RELEASE_NOTES,
+        release_notes: TITLE,
         firebase_cli_token: FIREBASE_TOKEN
       )
     else

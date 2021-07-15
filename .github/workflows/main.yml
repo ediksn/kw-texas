@@ -27,3 +27,16 @@ jobs:
 
       - name: Update libraries
         run: yarn
+
+      - name: Update bundle
+        run: |
+          cd android
+          bundle config set path 'vendor/bundle'
+          bundle install
+          cd ..
+
+      - name: Distribute App to Firebase App Distribution
+        run: |
+          cd android
+          bundle exec fastlane distribute_release version:'0.0.0' release_notes:'${{ GITHUB_BASE_REF }}' firebase_token:'${{ secrets.FIREBASE_TOKEN }}' life_cycle:'' testers:'' groups:''
+          cd ..

@@ -41,7 +41,7 @@ jobs:
 
       - name: Distribute App to Firebase App Distribution
         run: |
-          bundle exec fastlane distribute_release version:'0.0.0' release_notes:'' firebase_token:'${{ FIREBASE_TOKEN }}' life_cycle:'' testers:'' groups:''
+          bundle exec fastlane distribute_release version:'0.0.0' release_notes:'' firebase_token:'env.FIREBASE_TOKEN' life_cycle:'' testers:'' groups:''
         working-directory: android
 
 # bundle exec fastlane distribute_release version:'0.0.0' release_notes:'${{ GITHUB_BASE_REF }}' firebase_token:'${{ secrets.FIREBASE_TOKEN }}' life_cycle:'' testers:'' groups:''

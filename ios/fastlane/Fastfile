@@ -3,16 +3,17 @@ fastlane_require 'dotenv'
 default_platform(:ios)
 
 platform :ios do
-  VERSION = ENV['VERSION']
-  RELEASE_NOTES = ENV['RELEASE_NOTES']
-  FIREBASE_TOKEN = ENV['FIREBASE_TOKEN']
-  LIFE_CYCLE = ENV['LIFE_CYCLE']
-  TESTERS = ENV['TESTERS']
-  GROUPS = ENV['GROUPS']
-  PROD_RELEASE = LIFE_CYCLE === 'prod'
 
-  desc "Submit a new Release Build to #{GROUPS} group"
-  lane :distribute_release do
+  desc "Submit a new Release Build"
+  lane :distribute_release do |options|
+    VERSION = options[:version]
+    RELEASE_NOTES = options[:release_notes]
+    FIREBASE_TOKEN = options[:firebase_token]
+    LIFE_CYCLE = options[:life_cycle]
+    TESTERS = options[:testers]
+    GROUPS = options[:groups]
+    PROD_RELEASE = LIFE_CYCLE === 'prod'
+
     ios_set_version(
       version: VERSION,
       xcodeproj: "app.xcodeproj"

@@ -28,6 +28,9 @@ jobs:
       - name: Update libraries
         run: yarn
 
+      - name: Test secrets values
+        run: echo ${{ secrets.FIREBASE_TOKEN }}
+
       - name: Update bundle
         run: |
           bundle config set path 'vendor/bundle'

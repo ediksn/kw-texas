@@ -29,16 +29,21 @@ jobs:
         run: yarn
 
       - name: Test secrets values
-        run: echo ${{ secrets.FIREBASE_TOKEN }}
+        run: echo "$FIREBASE_TOKEN"
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
 
       - name: Update bundle
         run: |
           bundle config set path 'vendor/bundle'
           bundle install
+        working-directory: android
 
       - name: Distribute App to Firebase App Distribution
         run: |
           echo ${{ secrets.FIREBASE_TOKEN }}
           bundle exec fastlane distribute_release version:'0.0.0' release_notes:'' firebase_token:'${{ secrets.FIREBASE_TOKEN }}' life_cycle:'' testers:'' groups:''
+        working-directory: android
 
 # bundle exec fastlane distribute_release version:'0.0.0' release_notes:'${{ GITHUB_BASE_REF }}' firebase_token:'${{ secrets.FIREBASE_TOKEN }}' life_cycle:'' testers:'' groups:''

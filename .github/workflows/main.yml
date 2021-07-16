@@ -20,7 +20,8 @@ jobs:
     env:
       FIREBASE_TOKEN: 1//0hAtcQp9HqyW4CgYIARAAGBESNwF-L9IrGasEvJ2zDB3JCFtE_sY46kE2zXLXqsWDENLnKQccTcs_djmiMjk3HgbJeY43lyppAyE
       # FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      TITLE: ${{ GITHUB_REF }}
+      TITLE: ''
+      # TITLE: ${{ GITHUB_REF }}
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 

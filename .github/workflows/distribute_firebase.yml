@@ -12,6 +12,7 @@ on:
 env:
   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   TITLE: ${{ github.head_ref }}
+  VERSION: ${{ github.head_ref }}
 
 jobs:
   build-firebase-android:
@@ -33,7 +34,7 @@ jobs:
         working-directory: android
 
       - name: Distribute App to Firebase
-        run: bundle exec fastlane distribute_release title:'${{ env.TITLE }}' firebase_token:'${{ env.FIREBASE_TOKEN }}' testers:'' groups:'cnt-releases' version:'' life_cycle:''
+        run: bundle exec fastlane distribute_release title:'${{ env.TITLE }}' firebase_token:'${{ env.FIREBASE_TOKEN }}' testers:'' groups:'cnt-releases' version:'${{ env.VERSION }}' life_cycle:''
         working-directory: android
 
   build-firebase-ios:
@@ -59,5 +60,5 @@ jobs:
         working-directory: ios
 
       - name: Distribute App to Firebase
-        run: bundle exec fastlane distribute_release title:'${{ env.TITLE }}' firebase_token:'${{ env.FIREBASE_TOKEN }}' testers:'' groups:'cnt-releases' version:'' life_cycle:''
+        run: bundle exec fastlane distribute_release title:'${{ env.TITLE }}' firebase_token:'${{ env.FIREBASE_TOKEN }}' testers:'' groups:'cnt-releases' version:'${{ env.VERSION }}' life_cycle:''
         working-directory: ios

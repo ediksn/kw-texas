@@ -45,7 +45,7 @@ platform :ios do
 
     if (!PROD_RELEASE)
       firebase_app_distribution(
-        app: "???",
+        app: "1:409982352774:ios:1d5c360e99ae1113724007",
         testers: TESTERS,
         groups: GROUPS,
         release_notes: TITLE,

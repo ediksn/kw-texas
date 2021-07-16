@@ -1,0 +1,62 @@
+name: Build and Distribute Releases to Stores
+
+on:
+  pull_request_target:
+    types: [closed]
+    branches: 
+      - 'master'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  VERSION: 0.0.0
+
+jobs:
+  build-firebase-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+
+      - name: Update libraries
+        run: yarn
+
+      - name: Update bundle
+        run: |
+          bundle config set path 'vendor/bundle'
+          bundle install
+        working-directory: android
+
+      - name: Distribute App to Play Store
+        run: bundle exec fastlane distribute_release title:'' firebase_token:'' testers:'' groups:'cnt-releases' version:'${{ env.VERSION }}' life_cycle:'prod'
+        working-directory: android
+
+  build-firebase-ios:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+
+      - name: Update libraries
+        run: yarn
+
+      - name: Update Pods
+        run: pod install
+        working-directory: ios
+
+      - name: Update bundle
+        run: |
+          bundle config set path 'vendor/bundle'
+          bundle install
+        working-directory: ios
+
+      - name: Distribute App to Apple Store
+        run: bundle exec fastlane distribute_release title:'${{ env.TITLE }}' firebase_token:'' testers:'' groups:'cnt-releases' version:'' life_cycle:'prod'
+        working-directory: ios

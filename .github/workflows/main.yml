@@ -36,7 +36,10 @@ jobs:
         run: yarn
 
       - name: Update bundle
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: |
+          echo "$GITHUB_CONTEXT"
           bundle config set path 'vendor/bundle'
           bundle install
         working-directory: android

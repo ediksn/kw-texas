@@ -1,9 +1,6 @@
 name: Build and Distribute Releases to QA
 
 on:
-  # push:
-    # branches: [ feature/CNT-7361_setup-firebase-fastlane ]
-    # - '*/CNT-*'
   pull_request_target:
     types: [closed]
     branches: 
@@ -15,7 +12,6 @@ on:
 env:
   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   TITLE: ${{ githug.head_ref }}
-  # TITLE: ${{ github.ref }}
 
 jobs:
   build-firebase-android:

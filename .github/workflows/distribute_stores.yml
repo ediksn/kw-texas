@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  TITLE: 0.0.0
+  VERSION: 0.0.0
 
 jobs:
   build-firebase-android:
@@ -31,8 +31,8 @@ jobs:
           bundle install
         working-directory: android
 
-      - name: Distribute App to Firebase
-        run: bundle exec fastlane distribute_release title:'${{ env.TITLE }}' firebase_token:'' testers:'' groups:'cnt-releases' version:'' life_cycle:'prod'
+      - name: Distribute App to Play Store
+        run: bundle exec fastlane distribute_release title:'' firebase_token:'' testers:'' groups:'cnt-releases' version:'${{ env.VERSION }}' life_cycle:'prod'
         working-directory: android
 
   build-firebase-ios:
@@ -57,6 +57,6 @@ jobs:
           bundle install
         working-directory: ios
 
-      - name: Distribute App to Firebase
+      - name: Distribute App to Apple Store
         run: bundle exec fastlane distribute_release title:'${{ env.TITLE }}' firebase_token:'' testers:'' groups:'cnt-releases' version:'' life_cycle:'prod'
         working-directory: ios

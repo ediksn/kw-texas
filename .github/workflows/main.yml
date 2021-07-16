@@ -38,7 +38,7 @@ jobs:
         working-directory: android
 
       - name: Distribute App to Firebase App Distribution
-        run: bundle exec fastlane distribute_release title:'${{ env.TITLE $}}' firebase_token:'${{ env.FIREBASE_TOKEN }}' testers:'' groups:'cnt-releases' version:'' life_cycle:''
+        run: bundle exec fastlane distribute_release title:'${{ env.TITLE }}' firebase_token:'${{ env.FIREBASE_TOKEN }}' testers:'' groups:'cnt-releases' version:'' life_cycle:''
         working-directory: android
 
   build-ios:

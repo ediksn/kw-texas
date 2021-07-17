@@ -10,8 +10,8 @@ on:
 
 env:
   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-  NOTES: "https://kwri-jira.kw.com/browse/${{ github.ref.replace(/\/refs\/tags\//, '') }}"
-  VERSION: ${{ github.head_ref }}
+  NOTES: ${{ github.head_ref }}
+  VERSION: ${{ github.ref }}
 
 jobs:
   build-firebase-android:

@@ -14,14 +14,29 @@ env:
   VERSION: ${{ github.ref }}
 
 jobs:
-  build-firebase-android:
-    runs-on: ubuntu-latest
+  build-firebase-ios:
+  runs-on: macos-latest
 
-    steps:
-      - uses: actions/checkout@v2
+  steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.6
 
-      - name: Distribute App to Firebase
-        run: |
-          echo env.NOTES
-          env.FIREBASE_TOKEN
-          env.VERSION
+    - name: Update libraries
+      run: yarn
+
+    - name: Update Pods
+      run: pod install
+      working-directory: ios
+
+    - name: Update bundle
+      run: |
+        bundle config set path 'vendor/bundle'
+        bundle install
+      working-directory: ios
+
+    - name: Distribute App to Firebase
+      run: bundle exec fastlane distribute_release notes:'${{ env.NOTES }}' firebase_token:'${{ env.FIREBASE_TOKEN }}' testers:'' groups:'cnt-releases' version:'${{ env.VERSION }}' life_cycle:''
+      working-directory: ios
+

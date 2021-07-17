@@ -1,0 +1,27 @@
+name: Build and Distribute Releases to QA
+
+on:
+  push:
+    branches:
+      - test-github-actions
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+  NOTES: "https://kwri-jira.kw.com/browse/${{ github.ref }}"
+  VERSION: ${{ github.head_ref }}
+
+jobs:
+  build-firebase-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Distribute App to Firebase
+        run: |
+          echo env.NOTES
+          env.FIREBASE_TOKEN
+          env.VERSION

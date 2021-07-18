@@ -12,7 +12,7 @@ on:
 env:
   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   NOTES: ${{ github.head_ref }}
-  VERSION: ${{ github.ref }}
+  VERSION: 0.0.0
 
 jobs:
   build-firebase-android:

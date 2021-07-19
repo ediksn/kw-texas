@@ -28,8 +28,8 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      typescript: {},
-    },
+      typescript: {}
+    }
   },
   rules: {
     'comma-dangle': 'off',

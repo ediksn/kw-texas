@@ -1,9 +1,7 @@
-/** @format */
+import React from 'react'
+import { View, Text } from 'react-native'
 
-import React from 'react';
-import { View, Text } from 'react-native';
-
-import { styles } from './styles';
+import { styles } from './styles'
 
 const Welcome = () => {
   return (
@@ -19,11 +17,11 @@ const Welcome = () => {
         storybook/stories/Welcome.js file to edit this message.
       </Text>
     </View>
-  );
-};
+  )
+}
 
 Welcome.defaultProps = {
-  showApp: null,
-};
+  showApp: null
+}
 
-export default Welcome;
+export default Welcome

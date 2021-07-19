@@ -26,6 +26,11 @@ module.exports = {
     },
     sourceType: 'module',
   },
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+  },
   rules: {
     'import/no-unresolved': [2, { ignore: ['.jpg$', '.png$'] }],
     'react/jsx-filename-extension': [

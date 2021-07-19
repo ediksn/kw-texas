@@ -26,6 +26,11 @@ module.exports = {
     },
     sourceType: 'module'
   },
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+  },
   rules: {
     'comma-dangle': 'off',
     '@typescript-eslint/comma-dangle': 0,

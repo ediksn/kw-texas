@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": "eslint --fix --max-warnings=0"
+    "*.{ts,tsx}": "eslint --fix --max-warnings=0"
   },
   "husky": {
     "hooks": {

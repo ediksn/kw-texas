@@ -7,8 +7,8 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center'
   },
-  messageView: theme => ({
+  messageView: {
     alignSelf: 'center',
-    color: theme.primaryColor || '#222'
-  })
+    color: '#222'
+  }
 })

@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+  FIREBASE_TOKEN: ${{ secrets.DEV_FIREBASE_TOKEN }}
   NOTES: ${{ github.head_ref }}
   VERSION: 0.0.0
 
@@ -34,31 +34,31 @@ jobs:
         working-directory: android
 
       - name: Distribute App to Firebase
-        run: bundle exec fastlane distribute_release notes:'${{ env.NOTES }}' firebase_token:'${{ env.FIREBASE_TOKEN }}' testers:'' groups:'cnt-releases' version:'${{ env.VERSION }}' life_cycle:''
+        run: bundle exec fastlane distribute_release notes:'${{ env.NOTES }}' firebase_token:'${{ env.FIREBASE_TOKEN }}' testers:'' groups:'cnt-qa' version:'${{ env.VERSION }}' life_cycle:'dev'
         working-directory: android
 
-  build-firebase-ios:
-    runs-on: macos-latest
+  # build-firebase-ios:
+  #   runs-on: macos-latest
 
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: 2.6
 
-      - name: Update libraries
-        run: yarn
+  #     - name: Update libraries
+  #       run: yarn
 
-      - name: Update Pods
-        run: pod install
-        working-directory: ios
+  #     - name: Update Pods
+  #       run: pod install
+  #       working-directory: ios
 
-      - name: Update bundle
-        run: |
-          bundle config set path 'vendor/bundle'
-          bundle install
-        working-directory: ios
+  #     - name: Update bundle
+  #       run: |
+  #         bundle config set path 'vendor/bundle'
+  #         bundle install
+  #       working-directory: ios
 
-      - name: Distribute App to Firebase
-        run: bundle exec fastlane distribute_release notes:'${{ env.NOTES }}' firebase_token:'${{ env.FIREBASE_TOKEN }}' testers:'' groups:'cnt-releases' version:'${{ env.VERSION }}' life_cycle:''
-        working-directory: ios
+  #     - name: Distribute App to Firebase
+  #       run: bundle exec fastlane distribute_release notes:'${{ env.NOTES }}' firebase_token:'${{ env.FIREBASE_TOKEN }}' testers:'' groups:'cnt-qa' version:'${{ env.VERSION }}' life_cycle:'dev'
+  #       working-directory: ios

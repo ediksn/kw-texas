@@ -1,6 +1,6 @@
 /** @format */
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   container: {
@@ -12,19 +12,19 @@ export const styles = StyleSheet.create({
     borderBottomColor: 'rgb(150,150,150)',
     borderBottomWidth: 1,
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   textContainer: {
     marginLeft: 'auto',
-    marginRight: 'auto',
+    marginRight: 'auto'
   },
   touchableHighlight: {
     paddingVertical: '3%',
     paddingHorizontal: '3%',
     marginHorizontal: '3%',
-    borderRadius: 50,
+    borderRadius: 50
   },
   text: {
-    fontSize: 17,
-  },
-});
+    fontSize: 17
+  }
+})

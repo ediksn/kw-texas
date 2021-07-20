@@ -13,6 +13,9 @@ platform :ios do
     TESTERS = options[:testers]
     GROUPS = options[:groups]
     PROD_RELEASE = LIFE_CYCLE === 'prod'
+    APP_ID_FIREBASE = {
+      'dev' => "1:237851896241:ios:7fc1af02b48a5920cb7590",
+    }
 
     ios_set_version(
       version: VERSION,
@@ -45,7 +48,7 @@ platform :ios do
 
     if (!PROD_RELEASE)
       firebase_app_distribution(
-        app: "1:409982352774:ios:1d5c360e99ae1113724007",
+        app: APP_ID_FIREBASE[LIFE_CYCLE],
         testers: TESTERS,
         groups: GROUPS,
         release_notes: NOTES,

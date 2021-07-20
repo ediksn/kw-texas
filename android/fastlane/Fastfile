@@ -7,12 +7,15 @@ platform :android do
   desc "Submit a new Release Build"
   lane :distribute_release do |options|
     VERSION = options[:version]
-    TITLE = options[:title]
+    NOTES = options[:notes]
     LIFE_CYCLE = options[:life_cycle]
     FIREBASE_TOKEN = options[:firebase_token]
     TESTERS = options[:testers]
     GROUPS = options[:groups]
     PROD_RELEASE = LIFE_CYCLE === 'prod'
+    APP_ID_FIREBASE = {
+      'dev' => "1:237851896241:android:57cf5c9001e734becb7590",
+    }
 
     puts "distribute release"
     gradle(task: "clean #{PROD_RELEASE ? 'bundle' : 'assemble'}#{LIFE_CYCLE}Release")
@@ -30,10 +33,10 @@ platform :android do
 
     if (!PROD_RELEASE)
       firebase_app_distribution(
-        app: "1:409982352774:android:e1573baed16c1a69724007",
+        app: APP_ID_FIREBASE[LIFE_CYCLE],
         testers: TESTERS,
         groups: GROUPS,
-        release_notes: TITLE,
+        release_notes: NOTES,
         firebase_cli_token: FIREBASE_TOKEN
       )
     else

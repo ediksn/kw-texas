@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>409982352774-35mm1jlhq9rb3gc142lkfkle9e65m5qv.apps.googleusercontent.com</string>
+	<string>237851896241-qael0ja5394qepn9fhrvgsee7evq2c63.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.409982352774-35mm1jlhq9rb3gc142lkfkle9e65m5qv</string>
+	<string>com.googleusercontent.apps.237851896241-qael0ja5394qepn9fhrvgsee7evq2c63</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAqVYz7jJRuiM7HQkKKYgHizU1Cez8IE2c</string>
+	<string>AIzaSyAhrNOQd4RwpGRnotB0LvjZV4Iq2UqXDgo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>409982352774</string>
+	<string>237851896241</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.app</string>
+	<string>com.connectmobile</string>
 	<key>PROJECT_ID</key>
-	<string>connect-mobile-app-9c860</string>
+	<string>connect-firebase-dev-5f1a</string>
 	<key>STORAGE_BUCKET</key>
-	<string>connect-mobile-app-9c860.appspot.com</string>
+	<string>connect-firebase-dev-5f1a.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:409982352774:ios:1d5c360e99ae1113724007</string>
+	<string>1:237851896241:ios:7fc1af02b48a5920cb7590</string>
 </dict>
 </plist>

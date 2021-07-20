@@ -2,8 +2,9 @@ import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Home, Settings } from '~/screens'
+
 import { NAVIGATION } from '~/constants/navigation'
+import { Home, Settings } from '~/screens'
 
 const Tab = createBottomTabNavigator()
 

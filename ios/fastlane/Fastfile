@@ -7,12 +7,15 @@ platform :ios do
   desc "Submit a new Release Build"
   lane :distribute_release do |options|
     VERSION = options[:version]
-    TITLE = options[:title]
+    NOTES = options[:notes]
     FIREBASE_TOKEN = options[:firebase_token]
     LIFE_CYCLE = options[:life_cycle]
     TESTERS = options[:testers]
     GROUPS = options[:groups]
     PROD_RELEASE = LIFE_CYCLE === 'prod'
+    APP_ID_FIREBASE = {
+      'dev' => "1:237851896241:ios:7fc1af02b48a5920cb7590",
+    }
 
     ios_set_version(
       version: VERSION,
@@ -37,7 +40,7 @@ platform :ios do
       export_method: "#{PROD_RELEASE ? 'app-store' : 'ad-hoc'}",
       export_options: {
         provisioningProfiles: { 
-          "com.connect.mobile.app" => "#{PROD_RELEASE ? 'App Store distribution (CNT)' : 'App Hoc distribution (CNT)'}"
+          "com.connectmobile" => "#{PROD_RELEASE ? 'App Store distribution (CNT)' : 'App Hoc distribution (CNT)'}"
         }
       },
       xcargs: "-allowProvisioningUpdates"
@@ -45,10 +48,10 @@ platform :ios do
 
     if (!PROD_RELEASE)
       firebase_app_distribution(
-        app: "1:409982352774:ios:1d5c360e99ae1113724007",
+        app: APP_ID_FIREBASE[LIFE_CYCLE],
         testers: TESTERS,
         groups: GROUPS,
-        release_notes: TITLE,
+        release_notes: NOTES,
         firebase_cli_token: FIREBASE_TOKEN
       )
     else

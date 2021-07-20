@@ -5,8 +5,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { NAVIGATION } from '~/source/constants/navigation';
-import { Home, Settings } from '~/source/screens';
+import { NAVIGATION } from '~/constants/navigation';
+import { Home, Settings } from '~/screens';
 
 const Tab = createBottomTabNavigator();
 

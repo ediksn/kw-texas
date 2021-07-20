@@ -32,7 +32,7 @@ jobs:
         working-directory: android
 
       - name: Distribute App to Play Store
-        run: bundle exec fastlane distribute_release title:'' firebase_token:'' testers:'' groups:'cnt-releases' version:'${{ env.VERSION }}' life_cycle:'prod'
+        run: bundle exec fastlane distribute_release notes:'' firebase_token:'' testers:'' groups:'cnt-releases' version:'${{ env.VERSION }}' life_cycle:'prod'
         working-directory: android
 
   build-firebase-ios:
@@ -58,5 +58,5 @@ jobs:
         working-directory: ios
 
       - name: Distribute App to Apple Store
-        run: bundle exec fastlane distribute_release title:'${{ env.TITLE }}' firebase_token:'' testers:'' groups:'cnt-releases' version:'' life_cycle:'prod'
+        run: bundle exec fastlane distribute_release notes:'' firebase_token:'' testers:'' groups:'cnt-releases' version:'' life_cycle:'prod'
         working-directory: ios

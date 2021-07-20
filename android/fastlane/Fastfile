@@ -7,7 +7,7 @@ platform :android do
   desc "Submit a new Release Build"
   lane :distribute_release do |options|
     VERSION = options[:version]
-    TITLE = options[:title]
+    NOTES = options[:notes]
     LIFE_CYCLE = options[:life_cycle]
     FIREBASE_TOKEN = options[:firebase_token]
     TESTERS = options[:testers]
@@ -33,7 +33,7 @@ platform :android do
         app: "1:409982352774:android:e1573baed16c1a69724007",
         testers: TESTERS,
         groups: GROUPS,
-        release_notes: TITLE,
+        release_notes: NOTES,
         firebase_cli_token: FIREBASE_TOKEN
       )
     else

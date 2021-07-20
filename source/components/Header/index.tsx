@@ -35,7 +35,7 @@ const Header = ({ title, leftButton, rightButton, onClickLeft, onClickRight }: P
   );
   const RightButton = () => (
     <>
-      {leftButton && (
+      {rightButton && (
         <TouchableHighlight
           style={styles.touchableHighlight}
           activeOpacity={0.6}

@@ -15,7 +15,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   textContainer: {
-    marginHorizontal: '20%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   touchableHighlight: {
     paddingVertical: '3%',

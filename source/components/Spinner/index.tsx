@@ -1,7 +1,5 @@
 import React, { memo, useMemo } from 'react'
-import { Text, View, ViewStyle } from 'react-native'
-import { moderateScale } from 'react-native-size-matters'
-import ClipLoader from 'react-spinners/ClipLoader'
+import { Text, View, ViewStyle, ActivityIndicator } from 'react-native'
 import { styles } from './styles'
 
 interface Props {
@@ -12,14 +10,14 @@ interface Props {
   styleView?: ViewStyle
 }
 
-const Spinner = ({ isLoading = false, message, color = '#ce011f', size = 150, styleView }: Props) => {
+const Spinner = ({ isLoading = false, message, color = '#ce011f', size = 70, styleView }: Props) => {
   const Message = () =>
     useMemo(
       () => (
         <>
           {message && (
             <View style={styles.messageView}>
-              <Text>{message}</Text>
+              <Text style={styles.messageText}>{message}</Text>
             </View>
           )}
         </>
@@ -31,7 +29,7 @@ const Spinner = ({ isLoading = false, message, color = '#ce011f', size = 150, st
     <>
       {isLoading && (
         <View style={[styles.containerView, styleView]}>
-          <ClipLoader color={color} loading={isLoading} size={moderateScale(size)} />
+          <ActivityIndicator size={size} color={color} />
           <Message />
         </View>
       )}

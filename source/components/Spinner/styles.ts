@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { verticalScale, moderateScale } from 'react-native-size-matters'
 
 export const styles = StyleSheet.create({
   containerView: {
@@ -8,7 +9,19 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   messageView: {
+    marginTop: verticalScale(10),
     alignSelf: 'center',
     color: '#222'
+  },
+  messageText: {
+    fontSize: moderateScale(14)
+  },
+  containerLoadingView: {
+    overflow: 'hidden'
+  },
+  layer: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })

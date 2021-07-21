@@ -9,5 +9,5 @@ export const primaryColors = {
   backgroundColor: '#FFFFFF',
   greenColor: '#6C727E',
   red: '#C5050B',
-  darkGrey: '#282B33',
-};
+  darkGrey: '#282B33'
+}

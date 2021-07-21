@@ -27,6 +27,7 @@ export const styles = (backgroundColor?: string) =>
       borderRadius: 50
     },
     text: {
-      fontSize: 17
+      fontSize: 17,
+      fontWeight: 'bold'
     }
   })

@@ -6,14 +6,24 @@ import { Text, TouchableHighlight, View } from 'react-native'
 import { styles } from './styles'
 
 interface Props {
-  title: String
+  title: string
+  backgroundColor: string
+  statusBarHeight?: number
   leftButton?: ReactNode
   rightButton?: ReactNode
   onClickLeft?: () => void
   onClickRight?: () => void
 }
 
-const Header = ({ title, leftButton, rightButton, onClickLeft, onClickRight }: Props) => {
+const Header = ({
+  title,
+  backgroundColor,
+  statusBarHeight,
+  leftButton,
+  rightButton,
+  onClickLeft,
+  onClickRight
+}: Props) => {
   const LeftButton = () => (
     <>
       {leftButton && (
@@ -48,7 +58,7 @@ const Header = ({ title, leftButton, rightButton, onClickLeft, onClickRight }: P
     </>
   )
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { marginTop: statusBarHeight, backgroundColor }]}>
       <LeftButton />
       <Title />
       <RightButton />

@@ -29,7 +29,7 @@ platform :android do
       gradle_file: "app/build.gradle"
     )
 
-    gradle(task: "#{PROD_RELEASE ? 'bundle' : 'assemble'}", build_type: "#{LIFE_CYCLE}Release")
+    gradle(task: "#{PROD_RELEASE ? 'bundle' : 'assemble'}", build_type: "Release")
 
     if (!PROD_RELEASE)
       firebase_app_distribution(

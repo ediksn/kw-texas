@@ -15,7 +15,7 @@ export const Settings = () => {
       <Header
         title='Settings'
         backgroundColor={primaryColors.backgroundColor}
-        StatusBarHeight={Platform.OS === 'ios' ? StatusBarManager.HEIGHT : 0}
+        statusBarHeight={Platform.OS === 'ios' ? StatusBarManager.HEIGHT : 0}
       />
       <Storybook />
     </SafeAreaView>

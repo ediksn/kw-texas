@@ -8,7 +8,7 @@ import { styles } from './styles'
 interface Props {
   title: string
   backgroundColor: string
-  StatusBarHeight?: number
+  statusBarHeight?: number
   leftButton?: ReactNode
   rightButton?: ReactNode
   onClickLeft?: () => void
@@ -18,7 +18,7 @@ interface Props {
 const Header = ({
   title,
   backgroundColor,
-  StatusBarHeight,
+  statusBarHeight,
   leftButton,
   rightButton,
   onClickLeft,
@@ -28,7 +28,7 @@ const Header = ({
     <>
       {leftButton && (
         <TouchableHighlight
-          style={styles().touchableHighlight}
+          style={styles.touchableHighlight}
           activeOpacity={0.6}
           underlayColor='#DDDDDD'
           onPress={onClickLeft}
@@ -39,15 +39,15 @@ const Header = ({
     </>
   )
   const Title = () => (
-    <View style={styles().textContainer}>
-      <Text style={styles().text}>{title}</Text>
+    <View style={styles.textContainer}>
+      <Text style={styles.text}>{title}</Text>
     </View>
   )
   const RightButton = () => (
     <>
       {rightButton && (
         <TouchableHighlight
-          style={styles().touchableHighlight}
+          style={styles.touchableHighlight}
           activeOpacity={0.6}
           underlayColor='#DDDDDD'
           onPress={onClickRight}
@@ -58,7 +58,7 @@ const Header = ({
     </>
   )
   return (
-    <View style={styles(backgroundColor, StatusBarHeight).container}>
+    <View style={[styles.container, { marginTop: statusBarHeight, backgroundColor }]}>
       <LeftButton />
       <Title />
       <RightButton />

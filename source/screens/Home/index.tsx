@@ -13,7 +13,7 @@ export const Home = () => {
       <Header
         title='Home'
         backgroundColor={primaryColors.backgroundColor}
-        StatusBarHeight={Platform.OS === 'ios' ? StatusBarManager.HEIGHT : 0}
+        statusBarHeight={Platform.OS === 'ios' ? StatusBarManager.HEIGHT : 0}
       />
       <View style={styles.text}>
         <Text>Home Screen</Text>

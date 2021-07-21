@@ -6,19 +6,20 @@ import { Text, TouchableHighlight, View } from 'react-native'
 import { styles } from './styles'
 
 interface Props {
-  title: String
+  title: string
+  backgroundColor: string
   leftButton?: ReactNode
   rightButton?: ReactNode
   onClickLeft?: () => void
   onClickRight?: () => void
 }
 
-const Header = ({ title, leftButton, rightButton, onClickLeft, onClickRight }: Props) => {
+const Header = ({ title, backgroundColor, leftButton, rightButton, onClickLeft, onClickRight }: Props) => {
   const LeftButton = () => (
     <>
       {leftButton && (
         <TouchableHighlight
-          style={styles.touchableHighlight}
+          style={styles().touchableHighlight}
           activeOpacity={0.6}
           underlayColor='#DDDDDD'
           onPress={onClickLeft}
@@ -29,15 +30,15 @@ const Header = ({ title, leftButton, rightButton, onClickLeft, onClickRight }: P
     </>
   )
   const Title = () => (
-    <View style={styles.textContainer}>
-      <Text style={styles.text}>{title}</Text>
+    <View style={styles().textContainer}>
+      <Text style={styles().text}>{title}</Text>
     </View>
   )
   const RightButton = () => (
     <>
       {rightButton && (
         <TouchableHighlight
-          style={styles.touchableHighlight}
+          style={styles().touchableHighlight}
           activeOpacity={0.6}
           underlayColor='#DDDDDD'
           onPress={onClickRight}
@@ -48,7 +49,7 @@ const Header = ({ title, leftButton, rightButton, onClickLeft, onClickRight }: P
     </>
   )
   return (
-    <View style={styles.container}>
+    <View style={styles(backgroundColor).container}>
       <LeftButton />
       <Title />
       <RightButton />

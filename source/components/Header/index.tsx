@@ -8,13 +8,22 @@ import { styles } from './styles'
 interface Props {
   title: string
   backgroundColor: string
+  StatusBarHeight?: number
   leftButton?: ReactNode
   rightButton?: ReactNode
   onClickLeft?: () => void
   onClickRight?: () => void
 }
 
-const Header = ({ title, backgroundColor, leftButton, rightButton, onClickLeft, onClickRight }: Props) => {
+const Header = ({
+  title,
+  backgroundColor,
+  StatusBarHeight,
+  leftButton,
+  rightButton,
+  onClickLeft,
+  onClickRight
+}: Props) => {
   const LeftButton = () => (
     <>
       {leftButton && (
@@ -49,7 +58,7 @@ const Header = ({ title, backgroundColor, leftButton, rightButton, onClickLeft, 
     </>
   )
   return (
-    <View style={styles(backgroundColor).container}>
+    <View style={styles(backgroundColor, StatusBarHeight).container}>
       <LeftButton />
       <Title />
       <RightButton />

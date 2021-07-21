@@ -11,8 +11,5 @@ export const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1
-  },
-  header: {
-    marginTop: '12%'
   }
 })

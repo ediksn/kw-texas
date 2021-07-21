@@ -1,7 +1,7 @@
 /** @format */
 
 import React from 'react'
-import { NativeModules, SafeAreaView } from 'react-native'
+import { NativeModules, Platform, SafeAreaView } from 'react-native'
 
 import Header from '~/components/Header'
 import { styles } from './styles'
@@ -15,7 +15,7 @@ export const Settings = () => {
       <Header
         title='Settings'
         backgroundColor={primaryColors.backgroundColor}
-        StatusBarHeight={StatusBarManager.HEIGHT}
+        StatusBarHeight={Platform.OS === 'ios' ? StatusBarManager.HEIGHT : 0}
       />
       <Storybook />
     </SafeAreaView>

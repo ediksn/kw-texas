@@ -3,9 +3,9 @@
 import React from 'react'
 import { Text, View, NativeModules, SafeAreaView, Platform } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import Header from '~/components/Header'
+import { Header } from '~/components'
 import { styles } from './styles'
-import { primaryColors } from '~/constants/theme'
+import { theme } from '~/constants'
 
 export const Home = () => {
   const { StatusBarManager } = NativeModules
@@ -14,7 +14,7 @@ export const Home = () => {
     <SafeAreaView style={styles.container}>
       <Header
         title={t('Home')}
-        backgroundColor={primaryColors.backgroundColor}
+        backgroundColor={theme.backgroundColor}
         statusBarHeight={Platform.OS === 'ios' ? StatusBarManager.HEIGHT : 20}
       />
       <View style={styles.text}>

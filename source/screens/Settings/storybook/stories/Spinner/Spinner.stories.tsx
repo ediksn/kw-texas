@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react-native'
 import { color, number, text } from '@storybook/addon-knobs'
-import Spinner from '~/components/Spinner'
+import { Spinner } from '~/components'
 
 storiesOf('Spinner', module).add('Custom Spinner', () => (
   <Spinner

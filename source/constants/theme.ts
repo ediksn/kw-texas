@@ -1,6 +1,6 @@
 /** @format */
 
-export const primaryColors = {
+export const theme = {
   backgroundDark: '#006C84',
   backgroundWhite: 'white',
   activeColor: 'rgb(0,108,132)',

@@ -5,7 +5,7 @@ import { I18nManager } from 'react-native'
 import translationsES from './translation/es.json'
 import translationsEN from './translation/en.json'
 
-const translationGetters = {
+const translationGetters: { [index: string]: () => {} } = {
   en: () => translationsEN,
   es: () => translationsES
 }

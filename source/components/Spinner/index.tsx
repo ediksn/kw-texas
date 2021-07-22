@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react'
+import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text, View, ViewStyle, ActivityIndicator } from 'react-native'
 import { styles } from './styles'
@@ -12,20 +12,18 @@ interface Props {
 }
 
 const Spinner = ({ isLoading = false, message, color = '#ce011f', size = 70, styleView }: Props) => {
-  const Message = () =>
-    useMemo(() => {
-      const { t } = useTranslation()
-
-      return (
-        <>
-          {message && (
-            <View style={styles.messageView}>
-              <Text style={styles.messageText}>{t(message)}</Text>
-            </View>
-          )}
-        </>
-      )
-    }, [message])
+  const Message = () => {
+    const { t } = useTranslation()
+    return (
+      <>
+        {message && (
+          <View style={styles.messageView}>
+            <Text style={styles.messageText}>{t(message)}</Text>
+          </View>
+        )}
+      </>
+    )
+  }
 
   return (
     <>

@@ -58,7 +58,7 @@ const Header = ({
     </>
   )
   return (
-    <View style={[styles.container, { marginTop: statusBarHeight, backgroundColor }]}>
+    <View style={[styles.container, { paddingTop: statusBarHeight, backgroundColor }]}>
       <LeftButton />
       <Title />
       <RightButton />

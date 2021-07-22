@@ -14,7 +14,7 @@ interface Props {
 const Spinner = ({ isLoading = false, message, color = '#ce011f', size = 70, styleView }: Props) => {
   const Message = () =>
     useMemo(() => {
-      const t = useTranslation()
+      const { t } = useTranslation()
 
       return (
         <>

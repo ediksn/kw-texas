@@ -19,23 +19,23 @@ platform :ios do
 
     ios_set_version(
       version: VERSION,
-      xcodeproj: "app.xcodeproj"
+      xcodeproj: "connectmobile.xcodeproj"
     )
 
     ios_set_build_number(
-      xcodeproj: "app.xcodeproj"
+      xcodeproj: "connectmobile.xcodeproj"
     )
 
     update_code_signing_settings(
-      path: "app.xcodeproj",
+      path: "connectmobile.xcodeproj",
       use_automatic_signing: true
     )
 
     clear_derived_data
 
     build_app(
-      scheme: "app",
-      workspace: "app.xcworkspace",
+      scheme: "connectmobile",
+      workspace: "connectmobile.xcworkspace",
       clean: true,
       export_method: "#{PROD_RELEASE ? 'app-store' : 'ad-hoc'}",
       export_options: {

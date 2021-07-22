@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'app' do
+target 'connectmobile' do
   config = use_native_modules!
 
   use_react_native!(
@@ -14,7 +14,7 @@ target 'app' do
 
   pod 'Firebase/Analytics'
 
-  target 'appTests' do
+  target 'connectmobileTests' do
     inherit! :complete
     # Pods for testing
   end

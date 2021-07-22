@@ -1,10 +1,12 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView, LogBox } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-
 import { NAVIGATION } from '~/constants/navigation'
 import { Home, Settings } from '~/screens'
+
+// handy to turn off yellow box for testing purposes
+LogBox.ignoreAllLogs(false)
 
 const Tab = createBottomTabNavigator()
 

@@ -8,6 +8,9 @@ export const styles = StyleSheet.create({
     width: '100%',
     maxWidth: '100%',
     alignItems: 'center',
+    position: 'absolute',
+    left: 0,
+    top: 0,
     paddingVertical: '2%',
     borderBottomColor: 'rgb(150,150,150)',
     borderBottomWidth: 1,
@@ -25,6 +28,7 @@ export const styles = StyleSheet.create({
     borderRadius: 50
   },
   text: {
-    fontSize: 17
+    fontSize: 17,
+    fontWeight: 'bold'
   }
 })

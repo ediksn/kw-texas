@@ -1,6 +1,7 @@
 /** @format */
 
 import { StyleSheet } from 'react-native'
+import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   container: {
@@ -12,7 +13,7 @@ export const styles = StyleSheet.create({
     left: 0,
     top: 0,
     paddingVertical: '2%',
-    borderBottomColor: 'rgb(150,150,150)',
+    borderBottomColor: theme.grey,
     borderBottomWidth: 1,
     display: 'flex',
     justifyContent: 'space-between'

@@ -17,7 +17,7 @@ const Input = ({ title, value, onChangeText, error, errorText, disabled }: Props
   const [focus, setFocus] = useState(false)
   const ErrorText = <>{error && <Text style={styles.error}>{errorText}</Text>}</>
   return (
-    <View style={styles.container}>
+    <View>
       <Text style={styles.title}>{title}</Text>
       <TextInput
         value={value}

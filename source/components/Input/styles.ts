@@ -5,9 +5,6 @@ import { StyleSheet } from 'react-native'
 import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
-  container: {
-    marginLeft: '1.5%'
-  },
   textContainer: {
     borderWidth: 1,
     borderRadius: 5

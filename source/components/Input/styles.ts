@@ -6,8 +6,10 @@ import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   textContainer: {
+    height: '25%',
     borderWidth: 1,
-    borderRadius: 5
+    borderRadius: 5,
+    fontSize: 16
   },
   title: {
     flexDirection: 'row'

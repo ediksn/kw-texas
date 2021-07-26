@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Text, TextInput, View } from 'react-native'
+import { Text, TextInput, View, ViewStyle } from 'react-native'
 import { theme } from '~/constants'
 
 import { styles } from './styles'
@@ -12,13 +12,18 @@ interface Props {
   error?: boolean
   errorText?: string
   disabled?: boolean
+  isRequired?: boolean
+  style?: ViewStyle
 }
-const Input = ({ title, value, onChangeText, error, errorText, disabled }: Props) => {
+const Input = ({ title, value, onChangeText, error, errorText, disabled, isRequired, style }: Props) => {
   const [focus, setFocus] = useState(false)
   const ErrorText = <>{error && <Text style={styles.error}>{errorText}</Text>}</>
   return (
-    <View>
-      <Text style={styles.title}>{title}</Text>
+    <View style={style}>
+      <View style={styles.title}>
+        <Text style={styles.titleText}>{title}</Text>
+        {isRequired && <Text style={styles.titleText}>*</Text>}
+      </View>
       <TextInput
         value={value}
         onChangeText={onChangeText}

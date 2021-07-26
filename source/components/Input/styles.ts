@@ -10,6 +10,9 @@ export const styles = StyleSheet.create({
     borderRadius: 5
   },
   title: {
+    flexDirection: 'row'
+  },
+  titleText: {
     color: theme.darkGrey,
     fontWeight: 'bold',
     marginVertical: '1%'

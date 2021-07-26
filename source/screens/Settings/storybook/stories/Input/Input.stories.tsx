@@ -22,6 +22,6 @@ storiesOf('Input', module).add('Not required', () =>
 storiesOf('Input', module).add('Required', () =>
   createElement(() => {
     const [textValue, setTextValue] = useState('')
-    return <Input title={text('Title', 'Full Name')} value={textValue} onChangeText={setTextValue} required />
+    return <Input title={text('Title', 'Full Name')} value={textValue} onChangeText={setTextValue} required error />
   })
 )

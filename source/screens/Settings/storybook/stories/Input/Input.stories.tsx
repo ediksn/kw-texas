@@ -13,7 +13,6 @@ storiesOf('Input', module).add('Required', () =>
         title={text('Title', 'Full Name')}
         value={textValue}
         onChangeText={setTextValue}
-        isRequired
         style={{ marginHorizontal: '2%' }}
       />
     )
@@ -28,8 +27,8 @@ storiesOf('Input', module).add('With error', () =>
         title={text('Title', 'Full Name')}
         value={textValue}
         onChangeText={setTextValue}
-        error
-        errorText={text('error', 'First Name Required')}
+        required
+        requiredText={text('error', 'First Name Required')}
       />
     )
   })

@@ -9,20 +9,19 @@ interface Props {
   title: string
   value: string
   onChangeText: React.Dispatch<React.SetStateAction<string>>
-  error?: boolean
-  errorText?: string
   disabled?: boolean
-  isRequired?: boolean
+  required?: boolean
+  requiredText?: string
   style?: ViewStyle
 }
-const Input = ({ title, value, onChangeText, error, errorText, disabled, isRequired, style }: Props) => {
+const Input = ({ title, value, onChangeText, requiredText, disabled, required, style }: Props) => {
   const [focus, setFocus] = useState(false)
-  const ErrorText = <>{error && <Text style={styles.error}>{errorText}</Text>}</>
+  const error = <>{required && <Text style={styles.error}>{requiredText}</Text>}</>
   return (
     <View style={style}>
       <View style={styles.title}>
         <Text style={styles.titleText}>{title}</Text>
-        {isRequired && <Text style={styles.titleText}>*</Text>}
+        {required && <Text style={styles.titleText}>*</Text>}
       </View>
       <TextInput
         value={value}
@@ -37,10 +36,10 @@ const Input = ({ title, value, onChangeText, error, errorText, disabled, isRequi
         }}
         style={[
           styles.textContainer,
-          error ? { borderColor: theme.red } : focus ? { borderColor: theme.darkGrey } : { borderColor: theme.grey }
+          required ? { borderColor: theme.red } : focus ? { borderColor: theme.darkGrey } : { borderColor: theme.grey }
         ]}
       />
-      {ErrorText}
+      {error}
     </View>
   )
 }

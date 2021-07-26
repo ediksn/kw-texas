@@ -10,8 +10,7 @@ export const styles = StyleSheet.create({
   },
   textContainer: {
     borderWidth: 1,
-    borderRadius: 5,
-    marginHorizontal: '2%'
+    borderRadius: 5
   },
   title: {
     color: theme.darkGrey,

@@ -45,7 +45,7 @@ const Input = ({ title, value, onChangeText, disabled, required, error, style }:
         }}
         style={[
           styles.textContainer,
-          required ? { borderColor: theme.red } : focus ? { borderColor: theme.darkGrey } : { borderColor: theme.grey }
+          error ? { borderColor: theme.red } : focus ? { borderColor: theme.darkGrey } : { borderColor: theme.grey }
         ]}
       />
       {errorComponent}

@@ -6,7 +6,7 @@ import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   container: {
-    display: 'flex'
+    marginLeft: '1.5%'
   },
   textContainer: {
     borderWidth: 1,

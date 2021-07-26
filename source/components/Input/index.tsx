@@ -11,12 +11,20 @@ interface Props {
   onChangeText: React.Dispatch<React.SetStateAction<string>>
   disabled?: boolean
   required?: boolean
-  requiredText?: string
   style?: ViewStyle
 }
-const Input = ({ title, value, onChangeText, requiredText, disabled, required, style }: Props) => {
+const Input = ({ title, value, onChangeText, disabled, required, style }: Props) => {
   const [focus, setFocus] = useState(false)
-  const error = <>{required && <Text style={styles.error}>{requiredText}</Text>}</>
+  const error = (
+    <>
+      {required && (
+        <View style={styles.title}>
+          <Text style={styles.error}>{title}</Text>
+          <Text style={styles.error}> is required</Text>
+        </View>
+      )}
+    </>
+  )
   return (
     <View style={style}>
       <View style={styles.title}>

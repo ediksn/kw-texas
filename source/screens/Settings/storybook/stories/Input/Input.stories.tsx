@@ -5,7 +5,7 @@ import { text } from '@storybook/addon-knobs'
 import { storiesOf } from '@storybook/react-native'
 import { Input } from '~/components/'
 
-storiesOf('Input', module).add('Required', () =>
+storiesOf('Input', module).add('Not required', () =>
   createElement(() => {
     const [textValue, setTextValue] = useState('')
     return (
@@ -19,17 +19,9 @@ storiesOf('Input', module).add('Required', () =>
   })
 )
 
-storiesOf('Input', module).add('With error', () =>
+storiesOf('Input', module).add('Required', () =>
   createElement(() => {
     const [textValue, setTextValue] = useState('')
-    return (
-      <Input
-        title={text('Title', 'Full Name')}
-        value={textValue}
-        onChangeText={setTextValue}
-        required
-        requiredText={text('error', 'First Name Required')}
-      />
-    )
+    return <Input title={text('Title', 'Full Name')} value={textValue} onChangeText={setTextValue} required />
   })
 )

@@ -47,7 +47,9 @@ const VideoPlayer = ({ title, uri }: Props) => {
 
   return (
     <View style={styles.container}>
-      <Video source={{ uri }} fullscreen={false} controls repeat resizeMode='cover' style={styles.videoPlayer} />
+      <View style={styles.videoContainer}>
+        <Video source={{ uri }} fullscreen={false} controls repeat resizeMode='cover' style={styles.videoPlayer} />
+      </View>
       <View style={styles.descContainer}>
         <Text style={styles.text}>{title}</Text>
         <View style={styles.btnView}>

@@ -7,14 +7,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  videoContainer: {
-    width: '100%',
-    height: 300
-  },
-  videoPlayer: {
-    width: '100%',
-    height: 300
-  },
   descContainer: {
     marginTop: 8,
     backgroundColor: theme.backgroundWhite

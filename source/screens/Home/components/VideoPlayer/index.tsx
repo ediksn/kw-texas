@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, Text, View, TouchableOpacity, Dimensions } from 'react-native'
+import { Image, Text, View, TouchableOpacity } from 'react-native'
 import Video from 'react-native-video'
 
 import like_button from 'assets/images/like_btn.png'
@@ -16,11 +16,9 @@ interface Props {
 }
 
 const VideoPlayer = ({ title, uri }: Props) => {
-  const [likes, setlikes] = useState(876)
+  const [likes, setlikes] = useState(0)
   const [clicked, setClicked] = useState(false)
   const [save, setSave] = useState(false)
-
-  const windowWidth = Dimensions.get('window').width
 
   const getClicked = () => setClicked(!clicked)
   const getSaved = () => setSave(!save)
@@ -36,15 +34,8 @@ const VideoPlayer = ({ title, uri }: Props) => {
 
   return (
     <View style={styles.container}>
-      <View style={{ width: windowWidth, height: 300 }}>
-        <Video
-          source={{ uri }}
-          fullscreen={false}
-          controls
-          repeat
-          resizeMode='cover'
-          style={{ width: windowWidth, height: 300 }}
-        />
+      <View style={styles.videoContainer}>
+        <Video source={{ uri }} fullscreen={false} controls repeat resizeMode='cover' style={styles.video} />
       </View>
       <View style={styles.descContainer}>
         <Text style={styles.text}>{title}</Text>

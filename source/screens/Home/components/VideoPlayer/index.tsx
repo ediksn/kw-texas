@@ -22,13 +22,8 @@ const VideoPlayer = ({ title, uri }: Props) => {
 
   const windowWidth = Dimensions.get('window').width
 
-  const getClicked = () => {
-    if (clicked === false) {
-      setClicked(true)
-    } else {
-      setClicked(false)
-    }
-  }
+  const getClicked = () => setClicked(!clicked)
+  const getSaved = () => setSave(!save)
 
   const getLike = () => {
     getClicked()
@@ -36,14 +31,6 @@ const VideoPlayer = ({ title, uri }: Props) => {
       setlikes(likes - 1)
     } else {
       setlikes(likes + 1)
-    }
-  }
-
-  const getSaved = () => {
-    if (save) {
-      setSave(false)
-    } else {
-      setSave(true)
     }
   }
 

@@ -2,5 +2,5 @@
 
 import './Headers/Header.stories'
 import './Spinner/Spinner.stories'
-import './VidePlayer/VideoPlayer.stories'
+import './VideoPlayer/VideoPlayer.stories'
 import './Input/Input.stories'

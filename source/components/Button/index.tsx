@@ -1,43 +1,45 @@
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Text, TouchableOpacity, View, ViewStyle } from 'react-native'
-import { styles } from './styles'
+import { Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native'
+import { styles, stylesOfType } from './styles'
 import { theme } from '~/constants'
 
 interface Props {
   message?: string
-  backgroundView?: string
-  colorText?: string
+  THEME?: any
   fontSize?: number
-  outline?: boolean
-  styleView?: ViewStyle
+  type?: string
+  viewStyle?: ViewStyle
+  textStyle?: TextStyle
   onPress?: () => {}
 }
 
 const Button = ({
   message = 'Ok',
-  backgroundView = '#4797A5',
-  colorText = '#ffffff',
+  THEME = theme.buttons.primary,
   fontSize = theme.fonts.MEDIUM_SIZE,
-  outline = false,
-  styleView,
+  type = theme.buttons.types.CONTAINED,
+  viewStyle,
+  textStyle,
   onPress
 }: Props) => {
-  const backgroundColor = outline ? colorText : backgroundView
+  const { backgroundTypeStyle, textTypeStyle } = stylesOfType[type](THEME)
 
   const Message = () => {
     const { t } = useTranslation()
-    const color = outline ? backgroundView : colorText
 
     return (
       <View style={styles.messageView}>
-        <Text style={[styles.messageText, { color, fontSize }]}>{t(message)}</Text>
+        <Text style={[styles.messageText, { color: textStyle?.color }, textTypeStyle, { fontSize }]}>{t(message)}</Text>
       </View>
     )
   }
 
   return (
-    <TouchableOpacity style={[styles.containerView, { backgroundColor }, styleView]} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles.containerView, { backgroundColor: viewStyle?.backgroundColor }, backgroundTypeStyle]}
+      onPress={onPress}
+    >
       <Message />
     </TouchableOpacity>
   )

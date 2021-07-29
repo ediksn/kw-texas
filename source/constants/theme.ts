@@ -1,4 +1,12 @@
-/** @format */
+import { moderateScale } from 'react-native-size-matters'
+
+const FONTS = {
+  BIG_SIZE: moderateScale(18),
+  LARGE_SIZE: moderateScale(16),
+  MEDIUM_SIZE: moderateScale(14),
+  SMALL_SIZE: moderateScale(12),
+  VERY_SMALL_SIZE: moderateScale(10)
+}
 
 export const theme = {
   backgroundDark: '#006C84',
@@ -11,5 +19,6 @@ export const theme = {
   red: '#C5050B',
   darkGrey: '#282B33',
   grey: '#C8C8C8',
-  beige: '#fff8dc'
+  beige: '#fff8dc',
+  fonts: FONTS
 }

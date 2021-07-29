@@ -8,6 +8,22 @@ const FONTS = {
   VERY_SMALL_SIZE: moderateScale(10)
 }
 
+const BUTTONS_THEME = {
+  primary: {
+    backgroundColor: '#4797A5',
+    color: '#FFFFFF'
+  },
+  secondary: {
+    backgroundColor: '#FFFFFF',
+    color: '#4797A5'
+  },
+  types: {
+    CONTAINED: 'CONTAINED',
+    OUTLINED: 'OUTLINED',
+    TEXT: 'TEXT'
+  }
+}
+
 export const theme = {
   backgroundDark: '#006C84',
   backgroundWhite: 'white',
@@ -20,5 +36,6 @@ export const theme = {
   darkGrey: '#282B33',
   grey: '#C8C8C8',
   beige: '#fff8dc',
-  fonts: FONTS
+  fonts: FONTS,
+  buttons: BUTTONS_THEME
 }

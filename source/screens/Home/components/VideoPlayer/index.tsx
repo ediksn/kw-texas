@@ -13,12 +13,15 @@ import { styles } from './styles'
 interface Props {
   title: string
   uri: string
+  videoLikes: number
+  saved: boolean
+  liked: boolean
 }
 
-const VideoPlayer = ({ title, uri }: Props) => {
-  const [likes, setlikes] = useState(0)
-  const [clicked, setClicked] = useState(false)
-  const [save, setSave] = useState(false)
+const VideoPlayer = ({ title, uri, videoLikes, saved, liked }: Props) => {
+  const [likes, setlikes] = useState(videoLikes)
+  const [clicked, setClicked] = useState(liked)
+  const [save, setSave] = useState(saved)
 
   const getClicked = () => setClicked(!clicked)
   const getSaved = () => setSave(!save)

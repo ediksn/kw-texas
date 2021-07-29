@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     width: '100%',
-    backgroundColor: theme.backgroundDark,
+    backgroundColor: theme.darkBackground,
     padding: 15
   },
   text: {

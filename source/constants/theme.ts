@@ -10,5 +10,6 @@ export const theme = {
   greenColor: '#6C727E',
   red: '#C5050B',
   darkGrey: '#282B33',
-  grey: 'rgb(200,200,200)'
+  grey: 'rgb(200,200,200)',
+  darkBackground: '#383e51'
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react-native'
-import { number, text } from '@storybook/addon-knobs'
+import { boolean, number, text } from '@storybook/addon-knobs'
 
 import VideoPlayer from '~/screens/Home/components/VideoPlayer'
 
@@ -12,7 +12,7 @@ storiesOf('VideoPlayer', module).add('VidePlayer', () => (
     )}
     uri='https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     videoLikes={number('Video Likes', 16)}
-    saved={false}
-    liked={false}
+    saved={boolean('Is saved', false)}
+    liked={boolean('Is liked', false)}
   />
 ))

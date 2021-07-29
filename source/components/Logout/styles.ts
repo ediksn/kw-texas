@@ -9,10 +9,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     backgroundColor: theme.backgroundDark,
-    height: '40'
+    padding: 15
   },
   text: {
     fontSize: 17,
-    fontFamily: 'Mulish-Bold'
+    fontFamily: 'Mulish-Bold',
+    color: 'white'
   }
 })

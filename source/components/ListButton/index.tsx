@@ -4,12 +4,13 @@ import React from 'react'
 import { GestureResponderEvent, Image, Text, TouchableHighlight, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 
+import arrow_btn from 'assets/images/arrow_btn.png'
 import { styles } from './styles'
 
 interface Props {
   title: string
   icon: any
-  arrow: any
+  arrow: boolean
   onPress: (event: GestureResponderEvent) => void
 }
 
@@ -24,9 +25,11 @@ const ListButton = ({ title, icon, onPress, arrow }: Props) => {
         </TouchableHighlight>
         <Text style={styles.text}>{t(title)}</Text>
       </View>
-      <View>
-        <Image style={styles.arrowBtn} resizeMode='center' source={arrow} />
-      </View>
+      {arrow && (
+        <View>
+          <Image style={styles.arrowBtn} resizeMode='center' source={arrow_btn} />
+        </View>
+      )}
     </View>
   )
 }

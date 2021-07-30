@@ -9,7 +9,7 @@ interface Props {
   visits: number
   likes: number
   backgroundColor?: string
-  textColor: string
+  textColor?: string
   style?: ViewStyle
 }
 const VideoCard = ({ img, title, author, visits, likes, backgroundColor, textColor, style }: Props) => {

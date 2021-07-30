@@ -1,6 +1,5 @@
 import React from 'react'
-import { SafeAreaView, ViewStyle, FlatList } from 'react-native'
-import { moderateScale } from 'react-native-size-matters'
+import { View, ViewStyle, FlatList } from 'react-native'
 import { VideoCard } from '..'
 import { styles } from './styles'
 
@@ -14,17 +13,10 @@ interface Props {
 }
 const VideoList = ({ data, keyExtractor, onRefresh, refreshing, onEndReached, style }: Props) => {
   const renderVideoComponent = ({ item }: { item: any }) => (
-    <VideoCard
-      img={item.img}
-      title={item.title}
-      author={item.author}
-      visits={item.visits}
-      likes={item.likes}
-      style={{ margin: moderateScale(4) }}
-    />
+    <VideoCard img={item.img} title={item.title} author={item.author} visits={item.visits} likes={item.likes} />
   )
   return (
-    <SafeAreaView style={[styles.container, style]}>
+    <View style={[styles.container, style]}>
       <FlatList
         renderItem={renderVideoComponent}
         data={data}
@@ -34,7 +26,7 @@ const VideoList = ({ data, keyExtractor, onRefresh, refreshing, onEndReached, st
         onEndReached={onEndReached}
         onEndReachedThreshold={2}
       />
-    </SafeAreaView>
+    </View>
   )
 }
 

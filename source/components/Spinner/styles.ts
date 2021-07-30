@@ -10,18 +10,9 @@ export const styles = StyleSheet.create({
   },
   messageView: {
     marginTop: verticalScale(10),
-    alignSelf: 'center',
-    color: '#222'
+    alignSelf: 'center'
   },
   messageText: {
     fontSize: moderateScale(14)
-  },
-  containerLoadingView: {
-    overflow: 'hidden'
-  },
-  layer: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
-    alignItems: 'center'
   }
 })

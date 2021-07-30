@@ -16,7 +16,7 @@ interface IVideo {
   img: ImageSourcePropType
 }
 
-storiesOf('VideoList', module).add('VideoList', () =>
+storiesOf('Video List', module).add('Video List', () =>
   createElement(() => {
     const videos: IVideo[] = [
       {

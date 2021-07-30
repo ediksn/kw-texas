@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native'
+import { moderateScale } from 'react-native-size-matters'
 import { styles, stylesOfType } from './styles'
 import { theme } from '~/constants'
 
@@ -11,14 +12,14 @@ interface Props {
   type?: string
   viewStyle?: ViewStyle
   textStyle?: TextStyle
-  onPress?: () => {}
+  onPress?: () => void
 }
 
 const Button = ({
   message = 'Ok',
   THEME = theme.buttons.primary,
-  fontSize = theme.fonts.MEDIUM_SIZE,
-  type = theme.buttons.types.CONTAINED,
+  fontSize = moderateScale(theme.fonts.MEDIUM_SIZE),
+  type = theme.buttons.types.OUTLINED,
   viewStyle,
   textStyle,
   onPress

@@ -1,6 +1,6 @@
 import { moderateScale } from 'react-native-size-matters'
 
-const FONTS = {
+const FONTS: any = {
   BIG_SIZE: moderateScale(18),
   LARGE_SIZE: moderateScale(16),
   MEDIUM_SIZE: moderateScale(14),

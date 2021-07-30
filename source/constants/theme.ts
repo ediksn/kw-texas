@@ -11,7 +11,8 @@ export const theme = {
   darkGreenColor: '#006C84',
   red: '#C5050B',
   darkGrey: '#282B33',
-  lighColor: '#3D424D',
   grey: 'rgb(200,200,200)',
+  darkBackground: '#383e51',
+  lightColor: '#3D424D',
   beige: '#fff8dc'
 }

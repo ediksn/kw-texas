@@ -3,13 +3,15 @@
 import React from 'react'
 import { SafeAreaView } from 'react-native'
 
+import logout_btn from 'assets/images/logout_btn.png'
 import { styles } from './styles'
-import Storybook from './storybook'
+import ListButton from '../../components/ListButton'
 
-export const Settings = () => {
+export const Settings = ({ navigation }: any) => {
   return (
     <SafeAreaView style={styles.container}>
-      <Storybook />
+      <ListButton title='StoryBook' icon={null} onPress={() => navigation.navigate('StoryBooks')} arrow />
+      <ListButton title='Log out' icon={logout_btn} onPress={() => null} arrow />
     </SafeAreaView>
   )
 }

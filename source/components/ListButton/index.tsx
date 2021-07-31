@@ -23,7 +23,7 @@ const ListButton = ({ title, icon, onPress, arrow }: Props) => {
         <View style={styles.textContainer}>
           <Image style={styles.logoutBtn} resizeMode='contain' source={icon} />
 
-          <Text style={styles.text}>{t(title)}</Text>
+          <Text style={[arrow === true ? styles.textWithBtn : styles.textWithNoBtn]}>{t(title)}</Text>
         </View>
         {arrow && (
           <View>

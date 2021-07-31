@@ -16,10 +16,16 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     display: 'flex'
   },
-  text: {
+  textWithBtn: {
     fontSize: 17,
     fontFamily: 'Mulish-Bold',
     color: theme.darkBackground
+  },
+  textWithNoBtn: {
+    fontSize: 17,
+    fontFamily: 'Mulish-Bold',
+    color: theme.darkBackground,
+    marginLeft: 20
   },
   logoutBtn: {
     marginTop: 4,

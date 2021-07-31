@@ -10,7 +10,7 @@ import ListButton from '../../components/ListButton'
 export const Settings = ({ navigation }: any) => {
   return (
     <SafeAreaView style={styles.container}>
-      <ListButton title='StoryBook' icon={null} onPress={() => navigation.navigate('StoryBooks')} arrow />
+      <ListButton title='StoryBook' icon={null} onPress={() => navigation.navigate('StoryBooks')} arrow={false} />
       <ListButton title='Log out' icon={logout_btn} onPress={() => null} arrow />
     </SafeAreaView>
   )

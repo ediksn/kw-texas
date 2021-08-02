@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { verticalScale } from 'react-native-size-matters'
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
@@ -22,5 +22,18 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 12,
     marginVertical: verticalScale(1)
+  },
+  touchablePasswordIcon: {
+    position: 'absolute',
+    marginTop: verticalScale(15),
+    marginRight: scale(5),
+    padding: moderateScale(10),
+    alignSelf: 'flex-end',
+    elevation: 1,
+    zIndex: 10
+  },
+  iconPasswordIcon: {
+    height: verticalScale(20),
+    width: scale(20)
   }
 })

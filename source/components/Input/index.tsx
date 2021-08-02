@@ -1,21 +1,35 @@
-import React, { useState } from 'react'
-import { Text, TextInput, View, ViewStyle } from 'react-native'
+import React, { memo, useState, useMemo } from 'react'
+import { Image, Text, TextInput, Pressable, View, ViewStyle } from 'react-native'
+import visibility from '~/assets/images/visibility.png'
+import visibility_off from '~/assets/images/visibility_off.png'
 import { theme } from '~/constants'
 import { styles } from './styles'
-import { useDeviceWidth } from '../../hooks/settings'
+import { useDeviceWidth } from '~/hooks/settings'
+import { FORM } from '~/constants/form'
 
 interface Props {
   title: string
-  value: string
-  onChangeText: React.Dispatch<React.SetStateAction<string>>
+  value?: string
+  onChangeText?: React.Dispatch<React.SetStateAction<string>>
   disabled?: boolean
   required?: boolean
+  type?: string
   error?: boolean
   style?: ViewStyle
 }
-const Input = ({ title, value, onChangeText, disabled, required, error, style }: Props) => {
+const Input = ({
+  title,
+  value,
+  onChangeText,
+  disabled,
+  required,
+  type = FORM.FIELDS_TYPES.TEXT,
+  error,
+  style
+}: Props) => {
   const [focus, setFocus] = useState(false)
   const DEVICE_WIDTH = useDeviceWidth() - 20
+  const [hasVisibility, setHasVisibility] = useState(false)
 
   const errorComponent = (
     <>
@@ -27,6 +41,23 @@ const Input = ({ title, value, onChangeText, disabled, required, error, style }:
       )}
     </>
   )
+
+  const handlePasswordVisibility = () => setHasVisibility(!hasVisibility)
+
+  const IconPassword = () =>
+    useMemo(
+      () =>
+        type === FORM.FIELDS_TYPES.PASSWORD ? (
+          <Pressable style={styles.touchablePasswordIcon} onPress={handlePasswordVisibility}>
+            <Image
+              style={styles.iconPasswordIcon}
+              resizeMode='center'
+              source={hasVisibility ? visibility : visibility_off}
+            />
+          </Pressable>
+        ) : null,
+      [type, hasVisibility]
+    )
 
   return (
     <View style={[{ width: DEVICE_WIDTH }, style]}>
@@ -49,10 +80,12 @@ const Input = ({ title, value, onChangeText, disabled, required, error, style }:
           styles.textContainer,
           error ? { borderColor: theme.red } : focus ? { borderColor: theme.darkGrey } : { borderColor: theme.grey }
         ]}
+        secureTextEntry={!hasVisibility}
       />
+      <IconPassword />
       {errorComponent}
     </View>
   )
 }
 
-export default Input
+export default memo(Input)

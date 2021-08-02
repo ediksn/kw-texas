@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-
 import { Text, TextInput, View, ViewStyle } from 'react-native'
 import { theme } from '~/constants'
-
 import { styles } from './styles'
+import { useDeviceWidth } from '../../hooks/settings'
 
 interface Props {
   title: string
@@ -16,6 +15,8 @@ interface Props {
 }
 const Input = ({ title, value, onChangeText, disabled, required, error, style }: Props) => {
   const [focus, setFocus] = useState(false)
+  const DEVICE_WIDTH = useDeviceWidth() - 20
+
   const errorComponent = (
     <>
       {required && error && (
@@ -26,8 +27,9 @@ const Input = ({ title, value, onChangeText, disabled, required, error, style }:
       )}
     </>
   )
+
   return (
-    <View style={style}>
+    <View style={[{ width: DEVICE_WIDTH }, style]}>
       <View style={styles.title}>
         <Text style={styles.titleText}>{title}</Text>
         {required && <Text style={styles.titleText}>*</Text>}

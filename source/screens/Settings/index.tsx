@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native'
 
 import logout_btn from 'assets/images/logout_btn.png'
 import { styles } from './styles'
-import ListButton from '../../components/ListButton'
+import ListButton from '~/components/ListButton'
 
 interface Props {
   navigation: any

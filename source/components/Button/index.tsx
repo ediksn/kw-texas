@@ -19,7 +19,7 @@ const Button = ({
   message = 'Ok',
   THEME = theme.buttons.primary,
   fontSize = moderateScale(theme.fonts.MEDIUM_SIZE),
-  type = theme.buttons.types.OUTLINED,
+  type = theme.buttons.types.CONTAINED,
   viewStyle,
   textStyle,
   onPress

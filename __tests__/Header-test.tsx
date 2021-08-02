@@ -4,6 +4,6 @@ import { Header } from '~/components'
 import { theme } from '~/constants'
 
 test('renders correctly', () => {
-  const tree = renderer.create(<Header title='Home' backgroundColor={theme.backgroundColor} />).toJSON()
-  expect(tree).toMatchSnapshot()
+  const header = renderer.create(<Header title='Home' backgroundColor={theme.backgroundColor} />).toJSON()
+  expect(header).toMatchSnapshot()
 })

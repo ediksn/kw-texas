@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
     height: verticalScale(35),
     borderWidth: 1,
     borderRadius: 5,
-    fontSize: 16
+    fontSize: 16,
+    marginBottom: verticalScale(10)
   },
   title: {
     flexDirection: 'row'

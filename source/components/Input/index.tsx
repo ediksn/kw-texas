@@ -29,7 +29,8 @@ const Input = ({
 }: Props) => {
   const [focus, setFocus] = useState(false)
   const DEVICE_WIDTH = useDeviceWidth() - 20
-  const [hasVisibility, setHasVisibility] = useState(false)
+  const isSecureInput = type === FORM.FIELDS_TYPES.PASSWORD
+  const [hasVisibility, setHasVisibility] = useState(!isSecureInput)
 
   const errorComponent = (
     <>
@@ -47,7 +48,7 @@ const Input = ({
   const IconPassword = () =>
     useMemo(
       () =>
-        type === FORM.FIELDS_TYPES.PASSWORD ? (
+        isSecureInput ? (
           <Pressable style={styles.touchablePasswordIcon} onPress={handlePasswordVisibility}>
             <Image
               style={styles.iconPasswordIcon}
@@ -80,7 +81,7 @@ const Input = ({
           styles.textContainer,
           error ? { borderColor: theme.red } : focus ? { borderColor: theme.darkGrey } : { borderColor: theme.grey }
         ]}
-        secureTextEntry={!hasVisibility}
+        secureTextEntry={isSecureInput && !hasVisibility}
       />
       <IconPassword />
       {errorComponent}

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { verticalScale, moderateScale } from 'react-native-size-matters'
+import { verticalScale } from 'react-native-size-matters'
 
 export const styles = StyleSheet.create({
   containerView: {
@@ -8,11 +8,10 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center'
   },
-  messageView: {
-    marginTop: verticalScale(10),
-    alignSelf: 'center'
-  },
-  messageText: {
-    fontSize: moderateScale(14)
+  buttonView: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: verticalScale(10)
   }
 })

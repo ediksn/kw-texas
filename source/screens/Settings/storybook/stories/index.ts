@@ -1,9 +1,8 @@
-/** @format */
-
+import './Button/Button.stories'
 import './Headers/Header.stories'
+import './Input/Input.stories'
 import './Spinner/Spinner.stories'
 import './VideoPlayer/VideoPlayer.stories'
-import './Input/Input.stories'
 import './VideoList/VideoList.stories'
 import './Logout/Logout.stories'
 import './VideoCard/VideoCard.stories'

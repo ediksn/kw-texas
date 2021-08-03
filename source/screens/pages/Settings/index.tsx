@@ -15,7 +15,7 @@ export const Settings = ({ navigation }: Props) => {
   return (
     <SafeAreaView style={styles.container}>
       <ListButton title='StoryBook' icon={null} onPress={() => navigation.navigate('StoryBooks')} arrow />
-      <ListButton title='Log out' icon={logout_btn} onPress={() => null} arrow />
+      <ListButton title='Log out' icon={logout_btn} onPress={() => navigation.navigate('Login')} arrow />
     </SafeAreaView>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react-native'
 import { boolean, number, text } from '@storybook/addon-knobs'
 
-import VideoPlayer from '~/screens/Home/components/VideoPlayer'
+import VideoPlayer from '~/screens/pages/Home/components/VideoPlayer'
 
 storiesOf('VideoPlayer', module).add('VidePlayer', () => (
   <VideoPlayer

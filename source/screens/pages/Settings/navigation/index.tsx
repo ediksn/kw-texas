@@ -1,18 +1,17 @@
-/** @format */
-
 import React from 'react'
 
+import { useTranslation } from 'react-i18next'
 import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
 import Storybook from '../storybook'
 import { Settings } from '~/screens/pages'
-import { Login } from '../../Login'
+import { NAVIGATION } from '~/constants'
 
 const SettingsStackScreen = () => {
+  const { t } = useTranslation()
   return (
     <StackNavigator>
-      <StackScreen name='Settings' options={{ headerTitleAlign: 'center' }} component={Settings} />
-      <StackScreen name='StoryBooks' component={Storybook} />
-      <StackScreen name='Login' component={Login} />
+      <StackScreen name={NAVIGATION.SCREEN.SETTINGS} component={Settings} options={{ title: t('Settings') }} />
+      <StackScreen name={NAVIGATION.SCREEN.STORYBOOK} component={Storybook} options={{ title: t('Storybook') }} />
     </StackNavigator>
   )
 }

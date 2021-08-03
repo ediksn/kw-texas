@@ -3,40 +3,35 @@
 import React, { memo } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 
+import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
 import { NAVIGATION } from '~/constants/navigation'
-import { StackNavigator, StackScreen, TabNavigator, TabScreen } from './components/Navigators'
-import { Login, Home } from './pages'
+import { TabNavigator, TabScreen } from './components/Navigators'
+import { Login } from './pages'
 import SettingsStackScreen from './pages/Settings/navigation'
-
-const screenOptions = {
-  header: () => null
-}
+import { RootState } from '~/store'
+import HomeStackScreen from './pages/Home/navigation'
 
 const TabNavigation = () => {
+  const { t } = useTranslation()
   return (
-    <TabNavigator initialRouteName='Home'>
-      <TabScreen options={{ title: 'Home' }} name={NAVIGATION.SCREEN.HOME} component={Home} />
-      <TabScreen options={{ title: 'Settings' }} name={NAVIGATION.SCREEN.SETTINGS} component={SettingsStackScreen} />
+    <TabNavigator initialRouteName={NAVIGATION.SCREEN.HOME}>
+      <TabScreen options={{ title: t('Conversations') }} name={NAVIGATION.SCREEN.HOME} component={HomeStackScreen} />
+      <TabScreen options={{ title: t('Settings') }} name={NAVIGATION.SCREEN.SETTINGS} component={SettingsStackScreen} />
     </TabNavigator>
   )
 }
 
-const StackNavigation = () => {
-  const test = false
-
-  return (
-    <StackNavigator>
-      {test ? (
-        <StackScreen options={screenOptions} name={NAVIGATION.SCREEN.LOGIN} component={Login} />
-      ) : (
-        <StackScreen options={screenOptions} name={NAVIGATION.SCREEN.MAIN} component={TabNavigation} />
-      )}
-    </StackNavigator>
-  )
+const RootNavigation = () => {
+  const isLogged = useSelector((store: RootState) => store.app.isLogged)
+  if (isLogged) {
+    return <TabNavigation />
+  }
+  return <Login />
 }
 
 export const Screens = memo(() => (
   <NavigationContainer>
-    <StackNavigation />
+    <RootNavigation />
   </NavigationContainer>
 ))

@@ -1,4 +1,8 @@
 {
+  "Username": "Nombre de usuario",
+  "Password": "Contraseña",
+  "Sign In": "Iniciar sesión",
+  "Forgot Password": "Recuperar contraseña",
   "Ok": "Aceptar",
   "Loading": "Cargando",
   "Home": "Inicio",

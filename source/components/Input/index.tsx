@@ -1,5 +1,6 @@
 import React, { memo, useState, useMemo } from 'react'
 import { Image, Text, TextInput, Pressable, View, ViewStyle } from 'react-native'
+import { useTranslation } from 'react-i18next'
 import visibility from '~/assets/images/visibility.png'
 import visibility_off from '~/assets/images/visibility_off.png'
 import { theme } from '~/constants'
@@ -31,6 +32,7 @@ const Input = ({
   const DEVICE_WIDTH = useDeviceWidth() - 20
   const isSecureInput = type === FORM.FIELDS_TYPES.PASSWORD
   const [hasVisibility, setHasVisibility] = useState(!isSecureInput)
+  const { t } = useTranslation()
 
   const errorComponent = (
     <>
@@ -63,7 +65,7 @@ const Input = ({
   return (
     <View style={[{ width: DEVICE_WIDTH }, style]}>
       <View style={styles.title}>
-        <Text style={styles.titleText}>{title}</Text>
+        <Text style={styles.titleText}>{t(title)}</Text>
         {required && <Text style={styles.titleText}>*</Text>}
       </View>
       <TextInput

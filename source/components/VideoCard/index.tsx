@@ -8,19 +8,21 @@ interface Props {
   author: string
   visits: number
   likes: number
-  backgroundColor?: string
-  textColor?: string
   style?: ViewStyle
 }
-const VideoCard = ({ img, title, author, visits, likes, backgroundColor, textColor, style }: Props) => {
+const VideoCard = ({ img, title, author, visits, likes, style }: Props) => {
   return (
-    <View style={[styles.container, { backgroundColor }, style]}>
+    <View style={[styles.container, style]}>
       <Image source={img} style={styles.img} />
-      <Text style={[styles.title, { color: textColor }]}>{title}</Text>
-      <View style={styles.statisticsContainer}>
-        <Text style={[styles.statisticsText, { color: textColor }]}> {author} </Text>
-        <Text style={[styles.statisticsText, { color: textColor }]}> {visits} visitas</Text>
-        <Text style={[styles.statisticsText, { color: textColor }]}> {likes} Likes </Text>
+      <View style={styles.wrapper}>
+        <Text style={styles.title}>{title}</Text>
+        <View style={styles.statisticsContainer}>
+          <Text style={styles.authorText}>
+            by <Text style={styles.authorName}>{author}</Text>
+          </Text>
+          <Text style={styles.statisticsText}>{visits} views</Text>
+          <Text style={styles.statisticsText}>{likes} likes</Text>
+        </View>
       </View>
     </View>
   )

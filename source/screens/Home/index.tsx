@@ -13,12 +13,12 @@ export const Home = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Header
-        title={t('Home')}
+        title={t('Conversations')}
         backgroundColor={theme.backgroundColor}
         statusBarHeight={Platform.OS === 'ios' ? StatusBarManager.HEIGHT : 20}
       />
       <View style={styles.text}>
-        <Text>{t('Home')}</Text>
+        <Text>{t('Conversations')}</Text>
       </View>
     </SafeAreaView>
   )

@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react-native'
 import { Alert, ImageSourcePropType } from 'react-native'
 
 import { VideoList } from '~/components/'
-import cunhaVar from '~/assets/images/cunhavar.jpeg'
+import video_thumbnail from '~/assets/images/video_thumbnail.png'
 
 interface IVideo {
   id: string
@@ -25,7 +25,7 @@ storiesOf('Video List', module).add('Video List', () =>
         author: 'Tester 1',
         visits: 11111,
         likes: 111,
-        img: cunhaVar
+        img: video_thumbnail
       },
       {
         id: '2',
@@ -33,7 +33,7 @@ storiesOf('Video List', module).add('Video List', () =>
         author: 'Tester 2',
         visits: 22222,
         likes: 222,
-        img: cunhaVar
+        img: video_thumbnail
       },
       {
         id: '3',
@@ -41,7 +41,7 @@ storiesOf('Video List', module).add('Video List', () =>
         author: 'Tester 3',
         visits: 33333,
         likes: 333,
-        img: cunhaVar
+        img: video_thumbnail
       },
       {
         id: '4',
@@ -49,7 +49,7 @@ storiesOf('Video List', module).add('Video List', () =>
         author: 'Tester 4',
         visits: 44444,
         likes: 444,
-        img: cunhaVar
+        img: video_thumbnail
       }
     ]
     const [refresing, setRefreshing] = useState(false)
@@ -69,7 +69,7 @@ storiesOf('Video List', module).add('Video List', () =>
         author: `Tester ${videoNumber.current.toString()}`,
         visits: videoNumber.current * 11111,
         likes: videoNumber.current * 111,
-        img: cunhaVar
+        img: video_thumbnail
       })
       videoNumber.current += 1
     }

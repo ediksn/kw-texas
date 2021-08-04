@@ -10,6 +10,7 @@ exports[`renders correctly 1`] = `
         "borderBottomWidth": 1,
         "display": "flex",
         "flexDirection": "row",
+        "height": 100,
         "justifyContent": "space-between",
         "left": 0,
         "maxWidth": "100%",

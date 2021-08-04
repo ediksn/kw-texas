@@ -11,11 +11,18 @@ import { Login } from './pages'
 import SettingsStackScreen from './pages/Settings/navigation'
 import { RootState } from '~/store'
 import HomeStackScreen from './pages/Home/navigation'
+import { Icon } from '~/components'
 
 const TabNavigation = () => {
   const { t } = useTranslation()
+
   return (
-    <TabNavigator initialRouteName={NAVIGATION.SCREEN.HOME}>
+    <TabNavigator
+      initialRouteName={NAVIGATION.SCREEN.HOME}
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color }) => <Icon route={route.name} color={color} />
+      })}
+    >
       <TabScreen options={{ title: t('Conversations') }} name={NAVIGATION.SCREEN.HOME} component={HomeStackScreen} />
       <TabScreen options={{ title: t('Settings') }} name={NAVIGATION.SCREEN.SETTINGS} component={SettingsStackScreen} />
     </TabNavigator>

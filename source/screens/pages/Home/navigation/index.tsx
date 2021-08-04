@@ -9,7 +9,11 @@ const HomeStackScreen = () => {
   const { t } = useTranslation()
   return (
     <StackNavigator>
-      <StackScreen name={NAVIGATION.SCREEN.HOME} component={Home} options={{ title: t('Conversations') }} />
+      <StackScreen
+        name={NAVIGATION.SCREEN.HOME}
+        component={Home}
+        options={{ headerTitleAlign: 'center', title: t('Conversations') }}
+      />
     </StackNavigator>
   )
 }

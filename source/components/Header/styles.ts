@@ -16,8 +16,7 @@ export const styles = StyleSheet.create({
     borderBottomColor: theme.grey,
     borderBottomWidth: 1,
     display: 'flex',
-    justifyContent: 'space-between',
-    height: 100
+    justifyContent: 'space-between'
   },
   textContainer: {
     marginLeft: 'auto',

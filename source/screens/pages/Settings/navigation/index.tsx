@@ -10,8 +10,16 @@ const SettingsStackScreen = () => {
   const { t } = useTranslation()
   return (
     <StackNavigator>
-      <StackScreen name={NAVIGATION.SCREEN.SETTINGS} component={Settings} options={{ title: t('Settings') }} />
-      <StackScreen name={NAVIGATION.SCREEN.STORYBOOK} component={Storybook} options={{ title: t('Storybook') }} />
+      <StackScreen
+        name={NAVIGATION.SCREEN.SETTINGS}
+        component={Settings}
+        options={{ headerTitleAlign: 'center', title: t('Settings') }}
+      />
+      <StackScreen
+        name={NAVIGATION.SCREEN.STORYBOOK}
+        component={Storybook}
+        options={{ headerTitleAlign: 'center', title: t('Storybook') }}
+      />
     </StackNavigator>
   )
 }

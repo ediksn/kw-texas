@@ -16,7 +16,6 @@ export const styles = StyleSheet.create({
     height: 300
   },
   descContainer: {
-    marginTop: 8,
     backgroundColor: theme.backgroundWhite
   },
   text: {

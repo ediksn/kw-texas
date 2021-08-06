@@ -16,7 +16,7 @@ const HomeStackScreen = () => {
         options={{ headerTitleAlign: 'center', title: t('Conversations') }}
       />
       <StackScreen
-        name={NAVIGATION.SCREEN.HOME}
+        name={NAVIGATION.SCREEN.STUDIO}
         component={Studio}
         options={{ headerTitleAlign: 'center', title: t('Studio') }}
       />

@@ -5,8 +5,11 @@ export default {
       username: null
     },
     session: {
-      token: null,
-      refresh_token: null
+      access_token: null,
+      refresh_token: null,
+      id_token: null,
+      expires_in: null,
+      session_token: null
     }
   }
 }

@@ -30,7 +30,8 @@ const TabNavigation = () => {
 }
 
 const RootNavigation = () => {
-  const isLogged = useSelector((store: RootState) => store.app.isLogged)
+  const { isLogged } = useSelector((store: RootState) => store.login)
+
   if (isLogged) {
     return <TabNavigation />
   }

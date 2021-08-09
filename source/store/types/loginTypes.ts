@@ -1,0 +1,6 @@
+export default {
+  LOG_IN: 'LOG_IN',
+  LOG_IN_SUCCESS: 'LOG_IN_SUCCESS',
+  LOG_IN_FAILURE: 'LOG_IN_FAILURE',
+  LOG_OUT: 'LOG_OUT'
+}

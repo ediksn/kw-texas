@@ -1,22 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { Button, Input } from '~/components'
 import { theme } from '~/constants'
 import { styles } from './styles'
 import { FORM } from '~/constants/form'
-
-import { login } from '~/store/app'
+import { loginActions } from '~/store/actions'
 
 export const Login = () => {
   const dispatch = useDispatch()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
   return (
     <View style={styles.containerView}>
-      <Input title='Username' required error={false} />
-      <Input title='Password' type={FORM.FIELDS_TYPES.PASSWORD} required error={false} />
+      <Input title='Username' required error={false} value={username} onChangeText={setUsername} />
+      <Input
+        title='Password'
+        type={FORM.FIELDS_TYPES.PASSWORD}
+        required
+        error={false}
+        value={password}
+        onChangeText={setPassword}
+      />
 
       <View style={styles.buttonView}>
-        <Button message='Sign In' onPress={() => dispatch(login())} />
+        <Button message='Sign In' onPress={() => dispatch(loginActions.logIn(username, password))} />
         <Button message='Forgot Password' type={theme.buttons.types.TEXT} />
       </View>
     </View>

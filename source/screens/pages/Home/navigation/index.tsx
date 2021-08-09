@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useTranslation } from 'react-i18next'
+import { scale } from 'react-native-size-matters'
 import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
 import { Home } from '~/screens/pages'
 import { NAVIGATION, theme } from '~/constants'
@@ -22,6 +23,7 @@ const HomeStackScreen = () => {
               message={t('Create')}
               type={theme.buttons.types.TEXT}
               THEME={theme.buttons.primary}
+              viewStyle={{ width: scale(80) }}
               onPress={() => navigation.navigate(NAVIGATION.SCREEN.STUDIO)}
             />
           )

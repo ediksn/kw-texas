@@ -11,4 +11,5 @@ const middlewares = [thunk]
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middlewares)))
 
+export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof rootReducer>

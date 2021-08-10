@@ -3,7 +3,7 @@ import { STORAGE_CONSTANTS } from '~/utils/storage'
 
 interface StorageProps {
   key: string
-  value: object
+  value?: object
 }
 
 export default {

@@ -1,35 +1,36 @@
 import { loginService } from '~/services'
 import { LOGIN_TYPES } from '~/store/types'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
-import { NAVIGATION } from '../../constants'
+import { LogInProps, LogInResponse } from '~/interfaces/loginInterface'
+import { AppDispatch } from '..'
 
 const actionCreators = {
-  logIn: (data, navigation) => async dispatch => {
-    const { LOG_IN, LOG_IN_SUCCESS, LOG_IN_FAILURE } = LOGIN_TYPES
-    dispatch({ type: LOG_IN })
-    const { username, password } = data
+  logIn:
+    ({ username, password }: LogInProps) =>
+    async (dispatch: AppDispatch) => {
+      const { LOG_IN, LOG_IN_SUCCESS, LOG_IN_FAILURE } = LOGIN_TYPES
+      dispatch({ type: LOG_IN })
 
-    try {
-      const signInResponse = await loginService.logIn(username, password)
-
-      if (signInResponse.status === 200) {
+      try {
+        const signInResponse = await loginService.logIn({ username, password })
         const { LOGIN } = STORAGE_CONSTANTS
+        const storageResponse: LogInResponse = signInResponse
+
         Storage.save({
           key: LOGIN.SESSION,
-          value: ({ access_token, refresh_token, id_token, expires_in, session_token } = signInResponse)
+          value: storageResponse
         })
-        dispatch({ type: LOG_IN_SUCCESS, payload: signInResponse.data })
-        navigation.navigate(NAVIGATION.SCREEN.HOME)
+        dispatch({ type: LOG_IN_SUCCESS, payload: signInResponse })
+      } catch (error) {
+        dispatch({ type: LOG_IN_FAILURE, payload: error })
       }
-    } catch (error) {
-      dispatch({ type: LOG_IN_FAILURE, payload: error })
-    }
-  },
-  logOut: () => async dispatch => {
+    },
+  logOut: () => async (dispatch: AppDispatch) => {
     const { LOG_OUT } = LOGIN_TYPES
+    const { LOGIN } = STORAGE_CONSTANTS
+
     dispatch({ type: LOG_OUT })
     Storage.remove({ key: LOGIN.SESSION })
-    navigation.navigate(NAVIGATION.SCREEN.LOGIN)
   }
 }
 

@@ -25,7 +25,7 @@ export const Login = () => {
       />
 
       <View style={styles.buttonView}>
-        <Button message='Sign In' onPress={() => dispatch(loginActions.logIn(username, password))} />
+        <Button message='Sign In' onPress={() => dispatch(loginActions.logIn({ username, password }))} />
         <Button message='Forgot Password' type={theme.buttons.types.TEXT} />
       </View>
     </View>

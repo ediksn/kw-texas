@@ -42,6 +42,8 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
       }
     ],
+    'indent': 'off',
+    '@typescript-eslint/indent': 0,
     'prettier/prettier': 2,
     'react/prop-types': [0, { ignore: ['style', 'children', 'dispatch'] }], // 0 off, 1 warning, 2 error, set as warning for now until we define the proptypes standard, also ignoring some keywords
     'react/forbid-prop-types': 0,

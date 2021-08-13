@@ -8,7 +8,7 @@ const actionCreators = {
     dispatch({ type: GET_VIDEOS })
 
     try {
-      const signInResponse = await videoService.logIn()
+      const signInResponse = await videoService.getVideos()
       dispatch({ type: GET_VIDEOS_SUCCESS, payload: signInResponse })
     } catch (error) {
       dispatch({ type: GET_VIDEOS_FAILURE, payload: error })

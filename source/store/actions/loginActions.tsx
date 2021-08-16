@@ -1,7 +1,7 @@
 import { loginService } from '~/services'
 import { LOGIN_TYPES } from '~/store/types'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
-import { LogInProps, LogInResponse } from '~/interfaces/loginInterface'
+import { LogInProps, StorageLogInResponse } from '~/interfaces/loginInterface'
 import { AppDispatch } from '..'
 
 const actionCreators = {
@@ -14,13 +14,17 @@ const actionCreators = {
       try {
         const signInResponse = await loginService.logIn({ username, password })
         const { LOGIN } = STORAGE_CONSTANTS
-        const storageResponse: LogInResponse = signInResponse
+        const storageResponse: StorageLogInResponse = signInResponse
 
-        Storage.save({
-          key: LOGIN.SESSION,
-          value: storageResponse
-        })
-        dispatch({ type: LOG_IN_SUCCESS, payload: signInResponse })
+        if (signInResponse.error) {
+          dispatch({ type: LOG_IN_FAILURE, payload: signInResponse.error })
+        } else {
+          await Storage.save({
+            key: LOGIN.SESSION,
+            value: storageResponse
+          })
+          dispatch({ type: LOG_IN_SUCCESS, payload: signInResponse })
+        }
       } catch (error) {
         dispatch({ type: LOG_IN_FAILURE, payload: error })
       }

@@ -12,6 +12,6 @@ export default {
         password
       })
     })
-    return res
+    return res.json()
   }
 }

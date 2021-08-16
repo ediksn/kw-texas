@@ -26,18 +26,19 @@ export default {
   save: async ({ key, value }: StorageProps) => {
     try {
       const keyStorage = await AsyncStorage.getItem(`@storage_Connect.${key}`)
+      let newValues = null
 
       if (keyStorage) {
         const oldValues = JSON.parse(keyStorage)
-        const newValues = JSON.stringify({ ...oldValues, value })
-        await AsyncStorage.setItem(`@storage_Connect.${key}`, newValues)
-        return true
+        newValues = { ...oldValues, value }
+      } else {
+        newValues = value
       }
+      await AsyncStorage.setItem(`@storage_Connect.${key}`, JSON.stringify(newValues))
+      return true
     } catch (error) {
       return false
     }
-
-    return false
   },
   remove: async ({ key }: StorageProps) => {
     try {

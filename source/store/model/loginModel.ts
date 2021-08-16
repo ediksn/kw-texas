@@ -1,8 +1,4 @@
 export default {
-  login: {
-    isLogged: false,
-    user: {
-      username: null
-    }
-  }
+  isLogged: false,
+  user: null
 }

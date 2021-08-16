@@ -3,12 +3,11 @@ export interface LogInProps {
   password: string
 }
 
-export interface LogInResponse {
-  access_token: string
-  refresh_token: string
-  id_token: string
-  expires_in: string
-  session_token: string
+export interface StorageLogInResponse {
+  accessToken: string
+  refreshToken: string
+  idToken: string
+  expiresIn: string
 }
 
 export interface LogInProduceProps {

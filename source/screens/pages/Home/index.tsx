@@ -7,7 +7,7 @@ import { styles } from './styles'
 import { Video } from '~/interfaces/videoInterfaces'
 import { videoActions } from '~/store/actions'
 import { RootState } from '~/store/index'
-import { VideoList } from '~/components'
+import { Spinner, VideoList } from '~/components'
 
 export const Home = () => {
   const dispatch = useDispatch()
@@ -25,13 +25,17 @@ export const Home = () => {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <VideoList
-        data={videos}
-        keyExtractor={(item: Video) => item.id.toString()}
-        refreshing={loading}
-        onRefresh={onRefresh}
-        onEndReached={onEndReached}
-      />
+      {videos.length > 0 ? (
+        <VideoList
+          data={videos}
+          keyExtractor={(item: Video) => item.id.toString()}
+          refreshing={loading}
+          onRefresh={onRefresh}
+          onEndReached={onEndReached}
+        />
+      ) : (
+        <Spinner />
+      )}
     </SafeAreaView>
   )
 }

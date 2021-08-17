@@ -9,9 +9,10 @@ interface Props {
   color?: string
   size?: number
   styleView?: ViewStyle
+  children?: object
 }
 
-const Spinner = ({ isLoading = false, message, color = '#ce011f', size = 70, styleView }: Props) => {
+const Spinner = ({ isLoading = false, message, color = '#ce011f', size = 70, styleView, children }: Props) => {
   const Message = () => {
     const { t } = useTranslation()
     return (
@@ -27,11 +28,13 @@ const Spinner = ({ isLoading = false, message, color = '#ce011f', size = 70, sty
 
   return (
     <>
-      {isLoading && (
+      {isLoading ? (
         <View style={[styles.containerView, styleView]}>
           <ActivityIndicator size={size} color={color} />
           <Message />
         </View>
+      ) : (
+        children
       )}
     </>
   )

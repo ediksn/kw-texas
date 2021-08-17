@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useLayoutEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 
 import { useTranslation } from 'react-i18next'
@@ -30,29 +30,29 @@ const TabNavigation = () => {
 }
 
 const RootNavigation = () => {
+  const { LOGIN } = STORAGE_CONSTANTS
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setTimeout(async () => {
       const storageIsLogged = await Storage.isLogged()
 
       if (storageIsLogged) {
-        const { LOGIN } = STORAGE_CONSTANTS
         const storageLogin = await Storage.get({ key: LOGIN.SESSION })
         dispatch(loginActions.setUser(storageLogin.id_token))
       }
       setLoading(false)
-    }, 500)
-  }, [])
+    })
+  }, [dispatch])
 
   const { isLogged } = useSelector((store: RootState) => store.login)
 
-  if (loading) return <Spinner isLoading={loading} message='KW: Connect' />
-
-  if (isLogged) return <TabNavigation />
-
-  return <Login />
+  return (
+    <Spinner isLoading={loading} message='KW: Connect'>
+      {isLogged ? <TabNavigation /> : <Login />}
+    </Spinner>
+  )
 }
 
 export const Screens = memo(() => (

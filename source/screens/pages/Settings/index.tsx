@@ -8,25 +8,25 @@ import { useDispatch } from 'react-redux'
 import { styles } from './styles'
 import ListButton from '~/components/ListButton'
 import { loginActions } from '~/store/actions'
-// import { NAVIGATION } from '~/constants'
+import { NAVIGATION } from '~/constants'
 
-// interface Props {
-//   navigation: any
-// }
+interface Props {
+  navigation: any
+}
 
-export const Settings = (/* { navigation }: Props */) => {
+export const Settings = ({ navigation }: Props) => {
   const dispatch = useDispatch()
 
   const handleLogOut = () => dispatch(loginActions.logOut())
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <ListButton
+      <ListButton
         title='StoryBook'
         icon={null}
         onPress={() => navigation.navigate(NAVIGATION.SCREEN.STORYBOOK)}
         arrow
-      /> */}
+      />
       <ListButton title='Log Out' icon={logout_btn} onPress={handleLogOut} arrow />
     </SafeAreaView>
   )

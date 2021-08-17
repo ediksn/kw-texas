@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View } from 'react-native'
 import { useDispatch } from 'react-redux'
-import { Button, Input } from '~/components'
+import { Button, Input, Spinner } from '~/components'
 import { theme } from '~/constants'
 import { styles } from './styles'
 import { FORM } from '~/constants/form'
@@ -11,6 +11,13 @@ export const Login = () => {
   const dispatch = useDispatch()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleLogin = async () => {
+    setLoading(true)
+    await dispatch(loginActions.logIn({ username, password }))
+    setLoading(false)
+  }
 
   return (
     <View style={styles.containerView}>
@@ -25,7 +32,9 @@ export const Login = () => {
       />
 
       <View style={styles.buttonView}>
-        <Button message='Sign In' onPress={() => dispatch(loginActions.logIn({ username, password }))} />
+        <Spinner isLoading={loading} size={30}>
+          <Button message='Sign In' onPress={handleLogin} />
+        </Spinner>
         <Button message='Forgot Password' type={theme.buttons.types.TEXT} />
       </View>
     </View>

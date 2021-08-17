@@ -24,27 +24,26 @@ const actionCreators = {
             value: storageResponse
           })
           dispatch({ type: LOG_IN_SUCCESS, payload: signInResponse })
+          return true
         }
       } catch (error) {
         dispatch({ type: LOG_IN_FAILURE, payload: error })
       }
+      return false
     },
   logOut: () => async (dispatch: AppDispatch) => {
-    const { LOG_OUT } = LOGIN_TYPES
+    const { LOG_OUT, LOG_OUT_SUCCESS } = LOGIN_TYPES
     const { LOGIN } = STORAGE_CONSTANTS
 
     dispatch({ type: LOG_OUT })
     await Storage.remove({ key: LOGIN.SESSION })
+    dispatch({ type: LOG_OUT_SUCCESS })
   },
   setUser: (id_token: string) => async (dispatch: AppDispatch) => {
-    const { LOG_IN, LOG_IN_SUCCESS, LOG_IN_FAILURE } = LOGIN_TYPES
-    dispatch({ type: LOG_IN })
+    const { LOG_IN, LOG_IN_SUCCESS } = LOGIN_TYPES
 
-    try {
-      dispatch({ type: LOG_IN_SUCCESS, payload: { id_token } })
-    } catch (error) {
-      dispatch({ type: LOG_IN_FAILURE, payload: error })
-    }
+    dispatch({ type: LOG_IN })
+    dispatch({ type: LOG_IN_SUCCESS, payload: { id_token } })
   }
 }
 

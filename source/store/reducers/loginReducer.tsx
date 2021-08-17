@@ -5,7 +5,7 @@ import { LOGIN_TYPES } from '../types'
 import LOGIN_INITIAL_STATE from '../model/loginModel'
 import { LogInProduceProps, LogInReducerProps } from '../../interfaces/loginInterface'
 
-const { LOG_IN_SUCCESS, LOG_IN_FAILURE } = LOGIN_TYPES
+const { LOG_IN_SUCCESS, LOG_IN_FAILURE, LOG_OUT_SUCCESS } = LOGIN_TYPES
 
 const REDUCERS = {
   [LOG_IN_SUCCESS]: ({ draftState, payload }: LogInReducerProps) => {
@@ -14,6 +14,9 @@ const REDUCERS = {
   },
   [LOG_IN_FAILURE]: ({ draftState, payload }: LogInReducerProps) => {
     draftState.error = payload
+  },
+  [LOG_OUT_SUCCESS]: ({ draftState }: LogInReducerProps) => {
+    draftState.isLogged = false
   }
 }
 

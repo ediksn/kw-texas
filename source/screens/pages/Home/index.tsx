@@ -25,7 +25,7 @@ export const Home = () => {
   }
   return (
     <SafeAreaView style={styles.container}>
-      {loading && videos.length > 0 ? (
+      {loading && videos.length === 0 ? (
         <Spinner />
       ) : (
         <VideoList

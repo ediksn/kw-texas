@@ -62,10 +62,16 @@ export interface Video {
 
 export interface VideoProduceProps {
   type: string
-  payload?: any
+  payload?: {
+    searchScriptMeeting: Video[]
+    page: number
+  }
 }
 
 export interface VideoReducerProps {
   draftState: any
-  payload?: any
+  payload?: {
+    searchScriptMeeting: Video[]
+    page: number
+  }
 }

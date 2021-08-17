@@ -1,9 +1,10 @@
 import React from 'react'
-import { Text, Image, View, ViewStyle, ImageSourcePropType } from 'react-native'
+import { Text, Image, View, ViewStyle } from 'react-native'
 import { styles } from './styles'
+import connect_thumbnail from '~/assets/images/connect_thumbnail.png'
 
 interface Props {
-  img: ImageSourcePropType
+  img: string
   title: string
   author: string
   visits: number
@@ -13,7 +14,7 @@ interface Props {
 const VideoCard = ({ img, title, author, visits, likes, style }: Props) => {
   return (
     <View style={[styles.container, style]}>
-      <Image source={img} style={styles.img} />
+      <Image source={img ? { uri: img } : connect_thumbnail} style={styles.img} />
       <View style={styles.wrapper}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.statisticsContainer}>

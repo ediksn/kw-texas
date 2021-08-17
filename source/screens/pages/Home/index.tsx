@@ -1,42 +1,37 @@
 /** @format */
 
-// import React, { useEffect, useState } from 'react'
 import React, { useEffect } from 'react'
-import { Text, View, SafeAreaView } from 'react-native'
-import { useTranslation } from 'react-i18next'
-// import { useDispatch, useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { SafeAreaView } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 import { styles } from './styles'
-// import { VideoList } from '~/components'
-// import { Video } from '~/interfaces/videoInterfaces'
+import { Video } from '~/interfaces/videoInterfaces'
 import { videoActions } from '~/store/actions'
-// import { RootState } from '~/store/index'
+import { RootState } from '~/store/index'
+import { VideoList } from '~/components'
 
 export const Home = () => {
   const dispatch = useDispatch()
-  // const videos = useSelector((state: RootState) => state.videos)
-  const { t } = useTranslation()
-  // const [refresing, setRefreshing] = useState(false)
-  // const onRefresh = () => {
-  //   setRefreshing(true)
-  // }
+  const videos: Video[] = useSelector((state: RootState) => state.videos.searchScriptMeeting)
+  const loading: boolean = useSelector((state: RootState) => state.videos.isLoading)
+  const page: number = useSelector((state: RootState) => state.videos.page)
+  const onRefresh = () => {
+    dispatch(videoActions.getVideos(0))
+  }
   useEffect(() => {
-    dispatch(videoActions.getVideos())
+    dispatch(videoActions.getVideos(page))
   }, [])
-  // const onEndReached = () => {
-  // }
+  const onEndReached = () => {
+    dispatch(videoActions.getVideos(page))
+  }
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.text}>
-        <Text>{t('Conversations')}</Text>
-      </View>
-      {/* <VideoList
+      <VideoList
         data={videos}
         keyExtractor={(item: Video) => item.id.toString()}
-        refreshing={refresing}
+        refreshing={loading}
         onRefresh={onRefresh}
         onEndReached={onEndReached}
-      /> */}
+      />
     </SafeAreaView>
   )
 }

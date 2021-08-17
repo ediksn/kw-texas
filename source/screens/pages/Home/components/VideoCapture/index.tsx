@@ -1,16 +1,19 @@
 /** @format */
 
 import React, { useCallback } from 'react'
-import { View } from 'react-native'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { RNCamera } from 'react-native-camera'
 import { useCamera } from 'react-native-camera-hooks'
+
+import shooter from 'assets/images/shooter.png'
+import { styles } from './styles'
 
 const Recording = () => {
   const [{ cameraRef, isRecording }, { setIsRecording }] = useCamera()
   const recordOptions = {
     maxduration: 60
   }
-  const startRecording = useCallback(async () => {
+  const startRecording = async () => {
     try {
       const promise = await cameraRef.current.recordAsync(recordOptions)
       setIsRecording(true)
@@ -21,7 +24,7 @@ const Recording = () => {
       // eslint-disable-next-line no-console
       console.log(err)
     }
-  }, [])
+  }
 
   const stopRecording = useCallback(async () => {
     try {
@@ -38,9 +41,16 @@ const Recording = () => {
   console.log(startRecording, stopRecording)
 
   return (
-    <View style={{ flex: 1 }}>
-      <RNCamera ref={cameraRef} style={[{ flex: 1, width: '100%', height: 600 }]} type={RNCamera.Constants.Type.back} />
-    </View>
+    <>
+      <RNCamera ref={cameraRef} style={[{ flex: 1, width: '100%', height: 300 }]} type={RNCamera.Constants.Type.back}>
+        <View style={[{ marginTop: 200 }]}>
+          <Text style={styles.textContainer}>Start</Text>
+          <TouchableOpacity style={styles.shooterContainer} onPress={() => {}}>
+            <Image style={styles.shooter} resizeMode='contain' source={shooter} />
+          </TouchableOpacity>
+        </View>
+      </RNCamera>
+    </>
   )
 }
 

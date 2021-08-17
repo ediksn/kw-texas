@@ -1,17 +1,10 @@
 import { LogInProps } from '~/interfaces/loginInterface'
+import { axiosInstance } from './config'
 
 export default {
-  logIn: async ({ username, password }: LogInProps) => {
-    const res = await fetch('https://qa-kong.command-api.kw.com/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username,
-        password
-      })
+  logIn: async ({ username, password }: LogInProps) =>
+    axiosInstance.post('/login', {
+      username,
+      password
     })
-    return res.json()
-  }
 }

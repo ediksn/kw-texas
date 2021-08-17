@@ -25,7 +25,9 @@ export const Home = () => {
   }
   return (
     <SafeAreaView style={styles.container}>
-      {videos.length > 0 ? (
+      {loading && videos.length > 0 ? (
+        <Spinner />
+      ) : (
         <VideoList
           data={videos}
           keyExtractor={(item: Video) => item.id.toString()}
@@ -33,8 +35,6 @@ export const Home = () => {
           onRefresh={onRefresh}
           onEndReached={onEndReached}
         />
-      ) : (
-        <Spinner />
       )}
     </SafeAreaView>
   )

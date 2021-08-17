@@ -1,17 +1,17 @@
-/** * @format */
-
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { NAVIGATION } from '~/constants/navigation'
 import { TabNavigator, TabScreen } from './components/Navigators'
 import { Login } from './pages'
 import SettingsStackScreen from './pages/Settings/navigation'
 import { RootState } from '~/store'
 import HomeStackScreen from './pages/Home/navigation'
-import { Icon } from '~/components'
+import { Icon, Spinner } from '~/components'
+import { loginActions } from '~/store/actions'
+import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
 
 const TabNavigation = () => {
   const { t } = useTranslation()
@@ -30,11 +30,28 @@ const TabNavigation = () => {
 }
 
 const RootNavigation = () => {
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(async () => {
+      const storageIsLogged = await Storage.isLogged()
+
+      if (storageIsLogged) {
+        const { LOGIN } = STORAGE_CONSTANTS
+        const storageLogin = await Storage.get({ key: LOGIN.SESSION })
+        dispatch(loginActions.setUser(storageLogin.id_token))
+      }
+      setLoading(false)
+    }, 500)
+  }, [])
+
   const { isLogged } = useSelector((store: RootState) => store.login)
 
-  if (isLogged) {
-    return <TabNavigation />
-  }
+  if (loading) return <Spinner isLoading={loading} message='KW: Connect' />
+
+  if (isLogged) return <TabNavigation />
+
   return <Login />
 }
 

@@ -15,7 +15,7 @@ export default {
 
       if (sessionStorage) {
         const session = JSON.parse(sessionStorage)
-        return session.isLogged
+        return session.id_token
       }
     } catch (error) {
       return false
@@ -46,6 +46,16 @@ export default {
       return true
     } catch (error) {
       return false
+    }
+  },
+  get: async ({ key }: StorageProps) => {
+    try {
+      const keyStorage = await AsyncStorage.getItem(`@storage_Connect.${key}`)
+
+      if (keyStorage) return JSON.parse(keyStorage)
+      return null
+    } catch (error) {
+      return null
     }
   }
 }

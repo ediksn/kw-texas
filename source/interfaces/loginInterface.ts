@@ -4,10 +4,10 @@ export interface LogInProps {
 }
 
 export interface StorageLogInResponse {
-  accessToken: string
-  refreshToken: string
-  idToken: string
-  expiresIn: string
+  access_token: string
+  refresh_token: string
+  id_token: string
+  expires_in: string
 }
 
 export interface LogInProduceProps {

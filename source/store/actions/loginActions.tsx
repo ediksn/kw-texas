@@ -34,7 +34,17 @@ const actionCreators = {
     const { LOGIN } = STORAGE_CONSTANTS
 
     dispatch({ type: LOG_OUT })
-    Storage.remove({ key: LOGIN.SESSION })
+    await Storage.remove({ key: LOGIN.SESSION })
+  },
+  setUser: (id_token: string) => async (dispatch: AppDispatch) => {
+    const { LOG_IN, LOG_IN_SUCCESS, LOG_IN_FAILURE } = LOGIN_TYPES
+    dispatch({ type: LOG_IN })
+
+    try {
+      dispatch({ type: LOG_IN_SUCCESS, payload: { id_token } })
+    } catch (error) {
+      dispatch({ type: LOG_IN_FAILURE, payload: error })
+    }
   }
 }
 

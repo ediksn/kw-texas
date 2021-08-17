@@ -14,18 +14,14 @@ const actionCreators = {
       try {
         const signInResponse = await loginService.logIn({ username, password })
         const { LOGIN } = STORAGE_CONSTANTS
-        const storageResponse: StorageLogInResponse = signInResponse
+        const storageResponse: StorageLogInResponse = signInResponse.data
 
-        if (signInResponse.error) {
-          dispatch({ type: LOG_IN_FAILURE, payload: signInResponse.error })
-        } else {
-          await Storage.save({
-            key: LOGIN.SESSION,
-            value: storageResponse
-          })
-          dispatch({ type: LOG_IN_SUCCESS, payload: signInResponse })
-          return true
-        }
+        await Storage.save({
+          key: LOGIN.SESSION,
+          value: storageResponse
+        })
+        dispatch({ type: LOG_IN_SUCCESS, payload: signInResponse.data })
+        return true
       } catch (error) {
         dispatch({ type: LOG_IN_FAILURE, payload: error })
       }

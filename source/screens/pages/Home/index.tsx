@@ -15,7 +15,7 @@ export const Home = () => {
   const loading: boolean = useSelector((state: RootState) => state.videos.isLoading)
   const page: number = useSelector((state: RootState) => state.videos.page)
   const onRefresh = () => {
-    dispatch(videoActions.getVideos(0))
+    dispatch(videoActions.refreshVideos())
   }
   useEffect(() => {
     dispatch(videoActions.getVideos(page))
@@ -25,9 +25,7 @@ export const Home = () => {
   }
   return (
     <SafeAreaView style={styles.container}>
-      {loading && videos.length === 0 ? (
-        <Spinner />
-      ) : (
+      <Spinner isLoading={loading && videos.length === 0}>
         <VideoList
           data={videos}
           keyExtractor={(item: VideoInterface) => item.id.toString()}
@@ -35,7 +33,7 @@ export const Home = () => {
           onRefresh={onRefresh}
           onEndReached={onEndReached}
         />
-      )}
+      </Spinner>
     </SafeAreaView>
   )
 }

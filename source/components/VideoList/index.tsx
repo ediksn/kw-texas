@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, ViewStyle, FlatList } from 'react-native'
-import { Video } from '~/interfaces/videoInterfaces'
+import { VideoInterface } from '~/interfaces/videoInterfaces'
 import { VideoCard } from '..'
 import { styles } from './styles'
 
@@ -13,11 +13,12 @@ interface Props {
   style?: ViewStyle
 }
 const VideoList = ({ data, keyExtractor, onRefresh, refreshing, onEndReached, style }: Props) => {
-  const renderVideoComponent = ({ item }: { item: Video }) => (
+  const renderVideoComponent = ({ item }: { item: VideoInterface }) => (
     <VideoCard
       img={item.imageUrl}
       title={item.title}
-      author={item.publishedBy}
+      firstName={item.agents[0].firstName}
+      lastName={item.agents[0].lastName}
       visits={item.views}
       likes={item.likesDetail.likes}
     />

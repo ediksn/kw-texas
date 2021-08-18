@@ -38,7 +38,7 @@ interface Agent {
   __typename: string
 }
 
-export interface Video {
+export interface VideoInterface {
   id: number
   agents: Agent[]
   bookmarked: boolean
@@ -63,7 +63,7 @@ export interface Video {
 export interface VideoProduceProps {
   type: string
   payload?: {
-    searchScriptMeeting: Video[]
+    searchScriptMeeting: VideoInterface[]
     page: number
   }
 }
@@ -71,7 +71,7 @@ export interface VideoProduceProps {
 export interface VideoReducerProps {
   draftState: any
   payload?: {
-    searchScriptMeeting: Video[]
+    searchScriptMeeting: VideoInterface[]
     page: number
   }
 }

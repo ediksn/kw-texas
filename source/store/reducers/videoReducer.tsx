@@ -4,7 +4,14 @@ import { VIDEO_TYPES } from '../types'
 import { VideoProduceProps, VideoReducerProps } from '../../interfaces/videoInterfaces'
 import { VIDEO_INITIAL_STATE } from '../model/videoModel'
 
-const { GET_VIDEOS_SUCCESS, GET_VIDEOS, GET_VIDEOS_FAILURE, REFRESH_VIDEOS_SUCCESS } = VIDEO_TYPES
+const {
+  GET_VIDEOS_SUCCESS,
+  GET_VIDEOS,
+  GET_VIDEOS_FAILURE,
+  REFRESH_VIDEOS,
+  REFRESH_VIDEOS_SUCCESS,
+  REFRESH_VIDEOS_FAILURE
+} = VIDEO_TYPES
 
 const REDUCERS = {
   [GET_VIDEOS]: ({ draftState }: VideoReducerProps) => {
@@ -15,12 +22,18 @@ const REDUCERS = {
     draftState.searchScriptMeeting = draftState.searchScriptMeeting.concat(payload?.searchScriptMeeting)
     draftState.page += 1
   },
+  [GET_VIDEOS_FAILURE]: ({ draftState }: VideoReducerProps) => {
+    draftState.isLoading = false
+  },
+  [REFRESH_VIDEOS]: ({ draftState }: VideoReducerProps) => {
+    draftState.isLoading = true
+  },
   [REFRESH_VIDEOS_SUCCESS]: ({ draftState, payload }: VideoReducerProps) => {
     draftState.isLoading = false
     draftState.searchScriptMeeting = payload?.searchScriptMeeting
     draftState.page = 1
   },
-  [GET_VIDEOS_FAILURE]: ({ draftState }: VideoReducerProps) => {
+  [REFRESH_VIDEOS_FAILURE]: ({ draftState }: VideoReducerProps) => {
     draftState.isLoading = false
   }
 }

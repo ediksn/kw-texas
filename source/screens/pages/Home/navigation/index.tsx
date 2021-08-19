@@ -1,12 +1,37 @@
 import React from 'react'
 
 import { useTranslation } from 'react-i18next'
-import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
+import { StackNavigator, StackScreen, TopTabNavigator, TopTabScreen } from '~/screens/components/Navigators'
 import { Home } from '~/screens/pages'
 import { NAVIGATION, theme } from '~/constants'
 import { Studio } from '../Studio'
 import { Button } from '~/components'
 import { styles } from './styles'
+
+const TopTabNav = () => {
+  const { t } = useTranslation()
+
+  return (
+    <TopTabNavigator
+      initialRouteName={NAVIGATION.SCREEN.HOME}
+      tabBarOptions={{
+        activeTintColor: theme.darkGreenColor,
+        inactiveTintColor: theme.darkGrey,
+        labelStyle: {
+          textTransform: 'capitalize',
+          fontFamily: 'Mulish-Bold'
+        },
+        indicatorStyle: {
+          backgroundColor: theme.darkGreenColor
+        }
+      }}
+    >
+      <TopTabScreen options={{ title: t('Library') }} name={NAVIGATION.SCREEN.LIBRARY} component={Home} />
+      <TopTabScreen options={{ title: t('Studio') }} name={NAVIGATION.SCREEN.STUDIO} component={Studio} />
+      <TopTabScreen options={{ title: t('Saved') }} name={NAVIGATION.SCREEN.SAVED} component={Studio} />
+    </TopTabNavigator>
+  )
+}
 
 const HomeStackScreen = () => {
   const { t } = useTranslation()
@@ -14,7 +39,7 @@ const HomeStackScreen = () => {
     <StackNavigator>
       <StackScreen
         name={NAVIGATION.SCREEN.HOME}
-        component={Home}
+        component={TopTabNav}
         options={({ navigation }) => ({
           headerTitleAlign: 'center',
           title: t('Conversations'),
@@ -28,11 +53,6 @@ const HomeStackScreen = () => {
             />
           )
         })}
-      />
-      <StackScreen
-        name={NAVIGATION.SCREEN.STUDIO}
-        component={Studio}
-        options={{ headerTitleAlign: 'center', title: t('Studio') }}
       />
     </StackNavigator>
   )

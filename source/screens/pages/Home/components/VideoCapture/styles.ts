@@ -6,7 +6,7 @@ import { theme } from '~/constants'
 export const styles = StyleSheet.create({
   controlContainer: {
     position: 'absolute',
-    bottom: 10,
+    bottom: -45,
     right: 0,
     left: 0
   },
@@ -24,7 +24,11 @@ export const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: 'row',
-    marginTop: 50
+    position: 'absolute',
+    bottom: 0,
+    top: 500,
+    right: 0,
+    left: 0
   },
   buttonsText: {
     textAlign: 'center',

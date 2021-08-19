@@ -67,7 +67,11 @@ const Recording = () => {
 
   return (
     <>
-      <RNCamera ref={cameraRef} style={[{ flex: 2, width: '100%', height: 300 }]} type={RNCamera.Constants.Type.back}>
+      <RNCamera
+        ref={cameraRef}
+        style={[{ flex: 2, width: '100%', height: 300, marginBottom: 100 }]}
+        type={RNCamera.Constants.Type.back}
+      >
         <View style={styles.controlContainer}>
           {isRecording && <Text style={styles.textContainer}>Recording</Text>}
           {!isRecording && <Text style={styles.textContainer}>Start</Text>}

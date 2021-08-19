@@ -13,7 +13,7 @@ const TopTabNav = () => {
 
   return (
     <TopTabNavigator
-      initialRouteName={NAVIGATION.SCREEN.HOME}
+      initialRouteName={NAVIGATION.SCREEN.LIBRARY}
       tabBarOptions={{
         activeTintColor: theme.darkGreenColor,
         inactiveTintColor: theme.darkGrey,
@@ -43,6 +43,11 @@ const HomeStackScreen = () => {
         options={({ navigation }) => ({
           headerTitleAlign: 'center',
           title: t('Conversations'),
+          headerStyle: {
+            elevation: 0,
+            shadowOpacity: 0,
+            borderBottomWidth: 0
+          },
           headerRight: () => (
             <Button
               message={t('Create')}

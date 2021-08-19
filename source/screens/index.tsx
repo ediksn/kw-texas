@@ -12,6 +12,7 @@ import HomeStackScreen from './pages/Home/navigation'
 import { Icon, Spinner } from '~/components'
 import { loginActions } from '~/store/actions'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
+import { theme } from '~/constants/theme'
 
 const TabNavigation = () => {
   const { t } = useTranslation()
@@ -19,6 +20,14 @@ const TabNavigation = () => {
   return (
     <TabNavigator
       initialRouteName={NAVIGATION.SCREEN.HOME}
+      tabBarOptions={{
+        activeTintColor: theme.darkGreenColor,
+        inactiveTintColor: theme.greenColor,
+        labelStyle: {
+          textTransform: 'capitalize',
+          fontFamily: 'Mulish-Bold'
+        }
+      }}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color }) => <Icon route={route.name} color={color} />
       })}

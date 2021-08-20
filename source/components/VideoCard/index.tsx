@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, Image, View, ViewStyle } from 'react-native'
 import { styles } from './styles'
-import connect_thumbnail from '~/assets/images/connect_thumbnail.png'
+import connect_thumbnail from '../../../assets/images/connect_thumbnail.png'
 
 interface Props {
   img: string

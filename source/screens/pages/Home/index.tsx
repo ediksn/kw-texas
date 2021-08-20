@@ -8,6 +8,7 @@ import { VideoInterface } from '~/interfaces/videoInterfaces'
 import { videoActions } from '~/store/actions'
 import { RootState } from '~/store/index'
 import { Spinner, VideoList } from '~/components'
+import { NAVIGATION } from '~/constants'
 
 interface Props {
   navigation: any
@@ -32,6 +33,7 @@ export const Home = ({ navigation }: Props) => {
       <Spinner isLoading={loading && videos.length === 0}>
         <VideoList
           navigation={navigation}
+          onPressNavigateTo={NAVIGATION.SCREEN.VIDEOPLAYER}
           data={videos}
           keyExtractor={(item: VideoInterface) => item.id.toString()}
           refreshing={loading}

@@ -3,10 +3,10 @@ import { View, ViewStyle, FlatList } from 'react-native'
 import { VideoInterface } from '~/interfaces/videoInterfaces'
 import { VideoCard } from '..'
 import { styles } from './styles'
-import { NAVIGATION } from '~/constants'
 
 interface Props {
   navigation: any
+  onPressNavigateTo: string
   data: any[]
   keyExtractor: (item: any, index: number) => string
   refreshing?: boolean
@@ -14,7 +14,16 @@ interface Props {
   onRefresh?: () => void
   onEndReached?: () => void
 }
-const VideoList = ({ navigation, data, keyExtractor, refreshing, style, onRefresh, onEndReached }: Props) => {
+const VideoList = ({
+  navigation,
+  onPressNavigateTo,
+  data,
+  keyExtractor,
+  refreshing,
+  style,
+  onRefresh,
+  onEndReached
+}: Props) => {
   const renderVideoComponent = ({ item }: { item: VideoInterface }) => (
     <VideoCard
       img={item.imageUrl}
@@ -24,7 +33,7 @@ const VideoList = ({ navigation, data, keyExtractor, refreshing, style, onRefres
       visits={item.views}
       likes={item.likesDetail.likes}
       onPress={() =>
-        navigation.navigate(NAVIGATION.SCREEN.VIDEOPLAYER, {
+        navigation.navigate(onPressNavigateTo, {
           title: item.title,
           uri: item.videoUrl,
           videoLikes: item.likesDetail.likes,

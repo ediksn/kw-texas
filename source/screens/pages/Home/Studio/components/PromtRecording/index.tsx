@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View } from 'react-native'
+import { Text, View } from 'react-native'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
 import { verticalScale } from 'react-native-size-matters'
 import { Video } from '~/components'
@@ -25,6 +25,7 @@ const PromtRecording = () => {
 
   return (
     <>
+      <Text style={styles.title}>Prompt Recording</Text>
       <View style={styles.promptRecordingView}>
         <Carousel
           data={entries}
@@ -45,11 +46,6 @@ const PromtRecording = () => {
           marginHorizontal: 8,
           backgroundColor: '#212529'
         }}
-        inactiveDotStyle={
-          {
-            // Define styles for inactive dots here
-          }
-        }
         inactiveDotOpacity={0.4}
         inactiveDotScale={0.6}
       />

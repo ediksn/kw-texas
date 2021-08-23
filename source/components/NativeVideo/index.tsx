@@ -6,15 +6,19 @@ import { styles } from './styles'
 interface Props {
   indexKey: number
   uri: string
+  hasActive: boolean
   styleView?: ViewStyle
   children?: object
 }
 
-const NativeVideo = ({ indexKey, uri, styleView, children }: Props) => (
-  <View key={indexKey} style={[styles.containerView, styleView]}>
-    <Video source={{ uri }} fullscreen={false} controls repeat resizeMode='cover' style={styles.video} />
-    {children}
-  </View>
-)
+const NativeVideo = ({ indexKey, uri, hasActive, styleView, children }: Props) => {
+  return (
+    <View key={indexKey} style={[styles.containerView, styleView]}>
+      <Video source={{ uri }} controls={hasActive} paused style={styles.video} />
+
+      {children}
+    </View>
+  )
+}
 
 export default memo(NativeVideo)

@@ -8,20 +8,28 @@ import { styles } from './styles'
 import PromptBox from '../PromptBox'
 
 interface ItemProps {
+  item: object
   index: number
 }
 
 const entries = [{ title: 'Video' }, { title: 'Video' }, { title: 'Video' }]
 
-const renderItem = ({ index }: ItemProps) => (
-  <Video indexKey={index} uri='https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'>
-    <PromptBox />
-  </Video>
-)
-
 const PromtRecording = () => {
   const DEVICE_WIDTH = useDeviceWidth() - 20
   const [activeSlide, setActiveSlide] = useState(0)
+
+  const renderItem = ({ item, index }: ItemProps) => {
+    console.log(item, index, activeSlide)
+    return (
+      <Video
+        indexKey={index}
+        uri='https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+        hasActive={index === activeSlide}
+      >
+        <PromptBox />
+      </Video>
+    )
+  }
 
   return (
     <>

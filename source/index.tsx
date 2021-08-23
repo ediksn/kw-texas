@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { LogBox } from 'react-native'
+import SplashScreen from 'react-native-splash-screen'
 import { Provider } from 'react-redux'
 
 import setI18nConfig from '~/i18n'
@@ -11,6 +12,11 @@ LogBox.ignoreAllLogs(false)
 
 const App = () => {
   setI18nConfig()
+
+  useEffect(() => {
+    SplashScreen.hide()
+  })
+
   return (
     <Provider store={store}>
       <Screens />

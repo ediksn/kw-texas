@@ -1,19 +1,16 @@
 import React from 'react'
 import { View, Text, Image } from 'react-native'
 import { styles } from './styles'
+import { PromptVideoInterface } from '~/interfaces/promptVideoInterface'
 
-const PromptBox = () => (
+const PromptBox = ({ item: PromptVideoInterface }) => (
   <View style={styles.boxView}>
-    <Image
-      style={styles.avatar}
-      resizeMode='contain'
-      source={{ uri: 'https://headquarters.kw.com/wp-content/uploads/2019/12/Jason_A.png' }}
-    />
+    <Image style={styles.avatar} resizeMode='contain' source={{ uri: item.person.imageUrl }} />
     <View style={styles.promptDesc}>
-      <Text style={styles.promptName}>Josan Abrams</Text>
-      <Text style={styles.promptRole}>Working With Buyers</Text>
+      <Text style={styles.promptName}>{`${item.person.firstName} ${item.person.lastName}`}</Text>
+      <Text style={styles.promptRole}>{item.roles[0].name}</Text>
     </View>
-    <Text style={styles.topicTitle}>Lead Generation, Working With Sellers</Text>
+    <Text style={styles.topicTitle}>{item.topics[0].title}</Text>
   </View>
 )
 

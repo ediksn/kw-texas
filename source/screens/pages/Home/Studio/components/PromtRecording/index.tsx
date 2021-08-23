@@ -1,32 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Text, View } from 'react-native'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
 import { verticalScale } from 'react-native-size-matters'
+import { useDispatch, useSelector } from 'react-redux'
 import { Video } from '~/components'
 import { useDeviceWidth } from '~/hooks'
 import { styles } from './styles'
 import PromptBox from '../PromptBox'
+import { promptVideoActions } from '~/store/actions'
+import { RootState } from '~/store/index'
+import { PromptVideoInterface } from '~/interfaces/promptVideoInterface'
 
 interface ItemProps {
-  item: object
+  item: PromptVideoInterface
   index: number
 }
-
-const entries = [{ title: 'Video' }, { title: 'Video' }, { title: 'Video' }]
 
 const PromtRecording = () => {
   const DEVICE_WIDTH = useDeviceWidth() - 20
   const [activeSlide, setActiveSlide] = useState(0)
+  const dispatch = useDispatch()
+  const { page: number, getSoloScripts: PromptVideoInterface[] } = useSelector((state: RootState) => state.promptVideos)
+
+  useEffect(() => {
+    dispatch(promptVideoActions.getPromptVideos(page))
+  }, [])
 
   const renderItem = ({ item, index }: ItemProps) => {
-    console.log(item, index, activeSlide)
     return (
       <Video
         indexKey={index}
-        uri='https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+        uri={item.videoUrl}
         hasActive={index === activeSlide}
       >
-        <PromptBox />
+        <PromptBox item={item} />
       </Video>
     )
   }
@@ -36,7 +43,7 @@ const PromtRecording = () => {
       <Text style={styles.title}>Prompt Recording</Text>
       <View style={styles.promptRecordingView}>
         <Carousel
-          data={entries}
+          data={getSoloScripts}
           renderItem={renderItem}
           onSnapToItem={index => setActiveSlide(index)}
           sliderWidth={DEVICE_WIDTH}
@@ -44,7 +51,7 @@ const PromtRecording = () => {
         />
       </View>
       <Pagination
-        dotsLength={entries.length}
+        dotsLength={getSoloScripts.length}
         activeDotIndex={activeSlide}
         containerStyle={{ marginTop: verticalScale(-80) }}
         dotStyle={{

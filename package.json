@@ -57,6 +57,7 @@
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.4.0",
     "react-native-size-matters": "^0.4.0",
+    "react-native-splash-screen": "^3.2.0",
     "react-native-tab-view": "^3.1.1",
     "react-native-video": "^5.1.1",
     "react-navigation": "^4.4.4",

@@ -1,10 +1,12 @@
 import React from 'react'
 
 import { useTranslation } from 'react-i18next'
+import { ms } from 'react-native-size-matters'
 import { StackNavigator, StackScreen, TopTabNavigator, TopTabScreen } from '~/screens/components/Navigators'
+
 import { Home } from '~/screens/pages'
 import { NAVIGATION, theme } from '~/constants'
-import { Studio } from '../Studio'
+import { Studio, Bookmarked } from '../pages'
 import { Button } from '~/components'
 import { styles } from './styles'
 
@@ -13,13 +15,14 @@ const TopTabNav = () => {
 
   return (
     <TopTabNavigator
-      initialRouteName={NAVIGATION.SCREEN.HOME}
+      initialRouteName={NAVIGATION.SCREEN.LIBRARY}
       tabBarOptions={{
         activeTintColor: theme.darkGreenColor,
         inactiveTintColor: theme.darkGrey,
         labelStyle: {
           textTransform: 'capitalize',
-          fontFamily: 'Mulish-Bold'
+          fontFamily: 'Mulish-Bold',
+          fontSize: ms(11)
         },
         indicatorStyle: {
           backgroundColor: theme.darkGreenColor
@@ -28,7 +31,7 @@ const TopTabNav = () => {
     >
       <TopTabScreen options={{ title: t('Library') }} name={NAVIGATION.SCREEN.LIBRARY} component={Home} />
       <TopTabScreen options={{ title: t('Studio') }} name={NAVIGATION.SCREEN.STUDIO} component={Studio} />
-      <TopTabScreen options={{ title: t('Saved') }} name={NAVIGATION.SCREEN.SAVED} component={Studio} />
+      <TopTabScreen options={{ title: t('Bookmarked') }} name={NAVIGATION.SCREEN.BOOKMARKED} component={Bookmarked} />
     </TopTabNavigator>
   )
 }
@@ -43,6 +46,11 @@ const HomeStackScreen = () => {
         options={({ navigation }) => ({
           headerTitleAlign: 'center',
           title: t('Conversations'),
+          headerStyle: {
+            elevation: 0,
+            shadowOpacity: 0,
+            borderBottomWidth: 0
+          },
           headerRight: () => (
             <Button
               message={t('Create')}

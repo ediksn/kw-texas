@@ -4,10 +4,11 @@ import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   textContainer: {
-    height: verticalScale(35),
+    height: verticalScale(40),
     borderWidth: 1,
     borderRadius: 5,
     fontSize: 16,
+    paddingHorizontal: scale(5),
     marginBottom: verticalScale(10)
   },
   title: {

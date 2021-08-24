@@ -12,5 +12,12 @@
   "Home Screen": "Home Screen",
   "StoryBook": "StoryBook",
   "Conversations": "Conversations",
-  "Create": "Create"
+  "Create": "Create",
+  "Save Video": "Save Video",
+  "Add details to finish saving your video. You can choose to publish your recording to all beta participants or keep it private..": "Add details to finish saving your video. You can choose to publish your recording to all beta participants or keep it private..",
+  "Title Your Recording": "Title Your Recording",
+  "Description": "Description",
+  "Enter text...": "Enter text...",
+  "Publish to Library": "Publish to Library",
+  "Save and Keep Private": "Save and Keep Private"
 }

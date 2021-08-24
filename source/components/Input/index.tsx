@@ -1,6 +1,7 @@
 import React, { memo, useState, useMemo } from 'react'
 import { Image, Text, TextInput, Pressable, View, ViewStyle } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { verticalScale } from 'react-native-size-matters'
 import visibility from '../../../assets/images/visibility.png'
 import visibility_off from '../../../assets/images/visibility_off.png'
 import { theme } from '~/constants'
@@ -11,6 +12,7 @@ import { FORM } from '~/constants/form'
 interface Props {
   title: string
   value?: string
+  placeholder?: string
   onChangeText?: React.Dispatch<React.SetStateAction<string>>
   disabled?: boolean
   required?: boolean
@@ -22,6 +24,7 @@ interface Props {
 const Input = ({
   title,
   value,
+  placeholder,
   onChangeText,
   disabled,
   required,
@@ -72,6 +75,7 @@ const Input = ({
       </View>
       <TextInput
         value={value}
+        placeholder={placeholder}
         onChangeText={onChangeText}
         editable={!disabled}
         selectTextOnFocus={!disabled}
@@ -84,7 +88,12 @@ const Input = ({
         }}
         style={[
           styles.textContainer,
-          error ? { borderColor: theme.red } : focus ? { borderColor: theme.darkGrey } : { borderColor: theme.grey }
+          multiline && { height: verticalScale(60) },
+          error
+            ? { borderColor: theme.red }
+            : focus
+            ? { borderColor: theme.buttons.primary.backgroundColor }
+            : { borderColor: theme.grey }
         ]}
         secureTextEntry={isSecureInput && !hasVisibility}
       />

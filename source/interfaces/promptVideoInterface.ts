@@ -55,7 +55,6 @@ export interface PromptVideoProduceProps {
 }
 
 export interface PromptVideoReducerProps {
-  state?: any
   draftState: any
   payload?: {
     getSoloScripts: PromptVideoInterface[]

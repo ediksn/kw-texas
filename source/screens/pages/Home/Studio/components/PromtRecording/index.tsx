@@ -20,7 +20,8 @@ const PromtRecording = () => {
   const DEVICE_WIDTH = useDeviceWidth() - 20
   const [activeSlide, setActiveSlide] = useState(0)
   const dispatch = useDispatch()
-  const { page: number, getSoloScripts: PromptVideoInterface[] } = useSelector((state: RootState) => state.promptVideos)
+  const page: number = useSelector((state: RootState) => state.promptVideos.page)
+  const getSoloScripts: PromptVideoInterface[] = useSelector((state: RootState) => state.promptVideos.getSoloScripts)
 
   useEffect(() => {
     dispatch(promptVideoActions.getPromptVideos(page))
@@ -28,11 +29,7 @@ const PromtRecording = () => {
 
   const renderItem = ({ item, index }: ItemProps) => {
     return (
-      <Video
-        indexKey={index}
-        uri={item.videoUrl}
-        hasActive={index === activeSlide}
-      >
+      <Video indexKey={index} uriPreview={item.person.imageUrl} uri={item.videoUrl} hasActive={index === activeSlide}>
         <PromptBox item={item} />
       </Video>
     )
@@ -47,7 +44,7 @@ const PromtRecording = () => {
           renderItem={renderItem}
           onSnapToItem={index => setActiveSlide(index)}
           sliderWidth={DEVICE_WIDTH}
-          itemWidth={DEVICE_WIDTH - 50}
+          itemWidth={DEVICE_WIDTH}
         />
       </View>
       <Pagination

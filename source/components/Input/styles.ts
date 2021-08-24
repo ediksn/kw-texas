@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     fontSize: 16,
     paddingHorizontal: scale(5),
-    marginBottom: verticalScale(10)
+    marginBottom: verticalScale(10),
+    textAlignVertical: 'top'
   },
   title: {
     flexDirection: 'row'

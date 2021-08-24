@@ -16,6 +16,7 @@ interface Props {
   required?: boolean
   type?: string
   error?: boolean
+  multiline?: boolean
   style?: ViewStyle
 }
 const Input = ({
@@ -26,6 +27,7 @@ const Input = ({
   required,
   type = FORM.FIELDS_TYPES.TEXT,
   error,
+  multiline,
   style
 }: Props) => {
   const [focus, setFocus] = useState(false)
@@ -73,6 +75,7 @@ const Input = ({
         onChangeText={onChangeText}
         editable={!disabled}
         selectTextOnFocus={!disabled}
+        multiline={multiline}
         onFocus={() => {
           setFocus(true)
         }}

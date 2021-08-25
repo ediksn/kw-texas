@@ -44,7 +44,7 @@ const Input = ({
       {required && error && (
         <View style={styles.title}>
           <Text style={styles.error}>{title}</Text>
-          <Text style={styles.error}> is required</Text>
+          <Text style={styles.error}> {t('is required')}</Text>
         </View>
       )}
     </>
@@ -92,8 +92,8 @@ const Input = ({
           error
             ? { borderColor: theme.red }
             : focus
-            ? { borderColor: theme.buttons.primary.backgroundColor }
-            : { borderColor: theme.grey }
+            ? { borderColor: theme.buttons.primary.backgroundColor, marginBottom: verticalScale(10) }
+            : { borderColor: theme.grey, marginBottom: verticalScale(10) }
         ]}
         secureTextEntry={isSecureInput && !hasVisibility}
       />

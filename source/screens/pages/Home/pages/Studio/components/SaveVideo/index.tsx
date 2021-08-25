@@ -6,14 +6,25 @@ import { Button, Input } from '~/components'
 
 interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
-  leftButtonAction?: () => {}
-  rightButtonAction?: () => {}
 }
 
-const SaveVideo = ({ setOpen, leftButtonAction, rightButtonAction }: Props) => {
+const SaveVideo = ({ setOpen }: Props) => {
   const { t } = useTranslation()
   const [name, setName] = useState('')
+  const [error, setError] = useState(false)
   const [description, setDescription] = useState('')
+
+  const handlePublish = () => {
+    if (name === '') {
+      setError(true)
+    } else {
+      // manage redux actions
+    }
+  }
+
+  const handleSave = () => {
+    // manage redux actions
+  }
 
   const Header = () => (
     <View style={styles.header}>
@@ -24,32 +35,6 @@ const SaveVideo = ({ setOpen, leftButtonAction, rightButtonAction }: Props) => {
     </View>
   )
 
-  const Inputs = () => (
-    <>
-      <Text style={styles.subtitle}>
-        {t(
-          'Add details to finish saving your video. You can choose to publish your recording to all beta participants or keep it private..'
-        )}
-      </Text>
-      <Input
-        style={styles.input}
-        title={t('Title Your Recording')}
-        placeholder={t('Enter text...')}
-        value={name}
-        onChangeText={setName}
-        required
-      />
-      <Input
-        style={styles.input}
-        title={t('Description')}
-        placeholder={t('Enter text...')}
-        value={description}
-        onChangeText={setDescription}
-        multiline
-      />
-    </>
-  )
-
   const Footer = () => (
     <View style={styles.footer}>
       <Button
@@ -57,9 +42,9 @@ const SaveVideo = ({ setOpen, leftButtonAction, rightButtonAction }: Props) => {
         fontSize={13}
         type='OUTLINED'
         viewStyle={styles.button}
-        onPress={leftButtonAction}
+        onPress={handleSave}
       />
-      <Button message={t('Publish to Library')} fontSize={13} viewStyle={styles.button} onPress={rightButtonAction} />
+      <Button message={t('Publish to Library')} fontSize={13} viewStyle={styles.button} onPress={handlePublish} />
     </View>
   )
 
@@ -67,7 +52,28 @@ const SaveVideo = ({ setOpen, leftButtonAction, rightButtonAction }: Props) => {
     <View style={styles.container}>
       <Header />
       <View style={styles.divider} />
-      <Inputs />
+      <Text style={styles.subtitle}>
+        {t(
+          'Add details to finish saving your video. You can choose to publish your recording to all beta participants or keep it private..'
+        )}
+      </Text>
+      <Input
+        title={t('Recording')}
+        placeholder={t('Enter text...')}
+        value={name}
+        onChangeText={setName}
+        required
+        error={error}
+        style={styles.input}
+      />
+      <Input
+        title={t('Description')}
+        placeholder={t('Enter text...')}
+        value={description}
+        onChangeText={setDescription}
+        multiline
+        style={styles.input}
+      />
       <View style={styles.divider} />
       <Footer />
     </View>

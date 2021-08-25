@@ -4,8 +4,7 @@ import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   promptRecordingView: {
-    alignItems: 'center',
-    flexDirection: 'row'
+    alignItems: 'center'
   },
   title: {
     fontSize: theme.fonts.BIG_SIZE,

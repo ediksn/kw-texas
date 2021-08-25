@@ -1,11 +1,10 @@
 import { StyleSheet } from 'react-native'
-import { moderateScale } from 'react-native-size-matters'
+import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
 
 export const styles = StyleSheet.create({
   iconView: {
     position: 'absolute',
     alignSelf: 'center',
-    top: 160,
     borderWidth: 1,
     borderRadius: moderateScale(10),
     padding: moderateScale(10),
@@ -16,8 +15,7 @@ export const styles = StyleSheet.create({
   },
   icon: {
     opacity: 0.7,
-    color: '#FFFFFF',
-    fontSize: moderateScale(50),
-    fontWeight: 'bold'
+    width: scale(90),
+    height: verticalScale(70)
   }
 })

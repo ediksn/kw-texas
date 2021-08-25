@@ -1,6 +1,8 @@
 import React from 'react'
-import { TouchableOpacity, Text } from 'react-native'
+import { TouchableOpacity, Image } from 'react-native'
 import { styles } from './styles'
+import playButton from '../assets/images/play_button.png'
+import stopButton from '../assets/images/stop_button.png'
 
 interface Props {
   paused: boolean
@@ -9,7 +11,7 @@ interface Props {
 
 const Controls = ({ paused, onPress }: Props) => (
   <TouchableOpacity onPress={onPress} style={styles.iconView}>
-    <Text style={styles.icon}>{paused ? 'PLAY' : 'STOP'}</Text>
+    <Image source={paused ? playButton : stopButton} style={styles.icon} />
   </TouchableOpacity>
 )
 

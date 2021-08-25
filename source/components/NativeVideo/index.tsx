@@ -6,21 +6,29 @@ import Controls from './components/Controls'
 
 interface Props {
   indexKey: number
-  hasActive?: boolean
   uri: string
   uriPreview?: string
   styleView?: ViewStyle
   children?: object
 }
 
-const NativeVideo = ({ indexKey, hasActive = true, uri, uriPreview, styleView, children }: Props) => {
+const NativeVideo = ({ indexKey, uri, uriPreview, styleView, children }: Props) => {
   const [paused, setPaused] = useState(true)
+  const [hasCcotrols, setHasControls] = useState(true)
 
   return (
     <View key={indexKey} style={[styles.containerView, styleView]}>
-      <Video source={{ uri }} controls={hasActive} paused={paused} style={styles.video} poster={uriPreview} />
+      <Video
+        source={{ uri }}
+        controls={false}
+        paused={paused}
+        style={styles.video}
+        poster={uriPreview}
+        resizeMode='cover'
+        onEnd={() => setHasControls(false)}
+      />
 
-      <Controls paused={paused} onPress={() => setPaused(!paused)} />
+      {hasCcotrols && <Controls paused={paused} onPress={() => setPaused(!paused)} />}
       {children}
     </View>
   )

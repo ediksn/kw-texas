@@ -1,33 +1,49 @@
 /** @format */
 
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useRef } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { RNCamera } from 'react-native-camera'
 import { useCamera } from 'react-native-camera-hooks'
 
 import shooter from 'assets/images/shooter.png'
+import calculateTime from './hooks/calculateTime'
 import { styles } from './styles'
 
-const Recording = () => {
+interface Props {
+  usr: any
+}
+
+const Recording = ({ usr }: Props) => {
   const [{ cameraRef, isRecording }, { setIsRecording }] = useCamera()
   const [finished, setFinished] = useState(false)
+  const [timeInSeconds, setTimeInSeconds] = useState<number>(0)
   const recordOptions = {
-    maxduration: 60,
+    maxduration: 120,
     fps: 30,
     mute: false,
-    quality: 1080,
+    quality: 720,
     codec: 'H264'
   }
+
+  const intervalRef: { current: NodeJS.Timeout | null } = useRef(null)
+
+  const startTimer = () => {
+    intervalRef.current = setInterval(() => {
+      setTimeInSeconds(prevState => prevState + 1)
+    }, 1000)
+  }
+
+  const stopTimer = () => {
+    clearInterval(intervalRef.current as NodeJS.Timeout)
+  }
+
   const startRecording = async () => {
     try {
       const promise = cameraRef.current.recordAsync(recordOptions)
       setIsRecording(true)
       const data = await promise
-      // eslint-disable-next-line no-console
-      console.log('Video Recorded: ', data)
     } catch (err) {
-      // eslint-disable-next-line no-console
-      console.log(err)
+      null
     }
   }
 
@@ -36,10 +52,8 @@ const Recording = () => {
       cameraRef.current.stopRecording()
       setIsRecording(false)
       setFinished(true)
-      // here we can do something with the video
     } catch (err) {
-      // eslint-disable-next-line no-console
-      console.log(err)
+      null
     }
   }, [isRecording])
 
@@ -54,6 +68,7 @@ const Recording = () => {
             style={styles.buttonsText}
             onPress={() => {
               setFinished(false)
+              setTimeInSeconds(0)
             }}
           >
             Retry
@@ -71,7 +86,12 @@ const Recording = () => {
         ref={cameraRef}
         style={[{ flex: 2, width: '100%', height: 300, marginBottom: 100 }]}
         type={RNCamera.Constants.Type.back}
+        onRecordingStart={() => startTimer()}
+        onRecordingEnd={() => stopTimer()}
       >
+        <View style={styles.counter}>
+          <Text style={styles.counterNumbers}>{calculateTime(timeInSeconds)}</Text>
+        </View>
         <View style={styles.controlContainer}>
           {isRecording && <Text style={styles.textContainer}>Recording</Text>}
           {!isRecording && <Text style={styles.textContainer}>Start</Text>}
@@ -84,7 +104,7 @@ const Recording = () => {
       <View style={styles.usrContainer}>
         <View style={styles.usrAvatar} />
         <View style={styles.usrInfo}>
-          <Text style={styles.usrName}>Irene Murphy</Text>
+          <Text style={styles.usrName}>{usr.user.name}</Text>
           <View style={styles.usrStatus}>
             <Text style={styles.usrType}>AGENTS</Text>
             <Text style={styles.usrStat}>Active</Text>

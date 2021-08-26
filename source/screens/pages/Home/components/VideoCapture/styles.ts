@@ -4,9 +4,25 @@ import { StyleSheet } from 'react-native'
 import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
+  counter: {
+    position: 'absolute',
+    left: 335,
+    top: 10,
+    paddingTop: 3,
+    paddingBottom: 3,
+    paddingLeft: 4,
+    paddingRight: 4,
+    borderRadius: 3,
+    backgroundColor: 'rgb(146,139,139)'
+  },
+  counterNumbers: {
+    fontFamily: 'Mulish-Bold',
+    fontSize: 15,
+    color: 'white'
+  },
   controlContainer: {
     position: 'absolute',
-    bottom: -45,
+    bottom: -60,
     right: 0,
     left: 0
   },
@@ -26,7 +42,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     position: 'absolute',
     bottom: 0,
-    top: 500,
+    top: 460,
     right: 0,
     left: 0
   },

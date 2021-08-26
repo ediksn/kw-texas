@@ -15,7 +15,24 @@ interface Props {
   tags: any
 }
 const VideoCard = ({ img, title, firstName, lastName, visits, likes, tags, style }: Props) => {
-  const renderTags = () => tags.map((hashTag: any) => <Tag title={hashTag.tag} />)
+  const renderTags = () => {
+    let lenghtTags = 0
+    let nextTags = 0
+
+    return tags.map((hashTag: any, index: number) => {
+      const { tag } = hashTag
+
+      lenghtTags += tag.length
+
+      if (lenghtTags < 22) {
+        return <Tag title={tag} />
+      }
+
+      nextTags += 1
+      if (index + 1 === tags.length) return <Tag title={`+${nextTags}`} />
+      return null
+    })
+  }
 
   return (
     <View style={[styles.container, style]}>

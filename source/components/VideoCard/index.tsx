@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, Image, View, ViewStyle } from 'react-native'
 import { styles } from './styles'
 import connect_thumbnail from '../../../assets/images/connect_thumbnail.png'
+import Tag from './components/Tag'
 
 interface Props {
   img: string
@@ -11,8 +12,11 @@ interface Props {
   visits: number
   likes: number
   style?: ViewStyle
+  tags: any
 }
-const VideoCard = ({ img, title, firstName, lastName, visits, likes, style }: Props) => {
+const VideoCard = ({ img, title, firstName, lastName, visits, likes, tags, style }: Props) => {
+  const renderTags = () => tags.map((hashTag: any) => <Tag title={hashTag.tag} />)
+
   return (
     <View style={[styles.container, style]}>
       <Image source={img ? { uri: img } : connect_thumbnail} style={styles.img} />
@@ -26,6 +30,7 @@ const VideoCard = ({ img, title, firstName, lastName, visits, likes, style }: Pr
           <Text style={styles.statisticsText}>{likes} likes</Text>
         </View>
       </View>
+      <View style={styles.tagContainerView}>{renderTags()}</View>
     </View>
   )
 }

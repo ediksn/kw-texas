@@ -81,7 +81,7 @@ const Recording = () => {
       <RNCamera
         ref={cameraRef}
         style={[{ flex: 1, width: '100%' }]}
-        type={RNCamera.Constants.Type.back}
+        type={RNCamera.Constants.Type.front}
         onRecordingStart={() => startTimer()}
         onRecordingEnd={() => stopTimer()}
       >

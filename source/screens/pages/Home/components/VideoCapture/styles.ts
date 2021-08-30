@@ -30,7 +30,9 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 5,
     fontFamily: 'Mulish-Bold',
-    fontSize: 20
+    fontSize: 20,
+    elevation: 4,
+    color: theme.backgroundWhite
   },
   shooterContainer: {
     alignItems: 'center'

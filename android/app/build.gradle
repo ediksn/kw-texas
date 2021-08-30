@@ -3,6 +3,19 @@ apply plugin: 'com.google.gms.google-services'
 
 import com.android.build.OutputFile
 
+def getPassword(String currentUser, String keyChain) {
+   def stdout = new ByteArrayOutputStream()
+   def stderr = new ByteArrayOutputStream()
+   exec {
+       commandLine 'security', '-q', 'find-generic-password', '-a', currentUser, '-s', keyChain, '-w'
+       standardOutput = stdout
+       errorOutput = stderr
+       ignoreExitValue true
+   }
+   //noinspection GroovyAssignabilityCheck
+      stdout.toString().trim()
+}
+
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -127,6 +140,8 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+def pass = getPassword("KW Connect","android_keystore")
+
 android {
     ndkVersion rootProject.ext.ndkVersion
 
@@ -159,6 +174,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('kw-connect-key.keystore')
+            storePassword pass
+            keyAlias 'kw-connect-alias'
+            keyPassword pass
+        }
     }
     buildTypes {
         debug {
@@ -167,7 +188,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }

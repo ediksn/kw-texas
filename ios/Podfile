@@ -5,6 +5,7 @@ platform :ios, '10.0'
 
 target 'connectmobile' do
   config = use_native_modules!
+  permissions_path = '../node_modules/react-native-permissions/ios'
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -13,6 +14,8 @@ target 'connectmobile' do
   )
 
   pod 'Firebase/Analytics'
+  pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone"
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
 
   target 'connectmobileTests' do
     inherit! :complete

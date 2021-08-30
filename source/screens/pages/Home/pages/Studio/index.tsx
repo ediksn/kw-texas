@@ -13,5 +13,5 @@ export const Studio = () => {
   const isFocused = useIsFocused()
   const usr: any = useSelector((state: RootState) => state.login)
 
-  return <SafeAreaView style={styles.container}>{isFocused && <Recording usr={usr} />}</SafeAreaView>
+  return <SafeAreaView style={styles.container}>{isFocused && <Recording />}</SafeAreaView>
 }

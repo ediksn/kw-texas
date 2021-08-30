@@ -10,12 +10,12 @@ const getToken = async () => {
 }
 
 export const axiosInstance = axios.create({
-  baseURL: Config.baseURL,
+  baseURL: Config.BASE_URL,
   headers: { 'Content-Type': 'application/json' }
 })
 
 export const axiosInstanceTokens = async () =>
   axios.create({
-    baseURL: Config.baseURL,
+    baseURL: Config.BASE_URL,
     headers: { 'Content-Type': 'application/json', 'Authorization': await getToken() }
   })

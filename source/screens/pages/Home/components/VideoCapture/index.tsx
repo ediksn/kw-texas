@@ -9,11 +9,7 @@ import shooter from 'assets/images/shooter.png'
 import calculateTime from './hooks/calculateTime'
 import { styles } from './styles'
 
-interface Props {
-  usr: any
-}
-
-const Recording = ({ usr }: Props) => {
+const Recording = () => {
   const [{ cameraRef, isRecording }, { setIsRecording }] = useCamera()
   const [finished, setFinished] = useState(false)
   const [timeInSeconds, setTimeInSeconds] = useState<number>(0)
@@ -84,7 +80,7 @@ const Recording = ({ usr }: Props) => {
     <>
       <RNCamera
         ref={cameraRef}
-        style={[{ flex: 2, width: '100%', height: 300, marginBottom: 100 }]}
+        style={[{ flex: 1, width: '100%' }]}
         type={RNCamera.Constants.Type.back}
         onRecordingStart={() => startTimer()}
         onRecordingEnd={() => stopTimer()}
@@ -92,25 +88,18 @@ const Recording = ({ usr }: Props) => {
         <View style={styles.counter}>
           <Text style={styles.counterNumbers}>{calculateTime(timeInSeconds)}</Text>
         </View>
-        <View style={styles.controlContainer}>
-          {isRecording && <Text style={styles.textContainer}>Recording</Text>}
-          {!isRecording && <Text style={styles.textContainer}>Start</Text>}
-          <TouchableOpacity style={styles.shooterContainer} onPress={isRecording ? stopRecording : startRecording}>
-            <Image style={styles.shooter} resizeMode='contain' source={shooter} />
-          </TouchableOpacity>
-        </View>
-      </RNCamera>
-      {buttonsVideo()}
-      <View style={styles.usrContainer}>
-        <View style={styles.usrAvatar} />
-        <View style={styles.usrInfo}>
-          <Text style={styles.usrName}>{usr.user.name}</Text>
-          <View style={styles.usrStatus}>
-            <Text style={styles.usrType}>AGENTS</Text>
-            <Text style={styles.usrStat}>Active</Text>
+
+        {!finished && (
+          <View style={styles.controlContainer}>
+            {isRecording && <Text style={styles.textContainer}>Recording</Text>}
+            {!isRecording && <Text style={styles.textContainer}>Start</Text>}
+            <TouchableOpacity style={styles.shooterContainer} onPress={isRecording ? stopRecording : startRecording}>
+              <Image style={styles.shooter} resizeMode='contain' source={shooter} />
+            </TouchableOpacity>
           </View>
-        </View>
-      </View>
+        )}
+        {buttonsVideo()}
+      </RNCamera>
     </>
   )
 }

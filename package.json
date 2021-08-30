@@ -3,13 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "android": "ENVFILE=.env.development react-native run-android",
+    "android:prod": "ENVFILE=.env.production react-native run-android",
+    "ios": "ENVFILE=.env.development react-native run-ios",
+    "ios:prod": "ENVFILE=.env.production react-native run-ios",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "storybook": "start-storybook -p 7007",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "android:release": "react-native run-android --variant=release"
   },
   "lint-staged": {
     "*.{ts,tsx}": "eslint --fix --max-warnings=0"
@@ -48,7 +51,7 @@
     "react-native": "0.64.2",
     "react-native-camera": "^4.0.1",
     "react-native-camera-hooks": "^0.5.1",
-    "react-native-config": "^1.4.2",
+    "react-native-config": "^1.4.4",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-localize": "^2.1.1",
     "react-native-permissions": "^3.0.5",

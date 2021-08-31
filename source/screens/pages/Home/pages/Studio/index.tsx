@@ -1,17 +1,17 @@
 /** @format */
 
 import React from 'react'
-import { Text, View, SafeAreaView } from 'react-native'
-import { useTranslation } from 'react-i18next'
+import { SafeAreaView } from 'react-native'
+import { useSelector } from 'react-redux'
+import { useIsFocused } from '@react-navigation/native'
+
 import { styles } from './styles'
+import Recording from '../../components/VideoCapture'
+import { RootState } from '~/store'
 
 export const Studio = () => {
-  const { t } = useTranslation()
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.text}>
-        <Text>{t('Studio')}</Text>
-      </View>
-    </SafeAreaView>
-  )
+  const isFocused = useIsFocused()
+  const usr: any = useSelector((state: RootState) => state.login)
+
+  return <SafeAreaView style={styles.container}>{isFocused && <Recording />}</SafeAreaView>
 }

@@ -96,7 +96,7 @@ project.ext.react = [
 ]
 
 project.ext.envConfigFiles = [
-    debug: ".env",
+    debug: ".env.development",
     release: ".env.production"
 ]
 

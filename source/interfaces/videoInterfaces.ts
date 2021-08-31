@@ -43,7 +43,7 @@ export interface VideoInterface {
   agents: Agent[]
   bookmarked: boolean
   createdAt: string
-  creatorHashtags: string[]
+  creatorHashtags: object[]
   description: string
   formats: Format[]
   imageUrl: string

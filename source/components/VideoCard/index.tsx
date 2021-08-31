@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, Image, View, ViewStyle, GestureResponderEvent, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
 import connect_thumbnail from '../../../assets/images/connect_thumbnail.png'
+import Tag from './components/Tag'
 
 interface Props {
   img: string
@@ -11,9 +12,30 @@ interface Props {
   visits: number
   likes: number
   style?: ViewStyle
+  tags: any
   onPress?: (event: GestureResponderEvent) => void
 }
-const VideoCard = ({ img, title, firstName, lastName, visits, likes, style, onPress }: Props) => {
+  
+const VideoCard = ({ img, title, firstName, lastName, visits, likes, tags, style, onPress }: Props) => {
+  const renderTags = () => {
+    let lenghtTags = 0
+    let nextTags = 0
+
+    return tags.map((hashTag: any, index: number) => {
+      const { tag } = hashTag
+
+      lenghtTags += tag.length
+
+      if (lenghtTags < 22) {
+        return <Tag title={tag} />
+      }
+
+      nextTags += 1
+      if (index + 1 === tags.length) return <Tag title={`+${nextTags}`} />
+      return null
+    })
+  }
+
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.container, style]}>
@@ -29,6 +51,7 @@ const VideoCard = ({ img, title, firstName, lastName, visits, likes, style, onPr
           </View>
         </View>
       </View>
+      <View style={styles.tagContainerView}>{renderTags()}</View>
     </TouchableOpacity>
   )
 }

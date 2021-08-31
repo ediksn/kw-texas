@@ -5,6 +5,7 @@ import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { RNCamera } from 'react-native-camera'
 import { useCamera } from 'react-native-camera-hooks'
 import Modal from 'react-native-modal'
+import { useTranslation } from 'react-i18next'
 
 import shooter from 'assets/images/shooter.png'
 import calculateTime from './hooks/calculateTime'
@@ -12,6 +13,7 @@ import { styles } from './styles'
 import SaveVideo from '../../pages/Studio/components/SaveVideo'
 
 const Recording = () => {
+  const { t } = useTranslation()
   const [{ cameraRef, isRecording }, { setIsRecording }] = useCamera()
   const [finished, setFinished] = useState(false)
   const [timeInSeconds, setTimeInSeconds] = useState<number>(0)
@@ -63,7 +65,7 @@ const Recording = () => {
       return (
         <View style={styles.buttonsContainer}>
           <Text style={styles.buttonsText} onPress={() => {}}>
-            Preview
+            {t('Preview')}
           </Text>
           <Text
             style={styles.buttonsText}
@@ -72,7 +74,7 @@ const Recording = () => {
               setTimeInSeconds(0)
             }}
           >
-            Retry
+            {t('Retry')}
           </Text>
           <Text
             style={styles.buttonsText}
@@ -80,7 +82,7 @@ const Recording = () => {
               setModalVisible(true)
             }}
           >
-            Save
+            {t('Save')}
           </Text>
         </View>
       )

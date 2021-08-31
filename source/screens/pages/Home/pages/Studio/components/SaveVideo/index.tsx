@@ -67,7 +67,7 @@ const SaveVideo = ({ data, setOpen }: Props) => {
         )}
       </Text>
       <Input
-        title={t('Recording')}
+        title={t('Recording Title')}
         placeholder={t('Enter text...')}
         value={name}
         onChangeText={setName}

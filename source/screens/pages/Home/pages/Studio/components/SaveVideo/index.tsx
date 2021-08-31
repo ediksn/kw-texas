@@ -5,10 +5,11 @@ import { styles } from './styles'
 import { Button, Input } from '~/components'
 
 interface Props {
+  data: any
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const SaveVideo = ({ setOpen }: Props) => {
+const SaveVideo = ({ data, setOpen }: Props) => {
   const { t } = useTranslation()
   const [name, setName] = useState('')
   const [error, setError] = useState(false)
@@ -23,7 +24,11 @@ const SaveVideo = ({ setOpen }: Props) => {
   }
 
   const handleSave = () => {
-    // manage redux actions
+    if (!data) {
+      // something is wrong with the video data
+    } else {
+      // manage redux actions
+    }
   }
 
   const Header = () => (

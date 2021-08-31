@@ -37,3 +37,5 @@ gc_keys.json
 babel_build.js
 bundle
 .bundle
+.env.development
+.env.production

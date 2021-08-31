@@ -8,8 +8,13 @@ import { VideoInterface } from '~/interfaces/videoInterfaces'
 import { videoActions } from '~/store/actions'
 import { RootState } from '~/store/index'
 import { Spinner, VideoList } from '~/components'
+import { NAVIGATION } from '~/constants'
 
-export const Home = () => {
+interface Props {
+  navigation: any
+}
+
+export const Home = ({ navigation }: Props) => {
   const dispatch = useDispatch()
   const videos: VideoInterface[] = useSelector((state: RootState) => state.videos.searchScriptMeeting)
   const loading: boolean = useSelector((state: RootState) => state.videos.isLoading)
@@ -27,6 +32,8 @@ export const Home = () => {
     <SafeAreaView style={styles.container}>
       <Spinner isLoading={loading && videos.length === 0}>
         <VideoList
+          navigation={navigation}
+          onPressNavigateTo={NAVIGATION.SCREEN.VIDEOPLAYER}
           data={videos}
           keyExtractor={(item: VideoInterface) => item.id.toString()}
           refreshing={loading}

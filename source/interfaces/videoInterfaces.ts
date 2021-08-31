@@ -75,3 +75,19 @@ export interface VideoReducerProps {
     page: number
   }
 }
+
+export interface VideoProduceBmProps {
+  type: string
+  payload?: {
+    searchScriptMeetingBm: VideoInterface[]
+    page: number
+  }
+}
+
+export interface VideoReducerBmProps {
+  draftState: any
+  payload?: {
+    searchScriptMeetingBm: VideoInterface[]
+    page: number
+  }
+}

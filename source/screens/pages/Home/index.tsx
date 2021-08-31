@@ -17,9 +17,11 @@ export const Home = () => {
   const onRefresh = () => {
     dispatch(videoActions.refreshVideos())
   }
+
   useEffect(() => {
     dispatch(videoActions.getVideos(page))
   }, [])
+
   const onEndReached = () => {
     dispatch(videoActions.getVideos(page))
   }

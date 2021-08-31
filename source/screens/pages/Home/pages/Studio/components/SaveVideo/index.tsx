@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { styles } from './styles'
@@ -14,6 +14,10 @@ const SaveVideo = ({ data, setOpen }: Props) => {
   const [name, setName] = useState('')
   const [error, setError] = useState(false)
   const [description, setDescription] = useState('')
+
+  useEffect(() => {
+    setError(false)
+  }, [name])
 
   const handlePublish = () => {
     if (name === '') {

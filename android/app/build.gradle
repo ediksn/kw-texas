@@ -4,16 +4,20 @@ apply plugin: 'com.google.gms.google-services'
 import com.android.build.OutputFile
 
 def getPassword(String currentUser, String keyChain) {
-   def stdout = new ByteArrayOutputStream()
-   def stderr = new ByteArrayOutputStream()
-   exec {
-       commandLine 'security', '-q', 'find-generic-password', '-a', currentUser, '-s', keyChain, '-w'
-       standardOutput = stdout
-       errorOutput = stderr
-       ignoreExitValue true
-   }
-   //noinspection GroovyAssignabilityCheck
-      stdout.toString().trim()
+    try {
+        def stdout = new ByteArrayOutputStream()
+        def stderr = new ByteArrayOutputStream()
+        exec {
+            commandLine 'security', '-q', 'find-generic-password', '-a', currentUser, '-s', keyChain, '-w'
+            standardOutput = stdout
+            errorOutput = stderr
+            ignoreExitValue true
+        }
+        //noinspection GroovyAssignabilityCheck
+        stdout.toString().trim()
+    } catch (Exception e) {
+        return null
+    }
 }
 
 /**
@@ -177,9 +181,9 @@ android {
             keyPassword 'android'
         }
         release {
-            storeFile file('kw-connect-key.keystore')
+            storeFile file(MYAPP_UPLOAD_STORE_FILE)
             storePassword pass
-            keyAlias 'kw-connect-alias'
+            keyAlias MYAPP_UPLOAD_KEY_ALIAS
             keyPassword pass
         }
     }

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { KeyboardAvoidingView, Text, TouchableOpacity, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { styles } from './styles'
 import { Button, Input } from '~/components'
+import { IS_IOS, KEYBOARD_AVOIDING_VIEW_BEHAVIOR } from '~/constants'
 
 interface Props {
   data: any
@@ -58,7 +59,11 @@ const SaveVideo = ({ data, setOpen }: Props) => {
   )
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={KEYBOARD_AVOIDING_VIEW_BEHAVIOR}
+      keyboardVerticalOffset={IS_IOS ? 50 : 70}
+      style={styles.container}
+    >
       <Header />
       <View style={styles.divider} />
       <Text style={styles.subtitle}>
@@ -85,7 +90,7 @@ const SaveVideo = ({ data, setOpen }: Props) => {
       />
       <View style={styles.divider} />
       <Footer />
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 

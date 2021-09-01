@@ -12,5 +12,16 @@
   "Home Screen": "Pantalla de Inicio",
   "StoryBook": "StoryBook",
   "Conversations": "Conversaciones",
-  "Create": "Crear"
+  "Create": "Crear",
+  "Save Video": "Guardar Video",
+  "Add details to finish saving your video. You can choose to publish your recording to all beta participants or keep it private..": "Ultimos detalles para guardar su video. Puedes elegir publicar su video para todos los participantes o guardarlo solo para ti..",
+  "Recording Title": "Titulo de la Grabacion",
+  "Description": "Descripcion",
+  "Enter text...": "Introduzca su texto aqui...",
+  "Publish to Library": "Publicar en la Biblioteca",
+  "Save and Keep Private": "Guardar en Privado",
+  "is required": "es requerido",
+  "Preview": "Vista Previa",
+  "Retry": "Reintentar",
+  "Save": "Guardar"
 }

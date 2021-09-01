@@ -4,15 +4,21 @@ import React, { useCallback, useState, useRef } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { RNCamera } from 'react-native-camera'
 import { useCamera } from 'react-native-camera-hooks'
+import Modal from 'react-native-modal'
+import { useTranslation } from 'react-i18next'
 
 import shooter from 'assets/images/shooter.png'
 import calculateTime from './hooks/calculateTime'
 import { styles } from './styles'
+import SaveVideo from '../../pages/Studio/components/SaveVideo'
 
 const Recording = () => {
+  const { t } = useTranslation()
   const [{ cameraRef, isRecording }, { setIsRecording }] = useCamera()
   const [finished, setFinished] = useState(false)
   const [timeInSeconds, setTimeInSeconds] = useState<number>(0)
+  const [modalVisible, setModalVisible] = useState(false)
+  const [data, setData] = useState()
   const recordOptions = {
     maxduration: 120,
     fps: 30,
@@ -37,9 +43,10 @@ const Recording = () => {
     try {
       const promise = cameraRef.current.recordAsync(recordOptions)
       setIsRecording(true)
-      const data = await promise
+      const videoRecorded = await promise
+      setData(videoRecorded)
     } catch (err) {
-      null
+      // handle error
     }
   }
 
@@ -49,7 +56,7 @@ const Recording = () => {
       setIsRecording(false)
       setFinished(true)
     } catch (err) {
-      null
+      // handle error
     }
   }, [isRecording])
 
@@ -58,7 +65,7 @@ const Recording = () => {
       return (
         <View style={styles.buttonsContainer}>
           <Text style={styles.buttonsText} onPress={() => {}}>
-            Preview
+            {t('Preview')}
           </Text>
           <Text
             style={styles.buttonsText}
@@ -67,9 +74,16 @@ const Recording = () => {
               setTimeInSeconds(0)
             }}
           >
-            Retry
+            {t('Retry')}
           </Text>
-          <Text style={styles.buttonsText}>Save</Text>
+          <Text
+            style={styles.buttonsText}
+            onPress={() => {
+              setModalVisible(true)
+            }}
+          >
+            {t('Save')}
+          </Text>
         </View>
       )
     }
@@ -78,6 +92,9 @@ const Recording = () => {
 
   return (
     <>
+      <Modal isVisible={modalVisible} onBackdropPress={() => setModalVisible(false)}>
+        <SaveVideo setOpen={setModalVisible} data={data} />
+      </Modal>
       <RNCamera
         ref={cameraRef}
         style={[{ flex: 1, width: '100%' }]}

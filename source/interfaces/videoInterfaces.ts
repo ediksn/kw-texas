@@ -43,7 +43,7 @@ export interface VideoInterface {
   agents: Agent[]
   bookmarked: boolean
   createdAt: string
-  creatorHashtags: string[]
+  creatorHashtags: object[]
   description: string
   formats: Format[]
   imageUrl: string
@@ -72,6 +72,22 @@ export interface VideoReducerProps {
   draftState: any
   payload?: {
     searchScriptMeeting: VideoInterface[]
+    page: number
+  }
+}
+
+export interface VideoProduceBmProps {
+  type: string
+  payload?: {
+    searchScriptMeetingBm: VideoInterface[]
+    page: number
+  }
+}
+
+export interface VideoReducerBmProps {
+  draftState: any
+  payload?: {
+    searchScriptMeetingBm: VideoInterface[]
     page: number
   }
 }

@@ -42,5 +42,9 @@ export const styles = StyleSheet.create({
   wrapper: {
     paddingHorizontal: '3%',
     paddingVertical: '3%'
+  },
+  tagContainerView: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
   }
 })

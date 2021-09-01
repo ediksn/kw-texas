@@ -50,8 +50,8 @@ const VideoCard = ({ img, title, firstName, lastName, visits, likes, tags, style
             <Text style={styles.statisticsText}>{likes} likes</Text>
           </View>
         </View>
+        <View style={styles.tagContainerView}>{renderTags()}</View>
       </View>
-      <View style={styles.tagContainerView}>{renderTags()}</View>
     </TouchableOpacity>
   )
 }

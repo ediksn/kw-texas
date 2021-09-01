@@ -15,7 +15,7 @@ interface Props {
   tags: any
   onPress?: (event: GestureResponderEvent) => void
 }
-  
+
 const VideoCard = ({ img, title, firstName, lastName, visits, likes, tags, style, onPress }: Props) => {
   const renderTags = () => {
     let lenghtTags = 0

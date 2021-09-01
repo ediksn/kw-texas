@@ -6,6 +6,7 @@ import { StackNavigator, StackScreen, TopTabNavigator, TopTabScreen } from '~/sc
 
 import { Home } from '~/screens/pages'
 import { NAVIGATION, theme } from '~/constants'
+import { VideoPlayer } from '../VideoPlayer'
 import { Studio, Bookmarked } from '../pages'
 import { Button } from '~/components'
 import { styles } from './styles'
@@ -61,6 +62,11 @@ const HomeStackScreen = () => {
             />
           )
         })}
+      />
+      <StackScreen
+        name={NAVIGATION.SCREEN.VIDEOPLAYER}
+        component={VideoPlayer}
+        options={{ headerTitleAlign: 'center', title: t('Video Player') }}
       />
     </StackNavigator>
   )

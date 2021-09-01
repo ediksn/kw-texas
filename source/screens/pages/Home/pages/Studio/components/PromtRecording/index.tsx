@@ -45,9 +45,10 @@ const PromtRecording = () => {
         <Carousel
           data={getSoloScripts}
           renderItem={renderItem}
-          onSnapToItem={index => setActiveSlide(index)}
+          onSnapToItem={(index: any) => setActiveSlide(index)}
           sliderWidth={DEVICE_WIDTH}
           itemWidth={DEVICE_WIDTH}
+          removeClippedSubviews={false}
         />
         <Pagination
           dotsLength={getSoloScripts.length}

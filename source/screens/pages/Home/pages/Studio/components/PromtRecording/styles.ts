@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: verticalScale(10),
     alignSelf: 'flex-start',
-    marginLeft: scale(20)
+    marginLeft: scale(20),
+    marginTop: verticalScale(10)
   }
 })

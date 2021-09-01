@@ -5,8 +5,8 @@ import { bmReducer, loginReducer, videoReducer } from './reducers'
 
 const rootReducer = combineReducers({
   login: loginReducer,
-  videos: videoReducer,
-  bmVideos: bmReducer
+  library: videoReducer,
+  bookmarked: bmReducer
 })
 
 const middlewares = [thunk]

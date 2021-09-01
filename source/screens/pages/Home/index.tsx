@@ -16,9 +16,9 @@ interface Props {
 
 export const Home = ({ navigation }: Props) => {
   const dispatch = useDispatch()
-  const videos: VideoInterface[] = useSelector((state: RootState) => state.videos.searchScriptMeeting)
-  const loading: boolean = useSelector((state: RootState) => state.videos.isLoading)
-  const page: number = useSelector((state: RootState) => state.videos.page)
+  const videos: VideoInterface[] = useSelector((state: RootState) => state.library.searchScriptMeeting)
+  const loading: boolean = useSelector((state: RootState) => state.library.isLoading)
+  const page: number = useSelector((state: RootState) => state.library.page)
   const onRefresh = () => {
     dispatch(videoActions.refreshVideos())
   }

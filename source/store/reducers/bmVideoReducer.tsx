@@ -5,35 +5,35 @@ import { VideoProduceBmProps, VideoReducerBmProps } from '../../interfaces/video
 import { VIDEO_INITIAL_STATE } from '../model/bmModel'
 
 const {
-  GET_VIDEOS_BM_SUCCESS,
-  GET_VIDEOS_BM,
-  GET_VIDEOS_BM_FAILURE,
-  REFRESH_BM_VIDEOS,
-  REFRESH_VIDEOS_BM_SUCCESS,
-  REFRESH_VIDEOS_BM_FAILURE
+  GET_BOOKMARKED_VIDEOS_SUCCESS,
+  GET_BOOKMARKED_VIDEOS,
+  GET_BOOKMARKED_VIDEOS_FAILURE,
+  REFRESH_BOOKMARKED_VIDEOS,
+  REFRESH_BOOKMARKED_VIDEOS_SUCCESS,
+  REFRESH_BOOKMARKED_VIDEOS_FAILURE
 } = VIDEO_BM_TYPES
 
 const REDUCERS = {
-  [GET_VIDEOS_BM]: ({ draftState }: VideoReducerBmProps) => {
+  [GET_BOOKMARKED_VIDEOS]: ({ draftState }: VideoReducerBmProps) => {
     draftState.isLoading = true
   },
-  [GET_VIDEOS_BM_SUCCESS]: ({ draftState, payload }: VideoReducerBmProps) => {
+  [GET_BOOKMARKED_VIDEOS_SUCCESS]: ({ draftState, payload }: VideoReducerBmProps) => {
     draftState.isLoading = false
-    draftState.searchScriptMeetingBm = draftState.searchScriptMeetingBm.concat(payload?.searchScriptMeetingBm)
+    draftState.bookmarkedVideos = draftState.bookmarkedVideos.concat(payload?.searchScriptMeetingBm)
     draftState.page += 1
   },
-  [GET_VIDEOS_BM_FAILURE]: ({ draftState }: VideoReducerBmProps) => {
+  [GET_BOOKMARKED_VIDEOS_FAILURE]: ({ draftState }: VideoReducerBmProps) => {
     draftState.isLoading = false
   },
-  [REFRESH_BM_VIDEOS]: ({ draftState }: VideoReducerBmProps) => {
+  [REFRESH_BOOKMARKED_VIDEOS]: ({ draftState }: VideoReducerBmProps) => {
     draftState.isLoading = true
   },
-  [REFRESH_VIDEOS_BM_SUCCESS]: ({ draftState, payload }: VideoReducerBmProps) => {
+  [REFRESH_BOOKMARKED_VIDEOS_SUCCESS]: ({ draftState, payload }: VideoReducerBmProps) => {
     draftState.isLoading = false
-    draftState.searchScriptMeetingBm = payload?.searchScriptMeetingBm
+    draftState.bookmarkedVideos = payload?.searchScriptMeetingBm
     draftState.page = 1
   },
-  [REFRESH_VIDEOS_BM_FAILURE]: ({ draftState }: VideoReducerBmProps) => {
+  [REFRESH_BOOKMARKED_VIDEOS_FAILURE]: ({ draftState }: VideoReducerBmProps) => {
     draftState.isLoading = false
   }
 }

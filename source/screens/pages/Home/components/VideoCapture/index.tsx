@@ -1,16 +1,17 @@
-/** @format */
-
 import React, { useCallback, useState, useRef } from 'react'
+import { useIsFocused, useNavigation } from '@react-navigation/native'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { RNCamera } from 'react-native-camera'
 import { useCamera } from 'react-native-camera-hooks'
 import Modal from 'react-native-modal'
 import { useTranslation } from 'react-i18next'
-
 import shooter from 'assets/images/shooter.png'
+import back_arrow_btn from 'assets/images/back_arrow_btn.png'
+import { Button } from '~/components'
 import calculateTime from './hooks/calculateTime'
 import { styles } from './styles'
 import SaveVideo from '../../pages/Studio/components/SaveVideo'
+import { theme } from '~/constants'
 
 const Recording = () => {
   const { t } = useTranslation()
@@ -26,6 +27,8 @@ const Recording = () => {
     quality: 720,
     codec: 'H264'
   }
+  const isFocused = useIsFocused()
+  const navigation = useNavigation()
 
   const intervalRef: { current: NodeJS.Timeout | null } = useRef(null)
 
@@ -64,33 +67,31 @@ const Recording = () => {
     if (finished === true) {
       return (
         <View style={styles.buttonsContainer}>
-          <Text style={styles.buttonsText} onPress={() => {}}>
-            {t('Preview')}
-          </Text>
-          <Text
-            style={styles.buttonsText}
+          <Button THEME={theme.buttons.secondary} message={t('Preview')} viewStyle={styles.buttonsText} />
+          <Button
+            THEME={theme.buttons.secondary}
+            message={t('Retry')}
+            viewStyle={styles.buttonsText}
             onPress={() => {
               setFinished(false)
               setTimeInSeconds(0)
             }}
-          >
-            {t('Retry')}
-          </Text>
-          <Text
-            style={styles.buttonsText}
+          />
+          <Button
+            THEME={theme.buttons.secondary}
+            message={t('Save')}
+            viewStyle={styles.buttonsText}
             onPress={() => {
               setModalVisible(true)
             }}
-          >
-            {t('Save')}
-          </Text>
+          />
         </View>
       )
     }
     return null
   }
 
-  return (
+  return isFocused ? (
     <>
       <Modal isVisible={modalVisible} onBackdropPress={() => setModalVisible(false)}>
         <SaveVideo setOpen={setModalVisible} data={data} />
@@ -102,7 +103,10 @@ const Recording = () => {
         onRecordingStart={() => startTimer()}
         onRecordingEnd={() => stopTimer()}
       >
-        <View style={styles.counter}>
+        <View style={styles.cameraHeader}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image style={styles.backArrowBtn} resizeMode='center' source={back_arrow_btn} />
+          </TouchableOpacity>
           <Text style={styles.counterNumbers}>{calculateTime(timeInSeconds)}</Text>
         </View>
 
@@ -118,6 +122,8 @@ const Recording = () => {
         {buttonsVideo()}
       </RNCamera>
     </>
+  ) : (
+    <></>
   )
 }
 

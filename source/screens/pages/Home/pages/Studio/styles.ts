@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     flex: 1
   },
   button: {
-    width: scale(140),
+    width: scale(200),
     marginTop: verticalScale(30)
   }
 })

@@ -15,7 +15,7 @@ export const Studio = () => {
     <SafeAreaView style={styles.container}>
       <PromtRecording />
       <Button
-        message={t('Start Recording')}
+        message={t('Conversation Recording')}
         THEME={theme.buttons.primary}
         viewStyle={styles.button}
         onPress={() => navigation.navigate(NAVIGATION.SCREEN.RECORDING)}

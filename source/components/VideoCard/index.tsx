@@ -27,11 +27,11 @@ const VideoCard = ({ img, title, firstName, lastName, visits, likes, tags, style
       lenghtTags += tag.length
 
       if (lenghtTags < 22) {
-        return <Tag title={tag} />
+        return <Tag key={tag} title={tag} />
       }
 
       nextTags += 1
-      if (index + 1 === tags.length) return <Tag title={`+${nextTags}`} />
+      if (index + 1 === tags.length) return <Tag key={tag} title={`+${nextTags}`} />
       return null
     })
   }
@@ -50,8 +50,8 @@ const VideoCard = ({ img, title, firstName, lastName, visits, likes, tags, style
             <Text style={styles.statisticsText}>{likes} likes</Text>
           </View>
         </View>
+        <View style={styles.tagContainerView}>{renderTags()}</View>
       </View>
-      <View style={styles.tagContainerView}>{renderTags()}</View>
     </TouchableOpacity>
   )
 }

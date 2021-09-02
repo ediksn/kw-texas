@@ -59,37 +59,35 @@ const SaveVideo = ({ data, setOpen }: Props) => {
   )
 
   return (
-    <KeyboardAvoidingView
-      behavior={KEYBOARD_AVOIDING_VIEW_BEHAVIOR}
-      keyboardVerticalOffset={IS_IOS ? 50 : 70}
-      style={styles.container}
-    >
-      <Header />
-      <View style={styles.divider} />
-      <Text style={styles.subtitle}>
-        {t(
-          'Add details to finish saving your video. You can choose to publish your recording to all beta participants or keep it private..'
-        )}
-      </Text>
-      <Input
-        title={t('Recording Title')}
-        placeholder={t('Enter text...')}
-        value={name}
-        onChangeText={setName}
-        required
-        error={error}
-        style={styles.input}
-      />
-      <Input
-        title={t('Description')}
-        placeholder={t('Enter text...')}
-        value={description}
-        onChangeText={setDescription}
-        multiline
-        style={styles.input}
-      />
-      <View style={styles.divider} />
-      <Footer />
+    <KeyboardAvoidingView behavior={KEYBOARD_AVOIDING_VIEW_BEHAVIOR} keyboardVerticalOffset={IS_IOS ? 50 : 70}>
+      <View style={styles.container}>
+        <Header />
+        <View style={styles.divider} />
+        <Text style={styles.subtitle}>
+          {t(
+            'Add details to finish saving your video. You can choose to publish your recording to all beta participants or keep it private..'
+          )}
+        </Text>
+        <Input
+          title={t('Recording Title')}
+          placeholder={t('Enter text...')}
+          value={name}
+          onChangeText={setName}
+          required
+          error={error}
+          style={styles.input}
+        />
+        <Input
+          title={t('Description')}
+          placeholder={t('Enter text...')}
+          value={description}
+          onChangeText={setDescription}
+          multiline
+          style={styles.input}
+        />
+        <View style={styles.divider} />
+        <Footer />
+      </View>
     </KeyboardAvoidingView>
   )
 }

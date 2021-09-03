@@ -1,5 +1,6 @@
 import React, { memo, useLayoutEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
 import { useTranslation } from 'react-i18next'
 import { useSelector, useDispatch } from 'react-redux'
@@ -79,13 +80,21 @@ const RootNavigation = () => {
 
   return (
     <Spinner isLoading={loading} message='KW: Connect'>
-      {isLogged ? <TabNavigation /> : <Login />}
+      {isLogged ? (
+        <SafeAreaView style={{ flex: 1 }} edges={['top', 'left', 'right']}>
+          <TabNavigation />
+        </SafeAreaView>
+      ) : (
+        <Login />
+      )}
     </Spinner>
   )
 }
 
 export const Screens = memo(() => (
-  <NavigationContainer>
-    <RootNavigation />
-  </NavigationContainer>
+  <SafeAreaProvider>
+    <NavigationContainer>
+      <RootNavigation />
+    </NavigationContainer>
+  </SafeAreaProvider>
 ))

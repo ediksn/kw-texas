@@ -4,9 +4,10 @@ import { NavigationContainer } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { useSelector, useDispatch } from 'react-redux'
 import { NAVIGATION } from '~/constants/navigation'
-import { TabNavigator, TabScreen } from './components/Navigators'
+import { StackNavigator, TabNavigator, TabScreen, StackScreen } from './components/Navigators'
 import { Login } from './pages'
 import SettingsStackScreen from './pages/Settings/navigation'
+import Recording from '~/screens/pages/Home/components/VideoCapture'
 import { RootState } from '~/store'
 import HomeStackScreen from './pages/Home/navigation'
 import { Icon, Spinner } from '~/components'
@@ -17,7 +18,7 @@ import { theme } from '~/constants/theme'
 const TabNavigation = () => {
   const { t } = useTranslation()
 
-  return (
+  const TabStackScreen = () => (
     <TabNavigator
       initialRouteName={NAVIGATION.SCREEN.HOME}
       tabBarOptions={{
@@ -35,6 +36,25 @@ const TabNavigation = () => {
       <TabScreen options={{ title: t('Conversations') }} name={NAVIGATION.SCREEN.HOME} component={HomeStackScreen} />
       <TabScreen options={{ title: t('Settings') }} name={NAVIGATION.SCREEN.SETTINGS} component={SettingsStackScreen} />
     </TabNavigator>
+  )
+
+  return (
+    <StackNavigator>
+      <StackScreen
+        options={{
+          header: () => null
+        }}
+        name={NAVIGATION.SCREEN.TAB}
+        component={TabStackScreen}
+      />
+      <StackScreen
+        options={{
+          header: () => null
+        }}
+        name={NAVIGATION.SCREEN.RECORDING}
+        component={Recording}
+      />
+    </StackNavigator>
   )
 }
 

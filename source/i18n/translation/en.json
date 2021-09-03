@@ -13,6 +13,7 @@
   "StoryBook": "StoryBook",
   "Conversations": "Conversations",
   "Create": "Create",
+  "Prompt Recording": "Prompt Recording",
   "Save Video": "Save Video",
   "Add details to finish saving your video. You can choose to publish your recording to all beta participants or keep it private..": "Add details to finish saving your video. You can choose to publish your recording to all beta participants or keep it private..",
   "Recording Title": "Recording Title",
@@ -23,5 +24,6 @@
   "is required": "is required",
   "Preview": "Preview",
   "retry": "Retry",
-  "Save": "Save"
+  "Save": "Save",
+  "Conversation Recording": "Conversation Recording"
 }

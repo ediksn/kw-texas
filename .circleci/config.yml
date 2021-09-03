@@ -217,11 +217,3 @@ workflows:
               only:
                 - develop
                 - /^release\/v\d+\.\d+\.\d+$/
-  nightly_run:
-    triggers:
-      - schedule:
-          cron: "30 3 * * *"
-          filters:
-           branches:
-              only:
-                - develop

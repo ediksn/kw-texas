@@ -14,4 +14,4 @@ done'
 cat bash_env >> $BASH_ENV
 cat bash_env
 
-envsubst < .env.development
+envsubst < .env.dist > .env.development

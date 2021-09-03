@@ -1,24 +1,32 @@
 /** @format */
 
 import { StyleSheet } from 'react-native'
+import { scale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
-  counter: {
-    position: 'absolute',
-    right: 10,
+  cameraHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     top: 10,
+    marginHorizontal: scale(4)
+  },
+  counterNumbers: {
+    backgroundColor: 'rgb(146,139,139)',
     paddingTop: 3,
     paddingBottom: 3,
     paddingLeft: 4,
     paddingRight: 4,
     borderRadius: 3,
-    backgroundColor: 'rgb(146,139,139)'
-  },
-  counterNumbers: {
     fontFamily: 'Mulish-Bold',
     fontSize: 15,
     color: 'white'
+  },
+  backArrowBtn: {
+    tintColor: theme.darkBackground,
+    marginTop: 2,
+    height: 24,
+    width: 24
   },
   controlContainer: {
     position: 'absolute',
@@ -48,10 +56,10 @@ export const styles = StyleSheet.create({
     left: 0
   },
   buttonsText: {
+    elevation: 4,
     textAlign: 'center',
     flex: 1,
     fontFamily: 'Mulish-Bold',
-    fontSize: 15,
-    color: theme.backgroundWhite
+    fontSize: 15
   }
 })

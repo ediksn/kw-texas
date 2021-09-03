@@ -206,12 +206,6 @@ workflows:
           executor: macos_exec
           platform: android
           filters: *build-filters
-      - push-appcenter:
-          executor: macos_exec
-          requires:
-            - build-ios
-            - build-ios-dev
-            - build-android
           filters:
             branches:
               only:

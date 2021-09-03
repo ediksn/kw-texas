@@ -44,7 +44,7 @@ const Recording = () => {
       const promise = cameraRef.current.recordAsync(recordOptions)
       setIsRecording(true)
       const videoRecorded = await promise
-      setData(videoRecorded)
+      setData(videoRecorded.uri)
     } catch (err) {
       // handle error
     }

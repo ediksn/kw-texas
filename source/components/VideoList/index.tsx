@@ -9,6 +9,7 @@ interface Props {
   onPressNavigateTo: string
   data: any[]
   keyExtractor: (item: any, index: number) => string
+  testID: string
   refreshing?: boolean
   style?: ViewStyle
   onRefresh?: () => void
@@ -19,6 +20,7 @@ const VideoList = ({
   onPressNavigateTo,
   data,
   keyExtractor,
+  testID,
   refreshing,
   style,
   onRefresh,
@@ -47,6 +49,7 @@ const VideoList = ({
   return (
     <View style={[styles.container, style]}>
       <FlatList
+        testID={testID}
         renderItem={renderVideoComponent}
         data={data}
         keyExtractor={keyExtractor}

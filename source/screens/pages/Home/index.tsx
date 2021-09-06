@@ -34,6 +34,7 @@ export const Home = ({ navigation }: Props) => {
     <SafeAreaView style={styles.container}>
       <Spinner isLoading={loading && videos.length === 0}>
         <VideoList
+          testID='videolist-test'
           navigation={navigation}
           onPressNavigateTo={NAVIGATION.SCREEN.VIDEOPLAYER}
           data={videos}

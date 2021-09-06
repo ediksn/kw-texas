@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { styles } from './styles'
 import { Button, Input } from '~/components'
 import { IS_IOS, KEYBOARD_AVOIDING_VIEW_BEHAVIOR } from '~/constants'
+import { useDispatch } from 'react-redux'
+import { uploadVideoActions } from '~/store/actions'
 
 interface Props {
   data: any
@@ -12,6 +14,7 @@ interface Props {
 
 const SaveVideo = ({ data, setOpen }: Props) => {
   const { t } = useTranslation()
+  const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [error, setError] = useState(false)
   const [description, setDescription] = useState('')
@@ -24,7 +27,7 @@ const SaveVideo = ({ data, setOpen }: Props) => {
     if (name === '') {
       setError(true)
     } else {
-      // manage redux actions
+      dispatch(uploadVideoActions.uploadVideo(data, name, description))
     }
   }
 

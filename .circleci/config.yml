@@ -1,0 +1,208 @@
+version: 2.1
+
+parameters:
+  env:
+    default: QA
+    type: string
+  triger-test:
+    default: false
+    type: boolean
+  xray-report:
+    default: false
+    type: boolean
+
+executors:
+  macos_exec:
+    macos:
+      xcode: 12.3.0
+
+commands:
+   allure-install:
+    description: Installs Allure Framework and registers it as /usr/local/bin/allure
+    parameters:
+      version:
+        description: Allure version to use
+        type: string
+        default: 2.13.1
+    steps:
+      - run:
+          name: Allure archive download
+          command: curl -L https://github.com/allure-framework/allure2/releases/download/<< parameters.version >>/allure-commandline-<< parameters.version >>.zip -o /tmp/allure.zip
+      - run:
+          name: Archive extraction
+          command: unzip /tmp/allure.zip
+      - run:
+          name: Allure installation
+          command: sudo mv allure-<< parameters.version >> /usr/local/share/allure
+      - run:
+          name: Allure binary symlinking
+          command: sudo ln -s /usr/local/share/allure/bin/allure /usr/local/bin/allure
+
+   allure-report:
+    description: Generates report using Allure Framework
+    parameters:
+      configuration-path:
+        description: Path to Allure configuration, uses default one if omitted
+        type: string
+        default: /usr/local/share/allure/config/allure.yml
+      target-path:
+        description: Path for report directory
+        type: string
+        default: allure-report
+      results-path:
+        description: Path to directory with test results
+        type: string
+        default: allure-results
+      artifact-path:
+        description: Path that will be used when storing result as artifact
+        type: string
+        default: Report/Allure
+    steps:
+      - run:
+          name: Allure report generation (<< parameters.results-path >> -> << parameters.target-path >>)
+          when: always
+          command: |
+            unset JAVA_OPTS
+            unset JAVA_HOME
+            unset ANDROID_HOME
+            unset ANDROID_SDK_HOME
+            unset ANDROID_SDK_ROOT
+            allure generate \
+            --config << parameters.configuration-path >> \
+            --report-dir << parameters.target-path >> \
+            << parameters.results-path >>
+      - store_artifacts:
+          path: << parameters.target-path >>
+          destination: << parameters.artifact-path >>
+
+jobs:
+  build:
+    executor: << parameters.executor >>
+    parameters: &build-parameters
+      executor:
+        type: executor
+      platform:
+        type: string
+      dev:
+        type: boolean
+        default: false
+    environment: &build-environment
+      JAVA_OPTS: "-Xms512m -Xmx4096m"
+      JAVA_HOME: "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+      PLATFORM: << parameters.platform >>
+      DEV: << parameters.dev >>
+      HOMEBREW_NO_AUTO_UPDATE: 1
+      ANDROID_HOME: "/usr/local/share/android-sdk"
+      ANDROID_SDK_HOME: "/usr/local/share/android-sdk"
+      ANDROID_SDK_ROOT: "/usr/local/share/android-sdk"
+    working_directory: ~/build
+    steps:
+      - checkout
+      - restore_cache: &restore_gem_cache
+          name: Restore gem cache
+          keys:
+          - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Gemfile.lock" }}
+          - gem-cache-v1-{{ arch }}-{{ .Branch }}
+          - gem-cache-v1
+      - run:
+          name: Check prerequisites
+          command: |
+            .circleci/scripts/prepare-build.sh
+      - save_cache: &save_gem_cache
+          name: Save gem cache
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Gemfile.lock" }}
+          paths:
+            - ios/bundle
+      - run:
+          name: Setup environment variables
+          command: |
+            .circleci/scripts/vars-set.sh
+      - restore_cache: &restore_yarn_cache
+          name: Restore yarn cache
+          keys:
+          - yarn-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          - yarn-cache-v1-{{ arch }}-{{ .Branch }}
+          - yarn-cache-v1
+      - run:
+          name: Install dependencies
+          command: |
+            yarn install
+      - save_cache: &save_yarn_cache
+          name: Save yarn cache
+          key: yarn-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - run:
+          name: Run lint
+          command: |
+            yarn run lint
+      - when:
+          condition:
+            equal: [ ios, << parameters.platform >>]
+          steps:
+            - restore_cache: &restore_pod_cache
+                name: Restore pod cache
+                keys:
+                - pod-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
+                - pod-cache-v1-{{ arch }}-{{ .Branch }}
+                - pod-cache-v1
+      - run:
+          name: Build
+          command: |
+            cd ios && bundle exec fastlane $PLATFORM build
+      - when:
+          condition:
+            equal: [ android, << parameters.platform >>]
+          steps:
+            - persist_to_workspace:
+                root: .
+                paths:
+                  - bash_env
+                  - android/app/build/outputs/apk/release/app-release.apk
+            - store_artifacts:
+                path: ~/build/outputs/apk/release/app-release.apk
+      - when:
+          condition:
+            equal: [ ios, << parameters.platform >>]
+          steps:
+            - save_cache: &save_pod_cache
+                name: Save pod cache
+                key: pod-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
+                paths:
+                  - ios/Pods
+            - persist_to_workspace:
+                root: .
+                paths:
+                  - ios/*.ipa
+            - store_artifacts:
+                path: ~/build/ios/connectmobile.ipa
+            - store_artifacts:
+                path: ~/build/ios/connectmobile-dev.ipa
+
+workflows:
+  build_push:
+    jobs:
+      - build:
+          name: build-ios
+          executor: macos_exec
+          platform: ios
+          filters: &build-filters
+            branches:
+              only:
+                - develop
+                - /^feature\/\S*$/
+                - /^hotfix\/\S*$/
+                - /^bugfix\/\S*$/
+                - /^revert-\S*$/
+                - /^release\/v\d+\.\d+\.\d+$/
+      - build:
+          name: build-ios-dev
+          executor: macos_exec
+          platform: ios
+          dev: true
+          filters: *build-filters
+      - build:
+          name: build-android
+          executor: macos_exec
+          platform: android
+          filters: *build-filters

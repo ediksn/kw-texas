@@ -6,6 +6,7 @@ import { styles, stylesOfType } from './styles'
 import { theme } from '~/constants'
 
 interface Props {
+  testID?: string
   message?: string
   THEME?: any
   fontSize?: number
@@ -16,6 +17,7 @@ interface Props {
 }
 
 const Button = ({
+  testID,
   message = 'Ok',
   THEME = theme.buttons.primary,
   fontSize = moderateScale(theme.fonts.MEDIUM_SIZE),
@@ -37,7 +39,7 @@ const Button = ({
   }
 
   return (
-    <TouchableOpacity style={[styles.containerView, viewStyle, backgroundTypeStyle]} onPress={onPress}>
+    <TouchableOpacity testID={testID} style={[styles.containerView, viewStyle, backgroundTypeStyle]} onPress={onPress}>
       <Message />
     </TouchableOpacity>
   )

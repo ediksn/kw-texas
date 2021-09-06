@@ -21,8 +21,16 @@ export const Login = () => {
 
   return (
     <View style={styles.containerView}>
-      <Input title='Username' required error={false} value={username} onChangeText={setUsername} />
       <Input
+        testID='username-input'
+        title='Username'
+        required
+        error={false}
+        value={username}
+        onChangeText={setUsername}
+      />
+      <Input
+        testID='password-input'
         title='Password'
         type={FORM.FIELDS_TYPES.PASSWORD}
         required
@@ -33,9 +41,9 @@ export const Login = () => {
 
       <View style={styles.buttonView}>
         <Spinner isLoading={loading} size={30}>
-          <Button message='Sign In' onPress={handleLogin} />
+          <Button testID='signin-button' message='Sign In' onPress={handleLogin} />
         </Spinner>
-        <Button message='Forgot Password' type={theme.buttons.types.TEXT} />
+        <Button testID='forgot-button' message='Forgot Password' type={theme.buttons.types.TEXT} />
       </View>
     </View>
   )

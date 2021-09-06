@@ -11,6 +11,7 @@ import { FORM } from '~/constants/form'
 
 interface Props {
   title: string
+  testID?: string
   value?: string
   placeholder?: string
   onChangeText?: React.Dispatch<React.SetStateAction<string>>
@@ -23,6 +24,7 @@ interface Props {
 }
 const Input = ({
   title,
+  testID,
   value,
   placeholder,
   onChangeText,
@@ -74,6 +76,7 @@ const Input = ({
         {required && <Text style={styles.titleText}>*</Text>}
       </View>
       <TextInput
+        testID={testID}
         value={value}
         placeholder={placeholder}
         onChangeText={onChangeText}

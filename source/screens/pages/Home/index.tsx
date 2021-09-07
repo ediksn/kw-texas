@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useEffect } from 'react'
 import { SafeAreaView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,6 +7,7 @@ import { videoActions } from '~/store/actions'
 import { RootState } from '~/store/index'
 import { Spinner, VideoList } from '~/components'
 import { NAVIGATION } from '~/constants'
+import PickPromptSlider from './components/PickPromptSlider'
 
 interface Props {
   navigation: any
@@ -32,6 +31,9 @@ export const Home = ({ navigation }: Props) => {
   }
   return (
     <SafeAreaView style={styles.container}>
+      <Spinner isLoading={false}>
+        <PickPromptSlider />
+      </Spinner>
       <Spinner isLoading={loading && videos.length === 0}>
         <VideoList
           navigation={navigation}

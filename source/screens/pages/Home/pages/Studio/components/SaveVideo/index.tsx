@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, Text, TouchableOpacity, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { useDispatch } from 'react-redux'
 import { styles } from './styles'
 import { Button, Input } from '~/components'
 import { IS_IOS, KEYBOARD_AVOIDING_VIEW_BEHAVIOR } from '~/constants'
-import { useDispatch } from 'react-redux'
 import { uploadVideoActions } from '~/store/actions'
 
 interface Props {

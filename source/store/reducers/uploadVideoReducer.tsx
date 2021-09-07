@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import produce from 'immer'
 import { UPLOAD_VIDEOS_TYPES } from '../types'
 import { UploadVideoProduceProps, UploadVideoReducerProps } from '~/interfaces/uploadVideoInterfase'
@@ -7,16 +8,15 @@ const { POST_VIDEOS, POST_VIDEOS_SUCCESS, POST_VIDEOS_FAILURE } = UPLOAD_VIDEOS_
 
 const REDUCERS = {
   [POST_VIDEOS]: ({ draftState }: UploadVideoReducerProps) => {
-    draftState.isPosting = true
+    draftState.isLoading = true
   },
-  [POST_VIDEOS_SUCCESS]: ({ draftState, payload }: UploadVideoReducerProps) => {
-    draftState.isPosting = false
-    draftState.uploadedVideo = draftState.uploadedVideo.concat(payload?.uploadedVideo)
+  [POST_VIDEOS_SUCCESS]: ({ draftState }: UploadVideoReducerProps) => {
+    draftState.isLoading = false
   },
   [POST_VIDEOS_FAILURE]: ({ draftState }: UploadVideoReducerProps) => {
-    draftState.isPosting = false
+    draftState.isLoading = false
   }
 }
 
-export default (state = UPLOAD_INITIAL_STATE, { type, payload }: UploadVideoProduceProps) =>
-  produce(state, draftState => (REDUCERS[type] ? REDUCERS[type]({ draftState, payload }) : state))
+export default (state = UPLOAD_INITIAL_STATE, { type }: UploadVideoProduceProps) =>
+  produce(state, draftState => (REDUCERS[type] ? REDUCERS[type]({ draftState }) : state))

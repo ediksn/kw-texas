@@ -13,7 +13,4 @@ export interface UploadVideoProduceProps {
 
 export interface UploadVideoReducerProps {
   draftState: any
-  payload?: {
-    uploadedVideo: UploadVideoInterface[]
-  }
 }

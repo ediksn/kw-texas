@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { Text, View, FlatList, Image } from 'react-native'
+import { RootState } from '~/store/index'
+import { PickPromptInterface } from '~/interfaces/promptVideoInterface'
 import { styles } from './styles'
+import { homeActions } from '~/store/actions'
 
 const PickPromptSlider = () => {
   const { t } = useTranslation()
+  const dispatch = useDispatch()
+  const page: number = useSelector((state: RootState) => state.pickPrompts.page)
+  const pickPrompts: PickPromptInterface[] = useSelector((state: RootState) => state.pickPrompts.prompts)
+
+  useEffect(() => {
+    dispatch(homeActions.getPickPrompts(page))
+  }, [])
 
   const renderPickPromptComponent = () => (
     <Image
@@ -26,8 +37,8 @@ const PickPromptSlider = () => {
         contentContainerStyle={{ flex: 1 }}
         horizontal
         renderItem={renderPickPromptComponent}
-        data={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
-        // keyExtractor={(item: Interface) => item.id.toString()}
+        data={pickPrompts}
+        keyExtractor={(item: PickPromptInterface) => item.id.toString()}
         refreshing={false}
         onRefresh={() => {}}
         onEndReached={() => {}}

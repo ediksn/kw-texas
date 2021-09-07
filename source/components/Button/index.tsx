@@ -39,7 +39,12 @@ const Button = ({
   }
 
   return (
-    <TouchableOpacity testID={testID} style={[styles.containerView, viewStyle, backgroundTypeStyle]} onPress={onPress}>
+    <TouchableOpacity
+      testID={testID}
+      activeOpacity={0.6}
+      style={[styles.containerView, viewStyle, backgroundTypeStyle]}
+      onPress={onPress}
+    >
       <Message />
     </TouchableOpacity>
   )

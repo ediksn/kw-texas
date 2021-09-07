@@ -1,6 +1,5 @@
-/** @format */
-
 import { StyleSheet } from 'react-native'
+import { scale, verticalScale } from 'react-native-size-matters'
 
 export const styles = StyleSheet.create({
   text: {
@@ -11,5 +10,9 @@ export const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1
+  },
+  button: {
+    width: scale(200),
+    marginTop: verticalScale(30)
   }
 })

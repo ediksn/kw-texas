@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 
 import { Login } from '~/screens/pages'
 import createTestStore from '../../__mocks__/store'
+import { forgotButton, passwordInput, signinButton, usernameInput } from '~/constants'
 
 let component: RenderAPI
 
@@ -25,9 +26,9 @@ describe('Login test', () => {
 
   it('Renders correctly', () => {
     expect(component).toBeDefined()
-    expect(component.queryAllByTestId('username-input').length).toEqual(1)
-    expect(component.queryAllByTestId('password-input').length).toEqual(1)
-    expect(component.queryAllByTestId('signin-button').length).toEqual(1)
-    expect(component.queryAllByTestId('forgot-button').length).toEqual(1)
+    expect(component.queryAllByTestId(usernameInput).length).toEqual(1)
+    expect(component.queryAllByTestId(passwordInput).length).toEqual(1)
+    expect(component.queryAllByTestId(signinButton).length).toEqual(1)
+    expect(component.queryAllByTestId(forgotButton).length).toEqual(1)
   })
 })

@@ -8,7 +8,7 @@ import { VideoInterface } from '~/interfaces/videoInterfaces'
 import { videoActions } from '~/store/actions'
 import { RootState } from '~/store/index'
 import { Spinner, VideoList } from '~/components'
-import { NAVIGATION } from '~/constants'
+import { NAVIGATION, videoListComponent } from '~/constants'
 
 interface Props {
   navigation: any
@@ -34,7 +34,7 @@ export const Home = ({ navigation }: Props) => {
     <SafeAreaView style={styles.container}>
       <Spinner isLoading={loading && videos.length === 0}>
         <VideoList
-          testID='videolist-test'
+          testID={videoListComponent}
           navigation={navigation}
           onPressNavigateTo={NAVIGATION.SCREEN.VIDEOPLAYER}
           data={videos}

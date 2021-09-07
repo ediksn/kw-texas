@@ -1,12 +1,15 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { bmReducer, loginReducer, videoReducer } from './reducers'
+import { bmReducer, promptVideoReducer, loginReducer, videoReducer, uploadVideoReducer } from './reducers'
 
 const rootReducer = combineReducers({
   login: loginReducer,
+  videos: videoReducer,
+  promptVideos: promptVideoReducer,
   library: videoReducer,
-  bookmarked: bmReducer
+  bookmarked: bmReducer,
+  uploadVideo: uploadVideoReducer
 })
 
 const middlewares = [thunk]

@@ -4,6 +4,7 @@ import * as reactRedux from 'react-redux'
 import createTestStore from '../../__mocks__/store'
 import { Home } from '~/screens/pages'
 import { videoActions } from '~/store/actions'
+import { videoCardComponent, videoListComponent } from '~/constants'
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
@@ -30,7 +31,7 @@ describe('Library test', () => {
 
   it('Renders correctly', () => {
     expect(component).toBeDefined()
-    expect(component.queryAllByTestId('videolist-test').length).toEqual(1)
-    expect(component.queryAllByTestId('videocard-test').length).toEqual(0)
+    expect(component.queryAllByTestId(videoListComponent).length).toEqual(1)
+    expect(component.queryAllByTestId(videoCardComponent).length).toEqual(0)
   })
 })

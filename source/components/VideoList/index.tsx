@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, ViewStyle, FlatList } from 'react-native'
+import { videoCardComponent } from '~/constants'
 import { VideoInterface } from '~/interfaces/videoInterfaces'
 import { VideoCard } from '..'
 import { styles } from './styles'
@@ -28,7 +29,7 @@ const VideoList = ({
 }: Props) => {
   const renderVideoComponent = ({ item }: { item: VideoInterface }) => (
     <VideoCard
-      testID='videocard-test'
+      testID={videoCardComponent}
       img={item.imageUrl}
       title={item.title}
       firstName={item.agents[0].firstName}

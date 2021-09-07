@@ -1,4 +1,4 @@
-export const libraryVideosSelector = {
+export const videoResponse = {
   id: 2230,
   title: 'zzz',
   description: 'zzz',

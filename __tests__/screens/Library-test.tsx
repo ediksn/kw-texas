@@ -1,10 +1,9 @@
 import React from 'react'
-import { waitFor } from '@testing-library/react-native'
+import { act, render } from '@testing-library/react-native'
 import * as reactRedux from 'react-redux'
-import { act, create } from 'react-test-renderer'
 import createTestStore from '../../__mocks__/store'
 import { Home } from '~/screens/pages'
-import { libraryVideosSelector } from '../../__mocks__/mockResponses'
+import { videoActions } from '~/store/actions'
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
@@ -15,43 +14,23 @@ const navigate = jest.fn()
 const setOptions = jest.fn()
 
 describe('Library test', () => {
-  const useSelectorMock = jest.spyOn(reactRedux, 'useSelector')
-  const useDispatchMock = jest.spyOn(reactRedux, 'useDispatch')
   let component: any
   let store: any
 
-  // eslint-disable-next-line no-console
-  const consoleError = console.error
-  beforeAll(() => {
-    jest.spyOn(console, 'error').mockImplementation((...args) => {
-      if (!args[0].includes('Warning: An update to %s inside a test was not wrapped in act')) {
-        consoleError(...args)
-      }
-    })
-  })
-
   beforeEach(async () => {
+    const promise = Promise.resolve(videoActions.getVideos(0))
     store = createTestStore()
-    useSelectorMock.mockClear()
-    useDispatchMock.mockClear()
-    act(() => {
-      component = create(
-        <reactRedux.Provider store={store}>
-          <Home navigation={{ goBack, navigate, setOptions }} />
-        </reactRedux.Provider>
-      )
-    })
+    component = render(
+      <reactRedux.Provider store={store}>
+        <Home navigation={{ goBack, navigate, setOptions }} />
+      </reactRedux.Provider>
+    )
+    await act(() => promise)
   })
 
   it('Renders correctly', () => {
-    const dummyDispatch = jest.fn()
-    act(() => {
-      useDispatchMock.mockReturnValue(dummyDispatch)
-      useSelectorMock.mockReturnValue(libraryVideosSelector)
-    })
-    waitFor(() => {
-      expect(component).toBeDefined()
-      expect(component.queryAllByTestId('videolist-test').length).toEqual(0)
-    })
+    expect(component).toBeDefined()
+    expect(component.queryAllByTestId('videolist-test').length).toEqual(1)
+    expect(component.queryAllByTestId('videocard-test').length).toEqual(0)
   })
 })

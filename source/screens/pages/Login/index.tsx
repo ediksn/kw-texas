@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { Button, Input, Spinner } from '~/components'
-import { theme } from '~/constants'
+import { forgotButton, passwordInput, signinButton, theme, usernameInput } from '~/constants'
 import { styles } from './styles'
 import { FORM } from '~/constants/form'
 import { loginActions } from '~/store/actions'
@@ -22,7 +22,7 @@ export const Login = () => {
   return (
     <View style={styles.containerView}>
       <Input
-        testID='username-input'
+        testID={usernameInput}
         title='Username'
         required
         error={false}
@@ -30,7 +30,7 @@ export const Login = () => {
         onChangeText={setUsername}
       />
       <Input
-        testID='password-input'
+        testID={passwordInput}
         title='Password'
         type={FORM.FIELDS_TYPES.PASSWORD}
         required
@@ -41,9 +41,9 @@ export const Login = () => {
 
       <View style={styles.buttonView}>
         <Spinner isLoading={loading} size={30}>
-          <Button testID='signin-button' message='Sign In' onPress={handleLogin} />
+          <Button testID={signinButton} message='Sign In' onPress={handleLogin} />
         </Spinner>
-        <Button testID='forgot-button' message='Forgot Password' type={theme.buttons.types.TEXT} />
+        <Button testID={forgotButton} message='Forgot Password' type={theme.buttons.types.TEXT} />
       </View>
     </View>
   )

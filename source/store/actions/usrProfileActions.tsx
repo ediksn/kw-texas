@@ -4,7 +4,6 @@ import { AppDispatch } from '..'
 
 const actionCreators = {
   getUsrProfile: (usrId: number) => async (dispatch: AppDispatch) => {
-    console.log('here')
     const { GET_USRPROFILE, GET_USRPROFILE_SUCCESS, GET_USRPROFILE_FAILURE } = USR_TYPES
     dispatch({ type: GET_USRPROFILE })
     try {

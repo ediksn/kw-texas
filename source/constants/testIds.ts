@@ -1,0 +1,6 @@
+export const usernameInput = 'username-input'
+export const passwordInput = 'password-input'
+export const signinButton = 'signin-button'
+export const forgotButton = 'forgot-button'
+export const videoListComponent = 'videolist-component'
+export const videoCardComponent = 'videocard-component'

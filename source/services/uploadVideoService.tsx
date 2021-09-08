@@ -7,14 +7,14 @@ export default {
       query: 'mutation createMeeting($input: MeetingInputType){\n createMeeting(input: $input) {\n id\n}\n}\n',
       variables: {
         input: {
-          description: description,
+          description,
           hashtags: [],
           imageUrl: null,
           isSoloScript: true,
           privacy: 0,
           scriptId: 5,
           timeRecorded: 1,
-          title: title,
+          title,
           videoUrl: uri
         }
       }

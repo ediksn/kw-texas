@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
   },
   touchablePasswordIcon: {
     position: 'absolute',
-    marginTop: verticalScale(15),
+    marginTop: verticalScale(17),
     marginRight: scale(5),
     padding: moderateScale(10),
     alignSelf: 'flex-end',

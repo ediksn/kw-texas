@@ -1,6 +1,8 @@
 import { moderateScale } from 'react-native-size-matters'
 
-const FONTS: any = {
+export type TextType = 'error' | 'success' | 'normal'
+
+const FONTS = {
   BIG_SIZE: moderateScale(18),
   LARGE_SIZE: moderateScale(16),
   MEDIUM_SIZE: moderateScale(14),
@@ -12,6 +14,8 @@ const TEXTS = {
   primary: '#212529',
   secondary: '#6C727E',
   green: '#4797A5',
+  success: '#478943',
+  error: '#C5050B',
   white: '#FFFFFF'
 }
 
@@ -31,6 +35,16 @@ const BUTTONS_THEME = {
   }
 }
 
+export const BACKGROUNDS = {
+  successDark: '#98DE94',
+  successLight: '#D2E4D1',
+  errorDark: '#E9BFC1',
+  errorLight: '#E9D1D2',
+  darkBackground: '#383e51',
+  whiteBackground: 'white',
+  darkWhiteBackground: '#D8D8D8'
+}
+
 export const theme = {
   backgroundDark: '#006C84',
   backgroundWhite: 'white',
@@ -45,7 +59,7 @@ export const theme = {
   grey: 'rgb(200,200,200)',
   darkBackground: '#383e51',
   lightColor: '#3D424D',
-  beige: '#fff8dc',
+  backgrounds: BACKGROUNDS,
   fonts: FONTS,
   buttons: BUTTONS_THEME,
   texts: TEXTS

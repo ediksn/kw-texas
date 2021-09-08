@@ -26,9 +26,9 @@ describe('Login test', () => {
 
   it('Renders correctly', () => {
     expect(component).toBeDefined()
-    expect(component.getByTestId(usernameInput)).toBeDefined()
-    expect(component.getByTestId(passwordInput)).toBeDefined()
-    expect(component.getByTestId(signinButton)).toBeDefined()
-    expect(component.getByTestId(forgotButton)).toBeDefined()
+    expect(component.queryAllByTestId(usernameInput).length).toEqual(1)
+    expect(component.queryAllByTestId(passwordInput).length).toEqual(1)
+    expect(component.queryAllByTestId(signinButton).length).toEqual(1)
+    expect(component.queryAllByTestId(forgotButton).length).toEqual(1)
   })
 })

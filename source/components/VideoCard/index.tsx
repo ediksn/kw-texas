@@ -5,6 +5,7 @@ import connect_thumbnail from '../../../assets/images/connect_thumbnail.png'
 import Tag from './components/Tag'
 
 interface Props {
+  testID: string
   img: string
   title: string
   firstName: string
@@ -16,7 +17,7 @@ interface Props {
   onPress?: (event: GestureResponderEvent) => void
 }
 
-const VideoCard = ({ img, title, firstName, lastName, visits, likes, tags, style, onPress }: Props) => {
+const VideoCard = ({ testID, img, title, firstName, lastName, visits, likes, tags, style, onPress }: Props) => {
   const renderTags = () => {
     let lenghtTags = 0
     let nextTags = 0
@@ -37,7 +38,7 @@ const VideoCard = ({ img, title, firstName, lastName, visits, likes, tags, style
   }
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity testID={testID} onPress={onPress}>
       <View style={[styles.container, style]}>
         <Image source={img ? { uri: img } : connect_thumbnail} style={styles.img} />
         <View style={styles.wrapper}>

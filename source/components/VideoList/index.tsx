@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, ViewStyle, FlatList } from 'react-native'
+import { videoCardComponent } from '~/constants'
 import { VideoInterface } from '~/interfaces/videoInterfaces'
 import { VideoCard } from '..'
 import { styles } from './styles'
@@ -9,6 +10,7 @@ interface Props {
   onPressNavigateTo: string
   data: any[]
   keyExtractor: (item: any, index: number) => string
+  testID: string
   refreshing?: boolean
   style?: ViewStyle
   onRefresh?: () => void
@@ -19,6 +21,7 @@ const VideoList = ({
   onPressNavigateTo,
   data,
   keyExtractor,
+  testID,
   refreshing,
   style,
   onRefresh,
@@ -26,6 +29,7 @@ const VideoList = ({
 }: Props) => {
   const renderVideoComponent = ({ item }: { item: VideoInterface }) => (
     <VideoCard
+      testID={videoCardComponent}
       img={item.imageUrl}
       title={item.title}
       firstName={item.agents[0].firstName}
@@ -47,6 +51,7 @@ const VideoList = ({
   return (
     <View style={[styles.container, style]}>
       <FlatList
+        testID={testID}
         renderItem={renderVideoComponent}
         data={data}
         keyExtractor={keyExtractor}

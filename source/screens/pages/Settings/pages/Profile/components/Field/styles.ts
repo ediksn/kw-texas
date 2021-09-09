@@ -37,8 +37,7 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     color: '#000',
     fontFamily: 'Mulish-Regular'
-  },
-  socialButton: {},
+  },  
   socialText: {
     fontSize: 14,
     color: '#000',

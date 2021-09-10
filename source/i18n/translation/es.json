@@ -25,5 +25,6 @@
   "Preview": "Vista Previa",
   "Retry": "Reintentar",
   "Save": "Guardar",
-  "Conversation Recording": "Grabación de Conversación"
+  "Conversation Recording": "Grabación de Conversación",
+  "There was an issue logging you in, please try again": "Hubo un problema iniciando sesion, por favor intente nuevamente"
 }

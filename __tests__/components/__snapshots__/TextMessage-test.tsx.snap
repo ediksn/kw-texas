@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#E9D1D2",
+        "borderColor": "#E9BFC1",
+        "borderRadius": 5,
+        "borderWidth": 1,
+        "paddingHorizontal": 10.714285714285714,
+        "paddingVertical": 19.61764705882353,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#C5050B",
+        "fontSize": 22,
+      }
+    }
+  >
+    This is a example message
+  </Text>
+</View>
+`;

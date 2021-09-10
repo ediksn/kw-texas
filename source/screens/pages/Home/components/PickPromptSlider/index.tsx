@@ -59,19 +59,17 @@ const PickPromptSlider = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{t('Pick a Prompt')}</Text>
+
       <Text style={styles.description}>
         {t('Click on one of the prompts below to start building your library. Take your time and have fun with it!')}
       </Text>
+
       <FlatList
         contentContainerStyle={{ flex: 1 }}
         horizontal
         renderItem={renderPickPromptComponent}
         data={prompts}
         keyExtractor={(item: PickPromptInterface) => item.id.toString()}
-        refreshing={false}
-        onRefresh={() => {}}
-        onEndReached={() => {}}
-        onEndReachedThreshold={1}
       />
     </View>
   )

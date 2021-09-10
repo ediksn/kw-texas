@@ -1,6 +1,6 @@
 export interface PickPromptInterface {
   id: number
-  link: string
+  link: number
   image: string
 }
 

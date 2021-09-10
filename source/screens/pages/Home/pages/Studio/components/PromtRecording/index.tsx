@@ -17,7 +17,11 @@ interface ItemProps {
   index: number
 }
 
-const PromtRecording = () => {
+interface Props {
+  activeSlideSelected: number
+}
+
+const PromtRecording = ({ activeSlideSelected }: Props) => {
   const { t } = useTranslation()
   const DEVICE_WIDTH = useDeviceWidth() - 20
   const [activeSlide, setActiveSlide] = useState(0)
@@ -27,7 +31,8 @@ const PromtRecording = () => {
 
   useEffect(() => {
     dispatch(promptVideoActions.getPromptVideos(page))
-  }, [])
+    setActiveSlide(activeSlideSelected)
+  }, [activeSlideSelected])
 
   const renderItem = ({ item, index }: ItemProps) => {
     return (

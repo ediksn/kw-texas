@@ -7,13 +7,22 @@ import PromtRecording from './components/PromtRecording'
 import { Button } from '~/components'
 import { NAVIGATION, theme } from '~/constants'
 
-export const Studio = () => {
+interface Route {
+  route: {
+    params: {
+      activeSlideSelected: number | undefined
+    }
+  }
+}
+
+export const Studio = ({ route }: Route) => {
   const { t } = useTranslation()
   const navigation = useNavigation()
+  const activeSlideSelected = route.params?.activeSlideSelected || 0
 
   return (
     <SafeAreaView style={styles.container}>
-      <PromtRecording />
+      <PromtRecording activeSlideSelected={activeSlideSelected} />
       <Button
         message={t('Conversation Recording')}
         THEME={theme.buttons.primary}

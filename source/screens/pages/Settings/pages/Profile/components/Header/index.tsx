@@ -7,7 +7,7 @@ interface Props {
   data: any
 }
 
-function Header({ data }: Props) {
+const Header = ({ data }: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.avatar}>

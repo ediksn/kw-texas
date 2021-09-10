@@ -10,10 +10,7 @@ const actionCreators = {
       const response = homeService.getPickPrompts()
       dispatch({
         type: GET_PICK_PROMPTS_SUCCESS,
-        payload: {
-          prompts: response,
-          page: 0
-        }
+        payload: response
       })
     } catch (error) {
       dispatch({ type: GET_PICK_PROMPTS_FAILURE, payload: error })

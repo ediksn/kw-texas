@@ -1,7 +1,6 @@
 export default {
   pickPrompts: {
     prompts: [],
-    isLoading: false,
-    page: 0
+    isLoading: false
   }
 }

@@ -1,25 +1,24 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer'
-import { PROMT_VIDEO_TYPES } from '../types'
-import { PromptVideoReducerProps, PromptVideoProduceProps } from '~/interfaces/promptVideoInterface'
+import { PickPromptsReducerProps, PickPromptsProduceProps } from '~/interfaces/pickPromptsInterface'
 import homeModel from '../model/homeModel'
+import { HOME_TYPES } from '~/store/types'
 
-const { GET_PROMPT_VIDEOS_SUCCESS, GET_PROMPT_VIDEOS, GET_PROMPT_VIDEOS_FAILURE } = PROMT_VIDEO_TYPES
-const PICK_PROMPTS_INITIAL_STATE = homeModel.pickPrompts
+const { GET_PICK_PROMPTS_SUCCESS, GET_PICK_PROMPTS, GET_PICK_PROMPTS_FAILURE } = HOME_TYPES
+const HOME_INITIAL_STATE = homeModel
 
 const REDUCERS = {
-  [GET_PROMPT_VIDEOS]: ({ draftState }: PromptVideoReducerProps) => {
-    draftState.isLoading = true
+  [GET_PICK_PROMPTS]: ({ draftState }: PickPromptsReducerProps) => {
+    draftState.pickPrompts.isLoading = true
   },
-  [GET_PROMPT_VIDEOS_SUCCESS]: ({ draftState, payload }: PromptVideoReducerProps) => {
-    draftState.isLoading = false
-    draftState.getSoloScripts = payload?.getSoloScripts
-    draftState.page += 1
+  [GET_PICK_PROMPTS_SUCCESS]: ({ draftState, payload }: PickPromptsReducerProps) => {
+    draftState.pickPrompts.isLoading = false
+    draftState.pickPrompts.prompts = payload
   },
-  [GET_PROMPT_VIDEOS_FAILURE]: ({ draftState }: PromptVideoReducerProps) => {
-    draftState.isLoading = false
+  [GET_PICK_PROMPTS_FAILURE]: ({ draftState }: PickPromptsReducerProps) => {
+    draftState.pickPrompts.isLoading = false
   }
 }
 
-export default (state = PICK_PROMPTS_INITIAL_STATE, { type, payload }: PromptVideoProduceProps) =>
+export default (state = HOME_INITIAL_STATE, { type, payload }: PickPromptsProduceProps) =>
   produce(state, draftState => (REDUCERS[type] ? REDUCERS[type]({ draftState, payload }) : state))

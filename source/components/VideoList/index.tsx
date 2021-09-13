@@ -21,7 +21,7 @@ const VideoList = ({ data, keyExtractor, onRefresh, refreshing, onEndReached, st
       lastName={item.agents[0].lastName}
       visits={item.views}
       likes={item.likesDetail.likes}
-      tags={item.creatorHashtags}
+      tags={item.scripts[0].hashtags}
     />
   )
   return (

@@ -18,7 +18,7 @@ import { PromptVideoInterface } from '~/interfaces/promptVideoInterface'
 import { PickPromptInterface } from '~/interfaces/pickPromptsInterface'
 import { styles } from './styles'
 import { homeActions } from '~/store/actions'
-import { NAVIGATION } from '~/constants'
+import { NAVIGATION, pickPrompts } from '~/constants'
 
 const PickPromptSlider = () => {
   const { t } = useTranslation()
@@ -48,6 +48,7 @@ const PickPromptSlider = () => {
 
     return (
       <TouchableOpacity
+        testID={pickPrompts}
         key={item.id.toString()}
         onPress={() => navigation.navigate(NAVIGATION.SCREEN.STUDIO, { activeSlideSelected })}
       >

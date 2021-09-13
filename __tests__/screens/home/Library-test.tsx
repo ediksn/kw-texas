@@ -1,7 +1,7 @@
 import React from 'react'
 import { act, render } from '@testing-library/react-native'
 import * as reactRedux from 'react-redux'
-import createTestStore from '../../__mocks__/store'
+import createTestStore from '../../../__mocks__/store'
 import { Home } from '~/screens/pages'
 import { videoActions } from '~/store/actions'
 import { videoCardComponent, videoListComponent } from '~/constants'

@@ -6,7 +6,7 @@ import { VideoInterface } from '~/interfaces/videoInterfaces'
 import { videoActions } from '~/store/actions'
 import { RootState } from '~/store/index'
 import { Spinner, VideoList } from '~/components'
-import { NAVIGATION } from '~/constants'
+import { NAVIGATION, videoListComponent } from '~/constants'
 import PickPromptSlider from './components/PickPromptSlider'
 
 interface Props {
@@ -36,6 +36,7 @@ export const Home = ({ navigation }: Props) => {
       </Spinner>
       <Spinner isLoading={loading && videos.length === 0}>
         <VideoList
+          testID={videoListComponent}
           navigation={navigation}
           onPressNavigateTo={NAVIGATION.SCREEN.VIDEOPLAYER}
           data={videos}

@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { loginReducer, videoReducer, promptVideoReducer, bmReducer, homeReducer } from './reducers'
+import { bmReducer, promptVideoReducer, loginReducer, videoReducer, uploadVideoReducer, homeReducer } from './reducers'
 
 const rootReducer = combineReducers({
   login: loginReducer,
@@ -9,7 +9,8 @@ const rootReducer = combineReducers({
   promptVideos: promptVideoReducer,
   library: videoReducer,
   bookmarked: bmReducer,
-  home: homeReducer
+  home: homeReducer,
+  uploadVideo: uploadVideoReducer
 })
 
 const middlewares = [thunk]

@@ -21,5 +21,8 @@ export const styles = StyleSheet.create({
     height: verticalScale(140),
     marginRight: scale(10),
     borderRadius: 10
+  },
+  containerScroll: {
+    flexDirection: 'row'
   }
 })

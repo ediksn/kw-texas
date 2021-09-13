@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { Text, View, FlatList, Image, TouchableOpacity } from 'react-native'
+import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native'
 import blue from 'assets/images/pickPrompts/blue.png'
 import gray from 'assets/images/pickPrompts/gray.png'
 import green from 'assets/images/pickPrompts/green.png'
@@ -43,12 +43,12 @@ const PickPromptSlider = () => {
     dispatch(homeActions.getPickPrompts())
   }, [])
 
-  const renderPickPromptComponent = ({ item }: { item: PickPromptInterface }) => {
+  const renderPickPromptComponent = (item: PickPromptInterface) => {
     const activeSlideSelected = getSoloScripts.findIndex(promptVideo => promptVideo.id === item.link)
 
     return (
       <TouchableOpacity
-        key={item.id}
+        key={item.id.toString()}
         onPress={() => navigation.navigate(NAVIGATION.SCREEN.STUDIO, { activeSlideSelected })}
       >
         <Image style={styles.avatar} resizeMode='contain' source={pickPromptsImages[item.image]} />
@@ -64,13 +64,9 @@ const PickPromptSlider = () => {
         {t('Click on one of the prompts below to start building your library. Take your time and have fun with it!')}
       </Text>
 
-      <FlatList
-        contentContainerStyle={{ flex: 1 }}
-        horizontal
-        renderItem={renderPickPromptComponent}
-        data={prompts}
-        keyExtractor={(item: PickPromptInterface) => item.id.toString()}
-      />
+      <ScrollView horizontal contentContainerStyle={styles.containerScroll}>
+        {prompts.map((item: PickPromptInterface) => renderPickPromptComponent(item))}
+      </ScrollView>
     </View>
   )
 }

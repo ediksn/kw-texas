@@ -1,2 +1,6 @@
 export { default as videoReducer } from './videoReducer'
 export { default as loginReducer } from './loginReducer'
+export { default as promptVideoReducer } from './promptVideoReducer'
+export { default as bmReducer } from './bmVideoReducer'
+export { default as uploadVideoReducer } from './uploadVideoReducer'
+export { default as usrProfileReducer } from './usrProfileReducer'

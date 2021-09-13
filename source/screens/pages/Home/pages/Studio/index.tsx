@@ -1,17 +1,25 @@
-/** @format */
-
 import React from 'react'
-import { Text, View, SafeAreaView } from 'react-native'
+import { SafeAreaView } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { useNavigation } from '@react-navigation/native'
 import { styles } from './styles'
+import PromtRecording from './components/PromtRecording'
+import { Button } from '~/components'
+import { NAVIGATION, theme } from '~/constants'
 
 export const Studio = () => {
   const { t } = useTranslation()
+  const navigation = useNavigation()
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.text}>
-        <Text>{t('Studio')}</Text>
-      </View>
+      <PromtRecording />
+      <Button
+        message={t('Conversation Recording')}
+        THEME={theme.buttons.primary}
+        viewStyle={styles.button}
+        onPress={() => navigation.navigate(NAVIGATION.SCREEN.RECORDING)}
+      />
     </SafeAreaView>
   )
 }

@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     fontSize: 16,
     paddingHorizontal: scale(5),
-    marginBottom: verticalScale(10)
+    marginBottom: verticalScale(5),
+    textAlignVertical: 'top'
   },
   title: {
     flexDirection: 'row'
@@ -23,11 +24,12 @@ export const styles = StyleSheet.create({
     color: theme.red,
     fontWeight: 'bold',
     fontSize: 12,
-    marginVertical: verticalScale(1)
+    marginVertical: verticalScale(1),
+    marginBottom: verticalScale(10)
   },
   touchablePasswordIcon: {
     position: 'absolute',
-    marginTop: verticalScale(15),
+    marginTop: verticalScale(17),
     marginRight: scale(5),
     padding: moderateScale(10),
     alignSelf: 'flex-end',

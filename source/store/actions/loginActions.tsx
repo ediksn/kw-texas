@@ -23,7 +23,7 @@ const actionCreators = {
         dispatch({ type: LOG_IN_SUCCESS, payload: signInResponse.data })
         return true
       } catch (error) {
-        dispatch({ type: LOG_IN_FAILURE, payload: error })
+        dispatch({ type: LOG_IN_FAILURE, payload: error.response.data })
       }
       return false
     },

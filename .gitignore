@@ -38,3 +38,5 @@ babel_build.js
 bundle
 .bundle
 android/java_pid*
+.env.development
+.env.production

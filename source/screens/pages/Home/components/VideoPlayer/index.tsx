@@ -36,7 +36,7 @@ const VideoPlayer = ({ title, uri, videoLikes, saved, liked }: Props) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View>
       <View style={styles.videoContainer}>
         <Video source={{ uri }} fullscreen={false} controls repeat resizeMode='cover' style={styles.video} />
       </View>

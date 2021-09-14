@@ -1,6 +1,7 @@
 /** @format */
 
 import { StyleSheet } from 'react-native'
+import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   container: {
@@ -13,11 +14,14 @@ export const styles = StyleSheet.create({
   avatar: {
     alignItems: 'center',
     aspectRatio: 1,
-    backgroundColor: '#3D424D',
+    backgroundColor: '#CCCCCC',
     borderRadius: 30,
     height: 60,
     justifyContent: 'center',
     overflow: 'hidden'
+  },
+  avatarText: {
+    fontSize: theme.fonts.BIG_SIZE
   },
   photo: {
     aspectRatio: 1,

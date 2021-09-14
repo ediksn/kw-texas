@@ -35,7 +35,7 @@ export const Settings = ({ navigation }: Props) => {
         onPress={() => navigation.navigate(NAVIGATION.SCREEN.PROFILE)}
         arrow
       />
-      <ListButton title='Log Out' icon={logout_btn} onPress={handleLogOut} arrow />
+      <ListButton title='Log out' icon={logout_btn} onPress={handleLogOut} arrow={false} />
     </SafeAreaView>
   )
 }

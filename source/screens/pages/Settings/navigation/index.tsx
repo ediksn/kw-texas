@@ -5,6 +5,7 @@ import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
 // import Storybook from '../storybook'
 import { Settings } from '~/screens/pages'
 import { NAVIGATION } from '~/constants'
+import Profile from '../pages/Profile'
 
 const SettingsStackScreen = () => {
   const { t } = useTranslation()
@@ -15,6 +16,12 @@ const SettingsStackScreen = () => {
         component={Settings}
         options={{ headerTitleAlign: 'center', title: t('Settings') }}
       />
+      <StackScreen
+        name={NAVIGATION.SCREEN.PROFILE}
+        component={Profile}
+        options={{ headerTitleAlign: 'center', title: t('Profile') }}
+      />
+
       {/* <StackScreen
         name={NAVIGATION.SCREEN.STORYBOOK}
         component={Storybook}

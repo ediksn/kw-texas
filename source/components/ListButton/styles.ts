@@ -18,7 +18,8 @@ export const styles = StyleSheet.create({
   textWithBtn: {
     fontSize: 17,
     fontFamily: 'Mulish-Bold',
-    color: theme.darkBackground
+    color: theme.darkBackground,
+    marginTop: 1
   },
   textWithNoBtn: {
     fontSize: 17,

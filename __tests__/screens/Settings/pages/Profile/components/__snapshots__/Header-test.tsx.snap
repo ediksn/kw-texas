@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#F2F2F2",
+      "flexDirection": "column",
+      "justifyContent": "center",
+      "padding": 25,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "aspectRatio": 1,
+        "backgroundColor": "#3D424D",
+        "borderRadius": 30,
+        "height": 60,
+        "justifyContent": "center",
+        "overflow": "hidden",
+      }
+    }
+  >
+    <Image
+      resizeMethod="resize"
+      resizeMode="cover"
+      source={
+        Object {
+          "uri": "https://storage.googleapis.com/kwconnect-core-qa-cd67/uploads/profile/photo_60e2b87c8b895.jpg",
+        }
+      }
+      style={
+        Object {
+          "aspectRatio": 1,
+          "width": 60,
+        }
+      }
+    />
+  </View>
+  <Text
+    numberOfLines={2}
+    style={
+      Object {
+        "color": "#282B33",
+        "fontFamily": "Mulish-ExtraBold",
+        "fontSize": 20,
+        "marginTop": 8,
+        "textAlign": "center",
+      }
+    }
+  >
+    Irene Murphy
+  </Text>
+</View>
+`;

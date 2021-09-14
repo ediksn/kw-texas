@@ -17,14 +17,10 @@ export interface UsrProfileInterface {
 
 export interface UsrProfileProduceProps {
   type: string
-  payload?: {
-    usrProfile: UsrProfileInterface[]
-  }
+  payload?: UsrProfileInterface[]
 }
 
 export interface UsrProfileReducerProps {
   draftState: any
-  payload?: {
-    usrProfile: UsrProfileInterface[]
-  }
+  payload?: UsrProfileInterface[]
 }

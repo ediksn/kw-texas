@@ -1,4 +1,4 @@
 export const USRPROFILE_INITIAL_STATE = {
-  usrProfile: [],
+  profiles: [],
   isLoading: false
 }

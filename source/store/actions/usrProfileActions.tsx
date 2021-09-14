@@ -10,9 +10,7 @@ const actionCreators = {
       const response = await usrProfileService.getUsrProfile(usrId)
       dispatch({
         type: GET_USRPROFILE_SUCCESS,
-        payload: {
-          usrProfile: response?.data
-        }
+        payload: response?.data
       })
     } catch (error) {
       dispatch({ type: GET_USRPROFILE_FAILURE, payload: error })

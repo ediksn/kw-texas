@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import produce from 'immer'
 import { USR_TYPES } from '../types'
 import { UsrProfileProduceProps, UsrProfileReducerProps } from '~/interfaces/usrInterface'
@@ -11,7 +12,7 @@ const REDUCERS = {
   },
   [GET_USRPROFILE_SUCCESS]: ({ draftState, payload }: UsrProfileReducerProps) => {
     draftState.isLoading = false
-    draftState.usrProfile = draftState.usrProfile.concat(payload?.usrProfile)
+    draftState.profiles = [payload]
   },
   [GET_USRPROFILE_FAILURE]: ({ draftState }: UsrProfileReducerProps) => {
     draftState.isLoading = false

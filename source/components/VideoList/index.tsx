@@ -36,7 +36,7 @@ const VideoList = ({
       lastName={item.agents[0].lastName}
       visits={item.views}
       likes={item.likesDetail.likes}
-      tags={item.creatorHashtags}
+      tags={item.scripts[0].hashtags}
       onPress={() =>
         navigation.navigate(onPressNavigateTo, {
           title: item.title,

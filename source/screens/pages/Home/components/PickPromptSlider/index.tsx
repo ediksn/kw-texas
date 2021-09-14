@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useTranslation } from 'react-i18next'
-import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Image, TouchableOpacity, ScrollView } from 'react-native'
 import blue from 'assets/images/pickPrompts/blue.png'
 import gray from 'assets/images/pickPrompts/gray.png'
 import green from 'assets/images/pickPrompts/green.png'
@@ -12,16 +11,18 @@ import red from 'assets/images/pickPrompts/red.png'
 import teal from 'assets/images/pickPrompts/teal.png'
 import teal2 from 'assets/images/pickPrompts/teal2.png'
 import yellow from 'assets/images/pickPrompts/yellow.png'
+import { useTranslation } from 'react-i18next'
 import { RootState } from '~/store/index'
 import { PromptVideoInterface } from '~/interfaces/promptVideoInterface'
 import { PickPromptInterface } from '~/interfaces/pickPromptsInterface'
 import { styles } from './styles'
 import { homeActions } from '~/store/actions'
 import { NAVIGATION, pickPrompts } from '~/constants'
+import { HeaderTitleBox } from '~/components'
 
 const PickPromptSlider = ({ navigation }: any) => {
-  const { t } = useTranslation()
   const dispatch = useDispatch()
+  const { t } = useTranslation()
   const getSoloScripts: PromptVideoInterface[] = useSelector((state: RootState) => state.promptVideos.getSoloScripts)
   const prompts: PickPromptInterface[] = useSelector((state: RootState) => state.home.pickPrompts.prompts)
   const pickPromptsImages: { [key: string]: object } = {
@@ -57,11 +58,12 @@ const PickPromptSlider = ({ navigation }: any) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{t('Pick a Prompt')}</Text>
-
-      <Text style={styles.description}>
-        {t('Click on one of the prompts below to start building your library. Take your time and have fun with it!')}
-      </Text>
+      <HeaderTitleBox
+        title={t('Pick a Prompt')}
+        description={t(
+          'Click on one of the prompts below to start building your library. Take your time and have fun with it!'
+        )}
+      />
 
       <ScrollView horizontal contentContainerStyle={styles.containerScroll}>
         {prompts.map((item: PickPromptInterface) => renderPickPromptComponent(item))}

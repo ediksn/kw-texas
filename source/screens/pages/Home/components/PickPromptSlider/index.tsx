@@ -12,7 +12,6 @@ import red from 'assets/images/pickPrompts/red.png'
 import teal from 'assets/images/pickPrompts/teal.png'
 import teal2 from 'assets/images/pickPrompts/teal2.png'
 import yellow from 'assets/images/pickPrompts/yellow.png'
-import { useNavigation } from '@react-navigation/native'
 import { RootState } from '~/store/index'
 import { PromptVideoInterface } from '~/interfaces/promptVideoInterface'
 import { PickPromptInterface } from '~/interfaces/pickPromptsInterface'
@@ -20,9 +19,8 @@ import { styles } from './styles'
 import { homeActions } from '~/store/actions'
 import { NAVIGATION, pickPrompts } from '~/constants'
 
-const PickPromptSlider = () => {
+const PickPromptSlider = ({ navigation }: any) => {
   const { t } = useTranslation()
-  const navigation = useNavigation()
   const dispatch = useDispatch()
   const getSoloScripts: PromptVideoInterface[] = useSelector((state: RootState) => state.promptVideos.getSoloScripts)
   const prompts: PickPromptInterface[] = useSelector((state: RootState) => state.home.pickPrompts.prompts)

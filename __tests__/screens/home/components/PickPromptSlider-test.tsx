@@ -10,9 +10,9 @@ jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
 }))
 
-jest.mock('@react-navigation/native', () => ({
-  useNavigation: () => ({ t: (key: any) => key })
-}))
+const goBack = jest.fn()
+const navigate = jest.fn()
+const setOptions = jest.fn()
 
 jest.mock('react-redux', () => ({
   useDispatch: () => ({ t: (key: any) => key }),
@@ -28,7 +28,7 @@ describe('renders correctly', () => {
     store = createTestStore()
     component = render(
       <Provider store={store}>
-        <PickPromptSlider />
+        <PickPromptSlider navigation={{ goBack, navigate, setOptions }} />
       </Provider>
     )
     await act(() => promise)
@@ -39,3 +39,8 @@ describe('renders correctly', () => {
     expect(component.queryAllByTestId(pickPrompts).length).toEqual(0)
   })
 })
+
+// test('renders correctly', () => {
+//   const pickPromptSlider = renderer.create(<PickPromptSlider navigation={{ goBack, navigate, setOptions }} />).toJSON()
+//   expect(pickPromptSlider).toMatchSnapshot()
+// })

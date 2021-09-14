@@ -32,7 +32,7 @@ export const Home = ({ navigation }: Props) => {
   return (
     <SafeAreaView style={styles.container}>
       <Spinner isLoading={false}>
-        <PickPromptSlider />
+        <PickPromptSlider navigation={navigation} />
       </Spinner>
       <Spinner isLoading={loading && videos.length === 0}>
         <VideoList

@@ -14,11 +14,6 @@ const goBack = jest.fn()
 const navigate = jest.fn()
 const setOptions = jest.fn()
 
-jest.mock('react-redux', () => ({
-  useDispatch: () => ({ t: (key: any) => key }),
-  useSelector: () => ({ t: (key: any) => key })
-}))
-
 describe('renders correctly', () => {
   let component: any
   let store: any
@@ -36,11 +31,6 @@ describe('renders correctly', () => {
 
   it('Renders correctly', () => {
     expect(component).toBeDefined()
-    expect(component.queryAllByTestId(pickPrompts).length).toEqual(0)
+    expect(component.queryAllByTestId(pickPrompts).length).toEqual(10)
   })
 })
-
-// test('renders correctly', () => {
-//   const pickPromptSlider = renderer.create(<PickPromptSlider navigation={{ goBack, navigate, setOptions }} />).toJSON()
-//   expect(pickPromptSlider).toMatchSnapshot()
-// })

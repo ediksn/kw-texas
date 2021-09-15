@@ -2,6 +2,7 @@ import React from 'react'
 import { View, ViewStyle, FlatList } from 'react-native'
 import { videoCardComponent } from '~/constants'
 import { VideoInterface } from '~/interfaces/videoInterfaces'
+import PickPromptSlider from '~/screens/pages/Home/components/PickPromptSlider'
 import { VideoCard } from '..'
 import { styles } from './styles'
 
@@ -27,6 +28,8 @@ const VideoList = ({
   onRefresh,
   onEndReached
 }: Props) => {
+  const renderPickPrompts = () => <PickPromptSlider navigation={navigation} />
+
   const renderVideoComponent = ({ item }: { item: VideoInterface }) => (
     <VideoCard
       testID={videoCardComponent}
@@ -48,9 +51,11 @@ const VideoList = ({
       }
     />
   )
+
   return (
     <View style={[styles.container, style]}>
       <FlatList
+        ListHeaderComponent={renderPickPrompts}
         testID={testID}
         renderItem={renderVideoComponent}
         data={data}

@@ -7,7 +7,6 @@ import { videoActions } from '~/store/actions'
 import { RootState } from '~/store/index'
 import { Spinner, VideoList } from '~/components'
 import { NAVIGATION, videoListComponent } from '~/constants'
-import PickPromptSlider from './components/PickPromptSlider'
 
 interface Props {
   navigation: any
@@ -31,9 +30,6 @@ export const Home = ({ navigation }: Props) => {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner isLoading={false}>
-        <PickPromptSlider navigation={navigation} />
-      </Spinner>
       <Spinner isLoading={loading && videos.length === 0}>
         <VideoList
           testID={videoListComponent}

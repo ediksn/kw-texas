@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, Text, TouchableOpacity, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
-import { styles } from './styles'
-import { Button, Input } from '~/components'
-import { IS_IOS, KEYBOARD_AVOIDING_VIEW_BEHAVIOR } from '~/constants'
+import { useNavigation } from '@react-navigation/native'
+
+import { Button, Input, Spinner } from '~/components'
+import { IS_IOS, KEYBOARD_AVOIDING_VIEW_BEHAVIOR, NAVIGATION } from '~/constants'
 import { uploadVideoActions } from '~/store/actions'
+
+import { styles } from './styles'
 
 interface Props {
   data: any
@@ -15,6 +18,7 @@ interface Props {
 const SaveVideo = ({ data, setOpen }: Props) => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
+  const navigation = useNavigation()
   const [name, setName] = useState('')
   const [error, setError] = useState(false)
   const [description, setDescription] = useState('')
@@ -28,6 +32,10 @@ const SaveVideo = ({ data, setOpen }: Props) => {
       setError(true)
     } else {
       dispatch(uploadVideoActions.uploadVideo(data, name, description))
+
+      setTimeout(() => {
+        navigation.navigate(NAVIGATION.SCREEN.LIBRARY)
+      }, 1000)
     }
   }
 
@@ -57,6 +65,7 @@ const SaveVideo = ({ data, setOpen }: Props) => {
         viewStyle={styles.button}
         onPress={handleSave}
       />
+
       <Button message={t('Publish to Library')} fontSize={13} viewStyle={styles.button} onPress={handlePublish} />
     </View>
   )

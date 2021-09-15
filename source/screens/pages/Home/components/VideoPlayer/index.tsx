@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Image, Text, View, TouchableOpacity } from 'react-native'
 import Video from 'react-native-video'
+import { useTranslation } from 'react-i18next'
 
 import like_button from 'assets/images/like_btn.png'
 import like_buttonw from 'assets/images/like_btnw.png'
@@ -20,10 +21,12 @@ interface Props {
 }
 
 const VideoPlayer = ({ title, uri, videoLikes, saved, liked }: Props) => {
+  const { t } = useTranslation()
   const [likes, setlikes] = useState(videoLikes)
   const [clicked, setClicked] = useState(liked)
   const [save, setSave] = useState(saved)
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   const getClicked = () => setClicked(!clicked)
   const getSaved = () => setSave(!save)
@@ -47,10 +50,16 @@ const VideoPlayer = ({ title, uri, videoLikes, saved, liked }: Props) => {
           repeat
           resizeMode='cover'
           style={styles.video}
+          onError={() => setError(true)}
           onLoadStart={() => setIsLoading(true)}
           onLoad={() => setIsLoading(false)}
         />
-        {isLoading && (
+        {error && (
+          <View style={styles.loadingContainer}>
+            <Text> {t('Could not load the video')} </Text>
+          </View>
+        )}
+        {isLoading && !error && (
           <View style={styles.loadingContainer}>
             <Spinner isLoading={isLoading} />
           </View>

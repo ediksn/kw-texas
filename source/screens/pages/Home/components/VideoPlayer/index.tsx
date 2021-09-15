@@ -9,6 +9,7 @@ import save_buttonw from 'assets/images/save_btnw.png'
 import link_button from 'assets/images/link_btn.png'
 
 import { styles } from './styles'
+import { Spinner } from '~/components'
 
 interface Props {
   title: string
@@ -22,6 +23,7 @@ const VideoPlayer = ({ title, uri, videoLikes, saved, liked }: Props) => {
   const [likes, setlikes] = useState(videoLikes)
   const [clicked, setClicked] = useState(liked)
   const [save, setSave] = useState(saved)
+  const [isLoading, setIsLoading] = useState(false)
 
   const getClicked = () => setClicked(!clicked)
   const getSaved = () => setSave(!save)
@@ -38,7 +40,21 @@ const VideoPlayer = ({ title, uri, videoLikes, saved, liked }: Props) => {
   return (
     <View>
       <View style={styles.videoContainer}>
-        <Video source={{ uri }} fullscreen={false} controls repeat resizeMode='cover' style={styles.video} />
+        <Video
+          source={{ uri }}
+          fullscreen={false}
+          controls
+          repeat
+          resizeMode='cover'
+          style={styles.video}
+          onLoadStart={() => setIsLoading(true)}
+          onLoad={() => setIsLoading(false)}
+        />
+        {isLoading && (
+          <View style={styles.loadingContainer}>
+            <Spinner isLoading={isLoading} />
+          </View>
+        )}
       </View>
       <View style={styles.descContainer}>
         <Text style={styles.text}>{title}</Text>

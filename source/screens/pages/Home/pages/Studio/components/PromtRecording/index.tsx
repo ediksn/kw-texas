@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Text, View, SafeAreaView } from 'react-native'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
 import { verticalScale } from 'react-native-size-matters'
@@ -28,11 +28,16 @@ const PromtRecording = ({ activeSlideSelected }: Props) => {
   const dispatch = useDispatch()
   const page: number = useSelector((state: RootState) => state.promptVideos.page)
   const getSoloScripts: PromptVideoInterface[] = useSelector((state: RootState) => state.promptVideos.getSoloScripts)
+  const carouselRef = useRef<Carousel<any>>()
 
   useEffect(() => {
     dispatch(promptVideoActions.getPromptVideos(page))
+  }, [])
+
+  useEffect(() => {
+    carouselRef.current?.snapToItem(activeSlideSelected, false)
     setActiveSlide(activeSlideSelected)
-  }, [activeSlideSelected])
+  }, [carouselRef, activeSlideSelected])
 
   const renderItem = ({ item, index }: ItemProps) => {
     return (
@@ -48,6 +53,7 @@ const PromtRecording = ({ activeSlideSelected }: Props) => {
       <Text style={styles.title}>{t('Prompt Recording')}</Text>
       <View style={styles.promptRecordingView}>
         <Carousel
+          ref={carouselRef}
           data={getSoloScripts}
           renderItem={renderItem}
           onSnapToItem={(index: any) => setActiveSlide(index)}

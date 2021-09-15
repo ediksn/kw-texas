@@ -7,6 +7,7 @@ import { videoActions } from '~/store/actions'
 import { RootState } from '~/store/index'
 import { Spinner, VideoList } from '~/components'
 import { NAVIGATION, videoListComponent } from '~/constants'
+import PickPromptSlider from './components/PickPromptSlider'
 
 interface Props {
   navigation: any
@@ -25,6 +26,8 @@ export const Home = ({ navigation }: Props) => {
     dispatch(videoActions.getVideos(page))
   }, [])
 
+  const renderPickPrompts = () => <PickPromptSlider navigation={navigation} />
+
   const onEndReached = () => {
     dispatch(videoActions.getVideos(page))
   }
@@ -32,6 +35,7 @@ export const Home = ({ navigation }: Props) => {
     <SafeAreaView style={styles.container}>
       <Spinner isLoading={loading && videos.length === 0}>
         <VideoList
+          ListHeaderComponent={renderPickPrompts}
           testID={videoListComponent}
           navigation={navigation}
           onPressNavigateTo={NAVIGATION.SCREEN.VIDEOPLAYER}

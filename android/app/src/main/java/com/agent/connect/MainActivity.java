@@ -1,4 +1,4 @@
-package com.connectmobile;
+package com.kw.agent.connect;
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import org.devio.rn.splashscreen.SplashScreen;

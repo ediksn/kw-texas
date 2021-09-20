@@ -19,7 +19,6 @@ const Recording = () => {
   const [finished, setFinished] = useState(false)
   const [timeInSeconds, setTimeInSeconds] = useState<number>(0)
   const [modalVisible, setModalVisible] = useState(false)
-  const [data, setData] = useState()
   const recordOptions = {
     maxduration: 120,
     fps: 30,
@@ -47,7 +46,6 @@ const Recording = () => {
       const promise = cameraRef.current.recordAsync(recordOptions)
       setIsRecording(true)
       const videoRecorded = await promise
-      setData(videoRecorded.uri)
     } catch (err) {
       // handle error
     }
@@ -94,7 +92,7 @@ const Recording = () => {
   return isFocused ? (
     <>
       <Modal isVisible={modalVisible} onBackdropPress={() => setModalVisible(false)}>
-        <SaveVideo setOpen={setModalVisible} data={data} />
+        <SaveVideo setOpen={setModalVisible} />
       </Modal>
       <RNCamera
         ref={cameraRef}

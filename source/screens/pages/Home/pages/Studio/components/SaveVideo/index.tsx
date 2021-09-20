@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, Text, TouchableOpacity, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
 import { Button, Input, Spinner } from '~/components'
 import { IS_IOS, KEYBOARD_AVOIDING_VIEW_BEHAVIOR, NAVIGATION } from '~/constants'
-import { uploadVideoActions } from '~/store/actions'
+import { uploadVideoActions, uploadFileActions } from '~/store/actions'
+import { UploadFileInterface } from '~/interfaces/uploadFileInterface'
 
 import { styles } from './styles'
+import { RootState } from '~/store'
 
 interface Props {
-  data: any
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const SaveVideo = ({ data, setOpen }: Props) => {
+const SaveVideo = async ({ setOpen }: Props) => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const navigation = useNavigation()
@@ -31,19 +32,28 @@ const SaveVideo = ({ data, setOpen }: Props) => {
     if (name === '') {
       setError(true)
     } else {
-      dispatch(uploadVideoActions.uploadVideo(data, name, description))
+      const formData = new FormData()
+      formData.append('file', Blob, `${name}.mp4`)
+      formData.append(
+        'data',
+        JSON.stringify({
+          data: {
+            attributes: {
+              origin_id: 1,
+              type_id: 1
+            }
+          }
+        })
+      )
+
+      dispatch(uploadFileActions.uploadFile(formData))
+      const videoUrl: UploadFileInterface = useSelector((state: RootState) => state.uploadFile.url)
+
+      dispatch(uploadVideoActions.uploadVideo(videoUrl, name, description))
 
       setTimeout(() => {
         navigation.navigate(NAVIGATION.SCREEN.LIBRARY)
       }, 1000)
-    }
-  }
-
-  const handleSave = () => {
-    if (!data) {
-      // something is wrong with the video data
-    } else {
-      // manage redux actions
     }
   }
 
@@ -58,13 +68,7 @@ const SaveVideo = ({ data, setOpen }: Props) => {
 
   const Footer = () => (
     <View style={styles.footer}>
-      <Button
-        message={t('Save and Keep Private')}
-        fontSize={13}
-        type='OUTLINED'
-        viewStyle={styles.button}
-        onPress={handleSave}
-      />
+      <Button message={t('Save and Keep Private')} fontSize={13} type='OUTLINED' viewStyle={styles.button} />
 
       <Button message={t('Publish to Library')} fontSize={13} viewStyle={styles.button} onPress={handlePublish} />
     </View>

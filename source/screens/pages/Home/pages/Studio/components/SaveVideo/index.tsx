@@ -33,7 +33,7 @@ const SaveVideo = async ({ setOpen }: Props) => {
       setError(true)
     } else {
       const formData = new FormData()
-      formData.append('file', Blob, `${name}.mp4`)
+      formData.append('file', Blob, `${name}-${Date.now()}.${extension}`)
       formData.append(
         'data',
         JSON.stringify({

@@ -3,12 +3,12 @@ import { UPLOADFILE_TYPES } from '~/store/types'
 import { AppDispatch } from '..'
 
 const actionCreators = {
-  uploadFile: (formData: any) => async (dispatch: AppDispatch) => {
+  uploadFile: (videoUrl: string, title: string, extension: string) => async (dispatch: AppDispatch) => {
     const { FILE_UPLOAD, FILE_UPLOAD_SUCCESS, FILE_UPLOAD_FAILURE } = UPLOADFILE_TYPES
     dispatch({ type: FILE_UPLOAD })
 
     try {
-      const response = await uploadFileService.uploadFile(formData)
+      const response = await uploadFileService.uploadFile(videoUrl, title, extension)
       dispatch({
         type: FILE_UPLOAD_SUCCESS,
         payload: {

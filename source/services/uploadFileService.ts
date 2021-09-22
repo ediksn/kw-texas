@@ -11,6 +11,7 @@ export default {
       return `${session.token_type} ${session.access_token}`
     }
     const token = await getToken()
+
     // const formData = new FormData()
     // formData.append('file', {
     //   uri: videoUrl,
@@ -34,16 +35,21 @@ export default {
     //   }
     // }
 
-    const response = await RNFetchBlob.fetch(
+    return RNFetchBlob.fetch(
       'POST',
       'https://qa-kong.command-api.kw.com/kw-attachment-svc/api/v2/attachment',
       {
         'Authorization': token,
         'Content-Type': 'multipart/form-data'
       },
-      [{ name: title, filename: `${title}.${extension}`, type: 'type:video/mp4', data: RNFetchBlob.wrap(videoUrl) }]
+      [
+        {
+          name: title,
+          type: 'video/mp4',
+          data: RNFetchBlob.wrap(videoUrl)
+        }
+      ]
     )
-    console.log('response: ', response)
     // const axiosInstance = await axiosInstanceTokens()
     // return axiosInstance.post(
     //   'https://qa-kong.command-api.kw.com/kw-attachment-svc/api/v2/attachment',

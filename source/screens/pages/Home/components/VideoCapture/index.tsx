@@ -93,7 +93,7 @@ const Recording = () => {
   return isFocused ? (
     <>
       <Modal isVisible={modalVisible} onBackdropPress={() => setModalVisible(false)}>
-        {videoRecorded && <SaveVideo setOpen={setModalVisible} videoUri={videoRecorded} />}
+        {videoRecorded && <SaveVideo setOpen={setModalVisible} videoUri={videoRecorded?.uri} />}
       </Modal>
       <RNCamera
         ref={cameraRef}

@@ -9,6 +9,7 @@ const actionCreators = {
 
     try {
       const response = await uploadFileService.uploadFile(videoUrl, title, extension)
+      console.log(response)
       dispatch({
         type: FILE_UPLOAD_SUCCESS,
         payload: {
@@ -16,6 +17,7 @@ const actionCreators = {
         }
       })
     } catch (error) {
+      console.log('error: ', error)
       dispatch({ type: FILE_UPLOAD_FAILURE, payload: error })
     }
   }

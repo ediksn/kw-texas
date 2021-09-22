@@ -23,5 +23,5 @@ else
     echo ${GC_KEYS_BASE64} | base64 -d > ios/gc_keys.json
 fi
 
-envsubst < sentry.properties.dist > $SENTRY_PROPERTIES_PATH
+# envsubst < sentry.properties.dist > $SENTRY_PROPERTIES_PATH
 envsubst < .env.dist > .env

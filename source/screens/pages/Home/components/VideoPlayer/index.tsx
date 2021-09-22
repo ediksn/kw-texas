@@ -11,8 +11,10 @@ import link_button from 'assets/images/link_btn.png'
 
 import { styles } from './styles'
 import { Spinner } from '~/components'
+import { videoService } from '~/services'
 
 interface Props {
+  id: number
   title: string
   uri: string
   videoLikes: number
@@ -20,7 +22,7 @@ interface Props {
   liked: boolean
 }
 
-const VideoPlayer = ({ title, uri, videoLikes, saved, liked }: Props) => {
+const VideoPlayer = ({ id, title, uri, videoLikes, saved, liked }: Props) => {
   const { t } = useTranslation()
   const [likes, setlikes] = useState(videoLikes)
   const [clicked, setClicked] = useState(liked)
@@ -32,6 +34,7 @@ const VideoPlayer = ({ title, uri, videoLikes, saved, liked }: Props) => {
   const getSaved = () => setSave(!save)
 
   const getLike = () => {
+    videoService.postLike(id, liked)
     getClicked()
     if (clicked) {
       setlikes(likes - 1)

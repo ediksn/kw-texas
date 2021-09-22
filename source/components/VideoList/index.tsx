@@ -45,7 +45,8 @@ const VideoList = ({
           uri: item.videoUrl,
           videoLikes: item.likesDetail.likes,
           saved: item.bookmarked,
-          liked: item.liked
+          liked: item.liked,
+          id: item.id
         })
       }
     />

@@ -11,5 +11,15 @@ export default {
         filter: { privacy: 'PUBLIC' }
       }
     })
+  },
+  postLike: async (id: number, isLiked: boolean) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/api-connect-scripthub/graphql', {
+      operationName: 'thumbUp',
+      query: 'mutation thumbUp($input: ThumbInputType!) {\n  thumbUp(input: $input)\n}\n',
+      variables: {
+        input: { meetingId: id, thumbUp: !isLiked }
+      }
+    })
   }
 }

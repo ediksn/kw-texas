@@ -112,8 +112,7 @@ platform :ios do
       )
     else
       match(
-        type: "development",
-        readonly: true
+        type: "development"
       )
       update_project_provisioning(
         xcodeproj: "connectmobile.xcodeproj",

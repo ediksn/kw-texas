@@ -14,16 +14,21 @@ const actionCreators = {
       try {
         const signInResponse = await loginService.logIn({ username, password })
         const { LOGIN } = STORAGE_CONSTANTS
-        const storageResponse: StorageLogInResponse = signInResponse.data
+        const storageResponse: StorageLogInResponse = signInResponse?.data
 
         await Storage.save({
           key: LOGIN.SESSION,
           value: storageResponse
         })
-        dispatch({ type: LOG_IN_SUCCESS, payload: signInResponse.data })
+        dispatch({ type: LOG_IN_SUCCESS, payload: signInResponse?.data })
         return true
       } catch (error) {
-        dispatch({ type: LOG_IN_FAILURE, payload: error.response.data })
+        if (error?.response?.data) dispatch({ type: LOG_IN_FAILURE, payload: error.response?.data })
+        else
+          dispatch({
+            type: LOG_IN_FAILURE,
+            payload: { error_description: 'Network not available', error: 'network_failed' }
+          })
       }
       return false
     },

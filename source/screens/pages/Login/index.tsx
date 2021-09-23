@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
@@ -11,6 +11,7 @@ import { loginActions } from '~/store/actions'
 import { ErrorInterface } from '~/interfaces/errorInterface'
 import { RootState } from '~/store'
 import TextMessage from '~/components/TextMessage'
+import { loginErrors } from '~/functions'
 
 export const Login = () => {
   const { t } = useTranslation()
@@ -18,30 +19,41 @@ export const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
+  const [errorFlag, setErrorFlag] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const error: ErrorInterface = useSelector((state: RootState) => state.login.error)
 
   const handleLogin = async () => {
-    setLoading(true)
-    await dispatch(loginActions.logIn({ username, password }))
-    setLoading(false)
+    if (username && password) {
+      setLoading(true)
+      await dispatch(loginActions.logIn({ username, password }))
+      setLoading(false)
+    } else {
+      setErrorFlag(true)
+      setErrorMessage(null)
+    }
   }
+
+  useEffect(() => {
+    if (error?.error != null) {
+      setErrorFlag(true)
+      setErrorMessage(loginErrors(error.error))
+    }
+  }, [error])
+
+  useEffect(() => {
+    setErrorFlag(false)
+  }, [username, password])
 
   return (
     <SafeAreaView style={styles.containerView}>
       <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={IS_IOS ? 50 : 0}>
-        {error.error && (
-          <TextMessage
-            style={styles.textMessage}
-            type='error'
-            message={t('There was an issue logging you in, please try again')}
-          />
-        )}
         <View style={styles.inputsView}>
           <Input
             testID={usernameInput}
             title={t('Username')}
             required
-            error={false}
+            error={errorFlag}
             value={username}
             onChangeText={setUsername}
           />
@@ -50,11 +62,12 @@ export const Login = () => {
             title={t('Password')}
             type={FORM.FIELDS_TYPES.PASSWORD}
             required
-            error={false}
+            error={errorFlag}
             value={password}
             onChangeText={setPassword}
           />
         </View>
+        {errorFlag && errorMessage && <TextMessage style={styles.textMessage} type='error' message={t(errorMessage)} />}
         <View style={styles.buttonView}>
           <Spinner isLoading={loading} size={30}>
             <Button testID={signinButton} message={t('Sign In')} onPress={handleLogin} />

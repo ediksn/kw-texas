@@ -83,7 +83,7 @@ const VideoPlayer = ({ backendId }: Props) => {
         )}
         {isLoading && !error && (
           <View style={styles.loadingContainer}>
-            <Spinner />
+            <Spinner isLoading={isLoading} />
           </View>
         )}
       </View>

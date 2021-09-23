@@ -64,64 +64,62 @@ const VideoPlayer = ({ backendId }: Props) => {
 
   return (
     <View>
-      <Spinner isLoading={!video}>
-        <View style={styles.videoContainer}>
-          <Video
-            source={{ uri: video?.videoUrl }}
-            fullscreen={false}
-            controls
-            repeat
-            resizeMode='cover'
-            style={styles.video}
-            onError={() => setError(true)}
-            onLoadStart={() => setIsLoading(true)}
-            onLoad={() => setIsLoading(false)}
-          />
-          {error && (
-            <View style={styles.loadingContainer}>
-              <Text> {t('Could not load the video')} </Text>
-            </View>
-          )}
-          {isLoading && !error && (
-            <View style={styles.loadingContainer}>
-              <Spinner />
-            </View>
-          )}
-        </View>
-        <View style={styles.descContainer}>
-          <Text style={styles.text}>{video?.title}</Text>
-          <View style={styles.btnView}>
-            <View style={styles.leftGroup}>
-              {liked && (
-                <TouchableOpacity onPress={getLike}>
-                  <Image style={styles.likeBtn} resizeMode='contain' source={like_button} />
-                </TouchableOpacity>
-              )}
-              {!liked && (
-                <TouchableOpacity onPress={getLike}>
-                  <Image style={styles.likeBtn} resizeMode='contain' source={like_buttonw} />
-                </TouchableOpacity>
-              )}
-              <Text style={styles.counter}>{likes}</Text>
-            </View>
-            <View style={styles.rightGroup}>
-              {video?.bookmarked && (
-                <TouchableOpacity onPress={getSaved}>
-                  <Image style={styles.saveBtn} resizeMode='contain' source={save_button} />
-                </TouchableOpacity>
-              )}
-              {!video?.bookmarked && (
-                <TouchableOpacity onPress={getSaved}>
-                  <Image style={styles.saveBtn} resizeMode='contain' source={save_buttonw} />
-                </TouchableOpacity>
-              )}
-              <TouchableOpacity>
-                <Image resizeMode='contain' source={link_button} />
+      <View style={styles.videoContainer}>
+        <Video
+          source={{ uri: video?.videoUrl }}
+          fullscreen={false}
+          controls
+          repeat
+          resizeMode='cover'
+          style={styles.video}
+          onError={() => setError(true)}
+          onLoadStart={() => setIsLoading(true)}
+          onLoad={() => setIsLoading(false)}
+        />
+        {error && (
+          <View style={styles.loadingContainer}>
+            <Text> {t('Could not load the video')} </Text>
+          </View>
+        )}
+        {isLoading && !error && (
+          <View style={styles.loadingContainer}>
+            <Spinner />
+          </View>
+        )}
+      </View>
+      <View style={styles.descContainer}>
+        <Text style={styles.text}>{video?.title}</Text>
+        <View style={styles.btnView}>
+          <View style={styles.leftGroup}>
+            {liked && (
+              <TouchableOpacity onPress={getLike}>
+                <Image style={styles.likeBtn} resizeMode='contain' source={like_button} />
               </TouchableOpacity>
-            </View>
+            )}
+            {!liked && (
+              <TouchableOpacity onPress={getLike}>
+                <Image style={styles.likeBtn} resizeMode='contain' source={like_buttonw} />
+              </TouchableOpacity>
+            )}
+            <Text style={styles.counter}>{likes}</Text>
+          </View>
+          <View style={styles.rightGroup}>
+            {video?.bookmarked && (
+              <TouchableOpacity onPress={getSaved}>
+                <Image style={styles.saveBtn} resizeMode='contain' source={save_button} />
+              </TouchableOpacity>
+            )}
+            {!video?.bookmarked && (
+              <TouchableOpacity onPress={getSaved}>
+                <Image style={styles.saveBtn} resizeMode='contain' source={save_buttonw} />
+              </TouchableOpacity>
+            )}
+            <TouchableOpacity>
+              <Image resizeMode='contain' source={link_button} />
+            </TouchableOpacity>
           </View>
         </View>
-      </Spinner>
+      </View>
     </View>
   )
 }

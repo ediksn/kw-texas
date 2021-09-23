@@ -62,17 +62,19 @@ export interface VideoInterface {
 
 export interface VideoProduceProps {
   type: string
-  payload?: {
+  payload: {
     searchScriptMeeting: VideoInterface[]
     page: number
+    storedId: number
   }
 }
 
 export interface VideoReducerProps {
   draftState: any
-  payload?: {
+  payload: {
     searchScriptMeeting: VideoInterface[]
     page: number
+    storedId: number
   }
 }
 

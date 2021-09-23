@@ -32,6 +32,36 @@ const actionCreators = {
     } catch (error) {
       dispatch({ type: REFRESH_VIDEOS_FAILURE, payload: error })
     }
+  },
+  likeVideo: (storedId: number, backendId: number) => async (dispatch: AppDispatch) => {
+    const { LIKE_VIDEO, LIKE_VIDEO_FAILURE, LIKE_VIDEO_SUCCESS } = VIDEO_TYPES
+    dispatch({ type: LIKE_VIDEO })
+    try {
+      await videoService.postLike(backendId, true)
+      dispatch({
+        type: LIKE_VIDEO_SUCCESS,
+        payload: {
+          storedId
+        }
+      })
+    } catch (error) {
+      dispatch({ type: LIKE_VIDEO_FAILURE })
+    }
+  },
+  dislikeVideo: (storedId: number, backendId: number) => async (dispatch: AppDispatch) => {
+    const { DISLIKE_VIDEO, DISLIKE_VIDEO_FAILURE, DISLIKE_VIDEO_SUCCESS } = VIDEO_TYPES
+    dispatch({ type: DISLIKE_VIDEO })
+    try {
+      await videoService.postLike(backendId, false)
+      dispatch({
+        type: DISLIKE_VIDEO_SUCCESS,
+        payload: {
+          storedId
+        }
+      })
+    } catch (error) {
+      dispatch({ type: DISLIKE_VIDEO_FAILURE })
+    }
   }
 }
 

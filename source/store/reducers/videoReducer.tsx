@@ -10,7 +10,9 @@ const {
   GET_VIDEOS_FAILURE,
   REFRESH_VIDEOS,
   REFRESH_VIDEOS_SUCCESS,
-  REFRESH_VIDEOS_FAILURE
+  REFRESH_VIDEOS_FAILURE,
+  LIKE_VIDEO_SUCCESS,
+  DISLIKE_VIDEO_SUCCESS
 } = VIDEO_TYPES
 
 const REDUCERS = {
@@ -35,6 +37,14 @@ const REDUCERS = {
   },
   [REFRESH_VIDEOS_FAILURE]: ({ draftState }: VideoReducerProps) => {
     draftState.isLoading = false
+  },
+  [LIKE_VIDEO_SUCCESS]: ({ draftState, payload }: VideoReducerProps) => {
+    draftState.searchScriptMeeting[payload?.storedId].likesDetail.likes += 1
+    draftState.searchScriptMeeting[payload?.storedId].liked = true
+  },
+  [DISLIKE_VIDEO_SUCCESS]: ({ draftState, payload }: VideoReducerProps) => {
+    draftState.searchScriptMeeting[payload?.storedId].likesDetail.likes -= 1
+    draftState.searchScriptMeeting[payload?.storedId].liked = false
   }
 }
 

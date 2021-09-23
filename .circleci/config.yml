@@ -182,10 +182,30 @@ jobs:
 workflows:
   build_push:
     jobs:
+      # - build:
+      #     name: build-ios
+      #     executor: macos_exec
+      #     platform: ios
+      #     filters: &build-filters
+      #       branches:
+      #         only:
+      #           - develop
+      #           - /^feature\/\S*$/
+      #           - /^hotfix\/\S*$/
+      #           - /^bugfix\/\S*$/
+      #           - /^revert-\S*$/
+      #           - /^release\/v\d+\.\d+\.\d+$/
+      # - build:
+      #     name: build-ios-dev
+      #     executor: macos_exec
+      #     platform: ios
+      #     dev: true
+      #     filters: *build-filters
       - build:
-          name: build-ios
+          name: build-android
           executor: macos_exec
-          platform: ios
+          platform: android
+          # filters: *build-filters
           filters: &build-filters
             branches:
               only:
@@ -195,14 +215,3 @@ workflows:
                 - /^bugfix\/\S*$/
                 - /^revert-\S*$/
                 - /^release\/v\d+\.\d+\.\d+$/
-      - build:
-          name: build-ios-dev
-          executor: macos_exec
-          platform: ios
-          dev: true
-          filters: *build-filters
-      - build:
-          name: build-android
-          executor: macos_exec
-          platform: android
-          filters: *build-filters

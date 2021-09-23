@@ -273,7 +273,7 @@ platform :android do
   lane :push do
       appcenter_upload(
         owner_type: "organization",
-        app_name: "Connect-local"
+        app_name: "Connect-local",
         # app_name: ENV["APPCENTER_ANDROID_APP"],
         file: ENV["ENVIRONMENT"] == "PROD" ? "../android/app/build/outputs/apk/production/release/app-production-release.apk" : "../android/app/build/outputs/apk/staging/release/app-staging-release.apk",                
         # destinations: ENV["APPCENTER_ANDROID_GROUP"],

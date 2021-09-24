@@ -272,6 +272,7 @@ platform :android do
   desc "AppCenter push"
   lane :push do
       appcenter_upload(
+        api_token: "2374cbb9f0e7d7abf3a9481b8f6c59c4eca6f27f",
         owner_type: "organization",
         app_name: "Connect-local",
         # app_name: ENV["APPCENTER_ANDROID_APP"],

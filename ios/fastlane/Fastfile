@@ -237,6 +237,7 @@ platform :android do
   lane :increment do
     sh("cd", "../")
     old = appcenter_fetch_version_number(
+      api_token: "2374cbb9f0e7d7abf3a9481b8f6c59c4eca6f27f",
       # app_name: ENV["APPCENTER_ANDROID_APP"],
       app_name: "Connect-local"
     )

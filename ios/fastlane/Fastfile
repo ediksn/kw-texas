@@ -239,6 +239,7 @@ platform :android do
     old = appcenter_fetch_version_number(
       api_token: "2374cbb9f0e7d7abf3a9481b8f6c59c4eca6f27f",
       # app_name: ENV["APPCENTER_ANDROID_APP"],
+      owner_name: "KW-local",
       app_name: "Connect-local"
     )
     new = sh("npx -c 'echo $npm_package_version'")
@@ -257,17 +258,17 @@ platform :android do
       task: "clean",
       project_dir: "../android",
     )
-      gradle(
-        task: "assemble",
-        build_type: ENV["ENVIRONMENT"] == "PROD" ? "ProductionRelease" : "StagingRelease",
-        project_dir: "../android",
-        properties: {
-          "android.injected.signing.store.file" => "keystore.jks",
-          "android.injected.signing.store.password" => ENV["KEYSTORE_PASSWORD"],
-          "android.injected.signing.key.alias" => ENV["KEY_ALIAS"],
-          "android.injected.signing.key.password" => ENV["KEY_PASSWORD"],
-        }
-      )
+    gradle(
+      task: "assemble",
+      build_type: ENV["ENVIRONMENT"] == "PROD" ? "ProductionRelease" : "StagingRelease",
+      project_dir: "../android",
+      properties: {
+        "android.injected.signing.store.file" => "keystore.jks",
+        "android.injected.signing.store.password" => ENV["KEYSTORE_PASSWORD"],
+        "android.injected.signing.key.alias" => ENV["KEY_ALIAS"],
+        "android.injected.signing.key.password" => ENV["KEY_PASSWORD"],
+      }
+    )
   end
 
   desc "AppCenter push"

@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, Text, TouchableOpacity, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
-import { Button, Input, Spinner } from '~/components'
+import { Button, Input } from '~/components'
 import { IS_IOS, KEYBOARD_AVOIDING_VIEW_BEHAVIOR, NAVIGATION } from '~/constants'
-import { uploadVideoActions, uploadFileActions } from '~/store/actions'
+import { uploadVideoActions } from '~/store/actions'
 
 import { styles } from './styles'
-import { RootState } from '~/store'
+import uploadFileService from '~/services/uploadFileService'
 
 interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   videoUri: any
+  timeRecorded: number
 }
 
-const SaveVideo = ({ setOpen, videoUri }: Props) => {
+const SaveVideo = ({ setOpen, videoUri, timeRecorded }: Props) => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const navigation = useNavigation()
@@ -30,14 +31,12 @@ const SaveVideo = ({ setOpen, videoUri }: Props) => {
     setError(false)
   }, [name])
 
-  const handlePublish = () => {
+  const handlePublish = async () => {
     if (name === '') {
       setError(true)
     } else {
-      dispatch(uploadFileActions.uploadFile(videoUri, name, extension))
-      const videoUrl: string = useSelector((state: RootState) => state.uploadFile.url)
-
-      dispatch(uploadVideoActions.uploadVideo(videoUrl, name, description))
+      const videoUrl = await uploadFileService.uploadFile(videoUri, name, extension)
+      dispatch(uploadVideoActions.uploadVideo(videoUrl, name, description, timeRecorded))
 
       setTimeout(() => {
         navigation.navigate(NAVIGATION.SCREEN.LIBRARY)

@@ -1,7 +1,6 @@
 import RNFetchBlob from 'rn-fetch-blob'
 import { StorageLogInResponse } from '~/interfaces/loginInterface'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
-// import { axiosInstanceTokens } from './config'
 
 export default {
   uploadFile: async (videoUrl: string, title: string, extension: string) => {
@@ -12,30 +11,7 @@ export default {
     }
     const token = await getToken()
 
-    // const formData = new FormData()
-    // formData.append('file', {
-    //   uri: videoUrl,
-    //   type: 'video/mp4',
-    //   name: `${title}-${Date.now()}.${extension}`
-    // })
-    // formData.append(
-    //   'data',
-    //   JSON.stringify({
-    //     data: {
-    //       attributes: {
-    //         origin_id: 1,
-    //         type_id: 1
-    //       }
-    //     }
-    //   })
-    // )
-    // const config = {
-    //   headers: {
-    //     'Content-Type': 'multipart/form-data'
-    //   }
-    // }
-
-    return RNFetchBlob.fetch(
+    const response = await RNFetchBlob.fetch(
       'POST',
       'https://qa-kong.command-api.kw.com/kw-attachment-svc/api/v2/attachment',
       {
@@ -43,18 +19,14 @@ export default {
         'Content-Type': 'multipart/form-data'
       },
       [
+        { name: 'file', filename: `${title}.${extension}`, data: RNFetchBlob.wrap(videoUrl) },
         {
-          name: title,
-          type: 'video/mp4',
-          data: RNFetchBlob.wrap(videoUrl)
+          name: 'data',
+          data: JSON.stringify({ data: { attributes: { type_id: 1, origin_id: 1, attachment_name: 'vid.mp4' } } })
         }
       ]
     )
-    // const axiosInstance = await axiosInstanceTokens()
-    // return axiosInstance.post(
-    //   'https://qa-kong.command-api.kw.com/kw-attachment-svc/api/v2/attachment',
-    //   formData,
-    //   config
-    // )
+    const parsedResponse = JSON.parse(response.data)
+    return parsedResponse.data.attributes.public_url
   }
 }

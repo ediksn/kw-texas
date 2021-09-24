@@ -1,7 +1,7 @@
 import { axiosInstanceTokens } from './config'
 
 export default {
-  uploadVideos: async (videoUrl: any, title: string, description: string) => {
+  uploadVideos: async (videoUrl: any, title: string, description: string, timeRecorded: number) => {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/api-connect-scripthub/graphql', {
       query: 'mutation createMeeting($input: MeetingInputType){\n createMeeting(input: $input) {\n id\n}\n}\n',
@@ -13,9 +13,9 @@ export default {
           isSoloScript: true,
           privacy: 0,
           scriptId: 5,
-          timeRecorded: 1,
+          timeRecorded,
           title,
-          videoUrl: videoUrl
+          videoUrl
         }
       }
     })

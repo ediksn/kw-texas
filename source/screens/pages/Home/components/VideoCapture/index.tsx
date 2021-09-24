@@ -44,9 +44,9 @@ const Recording = () => {
 
   const startRecording = async () => {
     try {
-      const promise = cameraRef.current.recordAsync(recordOptions)
       setIsRecording(true)
-      setVideoRecorded(await promise)
+      const promise = await cameraRef.current.recordAsync(recordOptions)
+      setVideoRecorded(promise)
     } catch (err) {
       // handle error
     }
@@ -93,7 +93,11 @@ const Recording = () => {
   return isFocused ? (
     <>
       <Modal isVisible={modalVisible} onBackdropPress={() => setModalVisible(false)}>
-        {videoRecorded && <SaveVideo setOpen={setModalVisible} videoUri={videoRecorded?.uri} />}
+        <>
+          {videoRecorded && (
+            <SaveVideo setOpen={setModalVisible} videoUri={videoRecorded?.uri} timeRecorded={timeInSeconds} />
+          )}
+        </>
       </Modal>
       <RNCamera
         ref={cameraRef}

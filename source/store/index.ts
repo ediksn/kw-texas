@@ -3,7 +3,6 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {
   bmReducer,
-  uploadFileReducer,
   promptVideoReducer,
   loginReducer,
   videoReducer,
@@ -20,8 +19,7 @@ const rootReducer = combineReducers({
   bookmarked: bmReducer,
   home: homeReducer,
   uploadVideo: uploadVideoReducer,
-  usrProfile: usrProfileReducer,
-  uploadFile: uploadFileReducer
+  usrProfile: usrProfileReducer
 })
 
 const middlewares = [thunk]

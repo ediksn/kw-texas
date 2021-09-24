@@ -253,7 +253,7 @@ platform :android do
     if ENV["ENVIRONMENT"] == "PROD"
       sh "sed -i '' 's/applicationId \"com.agent.connect\"/applicationId \"com.kw.agent.connect\"/' #{Dir.pwd}/../../android/app/build.gradle"
     end
-    increment
+    #increment
     gradle(
       task: "clean",
       project_dir: "../android",

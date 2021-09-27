@@ -241,8 +241,8 @@ workflows:
             # - build-ios
             # - build-ios-dev
             - build-android
-          filters:
-            branches:
-              only:
-                - develop
-                - /^release\/v\d+\.\d+\.\d+$/
+          # filters:
+          #   branches:
+          #     only:
+          #       - develop
+          #       - /^release\/v\d+\.\d+\.\d+$/

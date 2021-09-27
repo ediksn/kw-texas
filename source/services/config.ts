@@ -3,7 +3,7 @@ import Config from 'react-native-config'
 import { StorageLogInResponse } from '~/interfaces/loginInterface'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
 
-const getToken = async () => {
+export const getToken = async () => {
   const { LOGIN } = STORAGE_CONSTANTS
   const session: StorageLogInResponse = await Storage.get({ key: LOGIN.SESSION })
   return `${session.token_type} ${session.access_token}`

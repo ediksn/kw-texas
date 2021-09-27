@@ -236,13 +236,13 @@ workflows:
                 - /^revert-\S*$/
                 - /^release\/v\d+\.\d+\.\d+$/
       - push-appcenter:
-        executor: macos_exec
-        requires:
-          # - build-ios
-          # - build-ios-dev
-          - build-android
-        filters:
-          branches:
-            only:
-              - develop
-              - /^release\/v\d+\.\d+\.\d+$/
+          executor: macos_exec
+          requires:
+            # - build-ios
+            # - build-ios-dev
+            - build-android
+          filters:
+            branches:
+              only:
+                - develop
+                - /^release\/v\d+\.\d+\.\d+$/

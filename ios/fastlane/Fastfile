@@ -146,6 +146,7 @@ platform :ios do
   desc "AppCenter push"
   lane :push do
     appcenter_upload(
+      api_token: "15dd6314d3ace2a1f2c24068512dda2a89ca4d58",
       owner_type: "organization",
       app_name: ENV["APPCENTER_IOS_APP"],
       file: "connectmobile.ipa",

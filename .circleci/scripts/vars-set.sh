@@ -17,9 +17,9 @@ cat bash_env
 if [ $PLATFORM == "android" ]; then
     echo ${KEYSTORE_FILE_BASE64} | base64 -d > ios/keystore.jks
     echo ${KEYSTORE_FILE_BASE64} | base64 -d > android/app/keystore.jks
-    echo ${GSP_SA_ANDROID_BASE64} | base64 -d > android/app/google-services.json
+    # echo ${GSP_SA_ANDROID_BASE64} | base64 -d > android/app/google-services.json
 else
-    echo ${GSP_SA_IOS_BASE64} | base64 -d > ios/GoogleService-Info.plist
+    # echo ${GSP_SA_IOS_BASE64} | base64 -d > ios/GoogleService-Info.plist
     echo ${GC_KEYS_BASE64} | base64 -d > ios/gc_keys.json
 fi
 

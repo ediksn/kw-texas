@@ -3,16 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "ENVFILE=.env.development react-native run-android",
-    "android:prod": "ENVFILE=.env.production react-native run-android",
+    "android": "ENVFILE=.env.development react-native run-android --variant=stagingDebug",
+    "android:prod": "ENVFILE=.env.production react-native run-android --variant=productionDebug",
+    "android:release": "cd android && ./gradlew installProductionRelease",
     "ios": "ENVFILE=.env.development react-native run-ios",
     "ios:prod": "ENVFILE=.env.production react-native run-ios",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint source/ --ext .ts,.tsx",
     "storybook": "start-storybook -p 7007",
-    "build-storybook": "build-storybook",
-    "android:release": "react-native run-android --variant=release"
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "*.{ts,tsx}": "eslint --fix --max-warnings=0"

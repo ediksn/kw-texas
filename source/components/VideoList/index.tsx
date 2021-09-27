@@ -6,6 +6,7 @@ import { VideoCard } from '..'
 import { styles } from './styles'
 
 interface Props {
+  ListHeaderComponent?: any
   navigation: any
   onPressNavigateTo: string
   data: any[]
@@ -17,6 +18,7 @@ interface Props {
   onEndReached?: () => void
 }
 const VideoList = ({
+  ListHeaderComponent,
   navigation,
   onPressNavigateTo,
   data,
@@ -43,14 +45,17 @@ const VideoList = ({
           uri: item.videoUrl,
           videoLikes: item.likesDetail.likes,
           saved: item.bookmarked,
-          liked: item.liked
+          liked: item.liked,
+          id: item.id
         })
       }
     />
   )
+
   return (
     <View style={[styles.container, style]}>
       <FlatList
+        ListHeaderComponent={ListHeaderComponent || null}
         testID={testID}
         renderItem={renderVideoComponent}
         data={data}

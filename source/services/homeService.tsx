@@ -3,53 +3,53 @@ export default {
     return [
       {
         id: 1,
-        link: 10,
+        link: 3,
         image: 'blue'
       },
       {
         id: 2,
-        link: 2,
+        link: 8,
         image: 'gray'
       },
       {
         id: 3,
-        link: 6,
+        link: 2,
         image: 'green'
       },
       {
         id: 4,
-        link: 1,
+        link: 7,
         image: 'pink'
       },
       {
         id: 5,
-        link: 9,
+        link: 10,
         image: 'purple'
       },
       {
         id: 6,
-        link: 7,
+        link: 4,
         image: 'purple2'
       },
       {
         id: 7,
-        link: 1,
+        link: 6,
         image: 'red'
       },
       {
         id: 8,
-        link: 3,
-        image: 'teal'
+        link: 9,
+        image: 'yellow'
       },
       {
         id: 9,
-        link: 8,
+        link: 12,
         image: 'teal2'
       },
       {
         id: 10,
-        link: 4,
-        image: 'yellow'
+        link: 10,
+        image: 'teal'
       }
     ]
   }

@@ -26,16 +26,16 @@ export const Home = ({ navigation }: Props) => {
     dispatch(videoActions.getVideos(page))
   }, [])
 
+  const renderPickPrompts = () => <PickPromptSlider navigation={navigation} />
+
   const onEndReached = () => {
     dispatch(videoActions.getVideos(page))
   }
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner isLoading={false}>
-        <PickPromptSlider navigation={navigation} />
-      </Spinner>
       <Spinner isLoading={loading && videos.length === 0}>
         <VideoList
+          ListHeaderComponent={renderPickPrompts}
           testID={videoListComponent}
           navigation={navigation}
           onPressNavigateTo={NAVIGATION.SCREEN.VIDEOPLAYER}

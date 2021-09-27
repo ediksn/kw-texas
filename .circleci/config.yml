@@ -179,6 +179,26 @@ jobs:
             - store_artifacts:
                 path: ~/build/ios/connectmobile-dev.ipa
 
+push-appcenter:
+    executor: << parameters.executor >>
+    parameters:
+      executor:
+        type: executor
+    working_directory: ~/build
+    steps:
+      - checkout
+      - restore_cache: *restore_gem_cache
+      - attach_workspace:
+          at: ~/build
+      - run:
+          name: Import variables from build job
+          command: |
+            cat bash_env >> $BASH_ENV
+      - run:
+          name: Push to AppCenter
+          command: |
+            .circleci/scripts/push-appcenter.sh
+
 workflows:
   build_push:
     jobs:

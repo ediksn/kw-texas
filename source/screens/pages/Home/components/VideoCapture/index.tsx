@@ -24,8 +24,7 @@ const Recording = () => {
     maxduration: 120,
     fps: 30,
     mute: false,
-    quality: 720,
-    codec: 'H264'
+    quality: 720
   }
   const isFocused = useIsFocused()
   const navigation = useNavigation()

@@ -1,9 +1,11 @@
 import RNFetchBlob from 'rn-fetch-blob'
 import Config from 'react-native-config'
+import { Platform } from 'react-native'
 import { getToken } from './config'
 
 export default {
   uploadFile: async (videoUrl: string, title: string, extension: string) => {
+    const realPath = Platform.OS === 'ios' ? videoUrl.replace('file://', '') : videoUrl
     const token = await getToken()
     const url = `${Config.BASE_URL}/kw-attachment-svc/api/v2/attachment`
 
@@ -15,7 +17,7 @@ export default {
         'Content-Type': 'multipart/form-data'
       },
       [
-        { name: 'file', filename: `${title}.${extension}`, data: RNFetchBlob.wrap(videoUrl) },
+        { name: 'file', filename: `${title}.${extension}`, data: RNFetchBlob.wrap(realPath) },
         {
           name: 'data',
           data: JSON.stringify({

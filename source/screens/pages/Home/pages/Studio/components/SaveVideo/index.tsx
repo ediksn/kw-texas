@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, Text, TouchableOpacity, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
-import { Button, Input } from '~/components'
+import { Button, Input, Spinner } from '~/components'
 import { IS_IOS, KEYBOARD_AVOIDING_VIEW_BEHAVIOR, NAVIGATION } from '~/constants'
 import { uploadVideoActions } from '~/store/actions'
 
 import { styles } from './styles'
 import uploadFileService from '~/services/uploadFileService'
+import { RootState } from '~/store'
 
 interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -24,8 +25,15 @@ const SaveVideo = ({ setOpen, videoUri, timeRecorded }: Props) => {
   const [name, setName] = useState('')
   const [error, setError] = useState(false)
   const [description, setDescription] = useState('')
+  const [videoSent, setVideoSent] = useState(false)
+  const loadingVideo = useSelector((state: RootState) => state.uploadVideo.isLoading)
 
-  const extension = 'mp4'
+  const aux = videoUri?.split('.')
+  const extension = aux?.slice(-1).pop()
+
+  useEffect(() => {
+    if (!loadingVideo && videoSent) navigation.navigate(NAVIGATION.SCREEN.LIBRARY)
+  }, [videoSent, loadingVideo])
 
   useEffect(() => {
     setError(false)
@@ -36,11 +44,8 @@ const SaveVideo = ({ setOpen, videoUri, timeRecorded }: Props) => {
       setError(true)
     } else {
       const videoUrl = await uploadFileService.uploadFile(videoUri, name, extension)
+      setVideoSent(true)
       dispatch(uploadVideoActions.uploadVideo(videoUrl, name, description, timeRecorded))
-
-      setTimeout(() => {
-        navigation.navigate(NAVIGATION.SCREEN.LIBRARY)
-      }, 1000)
     }
   }
 
@@ -62,36 +67,38 @@ const SaveVideo = ({ setOpen, videoUri, timeRecorded }: Props) => {
   )
 
   return (
-    <KeyboardAvoidingView behavior={KEYBOARD_AVOIDING_VIEW_BEHAVIOR} keyboardVerticalOffset={IS_IOS ? 50 : 70}>
-      <View style={styles.container}>
-        <Header />
-        <View style={styles.divider} />
-        <Text style={styles.subtitle}>
-          {t(
-            'Add details to finish saving your video. You can choose to publish your recording to all beta participants or keep it private..'
-          )}
-        </Text>
-        <Input
-          title={t('Recording Title')}
-          placeholder={t('Enter text...')}
-          value={name}
-          onChangeText={setName}
-          required
-          error={error}
-          style={styles.input}
-        />
-        <Input
-          title={t('Description')}
-          placeholder={t('Enter text...')}
-          value={description}
-          onChangeText={setDescription}
-          multiline
-          style={styles.input}
-        />
-        <View style={styles.divider} />
-        <Footer />
-      </View>
-    </KeyboardAvoidingView>
+    <Spinner isLoading={loadingVideo}>
+      <KeyboardAvoidingView behavior={KEYBOARD_AVOIDING_VIEW_BEHAVIOR} keyboardVerticalOffset={IS_IOS ? 50 : 70}>
+        <View style={styles.container}>
+          <Header />
+          <View style={styles.divider} />
+          <Text style={styles.subtitle}>
+            {t(
+              'Add details to finish saving your video. You can choose to publish your recording to all beta participants or keep it private..'
+            )}
+          </Text>
+          <Input
+            title={t('Recording Title')}
+            placeholder={t('Enter text...')}
+            value={name}
+            onChangeText={setName}
+            required
+            error={error}
+            style={styles.input}
+          />
+          <Input
+            title={t('Description')}
+            placeholder={t('Enter text...')}
+            value={description}
+            onChangeText={setDescription}
+            multiline
+            style={styles.input}
+          />
+          <View style={styles.divider} />
+          <Footer />
+        </View>
+      </KeyboardAvoidingView>
+    </Spinner>
   )
 }
 

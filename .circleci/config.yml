@@ -179,7 +179,7 @@ jobs:
             - store_artifacts:
                 path: ~/build/ios/connectmobile-dev.ipa
 
-push-appcenter:
+  push-appcenter:
     executor: << parameters.executor >>
     parameters:
       executor:

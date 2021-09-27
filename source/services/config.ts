@@ -11,11 +11,13 @@ const getToken = async () => {
 
 export const axiosInstance = axios.create({
   baseURL: Config.BASE_URL,
+  timeout: 5000,
   headers: { 'Content-Type': 'application/json' }
 })
 
 export const axiosInstanceTokens = async () =>
   axios.create({
     baseURL: Config.BASE_URL,
+    timeout: 5000,
     headers: { 'Content-Type': 'application/json', 'Authorization': await getToken() }
   })

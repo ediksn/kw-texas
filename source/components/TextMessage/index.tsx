@@ -3,7 +3,7 @@ import { Text, View, ViewStyle } from 'react-native'
 
 import { styles } from './styles'
 import { TextType } from '~/constants/theme'
-import { textColors, TextColorsInterface } from '~/functions/textColors'
+import { textColors, TextColorsInterface } from '~/functions'
 
 interface Props {
   message: string

@@ -148,14 +148,14 @@ platform :ios do
     appcenter_upload(
       api_token: "15dd6314d3ace2a1f2c24068512dda2a89ca4d58",
       owner_type: "organization",
-      owner_name: "KW-local", # KWCONN
+      owner_name: "KWCONN",
       app_name: ENV["APPCENTER_IOS_APP"],
       file: "connectmobile.ipa",
       release_notes: changelog
     )
     appcenter_upload(
       owner_type: "organization",
-      owner_name: "KW-local", # KWCONN
+      owner_name: "KWCONN",
       app_name: ENV["APPCENTER_IOS_APP"],
       file: "connectmobile-dev.ipa",
       destinations: ENV["APPCENTER_IOS_GROUP"],
@@ -243,7 +243,7 @@ platform :android do
       # api_token: "2374cbb9f0e7d7abf3a9481b8f6c59c4eca6f27f",
       api_token: ENV["APPCENTER_ANDROID_API_TOKEN"],
       app_name: ENV["APPCENTER_ANDROID_APP"],
-      owner_name: "KW-local", # KWCONN
+      owner_name: "KWCONN",
     )
     new = sh("npx -c 'echo $npm_package_version'")
     version = inc(new:new, old:old["version"])
@@ -280,7 +280,7 @@ platform :android do
         # api_token: "2374cbb9f0e7d7abf3a9481b8f6c59c4eca6f27f",
         api_token: ENV["APPCENTER_ANDROID_API_TOKEN"],
         owner_type: "organization",
-        owner_name: "KW-local", # KWCONN
+        owner_name: "KWCONN",
         app_name: ENV["APPCENTER_ANDROID_APP"],
         file: ENV["ENVIRONMENT"] == "PROD" ? "../android/app/build/outputs/apk/production/release/app-production-release.apk" : "../android/app/build/outputs/apk/staging/release/app-staging-release.apk",                
         destinations: ENV["APPCENTER_ANDROID_GROUP"],

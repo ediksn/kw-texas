@@ -218,16 +218,11 @@ workflows:
       #           - /^bugfix\/\S*$/
       #           - /^revert-\S*$/
       #           - /^release\/v\d+\.\d+\.\d+$/
-      # - build:
-      #     name: build-ios-dev
-      #     executor: macos_exec
-      #     platform: ios
-      #     dev: true
-      #     filters: *build-filters
       - build:
-          name: build-android
+          name: build-ios-dev
           executor: macos_exec
-          platform: android
+          platform: ios
+          dev: true
           # filters: *build-filters
           filters: &build-filters
             branches:
@@ -238,14 +233,19 @@ workflows:
                 - /^bugfix\/\S*$/
                 - /^revert-\S*$/
                 - /^release\/v\d+\.\d+\.\d+$/
+      - build:
+          name: build-android
+          executor: macos_exec
+          platform: android
+          filters: *build-filters
       - push-appcenter:
           executor: macos_exec
           requires:
             # - build-ios
             # - build-ios-dev
             - build-android
-          # filters:
-          #   branches:
-          #     only:
-          #       - develop
-          #       - /^release\/v\d+\.\d+\.\d+$/
+          filters:
+            branches:
+              only:
+                - develop
+                - /^release\/v\d+\.\d+\.\d+$/

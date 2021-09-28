@@ -111,6 +111,7 @@ platform :ios do
         code_signing_identity: "iPhone Developer"
       )
     else
+      puts "entra al else"
       match(
         type: "development",
         readonly: true

@@ -158,9 +158,12 @@ jobs:
                 root: .
                 paths:
                   - bash_env
-                  - android/app/build/outputs/apk/release/app-release.apk
+                  - android/app/build/outputs/apk/production/release/app-production-release.apk
+                  - android/app/build/outputs/apk/staging/release/app-staging-release.apk
             - store_artifacts:
-                path: ~/build/outputs/apk/release/app-release.apk
+                path: ~/build/outputs/apk/production/release/app-production-release.apk
+            - store_artifacts:
+                path: ~/build/outputs/apk/staging/release/app-staging-release.apk
       - when:
           condition:
             equal: [ ios, << parameters.platform >>]

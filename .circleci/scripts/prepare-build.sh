@@ -8,4 +8,4 @@ if [ $PLATFORM == "android" ]; then
     yes | sdkmanager --licenses || if [ $? -ne '141' ]; then exit $?; fi;
 fi
 
-cd ios && bundle install --path bundle
+cd ios && bundle config set path 'vendor/bundle' && bundle install --path bundle

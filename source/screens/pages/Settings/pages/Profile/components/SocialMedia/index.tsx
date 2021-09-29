@@ -18,16 +18,15 @@ interface Props {
 interface PropsSoc {
   title: string
   value: string
-  link: any
 }
 
 export const SocialMedia = ({ children, fb, inst, twt, lkd, google, yt }: Props) => {
   const hasAny = fb || inst || twt || lkd || google || yt
 
-  const Social = ({ title, value, link }: PropsSoc) => (
+  const Social = ({ title, value }: PropsSoc) => (
     <View style={styles.field}>
       <Text style={styles.subtitle}>{title}</Text>
-      <TouchableOpacity style={styles.socialButton} onPress={() => null}>
+      <TouchableOpacity onPress={() => null}>
         <Text style={styles.socialText}>{value}</Text>
       </TouchableOpacity>
     </View>
@@ -45,7 +44,6 @@ export const SocialMedia = ({ children, fb, inst, twt, lkd, google, yt }: Props)
         {!!google && <Social title='Google Plus' value='@google_plus' link={google} />}
       </>
     )
-  } else {
-    return null
   }
+  return null
 }

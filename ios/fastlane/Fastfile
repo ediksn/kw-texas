@@ -1,77 +1,291 @@
-fastlane_require 'dotenv'
+lane :inc do |options|
+  if ENV["ENVIRONMENT"] == "PROD"
+    major, minor, patch = ENV["CIRCLE_BRANCH"].sub("release/v","").split(".").map(&:to_i)
+  else
+    major, minor = options[:new].split(".").map(&:to_i)
+    mj, mn, patch = options[:old].split(".").map(&:to_i)
 
-default_platform(:ios)
-
-platform :ios do
-
-  desc "Submit a new Release Build"
-  lane :distribute_release do |options|
-    VERSION = options[:version]
-    NOTES = options[:notes]
-    FIREBASE_TOKEN = options[:firebase_token]
-    LIFE_CYCLE = options[:life_cycle]
-    TESTERS = options[:testers]
-    GROUPS = options[:groups]
-    PROD_RELEASE = LIFE_CYCLE === 'prod'
-    APP_ID_FIREBASE = {
-      'dev' => "1:237851896241:ios:7fc1af02b48a5920cb7590",
-    }
-
-    ios_set_version(
-      version: VERSION,
-      xcodeproj: "connectmobile.xcodeproj"
-    )
-
-    ios_set_build_number(
-      xcodeproj: "connectmobile.xcodeproj"
-    )
-
-    update_code_signing_settings(
-      path: "connectmobile.xcodeproj",
-      use_automatic_signing: true
-    )
-
-    clear_derived_data
-
-    build_app(
-      scheme: "connectmobile",
-      workspace: "connectmobile.xcworkspace",
-      clean: true,
-      export_method: "#{PROD_RELEASE ? 'app-store' : 'ad-hoc'}",
-      export_options: {
-        provisioningProfiles: { 
-          "com.connectmobile" => "#{PROD_RELEASE ? 'App Store distribution (CNT)' : 'App Hoc distribution (CNT)'}"
-        }
-      },
-      xcargs: "-allowProvisioningUpdates"
-    )
-
-    if (!PROD_RELEASE)
-      firebase_app_distribution(
-        app: APP_ID_FIREBASE[LIFE_CYCLE],
-        testers: TESTERS,
-        groups: GROUPS,
-        release_notes: NOTES,
-        firebase_cli_token: FIREBASE_TOKEN
-      )
+    if major > mj or minor > mn
+      patch = 0
     else
-      app_store_connect_api_key(
-        key_id: "?",
-        issuer_id: "?",
-        key_filepath: "./fastlane/AuthKey_???.p8",
-        duration: 1200, # optional (maximum 1200)
-        in_house: false # optional but may be required if using match/sigh
-      )
-
-      # Automatically loads Actions.lane_context[SharedValues::APP_STORE_CONNECT_API_KEY]
-      # pilot
-
-      # sync_code_signing(type: "appstore")
-
-      upload_to_testflight(
-        email: "e_morales-itaik@kw.com"
-      )
-      # upload_to_app_store
+      patch += 1
     end
   end
+
+  sh "COMMIT_HASH=$(git rev-parse HEAD) BUILD_VERSION=#{major}.#{minor}.#{patch} BUILD_TIME=$(date -u) envsubst < ../../.env.dist > ../../.env && cat ../../.env"
+  "#{major}.#{minor}.#{patch}"
+end
+
+lane :changelog do
+  changelog_from_git_commits(
+    commits_count: 1,
+    merge_commit_filtering: "include_merges",
+    quiet: true
+  )
+end
+
+platform :ios do
+  before_all do
+    setup_circle_ci
+  end
+
+  desc "IOS increment"
+  lane :increment do
+    old = appcenter_fetch_version_number(
+      app_name: ENV["APPCENTER_IOS_APP"],
+    )
+    new = get_version_number_from_xcodeproj(
+      xcodeproj: "connectmobile.xcodeproj",
+      target: "connectmobile",
+    )
+    version = inc(new:new, old:old["version"])
+
+    increment_version_number_in_xcodeproj(
+      xcodeproj: "connectmobile.xcodeproj",
+      target: "connectmobile",
+      version_number: version
+    )
+    increment_build_number_in_xcodeproj(
+      xcodeproj: "connectmobile.xcodeproj",
+      target: "connectmobile",
+      build_number: old["build_number"]
+    )
+    increment_build_number_in_xcodeproj(
+      xcodeproj: "connectmobile.xcodeproj",
+      target: "connectmobile"
+    )
+  end
+
+  desc "IOS package AppStore"
+  lane :package do
+    if ENV["ENVIRONMENT"] == "PROD"
+      update_app_identifier(
+        xcodeproj: "connectmobile.xcodeproj",
+        plist_path: "connectmobile/Info.plist",
+        app_identifier: "com.kw.agent.connect"
+      )
+      match(
+        app_identifier: "com.kw.agent.connect",
+        readonly: true
+      )
+      update_project_provisioning(
+        xcodeproj: "connectmobile.xcodeproj",
+        profile: ENV["sigh_com.kw.agent.connect_appstore_profile-path"],
+        target_filter: "connectmobile",
+        build_configuration: "Release"
+      )
+    else
+      match(
+        readonly: true
+      )
+    end
+    increment
+    cocoapods
+    gym(
+      export_method: "app-store",
+      scheme: "connectmobile",
+      clean: true,
+      silent: true,
+      output_name: "connectmobile.ipa"
+    )
+  end
+
+  desc "IOS package Development"
+  lane :packagedev do
+    if ENV["ENVIRONMENT"] == "PROD"
+      update_app_identifier(
+        xcodeproj: "connectmobile.xcodeproj",
+        plist_path: "connectmobile/Info.plist",
+        app_identifier: "com.kw.agent.connect"
+      )
+      match(
+        app_identifier: "com.kw.agent.connect",
+        type: "development",
+        readonly: true
+      )
+      update_project_provisioning(
+        xcodeproj: "connectmobile.xcodeproj",
+        profile: ENV["sigh_com.kw.agent.connect_development_profile-path"],
+        target_filter: "connectmobile",
+        build_configuration: "Release",
+        code_signing_identity: "iPhone Developer"
+      )
+    else
+      match(
+        type: "development",
+        readonly: true
+      )
+      update_project_provisioning(
+        xcodeproj: "connectmobile.xcodeproj",
+        profile: ENV["sigh_kellerwilliams.connect-mobile.staging_development_profile-path"],
+        target_filter: "connectmobile",
+        build_configuration: "Release",
+        code_signing_identity: "iPhone Developer"
+      )
+    end
+    increment
+    cocoapods
+    gym(
+      export_method: "development",
+      scheme: "connectmobile",
+      clean: true,
+      silent: true,
+      output_name: "connectmobile-dev.ipa"
+    )
+  end
+
+  desc "IOS build"
+  lane :build do
+    if ENV["DEV"] == "true"
+      packagedev
+    else
+      package
+    end
+  end
+
+  desc "AppCenter push"
+  lane :push do
+    appcenter_upload(
+      api_token: "15dd6314d3ace2a1f2c24068512dda2a89ca4d58",
+      owner_type: "organization",
+      owner_name: "KWCONN",
+      app_name: ENV["APPCENTER_IOS_APP"],
+      file: "connectmobile.ipa",
+      release_notes: changelog
+    )
+    appcenter_upload(
+      owner_type: "organization",
+      owner_name: "KWCONN",
+      app_name: ENV["APPCENTER_IOS_APP"],
+      file: "connectmobile-dev.ipa",
+      destinations: ENV["APPCENTER_IOS_GROUP"],
+      release_notes: changelog
+    )
+  end
+
+  desc "Retrieve TestFlight Feedback"
+  lane :connect_feedback do |options|
+    fastlane_require 'spaceship'
+    fastlane_require 'time'
+
+    Spaceship::Tunes.login
+    Spaceship::Tunes.select_team
+
+    puts "Retrieve TestFlight Beta Feedback"
+    puts "usage: fastlane ios connect_feedback [options]"
+    puts "  options"
+    puts "    build_number:n"
+    puts "      If specified, only return feedback for the specified build number"
+    puts ""
+    puts "    after:timestamp"
+    puts "      If specified, only feedback after the given timestamp will be returned"
+    puts "" 
+
+    # Gets app
+    app = Spaceship::ConnectAPI::App.find("com.kw.agent.connect")
+    # app = Spaceship::ConnectAPI.get_app(app_id: 1486597251).first
+
+    # Gets feedback for an app (default includes screenshots and tester info)
+    puts "app: #{app}"
+
+    if options[:build_number]
+      puts "filter build number = #{options[:build_number]}"
+    end
+
+    after = nil
+
+    if options[:after]
+      after = Time.parse(options[:after]).iso8601
+      puts "filter feedback > #{after}"
+    end
+
+    feedbacks = app.get_beta_feedback
+
+    # Iterate over beta tester feedback items
+    feedbacks.each do |feedback|
+      next if options[:build_number] && options[:build_number] != feedback.build.version
+      next if after && feedback.timestamp < after
+
+      puts ""
+      puts "Timestamp: #{feedback.timestamp}"
+      puts "Comment: #{feedback.comment}"
+      puts "Name: #{feedback.tester.first_name} #{feedback.tester.last_name}"
+      puts "Email: #{feedback.tester.email}"
+      puts "Build: #{feedback.build.version}"
+      puts "Device: #{feedback.device_model}"
+      puts "OS Version: #{feedback.os_version}"
+      # puts "Connection Status: #{feedback.connection_status}"
+      puts "Locale: #{feedback.locale}"
+      
+
+      # Iterate over feedback screenshots
+      feedback.screenshots.each do |screenshot|
+
+        # screenshot.image_assets is an array of different resolults of a screenshots
+        screenshot.image_assets.each do |image|
+          puts "Screenshot #{image["width"]}x#{image["height"]}: #{image["url"]}"
+        end
+      end
+    end
+  end
+
+end
+
+platform :android do
+  before_all do
+    setup_circle_ci
+  end
+
+  desc "Android increment"
+  lane :increment do
+    sh("cd", "../")
+    old = appcenter_fetch_version_number(
+      # api_token: "2374cbb9f0e7d7abf3a9481b8f6c59c4eca6f27f",
+      api_token: ENV["APPCENTER_ANDROID_API_TOKEN"],
+      app_name: ENV["APPCENTER_ANDROID_APP"],
+      owner_name: "KWCONN",
+    )
+    new = sh("npx -c 'echo $npm_package_version'")
+    version = inc(new:new, old:old["version"])
+
+    sh("npm", "version", version, "--no-git-tag-version", "--allow-same-version")
+  end
+
+  desc "Android build"
+  lane :build do
+    if ENV["ENVIRONMENT"] == "PROD"
+      sh "sed -i '' 's/applicationId \"com.agent.connect\"/applicationId \"com.kw.agent.connect\"/' #{Dir.pwd}/../../android/app/build.gradle"
+    end
+    increment
+    gradle(
+      task: "clean",
+      project_dir: "../android",
+    )
+    gradle(
+      task: "assemble",
+      build_type: ENV["ENVIRONMENT"] == "PROD" ? "ProductionRelease" : "StagingRelease",
+      project_dir: "../android",
+      properties: {
+        "android.injected.signing.store.file" => "keystore.jks",
+        "android.injected.signing.store.password" => ENV["KEYSTORE_PASSWORD"],
+        "android.injected.signing.key.alias" => ENV["KEY_ALIAS"],
+        "android.injected.signing.key.password" => ENV["KEY_PASSWORD"],
+      }
+    )
+  end
+
+  desc "AppCenter push"
+  lane :push do
+      appcenter_upload(
+        # api_token: "2374cbb9f0e7d7abf3a9481b8f6c59c4eca6f27f",
+        api_token: ENV["APPCENTER_ANDROID_API_TOKEN"],
+        owner_type: "organization",
+        owner_name: "KWCONN",
+        app_name: ENV["APPCENTER_ANDROID_APP"],
+        file: ENV["ENVIRONMENT"] == "PROD" ? "../android/app/build/outputs/apk/production/release/app-production-release.apk" : "../android/app/build/outputs/apk/staging/release/app-staging-release.apk",                
+        destinations: ENV["APPCENTER_ANDROID_GROUP"],
+        release_notes: changelog
+      )
+  end
+
 end

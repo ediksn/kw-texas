@@ -20,6 +20,8 @@ export const Login = () => {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [errorFlag, setErrorFlag] = useState(false)
+  const [usernameEmptyFlag, setUsernameEmptyFlag] = useState(false)
+  const [passwordEmptyFlag, setPasswordEmptyFlag] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const error: ErrorInterface = useSelector((state: RootState) => state.login.error)
 
@@ -30,6 +32,8 @@ export const Login = () => {
       setLoading(false)
     } else {
       setErrorFlag(true)
+      if (username === '') setUsernameEmptyFlag(true)
+      if (password === '') setPasswordEmptyFlag(true)
       setErrorMessage(null)
     }
   }
@@ -43,6 +47,8 @@ export const Login = () => {
 
   useEffect(() => {
     setErrorFlag(false)
+    setUsernameEmptyFlag(false)
+    setPasswordEmptyFlag(false)
   }, [username, password])
 
   return (
@@ -53,6 +59,7 @@ export const Login = () => {
             testID={usernameInput}
             title={t('Username')}
             required
+            empty={usernameEmptyFlag}
             error={errorFlag}
             value={username}
             onChangeText={setUsername}
@@ -62,6 +69,7 @@ export const Login = () => {
             title={t('Password')}
             type={FORM.FIELDS_TYPES.PASSWORD}
             required
+            empty={passwordEmptyFlag}
             error={errorFlag}
             value={password}
             onChangeText={setPassword}

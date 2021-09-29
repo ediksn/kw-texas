@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Spinner, VideoList } from '~/components'
 import { VideoInterface } from '~/interfaces/videoInterfaces'
 import { RootState } from '~/store/index'
-import { bookmarkedActions } from '~/store/actions'
+import { bookmarkedActions, videoActions } from '~/store/actions'
 
 import { styles } from './styles'
 import { NAVIGATION } from '~/constants'
@@ -33,6 +33,10 @@ export const Bookmarked = ({ navigation }: Props) => {
     dispatch(bookmarkedActions.getVideosBm(page))
   }
 
+  const postBookmarked = (libraryId: number, videoId: number, bookmarked: boolean) => {
+    dispatch(videoActions.bookmarkVideo(libraryId, videoId, !bookmarked))
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Spinner isLoading={loading && videos.length === 0}>
@@ -43,6 +47,7 @@ export const Bookmarked = ({ navigation }: Props) => {
           data={videos}
           keyExtractor={(item: VideoInterface) => item.id.toString()}
           refreshing={loading}
+          postBookmarked={postBookmarked}
           onRefresh={onRefresh}
           onEndReached={onEndReached}
         />

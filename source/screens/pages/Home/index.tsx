@@ -18,6 +18,7 @@ export const Home = ({ navigation }: Props) => {
   const videos: VideoInterface[] = useSelector((state: RootState) => state.library.searchScriptMeeting)
   const loading: boolean = useSelector((state: RootState) => state.library.isLoading)
   const page: number = useSelector((state: RootState) => state.library.page)
+
   const onRefresh = () => {
     dispatch(videoActions.refreshVideos())
   }
@@ -31,6 +32,11 @@ export const Home = ({ navigation }: Props) => {
   const onEndReached = () => {
     dispatch(videoActions.getVideos(page))
   }
+
+  const postBookmarked = (libraryId: number, videoId: number, bookmarked: boolean) => {
+    dispatch(videoActions.bookmarkVideo(libraryId, videoId, !bookmarked))
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Spinner isLoading={loading && videos.length === 0}>
@@ -42,6 +48,7 @@ export const Home = ({ navigation }: Props) => {
           data={videos}
           keyExtractor={(item: VideoInterface) => item.id.toString()}
           refreshing={loading}
+          postBookmarked={postBookmarked}
           onRefresh={onRefresh}
           onEndReached={onEndReached}
         />

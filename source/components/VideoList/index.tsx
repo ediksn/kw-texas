@@ -41,12 +41,8 @@ const VideoList = ({
       tags={item.scripts[0].hashtags}
       onPress={() =>
         navigation.navigate(onPressNavigateTo, {
-          title: item.title,
-          uri: item.videoUrl,
-          videoLikes: item.likesDetail.likes,
-          saved: item.bookmarked,
-          liked: item.liked,
-          id: item.id
+          id: item.id,
+          videos: data
         })
       }
     />

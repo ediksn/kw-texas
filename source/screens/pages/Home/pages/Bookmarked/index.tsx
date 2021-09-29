@@ -17,7 +17,7 @@ interface Props {
 
 export const Bookmarked = ({ navigation }: Props) => {
   const dispatch = useDispatch()
-  const videos: VideoInterface[] = useSelector((state: RootState) => state.bookmarked.bookmarkedVideos)
+  const videos: VideoInterface[] = useSelector((state: RootState) => state.bookmarked.searchScriptMeeting)
   const loading: boolean = useSelector((state: RootState) => state.bookmarked.isLoading)
   const page: number = useSelector((state: RootState) => state.bookmarked.page)
 
@@ -37,6 +37,7 @@ export const Bookmarked = ({ navigation }: Props) => {
     <SafeAreaView style={styles.container}>
       <Spinner isLoading={loading && videos.length === 0}>
         <VideoList
+          testID='bookmarked-videolist'
           navigation={navigation}
           onPressNavigateTo={NAVIGATION.SCREEN.VIDEOPLAYER}
           data={videos}

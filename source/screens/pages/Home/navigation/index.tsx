@@ -17,6 +17,7 @@ const TopTabNav = () => {
   return (
     <TopTabNavigator
       initialRouteName={NAVIGATION.SCREEN.LIBRARY}
+      swipeEnabled={false}
       tabBarOptions={{
         activeTintColor: theme.darkGreenColor,
         inactiveTintColor: theme.darkGrey,

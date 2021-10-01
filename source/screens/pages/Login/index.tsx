@@ -23,6 +23,8 @@ export const Login = () => {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [errorFlag, setErrorFlag] = useState(false)
+  const [usernameEmptyFlag, setUsernameEmptyFlag] = useState(false)
+  const [passwordEmptyFlag, setPasswordEmptyFlag] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const error: ErrorInterface = useSelector((state: RootState) => state.login.error)
 
@@ -33,6 +35,8 @@ export const Login = () => {
       setLoading(false)
     } else {
       setErrorFlag(true)
+      if (username === '') setUsernameEmptyFlag(true)
+      if (password === '') setPasswordEmptyFlag(true)
       setErrorMessage(null)
     }
   }
@@ -46,6 +50,8 @@ export const Login = () => {
 
   useEffect(() => {
     setErrorFlag(false)
+    setUsernameEmptyFlag(false)
+    setPasswordEmptyFlag(false)
   }, [username, password])
 
   const NoConnection = () => (

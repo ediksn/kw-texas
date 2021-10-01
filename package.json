@@ -26,6 +26,7 @@
     "@jest/create-cache-key-function": "^27.0.6",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "^0.1.11",
+    "@react-native-community/netinfo": "^6.0.2",
     "@react-navigation/bottom-tabs": "^5.11.11",
     "@react-navigation/material-top-tabs": "5.3.15",
     "@react-navigation/native": "^5.9.4",

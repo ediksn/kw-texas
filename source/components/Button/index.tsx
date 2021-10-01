@@ -13,6 +13,7 @@ interface Props {
   type?: string
   viewStyle?: ViewStyle
   textStyle?: TextStyle
+  disabled?: boolean
   onPress?: () => void
 }
 
@@ -24,6 +25,7 @@ const Button = ({
   type = theme.buttons.types.CONTAINED,
   viewStyle,
   textStyle,
+  disabled,
   onPress
 }: Props) => {
   const { backgroundTypeStyle, textTypeStyle } = stylesOfType[type](THEME)
@@ -42,6 +44,7 @@ const Button = ({
     <TouchableOpacity
       testID={testID}
       activeOpacity={0.6}
+      disabled={disabled}
       style={[styles.containerView, viewStyle, backgroundTypeStyle]}
       onPress={onPress}
     >

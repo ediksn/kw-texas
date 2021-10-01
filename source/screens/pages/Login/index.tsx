@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNetInfo } from '@react-native-community/netinfo'
-
 import { Button, Input, Spinner } from '~/components'
 import { forgotButton, IS_IOS, passwordInput, signinButton, theme, usernameInput } from '~/constants'
 import { styles } from './styles'
@@ -73,6 +72,7 @@ export const Login = () => {
               title={t('Username')}
               required
               disabled={!netInfo.isConnected || false}
+              empty={usernameEmptyFlag}
               error={errorFlag}
               value={username}
               onChangeText={setUsername}
@@ -83,6 +83,7 @@ export const Login = () => {
               type={FORM.FIELDS_TYPES.PASSWORD}
               required
               disabled={!netInfo.isConnected || false}
+              empty={passwordEmptyFlag}
               error={errorFlag}
               value={password}
               onChangeText={setPassword}

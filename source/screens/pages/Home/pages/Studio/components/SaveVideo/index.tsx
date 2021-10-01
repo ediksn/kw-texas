@@ -83,6 +83,7 @@ const SaveVideo = ({ setOpen, videoUri, timeRecorded }: Props) => {
             value={name}
             onChangeText={setName}
             required
+            empty={error}
             error={error}
             style={styles.input}
           />

@@ -17,6 +17,7 @@ interface Props {
   onChangeText?: React.Dispatch<React.SetStateAction<string>>
   disabled?: boolean
   required?: boolean
+  empty?: boolean
   type?: string
   error?: boolean
   multiline?: boolean
@@ -31,6 +32,7 @@ const Input = ({
   disabled,
   required,
   type = FORM.FIELDS_TYPES.TEXT,
+  empty,
   error,
   multiline,
   style
@@ -43,7 +45,7 @@ const Input = ({
 
   const errorComponent = (
     <>
-      {required && error && (
+      {required && empty && (
         <View style={styles.title}>
           <Text style={styles.error}>{title}</Text>
           <Text style={styles.error}> {t('is required')}</Text>

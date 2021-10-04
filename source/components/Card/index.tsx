@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
 import mockPost from './__mocks__/mockPost'
@@ -6,7 +6,8 @@ import avatarMock from './__mocks__/avatarNinaRoyals.png'
 import threeDotsMock from './__mocks__/threeDots.png'
 
 const Card = () => {
-  const { author, date } = mockPost
+  const { author, date, content } = mockPost
+  const [showMore, setShowMore] = useState(false)
 
   const Header = () => (
     <View style={styles.header}>
@@ -21,9 +22,21 @@ const Card = () => {
     </View>
   )
 
+  const Content = () => (
+    <View style={styles.content}>
+      <Text numberOfLines={showMore ? content.length : 5} ellipsizeMode='tail'>
+        {content}
+      </Text>
+      <TouchableOpacity onPress={() => setShowMore(!showMore)}>
+        <Text style={styles.showMore}>{showMore ? 'Less' : 'Show'} More</Text>
+      </TouchableOpacity>
+    </View>
+  )
+
   return (
     <View style={styles.container}>
       <Header />
+      <Content />
     </View>
   )
 }

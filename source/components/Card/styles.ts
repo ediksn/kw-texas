@@ -30,5 +30,10 @@ export const styles = StyleSheet.create({
   threeDots: {
     height: verticalScale(26),
     width: scale(26)
+  },
+  content: {},
+  showMore: {
+    fontWeight: 'bold',
+    color: theme.texts.green
   }
 })

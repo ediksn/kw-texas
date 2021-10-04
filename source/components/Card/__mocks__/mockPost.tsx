@@ -1,4 +1,4 @@
-const post = {
+const mockPost = {
   id: null,
   author: {
     name: 'Nina Royals',
@@ -17,4 +17,4 @@ const post = {
   }
 }
 
-export default post
+export default mockPost

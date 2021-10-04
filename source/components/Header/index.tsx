@@ -1,29 +1,21 @@
 /** @format */
 
 import React, { ReactNode } from 'react'
-import { Text, TouchableHighlight, View } from 'react-native'
+import { Text, TouchableHighlight, View, ViewStyle } from 'react-native'
 
 import { styles } from './styles'
 
 interface Props {
-  title: string
-  backgroundColor: string
+  title?: string
   statusBarHeight?: number
   leftButton?: ReactNode
   rightButton?: ReactNode
   onClickLeft?: () => void
   onClickRight?: () => void
+  style?: ViewStyle
 }
 
-const Header = ({
-  title,
-  backgroundColor,
-  statusBarHeight,
-  leftButton,
-  rightButton,
-  onClickLeft,
-  onClickRight
-}: Props) => {
+const Header = ({ title, statusBarHeight, leftButton, rightButton, onClickLeft, onClickRight, style }: Props) => {
   const LeftButton = () => (
     <>
       {leftButton && (
@@ -58,7 +50,7 @@ const Header = ({
     </>
   )
   return (
-    <View style={[styles.container, { paddingTop: statusBarHeight, backgroundColor }]}>
+    <View style={[styles.container, style, { paddingTop: statusBarHeight }]}>
       <LeftButton />
       <Title />
       <RightButton />

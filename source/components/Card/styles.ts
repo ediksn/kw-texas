@@ -35,5 +35,9 @@ export const styles = StyleSheet.create({
   showMore: {
     fontWeight: 'bold',
     color: theme.texts.green
+  },
+  buttons: {
+    flexDirection: 'row',
+    alignItems: 'center'
   }
 })

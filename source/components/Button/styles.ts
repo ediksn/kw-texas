@@ -16,6 +16,15 @@ export const styles = StyleSheet.create({
   messageView: {
     alignSelf: 'center'
   },
+  messageWithIconView: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  icon: {
+    height: verticalScale(24),
+    width: scale(24),
+    marginRight: scale(10)
+  },
   messageText: {
     fontWeight: 'bold'
   }

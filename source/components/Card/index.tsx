@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
+import threeDotsMock from 'assets/images/threeDots.png'
+import likeButton from 'assets/images/like_btn.png'
+import commentButton from 'assets/images/comment_btn.png'
+import shareButton from 'assets/images/share_btn.png'
 import { styles } from './styles'
 import mockPost from './__mocks__/mockPost'
 import avatarMock from './__mocks__/avatarNinaRoyals.png'
-import threeDotsMock from './__mocks__/threeDots.png'
+import { Button } from '~/components'
+import { theme } from '~/constants'
 
 const Card = () => {
   const { author, date, content } = mockPost
@@ -33,10 +38,19 @@ const Card = () => {
     </View>
   )
 
+  const Buttons = () => (
+    <View style={styles.buttons}>
+      <Button type={theme.buttons.types.TEXT} icon={likeButton} />
+      <Button type={theme.buttons.types.TEXT} icon={commentButton} />
+      <Button type={theme.buttons.types.TEXT} icon={shareButton} />
+    </View>
+  )
+
   return (
     <View style={styles.container}>
       <Header />
       <Content />
+      <Buttons />
     </View>
   )
 }

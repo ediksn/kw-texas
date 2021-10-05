@@ -18,7 +18,7 @@ import SettingsStackScreen from './pages/Settings/navigation'
 import Recording from '~/screens/pages/Conversations/components/VideoCapture'
 import { RootState } from '~/store'
 import { Spinner } from '~/components'
-import { getUsrProfileActions, loginActions } from '~/store/actions'
+import { loginActions } from '~/store/actions'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
 import { theme } from '~/constants/theme'
 import Profile from './pages/Settings/pages/Profile'
@@ -109,14 +109,10 @@ const RootNavigation = () => {
   const { LOGIN } = STORAGE_CONSTANTS
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
-  const usr: any = useSelector((state: RootState) => state.login.user)
-  const usrId: number = usr?.kwuid
 
   useLayoutEffect(() => {
-    dispatch(getUsrProfileActions.getUsrProfile(usrId))
     setTimeout(async () => {
       const storageIsLogged = await Storage.isLogged()
-
       if (storageIsLogged) {
         const storageLogin = await Storage.get({ key: LOGIN.SESSION })
         dispatch(loginActions.setUser(storageLogin.id_token))

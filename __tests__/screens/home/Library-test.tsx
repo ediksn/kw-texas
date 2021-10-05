@@ -2,7 +2,7 @@ import React from 'react'
 import { act, render } from '@testing-library/react-native'
 import * as reactRedux from 'react-redux'
 import createTestStore from '../../../__mocks__/store'
-import { Home } from '~/screens/pages'
+import { Conversations } from '~/screens/pages'
 import { videoActions } from '~/store/actions'
 import { videoCardComponent, videoListComponent } from '~/constants'
 
@@ -23,7 +23,7 @@ describe('Library test', () => {
     store = createTestStore()
     component = render(
       <reactRedux.Provider store={store}>
-        <Home navigation={{ goBack, navigate, setOptions }} />
+        <Conversations navigation={{ goBack, navigate, setOptions }} />
       </reactRedux.Provider>
     )
     await act(() => promise)

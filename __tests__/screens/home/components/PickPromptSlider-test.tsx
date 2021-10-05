@@ -1,7 +1,7 @@
 import React from 'react'
 import { act, render } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
-import PickPromptSlider from '~/screens/pages/Home/components/PickPromptSlider'
+import PickPromptSlider from '~/screens/pages/Conversations/components/PickPromptSlider'
 import { homeActions } from '~/store/actions'
 import createTestStore from '../../../../__mocks__/store'
 import { pickPrompts } from '~/constants/testIds'

@@ -3,10 +3,10 @@
 import React from 'react'
 import { SafeAreaView, Text } from 'react-native'
 
-export const Home = () => {
+export const Notifications = () => {
   return (
     <SafeAreaView>
-      <Text>Home</Text>
+      <Text>Notifications</Text>
     </SafeAreaView>
   )
 }

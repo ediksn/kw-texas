@@ -9,11 +9,15 @@ const mockPost = {
   date: '4 hours ago',
   likes: {
     data: [],
-    number: 0
+    number: 13
   },
   comments: {
     data: [],
     number: 5
+  },
+  shares: {
+    data: [],
+    number: 2
   }
 }
 

@@ -12,7 +12,7 @@ import { Button } from '~/components'
 import { theme } from '~/constants'
 
 const Card = () => {
-  const { author, date, content, comments } = mockPost
+  const { author, date, content, likes, comments, shares } = mockPost
   const [showMore, setShowMore] = useState(false)
   const { t } = useTranslation()
 
@@ -37,9 +37,19 @@ const Card = () => {
       <TouchableOpacity onPress={() => setShowMore(!showMore)}>
         <Text style={styles.showMore}>{showMore ? 'Less' : 'Show'} More</Text>
       </TouchableOpacity>
-      <Text style={styles.comments}>
-        {comments.number} {t('comments')}
-      </Text>
+      <View style={styles.infoNumbers}>
+        <Text style={styles.infoNumber}>
+          {likes.number} {t('likes')}
+        </Text>
+        <View style={styles.commentsSharesBox}>
+          <Text style={[styles.infoNumber, styles.comments]}>
+            {comments.number} {t('comments')}
+          </Text>
+          <Text style={styles.infoNumber}>
+            {shares.number} {t('shares')}
+          </Text>
+        </View>
+      </View>
     </View>
   )
 

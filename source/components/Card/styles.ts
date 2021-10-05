@@ -35,9 +35,20 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: theme.texts.green
   },
+  infoNumbers: {
+    margin: verticalScale(10),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  commentsSharesBox: {
+    flexDirection: 'row'
+  },
+  infoNumber: {
+    color: theme.texts.secondary
+  },
   comments: {
-    alignSelf: 'flex-end',
-    margin: verticalScale(10)
+    marginRight: scale(10)
   },
   horizontalLine: {
     width: '100%',

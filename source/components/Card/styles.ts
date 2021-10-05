@@ -31,13 +31,25 @@ export const styles = StyleSheet.create({
     height: verticalScale(26),
     width: scale(26)
   },
-  content: {},
   showMore: {
     fontWeight: 'bold',
     color: theme.texts.green
   },
+  comments: {
+    alignSelf: 'flex-end',
+    margin: verticalScale(10)
+  },
+  horizontalLine: {
+    width: '100%',
+    height: verticalScale(1),
+    backgroundColor: '#444444'
+  },
   buttons: {
+    justifyContent: 'space-around',
     flexDirection: 'row',
     alignItems: 'center'
+  },
+  button: {
+    width: scale(70)
   }
 })

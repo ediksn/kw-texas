@@ -40,6 +40,7 @@
     "@storybook/react-native-server": "^5.3.23",
     "@types/jest": "^26.0.24",
     "@types/react-native-snap-carousel": "^3.8.4",
+    "@types/react-native-vector-icons": "^6.4.9",
     "axios": "^0.21.1",
     "eslint-plugin-react-native": "^3.11.0",
     "i18next": "^20.3.2",
@@ -68,6 +69,7 @@
     "react-native-splash-screen": "^3.2.0",
     "react-native-svg-transformer": "^0.14.3",
     "react-native-tab-view": "^3.1.1",
+    "react-native-vector-icons": "^8.1.0",
     "react-native-video": "^5.1.1",
     "react-navigation": "^4.4.4",
     "react-redux": "^7.2.4",
@@ -122,5 +124,6 @@
       "json",
       "node"
     ]
-  }
+  },
+  "rnpm": { "assets": [ "assets/fonts" ] }
 }

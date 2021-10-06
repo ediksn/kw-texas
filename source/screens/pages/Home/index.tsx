@@ -13,7 +13,7 @@ export const Home = () => {
   const usrId: number = usr?.kwuid
 
   useEffect(() => {
-    if (!usrProfile) dispatch(getUsrProfileActions.getUsrProfile(usrId))
+    if (usrProfile.length === 0) dispatch(getUsrProfileActions.getUsrProfile(usrId))
   }, [])
 
   return (

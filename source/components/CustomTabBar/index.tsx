@@ -1,34 +1,25 @@
 import React, { memo } from 'react'
-import { View, Image, ImageSourcePropType } from 'react-native'
+import { View, Image } from 'react-native'
+import { createIconSetFromIcoMoon } from 'react-native-vector-icons'
+import Icomoon from 'assets/selection.json'
 import { styles } from './styles'
+import { theme } from '~/constants'
+
+const Icon = createIconSetFromIcoMoon(Icomoon)
 
 interface Props {
   focused: boolean
-  focusedIcon?: ImageSourcePropType
-  unfocusedIcon?: ImageSourcePropType
+  name?: string
   imageURL?: string
 }
-const CustomTabBar = ({ focused, focusedIcon, unfocusedIcon, imageURL }: Props) => {
-  const Icon = () => {
-    if (focusedIcon && unfocusedIcon)
-      return (
-        <>
-          {focused ? (
-            <Image source={focusedIcon} style={styles(focused).icon} />
-          ) : (
-            <Image source={unfocusedIcon} style={styles(focused).icon} />
-          )}
-        </>
-      )
-    return <></>
-  }
+const CustomTabBar = ({ name, focused, imageURL }: Props) => {
   return (
     <View style={styles(focused).container}>
       <View style={styles(focused).selectedBar} />
-      {imageURL ? (
-        <Image style={styles(focused).photo} resizeMode='cover' resizeMethod='resize' source={{ uri: imageURL }} />
+      {name ? (
+        <Icon name={name} size={20} color={focused ? theme.activeColor : theme.inActiveColor} />
       ) : (
-        <Icon />
+        <Image style={styles(focused).photo} resizeMode='cover' resizeMethod='resize' source={{ uri: imageURL }} />
       )}
     </View>
   )

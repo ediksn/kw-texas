@@ -3,14 +3,6 @@ import { NavigationContainer } from '@react-navigation/native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
 import { useSelector, useDispatch } from 'react-redux'
-import HomeUnfocused from 'assets/images/homeUnfocused.png'
-import HomeFocused from 'assets/images/homeFocused.png'
-import CommunityFocused from 'assets/images/communityFocused.png'
-import CommunityUnfocused from 'assets/images/communityUnfocused.png'
-import MenuFocused from 'assets/images/menuFocused.png'
-import MenuUnfocused from 'assets/images/menuUnfocused.png'
-import NotificationsFocused from 'assets/images/notificationsFocused.png'
-import NotificationsUnfocused from 'assets/images/notificationsUnfocused.png'
 import { NAVIGATION } from '~/constants/navigation'
 import { StackNavigator, TabNavigator, TabScreen, StackScreen } from './components/Navigators'
 import { Home, Login, Notifications, Groups } from './pages'
@@ -41,36 +33,28 @@ const TabNavigation = () => {
     >
       <TabScreen
         options={{
-          tabBarIcon: ({ focused }) => (
-            <CustomTabBar focused={focused} focusedIcon={HomeFocused} unfocusedIcon={HomeUnfocused} />
-          )
+          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='home-icon' />
         }}
         name={NAVIGATION.SCREEN.HOME}
         component={Home}
       />
       <TabScreen
         options={{
-          tabBarIcon: ({ focused }) => (
-            <CustomTabBar focused={focused} focusedIcon={CommunityFocused} unfocusedIcon={CommunityUnfocused} />
-          )
+          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='groups-icon' />
         }}
         name={NAVIGATION.SCREEN.GROUPS}
         component={Groups}
       />
       <TabScreen
         options={{
-          tabBarIcon: ({ focused }) => (
-            <CustomTabBar focused={focused} focusedIcon={NotificationsFocused} unfocusedIcon={NotificationsUnfocused} />
-          )
+          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='notifications-icon' />
         }}
         name={NAVIGATION.SCREEN.NOTIFICATIONS}
         component={Notifications}
       />
       <TabScreen
         options={{
-          tabBarIcon: ({ focused }) => (
-            <CustomTabBar focused={focused} focusedIcon={MenuFocused} unfocusedIcon={MenuUnfocused} />
-          )
+          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='more-icon' />
         }}
         name={NAVIGATION.SCREEN.SETTINGS}
         component={SettingsStackScreen}

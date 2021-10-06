@@ -17,7 +17,7 @@ exports[`renders correctly 1`] = `
       Object {
         "alignItems": "center",
         "aspectRatio": 1,
-        "backgroundColor": "#3D424D",
+        "backgroundColor": "#CCCCCC",
         "borderRadius": 30,
         "height": 60,
         "justifyContent": "center",

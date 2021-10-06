@@ -1,28 +1,20 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { ScrollView, Text, View } from 'react-native'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from '~/store'
 
 import Header from './components/Header'
 import Field from './components/Field'
-import getUsrProfileActions from '~/store/actions/usrProfileActions'
 import { SocialMedia } from './components/SocialMedia'
 
 import { styles } from './styles'
 import { Spinner } from '~/components'
 
 const Profile = () => {
-  const dispatch = useDispatch()
-  const usr: any = useSelector((state: RootState) => state.login.user)
-  const usrId: number = usr.kwuid
   const dataState: any = useSelector((state: RootState) => state.usrProfile)
   const data: any = useSelector((state: RootState) => state.usrProfile.profiles)
   const serviceAreas = data[0]?.service_area?.split(';').filter((w: any) => w) || []
   const hasServiceAreas = useMemo(() => !!serviceAreas.length, [serviceAreas])
-
-  useEffect(() => {
-    dispatch(getUsrProfileActions.getUsrProfile(usrId))
-  }, [])
 
   if (dataState.isLoading) {
     return (

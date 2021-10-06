@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react-native'
 
-import Recording from '~/screens/pages/Home/components/VideoCapture'
+import Recording from '~/screens/pages/Conversations/components/VideoCapture'
 
 storiesOf('Recording', module).add('Recording', () => <Recording />)

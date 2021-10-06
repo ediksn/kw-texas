@@ -11,7 +11,7 @@ import avatarMock from './__mocks__/avatarNinaRoyals.png'
 import { Button } from '~/components'
 import { theme } from '~/constants'
 
-const Card = () => {
+const Post = () => {
   const { author, date, content, likes, comments, shares } = mockPost
   const [showMore, setShowMore] = useState(false)
   const { t } = useTranslation()
@@ -69,4 +69,4 @@ const Card = () => {
   )
 }
 
-export default Card
+export default Post

@@ -3,7 +3,6 @@ import { View, Image } from 'react-native'
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons'
 import Icomoon from 'assets/selection.json'
 import { styles } from './styles'
-import { theme } from '~/constants'
 
 const Icon = createIconSetFromIcoMoon(Icomoon)
 
@@ -17,7 +16,7 @@ const CustomTabBar = ({ name, focused, imageURL }: Props) => {
     <View style={styles(focused).container}>
       <View style={styles(focused).selectedBar} />
       {name ? (
-        <Icon name={name} size={20} color={focused ? theme.activeColor : theme.inActiveColor} />
+        <Icon name={name} size={20} style={styles(focused).icon} />
       ) : (
         <Image style={styles(focused).photo} resizeMode='cover' resizeMethod='resize' source={{ uri: imageURL }} />
       )}

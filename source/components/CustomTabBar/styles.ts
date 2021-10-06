@@ -19,7 +19,8 @@ export const styles = (focused: boolean) =>
       marginBottom: '10%'
     },
     icon: {
-      marginTop: '2.5%',
+      color: focused ? theme.activeColor : theme.inActiveColor,
+      marginTop: '5%',
       height: 23,
       width: 22.5
     },

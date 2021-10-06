@@ -2,12 +2,24 @@ import React from 'react'
 import { act, render } from '@testing-library/react-native'
 import * as reactRedux from 'react-redux'
 import createTestStore from '../../../__mocks__/store'
-import { Home } from '~/screens/pages'
+import { Conversations } from '~/screens/pages'
 import { videoActions } from '~/store/actions'
 import { videoCardComponent, videoListComponent } from '~/constants'
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
+}))
+
+jest.mock('@react-native-community/netinfo', () => ({
+  useNetInfo: () => ({ t: (key: any) => key })
+}))
+
+jest.mock('rn-fetch-blob', () => ({
+  fetch: () => ({ t: (key: any) => key })
+}))
+
+jest.mock('@react-navigation/native', () => ({
+  useFocusEffect: () => ({ t: (key: any) => key })
 }))
 
 const goBack = jest.fn()
@@ -23,7 +35,7 @@ describe('Library test', () => {
     store = createTestStore()
     component = render(
       <reactRedux.Provider store={store}>
-        <Home navigation={{ goBack, navigate, setOptions }} />
+        <Conversations navigation={{ goBack, navigate, setOptions }} />
       </reactRedux.Provider>
     )
     await act(() => promise)

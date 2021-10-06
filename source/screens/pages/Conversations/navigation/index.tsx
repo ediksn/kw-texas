@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { ms } from 'react-native-size-matters'
 import { StackNavigator, StackScreen, TopTabNavigator, TopTabScreen } from '~/screens/components/Navigators'
 
-import { Home } from '~/screens/pages'
+import { Conversations } from '~/screens/pages'
 import { NAVIGATION, theme } from '~/constants'
 import { VideoPlayer } from '../VideoPlayer'
 import { Studio, Bookmarked } from '../pages'
@@ -31,7 +31,7 @@ const TopTabNav = () => {
         }
       }}
     >
-      <TopTabScreen options={{ title: t('Library') }} name={NAVIGATION.SCREEN.LIBRARY} component={Home} />
+      <TopTabScreen options={{ title: t('Library') }} name={NAVIGATION.SCREEN.LIBRARY} component={Conversations} />
       <TopTabScreen options={{ title: t('Studio') }} name={NAVIGATION.SCREEN.STUDIO} component={Studio} />
       <TopTabScreen options={{ title: t('Bookmarked') }} name={NAVIGATION.SCREEN.BOOKMARKED} component={Bookmarked} />
     </TopTabNavigator>

@@ -1,8 +1,8 @@
-/** @format */
-
 import React, { useEffect } from 'react'
-import { SafeAreaView, Text } from 'react-native'
+import { SafeAreaView, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import { styles } from './styles'
+import Post from '~/components/Post'
 import { RootState } from '~/store'
 import { getUsrProfileActions } from '~/store/actions'
 
@@ -18,7 +18,9 @@ export const Home = () => {
 
   return (
     <SafeAreaView>
-      <Text>Home</Text>
+      <View style={styles.container}>
+        <Post />
+      </View>
     </SafeAreaView>
   )
 }

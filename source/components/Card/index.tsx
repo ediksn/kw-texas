@@ -38,16 +38,12 @@ const Card = () => {
         <Text style={styles.showMore}>{showMore ? 'Less' : 'Show'} More</Text>
       </TouchableOpacity>
       <View style={styles.infoNumbers}>
-        <Text style={styles.infoNumber}>
-          {likes.number} {t('likes')}
-        </Text>
+        <Text style={styles.infoNumber}>{likes.number > 0 ? `${likes.number} ${t('likes')}` : ''}</Text>
         <View style={styles.commentsSharesBox}>
           <Text style={[styles.infoNumber, styles.comments]}>
-            {comments.number} {t('comments')}
+            {comments.number > 0 ? `${comments.number} ${t('comments')}` : ''}
           </Text>
-          <Text style={styles.infoNumber}>
-            {shares.number} {t('shares')}
-          </Text>
+          <Text style={styles.infoNumber}>{shares.number > 0 ? `${shares.number} ${t('shares')}` : ''}</Text>
         </View>
       </View>
     </View>

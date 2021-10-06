@@ -4,8 +4,9 @@ import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: moderateScale(10)
+    padding: moderateScale(10),
+    elevation: 4,
+    backgroundColor: '#FFFFFF'
   },
   header: {
     flexDirection: 'row',

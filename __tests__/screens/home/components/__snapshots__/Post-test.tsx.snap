@@ -1,0 +1,426 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "elevation": 4,
+        "padding": 15.714285714285714,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      resizeMode="center"
+      source={
+        Object {
+          "testUri": "../../../source/components/Post/__mocks__/avatarNinaRoyals.png",
+        }
+      }
+      style={
+        Object {
+          "height": 117.70588235294117,
+          "width": 128.57142857142856,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "flex": 4,
+          "paddingHorizontal": 15.714285714285714,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontSize": 22,
+            "fontWeight": "bold",
+          }
+        }
+      >
+        NINA ROYALS
+      </Text>
+      <Text>
+        4 hours ago
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Image
+        resizeMode="center"
+        source={
+          Object {
+            "testUri": "../../../assets/images/threeDots.png",
+          }
+        }
+        style={
+          Object {
+            "height": 51.00588235294117,
+            "width": 55.714285714285715,
+          }
+        }
+      />
+    </View>
+  </View>
+  <View>
+    <Text
+      ellipsizeMode="tail"
+      numberOfLines={5}
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus leo, fringilla at elit sed, tincidunt viverra dui. Nullam dignissim mi et tincidunt luctus. Nullam ut eleifend diam. Phasellus faucibus aliquam leo, vitae scelerisque nunc dignissim in. Maecenas vulputate quam id metus efficitur tristique. Ut maximus varius enim eleifend feugiat. Ut at ultricies lorem, eget molestie risus. Nam ultricies tempus sem quis fermentum. Sed a eros ac metus scelerisque hendrerit. Ut nec urna aliquam, sagittis eros non, bibendum risus. Ut congue eleifend velit eu dictum. Praesent eu mi vitae leo pulvinar ullamcorper. Sed tortor felis, tristique vitae lacinia sit amet, pellentesque ut felis. Nulla finibus erat libero, eu sodales metus auctor at. Duis iaculis leo vitae odio mollis, feugiat aliquam erat eleifend. Mauris quis dui at lorem tincidunt viverra nec vel mauris. Pellentesque laoreet dapibus purus, eget vehicula nunc scelerisque quis. Donec ac nibh sed erat consequat sagittis ut ut odio. Curabitur tempor vitae neque vel gravida. Morbi varius ligula nec tellus accumsan, quis pharetra ante dictum. Nulla pharetra ac ex id cursus. Vivamus ut lacinia nunc. Maecenas nec orci risus.
+    </Text>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#4797A5",
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Show
+         More
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "margin": 19.61764705882353,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#6C727E",
+          }
+        }
+      >
+        13 likes
+      </Text>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#6C727E",
+              },
+              Object {
+                "marginRight": 21.428571428571427,
+              },
+            ]
+          }
+        >
+          5 comments
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#6C727E",
+            }
+          }
+        >
+          2 shares
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#444444",
+        "height": 1.9617647058823529,
+        "width": "100%",
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-around",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 7.857142857142857,
+          "borderWidth": 0,
+          "elevation": 0,
+          "height": 58.85294117647059,
+          "justifyContent": "center",
+          "margin": 15.714285714285714,
+          "opacity": 1,
+          "width": 150,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <Image
+          resizeMode="center"
+          source={
+            Object {
+              "testUri": "../../../assets/images/likes_btn.png",
+            }
+          }
+          style={
+            Object {
+              "height": 47.08235294117647,
+              "marginRight": 21.428571428571427,
+              "width": 51.42857142857143,
+            }
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "fontWeight": "bold",
+              },
+              Object {
+                "color": undefined,
+              },
+              Object {
+                "color": "#4797A5",
+              },
+              Object {
+                "fontSize": 34.57142857142857,
+              },
+            ]
+          }
+        >
+          Like
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 7.857142857142857,
+          "borderWidth": 0,
+          "elevation": 0,
+          "height": 58.85294117647059,
+          "justifyContent": "center",
+          "margin": 15.714285714285714,
+          "opacity": 1,
+          "width": 150,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <Image
+          resizeMode="center"
+          source={
+            Object {
+              "testUri": "../../../assets/images/comment_btn.png",
+            }
+          }
+          style={
+            Object {
+              "height": 47.08235294117647,
+              "marginRight": 21.428571428571427,
+              "width": 51.42857142857143,
+            }
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "fontWeight": "bold",
+              },
+              Object {
+                "color": undefined,
+              },
+              Object {
+                "color": "#4797A5",
+              },
+              Object {
+                "fontSize": 34.57142857142857,
+              },
+            ]
+          }
+        >
+          Comment
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 7.857142857142857,
+          "borderWidth": 0,
+          "elevation": 0,
+          "height": 58.85294117647059,
+          "justifyContent": "center",
+          "margin": 15.714285714285714,
+          "opacity": 1,
+          "width": 150,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <Image
+          resizeMode="center"
+          source={
+            Object {
+              "testUri": "../../../assets/images/share_btn.png",
+            }
+          }
+          style={
+            Object {
+              "height": 47.08235294117647,
+              "marginRight": 21.428571428571427,
+              "width": 51.42857142857143,
+            }
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "fontWeight": "bold",
+              },
+              Object {
+                "color": undefined,
+              },
+              Object {
+                "color": "#4797A5",
+              },
+              Object {
+                "fontSize": 34.57142857142857,
+              },
+            ]
+          }
+        >
+          Share
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

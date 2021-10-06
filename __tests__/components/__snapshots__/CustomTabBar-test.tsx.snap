@@ -29,10 +29,15 @@ exports[`renders correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "#006C84",
+          "color": undefined,
           "fontSize": 20,
         },
-        undefined,
+        Object {
+          "color": "#006C84",
+          "height": 23,
+          "marginTop": "5%",
+          "width": 22.5,
+        },
         Object {
           "fontFamily": "icomoon",
           "fontStyle": "normal",

@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons'
-import Icomoon from 'assets/selection.json'
+import Icomoon from '~/selection.json'
 
 interface Props {
   name: string

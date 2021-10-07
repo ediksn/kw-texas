@@ -2,7 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { useSelector } from 'react-redux'
-import { Header } from '~/components'
+import { Header, Icon } from '~/components'
 import { NAVIGATION } from '~/constants'
 import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
 import { RootState } from '~/store'
@@ -23,12 +23,19 @@ const HomeHeader = () => {
   )
 
   const rightButton = (
-    <Image style={styles.photo} resizeMode='cover' resizeMethod='resize' source={{ uri: usrData?.photo_url }} />
+    <View style={styles.rightButtonContainer}>
+      <TouchableOpacity style={styles.search}>
+        <Icon name='search-icon' size={20} />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.chat}>
+        <Icon name='chat-icon' size={20} />
+      </TouchableOpacity>
+    </View>
   )
 
   return {
     header: () => {
-      return <Header leftButton={leftButton} rightButton={rightButton} />
+      return <Header style={styles.container} leftButton={leftButton} rightButton={rightButton} />
     }
   }
 }

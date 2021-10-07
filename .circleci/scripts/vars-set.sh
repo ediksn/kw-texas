@@ -24,4 +24,4 @@ else
 fi
 
 # envsubst < sentry.properties.dist > $SENTRY_PROPERTIES_PATH
-envsubst < .env.dist > .env
+envsubst < .env.dist > .env.production

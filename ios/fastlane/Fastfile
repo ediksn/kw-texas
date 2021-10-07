@@ -12,7 +12,8 @@ lane :inc do |options|
     end
   end
 
-  sh "COMMIT_HASH=$(git rev-parse HEAD) BUILD_VERSION=#{major}.#{minor}.#{patch} BUILD_TIME=$(date -u) envsubst < ../../.env.dist > ../../.env && cat ../../.env"
+  # sh "COMMIT_HASH=$(git rev-parse HEAD) BUILD_VERSION=#{major}.#{minor}.#{patch} BUILD_TIME=$(date -u) envsubst < ../../.env.dist > ../../.env && cat ../../.env"
+  sh "COMMIT_HASH=$(git rev-parse HEAD) BUILD_VERSION=#{major}.#{minor}.#{patch} BUILD_TIME=$(date -u)"
   "#{major}.#{minor}.#{patch}"
 end
 

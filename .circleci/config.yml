@@ -249,4 +249,3 @@ workflows:
               only:
                 - develop
                 - /^release\/v\d+\.\d+\.\d+$/
-                - /^bugfix\/\S*$/

@@ -54,7 +54,7 @@ const TabNavigation = () => {
       />
       <TabScreen
         options={{
-          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='more-icon' />
+          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='moremenu-icon' />
         }}
         name={NAVIGATION.SCREEN.SETTINGS}
         component={SettingsStackScreen}

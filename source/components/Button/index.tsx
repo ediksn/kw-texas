@@ -1,9 +1,10 @@
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Text, TextStyle, TouchableOpacity, View, ViewStyle, Image } from 'react-native'
+import { Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 import { styles, stylesOfType } from './styles'
 import { theme } from '~/constants'
+import { Icon } from '~/components'
 
 interface Props {
   testID?: string
@@ -37,7 +38,11 @@ const Button = ({
 
     return (
       <View style={[styles.messageView, icon && styles.messageWithIconView]}>
-        {icon && <Image style={styles.icon} resizeMode='center' source={icon} />}
+        {icon && (
+          <View style={styles.icon}>
+            <Icon name={icon.name} size={icon.size || 20} color={icon.color} />
+          </View>
+        )}
         <Text style={[styles.messageText, { color: textStyle?.color }, textTypeStyle, { fontSize }]}>{t(message)}</Text>
       </View>
     )

@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import threeDotsMock from 'assets/images/threeDots.png'
-import likesButton from 'assets/images/likes_btn.png'
-import commentButton from 'assets/images/comment_btn.png'
-import shareButton from 'assets/images/share_btn.png'
 import { useTranslation } from 'react-i18next'
 import { styles } from './styles'
 import mockPost from './__mocks__/mockPost'
@@ -53,9 +50,33 @@ const Post = () => {
 
   const Buttons = () => (
     <View style={styles.buttons}>
-      <Button message={t('Like')} type={theme.buttons.types.TEXT} icon={likesButton} viewStyle={styles.button} />
-      <Button message={t('Comment')} type={theme.buttons.types.TEXT} icon={commentButton} viewStyle={styles.button} />
-      <Button message={t('Share')} type={theme.buttons.types.TEXT} icon={shareButton} viewStyle={styles.button} />
+      <Button
+        message={t('Like')}
+        type={theme.buttons.types.TEXT}
+        icon={{
+          name: 'like-icon',
+          color: theme.texts.green
+        }}
+        viewStyle={styles.button}
+      />
+      <Button
+        message={t('Comment')}
+        type={theme.buttons.types.TEXT}
+        icon={{
+          name: 'comment-icon',
+          color: theme.texts.green
+        }}
+        viewStyle={styles.button}
+      />
+      <Button
+        message={t('Share')}
+        type={theme.buttons.types.TEXT}
+        icon={{
+          name: 'share-icon',
+          color: theme.texts.green
+        }}
+        viewStyle={styles.button}
+      />
     </View>
   )
 

@@ -1,16 +1,15 @@
 import React, { memo } from 'react'
-import { Image } from 'react-native'
+import { createIconSetFromIcoMoon } from 'react-native-vector-icons'
+import Icomoon from 'assets/selection.json'
 
-import { styles } from './styles'
-import { imageSource } from './imageEnum'
-
-interface IconType {
-  route: string
-  color: string
+interface Props {
+  name: string
+  size?: number
+  color?: string
 }
 
-const Icon = ({ route, color }: IconType) => {
-  return <Image source={imageSource[route]} style={[styles.icon, { tintColor: color }]} />
-}
+const IcoMoon = createIconSetFromIcoMoon(Icomoon)
+
+const Icon = ({ name, size = 10, color = '#000000' }: Props) => <IcoMoon name={name} size={size} style={{ color }} />
 
 export default memo(Icon)

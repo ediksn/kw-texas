@@ -232,13 +232,7 @@ exports[`renders correctly 1`] = `
           ]
         }
       >
-        <Image
-          resizeMode="center"
-          source={
-            Object {
-              "testUri": "../../../assets/images/likes_btn.png",
-            }
-          }
+        <View
           style={
             Object {
               "height": 47.08235294117647,
@@ -246,7 +240,30 @@ exports[`renders correctly 1`] = `
               "width": 51.42857142857143,
             }
           }
-        />
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": undefined,
+                  "fontSize": 20,
+                },
+                Object {
+                  "color": "#4797A5",
+                },
+                Object {
+                  "fontFamily": "icomoon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
         <Text
           style={
             Array [
@@ -308,13 +325,7 @@ exports[`renders correctly 1`] = `
           ]
         }
       >
-        <Image
-          resizeMode="center"
-          source={
-            Object {
-              "testUri": "../../../assets/images/comment_btn.png",
-            }
-          }
+        <View
           style={
             Object {
               "height": 47.08235294117647,
@@ -322,7 +333,30 @@ exports[`renders correctly 1`] = `
               "width": 51.42857142857143,
             }
           }
-        />
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": undefined,
+                  "fontSize": 20,
+                },
+                Object {
+                  "color": "#4797A5",
+                },
+                Object {
+                  "fontFamily": "icomoon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
         <Text
           style={
             Array [
@@ -384,13 +418,7 @@ exports[`renders correctly 1`] = `
           ]
         }
       >
-        <Image
-          resizeMode="center"
-          source={
-            Object {
-              "testUri": "../../../assets/images/share_btn.png",
-            }
-          }
+        <View
           style={
             Object {
               "height": 47.08235294117647,
@@ -398,7 +426,30 @@ exports[`renders correctly 1`] = `
               "width": 51.42857142857143,
             }
           }
-        />
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": undefined,
+                  "fontSize": 20,
+                },
+                Object {
+                  "color": "#4797A5",
+                },
+                Object {
+                  "fontFamily": "icomoon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
         <Text
           style={
             Array [

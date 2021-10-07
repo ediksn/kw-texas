@@ -30,5 +30,11 @@
   "There was an issue logging you in, please try again": "Hubo un problema iniciando sesion, por favor intente nuevamente",
   "Could not lead the video": "No se pudo cargar el video",
   "No internet connection":"No hay conexión a internet",
-  "Username or password is invalid": "Usuario o contraseña incorrecta"
+  "Username or password is invalid": "Usuario o contraseña incorrecta",
+  "likes": "me gustas",
+  "comments": "comentarios",
+  "shares": "compartidos",
+  "Like": "Me gusta",
+  "Comment": "Comentar",
+  "Share": "Compartir"
 }

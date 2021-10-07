@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { View, Image } from 'react-native'
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons'
-import Icomoon from 'assets/selection.json'
+import Icomoon from '~/selection.json'
 import { styles } from './styles'
 
 const Icon = createIconSetFromIcoMoon(Icomoon)

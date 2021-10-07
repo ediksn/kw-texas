@@ -30,10 +30,15 @@ const Header = ({ title, statusBarHeight, leftButton, rightButton, onClickLeft, 
       )}
     </>
   )
+
   const Title = () => (
-    <View style={styles.textContainer}>
-      <Text style={styles.text}>{title}</Text>
-    </View>
+    <>
+      {title && (
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>{title}</Text>
+        </View>
+      )}
+    </>
   )
   const RightButton = () => (
     <>

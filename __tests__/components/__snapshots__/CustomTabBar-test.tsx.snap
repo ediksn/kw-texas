@@ -36,6 +36,7 @@ exports[`renders correctly 1`] = `
           "color": "#006C84",
           "height": 23,
           "marginTop": "5%",
+          "paddingLeft": "2%",
           "width": 22.5,
         },
         Object {

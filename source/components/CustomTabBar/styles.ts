@@ -22,7 +22,8 @@ export const styles = (focused: boolean) =>
       color: focused ? theme.activeColor : theme.inActiveColor,
       marginTop: '5%',
       height: 23,
-      width: 22.5
+      width: 22.5,
+      paddingLeft: '2%'
     },
     photo: {
       aspectRatio: 1,

@@ -27,7 +27,7 @@ export const styles = (focused: boolean) =>
     photo: {
       aspectRatio: 1,
       borderRadius: 30,
-      marginTop: '5%',
+      marginTop: '3.5%',
       height: 23,
       width: 23
     }

@@ -3,13 +3,13 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import threeDotsMock from 'assets/images/threeDots.png'
 import { useTranslation } from 'react-i18next'
 import { styles } from './styles'
-import mockPost from './__mocks__/mockPost'
 import avatarMock from './__mocks__/avatarNinaRoyals.png'
 import { Button } from '~/components'
 import { theme } from '~/constants'
+import { PostInterface } from '~/interfaces/postInterface'
 
-const Post = () => {
-  const { author, date, content, likes, comments, shares } = mockPost
+const Post = ({ post }: { post: PostInterface }) => {
+  const { author, date, content, likes, comments, shares } = post
   const [showMore, setShowMore] = useState(false)
   const { t } = useTranslation()
 
@@ -17,7 +17,7 @@ const Post = () => {
     <View style={styles.header}>
       <Image style={styles.avatar} resizeMode='center' source={avatarMock} />
       <View style={styles.info}>
-        <Text style={styles.name}>{author.name.toUpperCase()}</Text>
+        <Text style={styles.name}>{author?.name.toUpperCase()}</Text>
         <Text>{date}</Text>
       </View>
       <TouchableOpacity onPress={() => null}>
@@ -35,12 +35,10 @@ const Post = () => {
         <Text style={styles.showMore}>{showMore ? 'Less' : 'Show'} More</Text>
       </TouchableOpacity>
       <View style={styles.infoNumbers}>
-        <Text style={styles.infoNumber}>{likes.number > 0 ? `${likes.number} ${t('likes')}` : ''}</Text>
+        <Text style={styles.infoNumber}>{likes > 0 ? `${likes} ${t('likes')}` : ''}</Text>
         <View style={styles.commentsSharesBox}>
-          <Text style={[styles.infoNumber, styles.comments]}>
-            {comments.number > 0 ? `${comments.number} ${t('comments')}` : ''}
-          </Text>
-          <Text style={styles.infoNumber}>{shares.number > 0 ? `${shares.number} ${t('shares')}` : ''}</Text>
+          <Text style={[styles.infoNumber, styles.comments]}>{comments > 0 ? `${comments} ${t('comments')}` : ''}</Text>
+          <Text style={styles.infoNumber}>{shares > 0 ? `${shares} ${t('shares')}` : ''}</Text>
         </View>
       </View>
     </View>

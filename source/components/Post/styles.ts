@@ -6,11 +6,13 @@ export const styles = StyleSheet.create({
   container: {
     padding: moderateScale(10),
     elevation: 4,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#FFFFFF',
+    marginBottom: verticalScale(10)
   },
   header: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: verticalScale(10)
   },
   avatar: {
     height: verticalScale(60),

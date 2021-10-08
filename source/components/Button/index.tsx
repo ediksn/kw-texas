@@ -29,7 +29,7 @@ const Button = ({
   textStyle,
   disabled,
   onPress,
-  icon
+  icon = { name: '', size: 20, color: '#000000' }
 }: Props) => {
   const { backgroundTypeStyle, textTypeStyle } = stylesOfType[type](THEME)
 
@@ -40,7 +40,7 @@ const Button = ({
       <View style={[styles.messageView, icon && styles.messageWithIconView]}>
         {icon && (
           <View style={styles.icon}>
-            <Icon name={icon.name} size={icon.size || 20} color={icon.color} />
+            <Icon name={icon.name} size={icon.size} color={icon.color} />
           </View>
         )}
         <Text style={[styles.messageText, { color: textStyle?.color }, textTypeStyle, { fontSize }]}>{t(message)}</Text>

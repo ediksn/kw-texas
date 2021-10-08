@@ -11,6 +11,15 @@ import { PostInterface } from '~/interfaces/postInterface'
 
 const Post = ({ post }: { post: PostInterface }) => {
   const { created_at, created_by, content, likes_count, replies_count } = post
+
+  const getAvatar = () => {
+    const { avatar } = created_by
+
+    if (avatar.includes('//avatar')) return `https://avatar${avatar.split('//avatar')[1]}`
+
+    return avatar
+  }
+
   const author = `${created_by.first_name.toUpperCase()} ${created_by.last_name.toUpperCase()}`
   const date = moment(created_at).fromNow()
   const shares = 0
@@ -19,7 +28,7 @@ const Post = ({ post }: { post: PostInterface }) => {
 
   const Header = () => (
     <View style={styles.header}>
-      <Image style={styles.avatar} resizeMode='center' source={{ uri: created_by.photo_url }} />
+      <Image style={styles.avatar} resizeMode='cover' source={{ uri: getAvatar() }} />
       <View style={styles.info}>
         <Text style={styles.name}>{author}</Text>
         <Text>{date}</Text>
@@ -91,8 +100,10 @@ const Post = ({ post }: { post: PostInterface }) => {
 
   return (
     <View style={[styles.container]}>
-      <Header />
-      <Content />
+      <View style={styles.body}>
+        <Header />
+        <Content />
+      </View>
       <HorizontalLine />
       <Buttons />
     </View>

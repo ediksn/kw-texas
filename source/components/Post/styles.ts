@@ -4,7 +4,6 @@ import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   container: {
-    padding: moderateScale(10),
     elevation: 4,
     backgroundColor: '#FFFFFF',
     marginBottom: verticalScale(10)
@@ -15,8 +14,9 @@ export const styles = StyleSheet.create({
     marginBottom: verticalScale(10)
   },
   avatar: {
-    height: verticalScale(60),
-    width: scale(60)
+    height: verticalScale(45),
+    width: scale(40),
+    borderRadius: moderateScale(20)
   },
   info: {
     flex: 4,
@@ -52,6 +52,9 @@ export const styles = StyleSheet.create({
   },
   comments: {
     marginRight: scale(10)
+  },
+  body: {
+    padding: moderateScale(10)
   },
   horizontalLine: {
     width: '100%',

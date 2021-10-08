@@ -8,7 +8,6 @@ exports[`renders correctly 1`] = `
         "backgroundColor": "#FFFFFF",
         "elevation": 4,
         "marginBottom": 19.61764705882353,
-        "padding": 15.714285714285714,
       },
     ]
   }
@@ -16,127 +15,105 @@ exports[`renders correctly 1`] = `
   <View
     style={
       Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "marginBottom": 19.61764705882353,
+        "padding": 15.714285714285714,
       }
     }
   >
-    <Image
-      resizeMode="center"
-      source={
-        Object {
-          "uri": "https://storage.googleapis.com/kwconnect-core-qa-cd67/uploads/profile/photo_60e2b87c8b895.jpg",
-        }
-      }
-      style={
-        Object {
-          "height": 117.70588235294117,
-          "width": 128.57142857142856,
-        }
-      }
-    />
-    <View
-      style={
-        Object {
-          "flex": 4,
-          "paddingHorizontal": 15.714285714285714,
-        }
-      }
-    >
-      <Text
-        style={
-          Object {
-            "fontSize": 22,
-            "fontWeight": "bold",
-          }
-        }
-      >
-        IRENE MURPHY
-      </Text>
-      <Text>
-        2 months ago
-      </Text>
-    </View>
-    <View
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
-    >
-      <Image
-        resizeMode="center"
-        source={
-          Object {
-            "testUri": "../../../assets/images/threeDots.png",
-          }
-        }
-        style={
-          Object {
-            "height": 51.00588235294117,
-            "width": 55.714285714285715,
-          }
-        }
-      />
-    </View>
-  </View>
-  <View>
-    <Text
-      ellipsizeMode="tail"
-      numberOfLines={5}
-    >
-      Do you like food?
-    </Text>
     <View
       style={
         Object {
           "alignItems": "center",
           "flexDirection": "row",
-          "justifyContent": "space-between",
-          "margin": 19.61764705882353,
+          "marginBottom": 19.61764705882353,
         }
       }
     >
-      <Text
-        style={
+      <Image
+        resizeMode="cover"
+        source={
           Object {
-            "color": "#6C727E",
+            "uri": "https://storage.googleapis.com/kwconnect-core-qa-cd67/uploads/profile/photo_60e2b87c8b895.jpg",
           }
         }
-      >
-        
-      </Text>
+        style={
+          Object {
+            "borderRadius": 31.428571428571427,
+            "height": 88.27941176470588,
+            "width": 85.71428571428571,
+          }
+        }
+      />
       <View
         style={
           Object {
-            "flexDirection": "row",
+            "flex": 4,
+            "paddingHorizontal": 15.714285714285714,
           }
         }
       >
         <Text
           style={
-            Array [
-              Object {
-                "color": "#6C727E",
-              },
-              Object {
-                "marginRight": 21.428571428571427,
-              },
-            ]
+            Object {
+              "fontSize": 22,
+              "fontWeight": "bold",
+            }
           }
         >
-          
+          IRENE MURPHY
         </Text>
+        <Text>
+          2 months ago
+        </Text>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Image
+          resizeMode="center"
+          source={
+            Object {
+              "testUri": "../../../assets/images/threeDots.png",
+            }
+          }
+          style={
+            Object {
+              "height": 51.00588235294117,
+              "width": 55.714285714285715,
+            }
+          }
+        />
+      </View>
+    </View>
+    <View>
+      <Text
+        ellipsizeMode="tail"
+        numberOfLines={5}
+      >
+        Do you like food?
+      </Text>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "margin": 19.61764705882353,
+          }
+        }
+      >
         <Text
           style={
             Object {
@@ -146,6 +123,37 @@ exports[`renders correctly 1`] = `
         >
           
         </Text>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6C727E",
+                },
+                Object {
+                  "marginRight": 21.428571428571427,
+                },
+              ]
+            }
+          >
+            
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "#6C727E",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
       </View>
     </View>
   </View>

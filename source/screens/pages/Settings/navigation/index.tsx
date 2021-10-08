@@ -7,9 +7,11 @@ import { Settings } from '~/screens/pages'
 import { NAVIGATION } from '~/constants'
 import Profile from '../pages/Profile'
 import HomeStackScreen from '../../Conversations/navigation'
+import { useBackButtonMinimize } from '~/hooks'
 
 const SettingsStackScreen = () => {
   const { t } = useTranslation()
+  useBackButtonMinimize()
   return (
     <StackNavigator>
       <StackScreen

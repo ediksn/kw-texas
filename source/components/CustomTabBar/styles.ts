@@ -22,12 +22,13 @@ export const styles = (focused: boolean) =>
       color: focused ? theme.activeColor : theme.inActiveColor,
       marginTop: '5%',
       height: 23,
-      width: 22.5
+      width: 23
     },
     photo: {
       aspectRatio: 1,
-      width: 30,
       borderRadius: 30,
-      height: 30
+      marginTop: '5%',
+      height: 23,
+      width: 23
     }
   })

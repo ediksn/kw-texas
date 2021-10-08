@@ -36,7 +36,7 @@ exports[`renders correctly 1`] = `
           "color": "#006C84",
           "height": 23,
           "marginTop": "5%",
-          "width": 22.5,
+          "width": 23,
         },
         Object {
           "fontFamily": "icomoon",

@@ -5,20 +5,20 @@ import { styles } from './styles'
 import Post from '~/components/Post'
 import { PostInterface } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
-import { getUsrProfileActions } from '~/store/actions'
-import mockPost from '~/components/Post/__mocks__/mockPost'
+import { getUsrProfileActions, homeActions } from '~/store/actions'
 
 export const Home = () => {
   const dispatch = useDispatch()
   const usr: any = useSelector((state: RootState) => state.login.user)
   const usrProfile: any = useSelector((state: RootState) => state.usrProfile.profiles)
-  // const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
-  const posts: PostInterface[] = [mockPost, mockPost, mockPost, mockPost]
+  const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
+  const limitDefault: number = useSelector((state: RootState) => state.home.posts.limitDefault)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)
   const usrId: number = usr?.kwuid
 
   useEffect(() => {
     if (usrProfile.length === 0) dispatch(getUsrProfileActions.getUsrProfile(usrId))
+    dispatch(homeActions.getPosts(limitDefault))
   }, [])
 
   const renderPost = ({ item }: { item: PostInterface }) => <Post post={item} />

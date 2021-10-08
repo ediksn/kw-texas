@@ -17,7 +17,7 @@ export interface PostProduceProps {
   type: string
   payload?: {
     data: PostInterface[]
-    page: number
+    limit: number
   }
 }
 
@@ -25,6 +25,6 @@ export interface PostReducerProps {
   draftState: any
   payload?: {
     data: PostInterface[]
-    page: number
+    limit: number
   }
 }

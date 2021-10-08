@@ -31,8 +31,8 @@ const REDUCERS = {
     draftState.posts.isLoading = true
   },
   [GET_POSTS_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
-    draftState.posts.isLoading = false
     draftState.posts = { ...draftState.posts, ...payload }
+    draftState.posts.isLoading = false
   },
   [GET_POSTS_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = false

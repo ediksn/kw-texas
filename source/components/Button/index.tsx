@@ -29,7 +29,7 @@ const Button = ({
   textStyle,
   disabled,
   onPress,
-  icon = { name: '', size: 20, color: '#000000' }
+  icon
 }: Props) => {
   const { backgroundTypeStyle, textTypeStyle } = stylesOfType[type](THEME)
 

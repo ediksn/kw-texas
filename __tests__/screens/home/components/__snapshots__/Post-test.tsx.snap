@@ -110,7 +110,7 @@ exports[`renders correctly 1`] = `
             "alignItems": "center",
             "flexDirection": "row",
             "justifyContent": "space-between",
-            "margin": 19.61764705882353,
+            "marginVertical": 19.61764705882353,
           }
         }
       >
@@ -136,9 +136,7 @@ exports[`renders correctly 1`] = `
                 Object {
                   "color": "#6C727E",
                 },
-                Object {
-                  "marginRight": 21.428571428571427,
-                },
+                null,
               ]
             }
           >
@@ -232,7 +230,7 @@ exports[`renders correctly 1`] = `
                   "fontSize": 31.428571428571427,
                 },
                 Object {
-                  "color": "#4797A5",
+                  "color": "#006C84",
                 },
                 Object {
                   "fontFamily": "icomoon",
@@ -256,7 +254,7 @@ exports[`renders correctly 1`] = `
                 "color": undefined,
               },
               Object {
-                "color": "#4797A5",
+                "color": "#006C84",
               },
               Object {
                 "fontSize": 34.57142857142857,
@@ -325,7 +323,7 @@ exports[`renders correctly 1`] = `
                   "fontSize": 31.428571428571427,
                 },
                 Object {
-                  "color": "#4797A5",
+                  "color": "#006C84",
                 },
                 Object {
                   "fontFamily": "icomoon",
@@ -349,7 +347,7 @@ exports[`renders correctly 1`] = `
                 "color": undefined,
               },
               Object {
-                "color": "#4797A5",
+                "color": "#006C84",
               },
               Object {
                 "fontSize": 34.57142857142857,
@@ -418,7 +416,7 @@ exports[`renders correctly 1`] = `
                   "fontSize": 31.428571428571427,
                 },
                 Object {
-                  "color": "#4797A5",
+                  "color": "#006C84",
                 },
                 Object {
                   "fontFamily": "icomoon",
@@ -442,7 +440,7 @@ exports[`renders correctly 1`] = `
                 "color": undefined,
               },
               Object {
-                "color": "#4797A5",
+                "color": "#006C84",
               },
               Object {
                 "fontSize": 34.57142857142857,

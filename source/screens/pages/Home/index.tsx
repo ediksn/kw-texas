@@ -13,6 +13,7 @@ export const Home = () => {
   const usrProfile: any = useSelector((state: RootState) => state.usrProfile.profiles)
   const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
   const limitDefault: number = useSelector((state: RootState) => state.home.posts.limitDefault)
+  const limit: number = useSelector((state: RootState) => state.home.posts.limit)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)
   const usrId: number = usr?.kwuid
 
@@ -23,6 +24,8 @@ export const Home = () => {
 
   const renderPost = ({ item }: { item: PostInterface }) => <Post post={item} />
   const keyExtractor = (post: PostInterface) => post.id.toString()
+  const onRefresh = () => dispatch(homeActions.getPosts(limit))
+  const onEndReached = () => dispatch(homeActions.getPosts(limit + 10))
 
   return (
     <SafeAreaView>
@@ -32,8 +35,8 @@ export const Home = () => {
           data={posts}
           keyExtractor={keyExtractor}
           refreshing={loading}
-          onRefresh={() => null}
-          onEndReached={() => null}
+          onRefresh={onRefresh}
+          onEndReached={onEndReached}
           onEndReachedThreshold={1}
         />
       </View>

@@ -52,7 +52,7 @@ const Post = ({ post }: { post: PostInterface }) => {
       <View style={styles.infoNumbers}>
         <Text style={styles.infoNumber}>{likes_count > 0 ? `${likes_count} ${t('likes')}` : ''}</Text>
         <View style={styles.commentsSharesBox}>
-          <Text style={[styles.infoNumber, styles.comments]}>
+          <Text style={[styles.infoNumber, shares > 0 ? styles.comments : null]}>
             {replies_count > 0 ? `${replies_count} ${t('comments')}` : ''}
           </Text>
           <Text style={styles.infoNumber}>{shares > 0 ? `${shares} ${t('shares')}` : ''}</Text>

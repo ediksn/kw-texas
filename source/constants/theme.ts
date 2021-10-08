@@ -13,7 +13,7 @@ const FONTS = {
 const TEXTS = {
   primary: '#212529',
   secondary: '#6C727E',
-  green: '#4797A5',
+  green: '#006C84',
   success: '#478943',
   error: '#C5050B',
   white: '#FFFFFF'
@@ -21,12 +21,12 @@ const TEXTS = {
 
 const BUTTONS_THEME = {
   primary: {
-    backgroundColor: '#4797A5',
+    backgroundColor: '#006C84',
     color: '#FFFFFF'
   },
   secondary: {
     backgroundColor: '#FFFFFF',
-    color: '#4797A5'
+    color: '#006C84'
   },
   types: {
     CONTAINED: 'CONTAINED',

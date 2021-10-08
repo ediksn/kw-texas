@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
     color: theme.texts.green
   },
   infoNumbers: {
-    margin: verticalScale(10),
+    marginVertical: verticalScale(10),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'

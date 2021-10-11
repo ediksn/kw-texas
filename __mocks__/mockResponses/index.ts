@@ -191,3 +191,72 @@ export const postResponse = {
   permissions: ['CAN_LIKE_POST', 'CAN_FAVORITE_POST', 'CAN_EDIT_POST', 'CAN_DELETE_POST', 'CAN_PIN_POST'],
   topics: []
 }
+
+export const postsResponse = [
+  {
+    id: '615e386e8a1690341f605de9',
+    title: 'Does anyone know how to find the list of...',
+    type: 'post',
+    url: 'does-anyone-know-how-to-find-the-list-of',
+    status: 'opened',
+    content: "Does anyone know how to find the list of UNSUBSCRIBED within our contacts so we can purge if we'd like?",
+    image_medium: null,
+    image_large: null,
+    favorite: false,
+    followed: false,
+    liked: false,
+    pinned: false,
+    edited: false,
+    follower: false,
+    likes_count: 0,
+    replies_count: 0,
+    created_at: '2021-10-06 23:59:42',
+    updated_at: '2021-10-06 23:59:42',
+    created_by: {
+      user_id: 98750,
+      email: 'michellemenna@gmail.com',
+      kw_uid: 222497,
+      first_name: 'Michelle',
+      last_name: 'Menna',
+      photo_url: '//avatar.kwconnect.com/222497.jpeg',
+      avatar: '//avatar.kwconnect.com/222497.jpeg',
+      market_center: 'JV',
+      location: 'Austin, TX'
+    },
+    group: {
+      id: 33204,
+      name: 'Command Lab',
+      slug: 'command-lab',
+      type: null,
+      owner: 286762,
+      url: 'https://console.command.kw.com/connect/groups/group?group=command-lab'
+    },
+    channel: {
+      id: 33171,
+      name: 'main',
+      channel_id: null,
+      group_id: 33204,
+      creator_id: 279663,
+      created_at: '2018-12-04 17:19:35',
+      updated_at: '2018-12-04 17:19:35'
+    },
+    tags: [
+      {
+        id: '5c084d9a9175fb7378315f7a',
+        tag: 'placeholder',
+        created_at: '2018-12-05 22:13:46'
+      }
+    ],
+    mentions: [],
+    poll_options: [],
+    voted_options: [],
+    voted: false,
+    poll_votes_count: 0,
+    multiple: false,
+    expired: false,
+    duration: null,
+    replies: [],
+    permissions: ['CAN_LIKE_POST', 'CAN_FAVORITE_POST'],
+    topics: []
+  }
+]

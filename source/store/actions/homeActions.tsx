@@ -25,6 +25,7 @@ const actionCreators = {
         type: GET_POSTS_SUCCESS,
         payload: {
           data: response?.data.results,
+          limitDefault: 10,
           limit
         }
       })

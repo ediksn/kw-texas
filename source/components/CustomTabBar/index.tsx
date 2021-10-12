@@ -16,7 +16,7 @@ const CustomTabBar = ({ name, focused, imageURL }: Props) => {
     <View style={styles(focused).container}>
       <View style={styles(focused).selectedBar} />
       {name ? (
-        <Icon name={name} size={20} style={styles(focused).icon} />
+        <Icon name={name} size={21} style={styles(focused).icon} />
       ) : (
         <Image style={styles(focused).photo} resizeMode='cover' resizeMethod='resize' source={{ uri: imageURL }} />
       )}

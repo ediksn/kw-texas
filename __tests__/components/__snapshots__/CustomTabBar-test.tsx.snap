@@ -30,13 +30,11 @@ exports[`renders correctly 1`] = `
       Array [
         Object {
           "color": undefined,
-          "fontSize": 20,
+          "fontSize": 21,
         },
         Object {
           "color": "#006C84",
-          "height": 23,
-          "marginTop": "5%",
-          "width": 22.5,
+          "textAlign": "center",
         },
         Object {
           "fontFamily": "icomoon",

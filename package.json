@@ -3,29 +3,30 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "ENVFILE=.env.development react-native run-android",
-    "android:prod": "ENVFILE=.env.production react-native run-android",
+    "android": "ENVFILE=.env.development react-native run-android --variant=stagingDebug",
+    "android:prod": "ENVFILE=.env.production react-native run-android --variant=productionDebug",
+    "android:release": "cd android && ./gradlew installProductionRelease",
     "ios": "ENVFILE=.env.development react-native run-ios",
     "ios:prod": "ENVFILE=.env.production react-native run-ios",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint source/ --ext .ts,.tsx",
     "storybook": "start-storybook -p 7007",
-    "build-storybook": "build-storybook",
-    "android:release": "react-native run-android --variant=release"
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "*.{ts,tsx}": "eslint --fix --max-warnings=0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && yarn test"
     }
   },
   "dependencies": {
     "@jest/create-cache-key-function": "^27.0.6",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "^0.1.11",
+    "@react-native-community/netinfo": "^6.0.2",
     "@react-navigation/bottom-tabs": "^5.11.11",
     "@react-navigation/material-top-tabs": "5.3.15",
     "@react-navigation/native": "^5.9.4",
@@ -39,6 +40,7 @@
     "@storybook/react-native-server": "^5.3.23",
     "@types/jest": "^26.0.24",
     "@types/react-native-snap-carousel": "^3.8.4",
+    "@types/react-native-vector-icons": "^6.4.9",
     "axios": "^0.21.1",
     "eslint-plugin-react-native": "^3.11.0",
     "i18next": "^20.3.2",
@@ -65,7 +67,9 @@
     "react-native-size-matters": "^0.4.0",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-splash-screen": "^3.2.0",
+    "react-native-svg-transformer": "^0.14.3",
     "react-native-tab-view": "^3.1.1",
+    "react-native-vector-icons": "^8.1.0",
     "react-native-video": "^5.1.1",
     "react-navigation": "^4.4.4",
     "react-redux": "^7.2.4",
@@ -120,5 +124,6 @@
       "json",
       "node"
     ]
-  }
+  },
+  "rnpm": { "assets": [ "assets/fonts" ] }
 }

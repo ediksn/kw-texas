@@ -40,3 +40,4 @@ bundle
 android/java_pid*
 .env.development
 .env.production
+ios/fastlane/gc_keys.json

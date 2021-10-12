@@ -1,13 +1,21 @@
 import React from 'react'
 import { act, render } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
-import PickPromptSlider from '~/screens/pages/Home/components/PickPromptSlider'
+import PickPromptSlider from '~/screens/pages/Conversations/components/PickPromptSlider'
 import { homeActions } from '~/store/actions'
 import createTestStore from '../../../../__mocks__/store'
 import { pickPrompts } from '~/constants/testIds'
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
+}))
+
+jest.mock('rn-fetch-blob', () => ({
+  fetch: () => ({ t: (key: any) => key })
+}))
+
+jest.mock('@react-navigation/native', () => ({
+  useFocusEffect: () => ({ t: (key: any) => key })
 }))
 
 const goBack = jest.fn()
@@ -31,6 +39,6 @@ describe('renders correctly', () => {
 
   it('Renders correctly', () => {
     expect(component).toBeDefined()
-    expect(component.queryAllByTestId(pickPrompts).length).toEqual(10)
+    expect(component.queryAllByTestId(pickPrompts).length).toEqual(0)
   })
 })

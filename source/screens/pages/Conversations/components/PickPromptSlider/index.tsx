@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { View, Image, TouchableOpacity, ScrollView } from 'react-native'
 import blue from 'assets/images/pickPrompts/blue.png'
@@ -12,6 +12,7 @@ import teal from 'assets/images/pickPrompts/teal.png'
 import teal2 from 'assets/images/pickPrompts/teal2.png'
 import yellow from 'assets/images/pickPrompts/yellow.png'
 import { useTranslation } from 'react-i18next'
+import { useFocusEffect } from '@react-navigation/native'
 import { RootState } from '~/store/index'
 import { PromptVideoInterface } from '~/interfaces/promptVideoInterface'
 import { PickPromptInterface } from '~/interfaces/pickPromptsInterface'
@@ -25,6 +26,7 @@ const PickPromptSlider = ({ navigation }: any) => {
   const { t } = useTranslation()
   const getSoloScripts: PromptVideoInterface[] = useSelector((state: RootState) => state.promptVideos.getSoloScripts)
   const prompts: PickPromptInterface[] = useSelector((state: RootState) => state.home.pickPrompts.prompts)
+  const [promptsRandom, setPromptsRandom] = useState([...prompts])
   const pickPromptsImages: { [key: string]: object } = {
     blue,
     gray,
@@ -41,6 +43,10 @@ const PickPromptSlider = ({ navigation }: any) => {
   useEffect(() => {
     dispatch(homeActions.getPickPrompts())
   }, [])
+
+  useFocusEffect(() => {
+    setPromptsRandom(promptsRandom.sort(() => (Math.random() > 0.5 ? 1 : -1)))
+  })
 
   const renderPickPromptComponent = (item: PickPromptInterface) => {
     const activeSlideSelected = getSoloScripts.findIndex(promptVideo => promptVideo.id === item.link)
@@ -66,7 +72,7 @@ const PickPromptSlider = ({ navigation }: any) => {
       />
 
       <ScrollView horizontal contentContainerStyle={styles.containerScroll}>
-        {prompts.map((item: PickPromptInterface) => renderPickPromptComponent(item))}
+        {promptsRandom.map((item: PickPromptInterface) => renderPickPromptComponent(item))}
       </ScrollView>
     </View>
   )

@@ -4,6 +4,7 @@ import { Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native
 import { moderateScale } from 'react-native-size-matters'
 import { styles, stylesOfType } from './styles'
 import { theme } from '~/constants'
+import { Icon } from '~/components'
 
 interface Props {
   testID?: string
@@ -13,7 +14,9 @@ interface Props {
   type?: string
   viewStyle?: ViewStyle
   textStyle?: TextStyle
+  disabled?: boolean
   onPress?: () => void
+  icon?: any
 }
 
 const Button = ({
@@ -24,7 +27,9 @@ const Button = ({
   type = theme.buttons.types.CONTAINED,
   viewStyle,
   textStyle,
-  onPress
+  disabled,
+  onPress,
+  icon
 }: Props) => {
   const { backgroundTypeStyle, textTypeStyle } = stylesOfType[type](THEME)
 
@@ -32,7 +37,12 @@ const Button = ({
     const { t } = useTranslation()
 
     return (
-      <View style={styles.messageView}>
+      <View style={[styles.messageView, icon && styles.messageWithIconView]}>
+        {icon && (
+          <View style={styles.icon}>
+            <Icon name={icon.name} size={icon.size || 20} color={icon.color} />
+          </View>
+        )}
         <Text style={[styles.messageText, { color: textStyle?.color }, textTypeStyle, { fontSize }]}>{t(message)}</Text>
       </View>
     )
@@ -42,6 +52,7 @@ const Button = ({
     <TouchableOpacity
       testID={testID}
       activeOpacity={0.6}
+      disabled={disabled}
       style={[styles.containerView, viewStyle, backgroundTypeStyle]}
       onPress={onPress}
     >

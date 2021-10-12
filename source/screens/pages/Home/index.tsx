@@ -1,58 +1,30 @@
 import React, { useEffect } from 'react'
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { styles } from './styles'
-import { VideoInterface } from '~/interfaces/videoInterfaces'
-import { videoActions } from '~/store/actions'
-import { RootState } from '~/store/index'
-import { Spinner, VideoList } from '~/components'
-import { NAVIGATION, videoListComponent } from '~/constants'
-import PickPromptSlider from './components/PickPromptSlider'
+import Post from '~/components/Post'
+import { RootState } from '~/store'
+import { getUsrProfileActions } from '~/store/actions'
+import { useBackButtonMinimize } from '~/hooks'
 
-interface Props {
-  navigation: any
-}
-
-export const Home = ({ navigation }: Props) => {
+export const Home = () => {
   const dispatch = useDispatch()
-  const videos: VideoInterface[] = useSelector((state: RootState) => state.library.searchScriptMeeting)
-  const loading: boolean = useSelector((state: RootState) => state.library.isLoading)
-  const page: number = useSelector((state: RootState) => state.library.page)
+  const usr: any = useSelector((state: RootState) => state.login.user)
+  const usrProfile: any = useSelector((state: RootState) => state.usrProfile.profiles)
+  const usrId: number = usr?.kwuid
 
-  const onRefresh = () => {
-    dispatch(videoActions.refreshVideos())
-  }
+  useBackButtonMinimize()
 
   useEffect(() => {
-    dispatch(videoActions.getVideos(page))
+    if (usrProfile.length === 0) dispatch(getUsrProfileActions.getUsrProfile(usrId))
   }, [])
 
-  const renderPickPrompts = () => <PickPromptSlider navigation={navigation} />
-
-  const onEndReached = () => {
-    dispatch(videoActions.getVideos(page))
-  }
-
-  const postBookmarked = (libraryId: number, videoId: number, bookmarked: boolean) => {
-    dispatch(videoActions.bookmarkVideo(libraryId, videoId, !bookmarked))
-  }
-
   return (
-    <SafeAreaView style={styles.container}>
-      <Spinner isLoading={loading && videos.length === 0}>
-        <VideoList
-          ListHeaderComponent={renderPickPrompts}
-          testID={videoListComponent}
-          navigation={navigation}
-          onPressNavigateTo={NAVIGATION.SCREEN.VIDEOPLAYER}
-          data={videos}
-          keyExtractor={(item: VideoInterface) => item.id.toString()}
-          refreshing={loading}
-          postBookmarked={postBookmarked}
-          onRefresh={onRefresh}
-          onEndReached={onEndReached}
-        />
-      </Spinner>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <Post />
+      </View>
     </SafeAreaView>
   )
 }

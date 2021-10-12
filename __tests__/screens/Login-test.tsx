@@ -12,6 +12,14 @@ jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
 }))
 
+jest.mock('@react-native-community/netinfo', () => ({
+  useNetInfo: () => ({ t: (key: any) => key })
+}))
+
+jest.mock('rn-fetch-blob', () => ({
+  fetch: () => ({ t: (key: any) => key })
+}))
+
 describe('Login test', () => {
   let store
 

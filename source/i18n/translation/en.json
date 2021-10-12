@@ -28,6 +28,13 @@
   "Conversation Recording": "Conversation Recording",
   "Pick a Prompt": "Pick a Prompt",
   "There was an issue logging you in, please try again": "There was an issue logging you in, please try again",
-  "Username or password are invalid": "Username or password are invalid",
-  "Could not lead the video": "Could not load the video"
+  "Could not lead the video": "Could not load the video",
+  "No internet connection":"No internet connection",
+  "Username or password is invalid": "Username or password is invalid",
+  "likes": "likes",
+  "comments": "comments",
+  "shares": "shares",
+  "Like": "Like",
+  "Comment": "Comment",
+  "Share": "Share"
 }

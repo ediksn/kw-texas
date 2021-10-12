@@ -158,9 +158,12 @@ jobs:
                 root: .
                 paths:
                   - bash_env
-                  - android/app/build/outputs/apk/release/app-release.apk
+                  - android/app/build/outputs/apk/production/release/app-production-release.apk
+                  - android/app/build/outputs/apk/staging/release/app-staging-release.apk
             - store_artifacts:
-                path: ~/build/outputs/apk/release/app-release.apk
+                path: ~/build/outputs/apk/production/release/app-production-release.apk
+            - store_artifacts:
+                path: ~/build/outputs/apk/staging/release/app-staging-release.apk
       - when:
           condition:
             equal: [ ios, << parameters.platform >>]
@@ -179,13 +182,53 @@ jobs:
             - store_artifacts:
                 path: ~/build/ios/connectmobile-dev.ipa
 
+  push-appcenter:
+    executor: << parameters.executor >>
+    parameters:
+      executor:
+        type: executor
+    working_directory: ~/build
+    steps:
+      - checkout
+      - restore_cache: *restore_gem_cache
+      - attach_workspace:
+          at: ~/build
+      - run:
+          name: Import variables from build job
+          command: |
+            cat bash_env >> $BASH_ENV
+      - run:
+          name: Push to AppCenter
+          command: |
+            .circleci/scripts/push-appcenter.sh
+
 workflows:
   build_push:
     jobs:
+      # - build:
+      #     name: build-ios
+      #     executor: macos_exec
+      #     platform: ios
+      #     filters: &build-filters
+      #       branches:
+      #         only:
+      #           - develop
+      #           - /^feature\/\S*$/
+      #           - /^hotfix\/\S*$/
+      #           - /^bugfix\/\S*$/
+      #           - /^revert-\S*$/
+      #           - /^release\/v\d+\.\d+\.\d+$/
+      # - build:
+      #     name: build-ios-dev
+      #     executor: macos_exec
+      #     platform: ios
+      #     dev: true
+      #     filters: *build-filters
       - build:
-          name: build-ios
+          name: build-android
           executor: macos_exec
-          platform: ios
+          platform: android
+          # filters: *build-filters
           filters: &build-filters
             branches:
               only:
@@ -195,14 +238,14 @@ workflows:
                 - /^bugfix\/\S*$/
                 - /^revert-\S*$/
                 - /^release\/v\d+\.\d+\.\d+$/
-      - build:
-          name: build-ios-dev
+      - push-appcenter:
           executor: macos_exec
-          platform: ios
-          dev: true
-          filters: *build-filters
-      - build:
-          name: build-android
-          executor: macos_exec
-          platform: android
-          filters: *build-filters
+          requires:
+            # - build-ios
+            # - build-ios-dev
+            - build-android
+          filters:
+            branches:
+              only:
+                - develop
+                - /^release\/v\d+\.\d+\.\d+$/

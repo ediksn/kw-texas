@@ -39,14 +39,20 @@ export const styles = StyleSheet.create({
     height: verticalScale(26),
     width: scale(26)
   },
-  content: {
+  body: {
     padding: moderateScale(12)
   },
-  contentText: {
+  content: {
     marginVertical: verticalScale(12)
   },
+  contentText: {
+    fontSize: theme.fonts.SMALL_SIZE,
+    fontFamily: 'Mulish-Regular',
+    color: theme.post.content
+  },
   showMore: {
-    fontWeight: 'bold',
+    fontSize: theme.fonts.SMALL_SIZE,
+    fontFamily: 'Mulish-Bold',
     color: theme.post.green
   },
   infoNumbers: {

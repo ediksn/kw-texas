@@ -29,13 +29,13 @@ const Post = () => {
   )
 
   const Content = () => (
-    <View style={styles.content}>
-      <View style={styles.contentText}>
-        <Text numberOfLines={showMore ? content.length : 5} ellipsizeMode='tail'>
+    <View style={styles.body}>
+      <View style={styles.content}>
+        <Text style={styles.contentText} numberOfLines={showMore ? content.length : 5} ellipsizeMode='clip'>
           {content}
         </Text>
         <TouchableOpacity onPress={() => setShowMore(!showMore)}>
-          <Text style={styles.showMore}>{showMore ? 'Less' : 'Show'} More</Text>
+          <Text style={styles.showMore}>{showMore ? 'Less' : 'Show'} more</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.infoNumbers}>

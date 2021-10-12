@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { scale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
@@ -24,16 +25,15 @@ export const styles = StyleSheet.create({
   },
   text: {
     color: theme.activeColor,
-    fontFamily: 'Mulish',
-    fontWeight: 'bold',
+    fontFamily: 'Mulish-Bold',
     fontSize: 16,
     lineHeight: 24,
-    marginLeft: '10%'
+    marginLeft: scale(11)
   },
   search: {
-    marginRight: '10%'
+    marginRight: scale(9)
   },
   chat: {
-    marginLeft: '10%'
+    marginLeft: scale(9)
   }
 })

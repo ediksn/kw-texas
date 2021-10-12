@@ -19,7 +19,7 @@ const REDUCERS = {
   },
   [GET_BOOKMARKED_VIDEOS_SUCCESS]: ({ draftState, payload }: VideoReducerBmProps) => {
     draftState.isLoading = false
-    draftState.bookmarkedVideos = draftState.bookmarkedVideos.concat(payload?.searchScriptMeetingBm)
+    draftState.searchScriptMeeting = draftState.searchScriptMeeting.concat(payload?.searchScriptMeetingBm)
     draftState.page += 1
   },
   [GET_BOOKMARKED_VIDEOS_FAILURE]: ({ draftState }: VideoReducerBmProps) => {
@@ -30,7 +30,7 @@ const REDUCERS = {
   },
   [REFRESH_BOOKMARKED_VIDEOS_SUCCESS]: ({ draftState, payload }: VideoReducerBmProps) => {
     draftState.isLoading = false
-    draftState.bookmarkedVideos = payload?.searchScriptMeetingBm
+    draftState.searchScriptMeeting = payload?.searchScriptMeetingBm
     draftState.page = 1
   },
   [REFRESH_BOOKMARKED_VIDEOS_FAILURE]: ({ draftState }: VideoReducerBmProps) => {

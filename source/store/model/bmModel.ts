@@ -1,5 +1,5 @@
 export const VIDEO_INITIAL_STATE = {
-  bookmarkedVideos: [],
+  searchScriptMeeting: [],
   isLoading: false,
   page: 0
 }

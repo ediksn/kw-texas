@@ -19,9 +19,9 @@ export const styles = StyleSheet.create({
   },
   photo: {
     aspectRatio: 1,
-    width: 30,
-    borderRadius: 30,
-    height: 30
+    width: scale(27),
+    height: scale(27),
+    borderRadius: 30
   },
   text: {
     color: theme.activeColor,

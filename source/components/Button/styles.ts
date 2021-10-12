@@ -36,7 +36,8 @@ export const stylesOfType: any = {
       backgroundColor: theme.backgroundColor
     },
     textTypeStyle: {
-      color: theme.color
+      color: theme.color,
+      fontFamily: 'Mulish-Regular'
     }
   }),
   OUTLINED: (theme: any) => ({
@@ -46,7 +47,8 @@ export const stylesOfType: any = {
       borderWidth: moderateScale(2)
     },
     textTypeStyle: {
-      color: theme.backgroundColor
+      color: theme.backgroundColor,
+      fontFamily: 'Mulish-Regular'
     }
   }),
   TEXT: (theme: any) => ({
@@ -55,7 +57,8 @@ export const stylesOfType: any = {
       elevation: 0
     },
     textTypeStyle: {
-      color: theme.backgroundColor
+      color: theme.backgroundColor,
+      fontFamily: 'Mulish-Regular'
     }
   })
 }

@@ -6,6 +6,7 @@ exports[`renders correctly 1`] = `
     Array [
       Object {
         "backgroundColor": "#FFFFFF",
+        "borderRadius": 4,
         "elevation": 4,
         "padding": 15.714285714285714,
       },

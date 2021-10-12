@@ -26,5 +26,5 @@ else
 fi
 
 # envsubst < sentry.properties.dist > $SENTRY_PROPERTIES_PATH
-# envsubst < .env.dist > .env.production
-echo "BASE_URL='${BASE_URL}'" > .env.production
+envsubst < .env.dist > .env
+echo "BASE_URL='${BASE_URL}'" > .env

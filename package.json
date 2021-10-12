@@ -114,7 +114,7 @@
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": [
-      "node_modules/(?!@react-native|react-native)"
+      "node_modules/(?!@react-native|react-native|rn-fetch-blob)"
     ],
     "moduleFileExtensions": [
       "ts",

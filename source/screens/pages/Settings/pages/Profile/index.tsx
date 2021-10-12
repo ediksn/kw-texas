@@ -9,12 +9,14 @@ import { SocialMedia } from './components/SocialMedia'
 
 import { styles } from './styles'
 import { Spinner } from '~/components'
+import { useBackButtonMinimize } from '~/hooks'
 
 const Profile = () => {
   const dataState: any = useSelector((state: RootState) => state.usrProfile)
   const data: any = useSelector((state: RootState) => state.usrProfile.profiles)
   const serviceAreas = data[0]?.service_area?.split(';').filter((w: any) => w) || []
   const hasServiceAreas = useMemo(() => !!serviceAreas.length, [serviceAreas])
+  useBackButtonMinimize()
 
   if (dataState.isLoading) {
     return (

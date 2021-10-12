@@ -45,6 +45,14 @@ export const styles = StyleSheet.create({
   },
   tagContainerView: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: '3%'
+  },
+  tagItemView: {
+    flexDirection: 'row',
     justifyContent: 'flex-start'
+  },
+  bookmarkedIcon: {
+    marginHorizontal: '5%'
   }
 })

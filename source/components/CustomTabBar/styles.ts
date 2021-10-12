@@ -20,15 +20,12 @@ export const styles = (focused: boolean) =>
     },
     icon: {
       color: focused ? theme.activeColor : theme.inActiveColor,
-      marginTop: '5%',
-      height: 23,
-      width: 23
+      textAlign: 'center'
     },
     photo: {
       aspectRatio: 1,
+      width: 30,
       borderRadius: 30,
-      marginTop: '3.5%',
-      height: 23,
-      width: 23
+      height: 30
     }
   })

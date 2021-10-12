@@ -3,22 +3,40 @@ import { scale, verticalScale, moderateScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
-  textContainer: {
-    height: verticalScale(40),
+  borderContainer: {
     borderWidth: 1,
     borderRadius: 5,
-    fontSize: 16,
-    paddingHorizontal: scale(5),
+    borderColor: theme.grey
+  },
+  rowContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  insideContainer: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  textContainer: {
+    fontFamily: 'Mulish-Regular',
+    fontSize: 14,
+    color: theme.greenColor,
+    paddingHorizontal: scale(10),
+    paddingVertical: verticalScale(2),
     marginBottom: verticalScale(5),
-    textAlignVertical: 'top'
+    textAlignVertical: 'top',
+    minWidth: verticalScale(230)
   },
   title: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginLeft: scale(10)
   },
   titleText: {
     color: theme.darkGrey,
-    fontWeight: 'bold',
-    marginVertical: verticalScale(1)
+    fontFamily: 'Mulish-Bold',
+    marginTop: verticalScale(7),
+    marginBottom: verticalScale(4),
+    fontSize: 12
   },
   error: {
     color: theme.red,
@@ -28,11 +46,9 @@ export const styles = StyleSheet.create({
     marginBottom: verticalScale(10)
   },
   touchablePasswordIcon: {
-    position: 'absolute',
-    marginTop: verticalScale(17),
     marginRight: scale(5),
     padding: moderateScale(10),
-    alignSelf: 'flex-end',
+    alignSelf: 'center',
     elevation: 1,
     zIndex: 10
   },

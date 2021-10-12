@@ -36,5 +36,7 @@
   "shares": "compartidos",
   "Like": "Me gusta",
   "Comment": "Comentar",
-  "Share": "Compartir"
+  "Share": "Compartir",
+  "Enter your username...": "Ingrese su nombre de usuario...",
+  "Enter password...": "Ingrese su contraseña..."
 }

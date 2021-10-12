@@ -11,7 +11,6 @@ import { FORM } from '~/constants/form'
 import { loginActions } from '~/store/actions'
 import { ErrorInterface } from '~/interfaces/errorInterface'
 import { RootState } from '~/store'
-import TextMessage from '~/components/TextMessage'
 import { loginErrors } from '~/functions'
 
 export const Login = () => {
@@ -70,28 +69,28 @@ export const Login = () => {
             <Input
               testID={usernameInput}
               title={t('Username')}
-              required
+              placeholder={t('Enter your username...')}
               disabled={!netInfo.isConnected || false}
               empty={usernameEmptyFlag}
               error={errorFlag}
               value={username}
               onChangeText={setUsername}
+              style={styles.input}
             />
             <Input
               testID={passwordInput}
               title={t('Password')}
               type={FORM.FIELDS_TYPES.PASSWORD}
-              required
+              placeholder={t('Enter password...')}
               disabled={!netInfo.isConnected || false}
               empty={passwordEmptyFlag}
               error={errorFlag}
               value={password}
               onChangeText={setPassword}
+              style={styles.input}
             />
           </View>
-          {errorFlag && errorMessage && (
-            <TextMessage style={styles.textMessage} type='error' message={t(errorMessage)} />
-          )}
+          {errorFlag && errorMessage && <Text style={styles.textMessage}>{t(errorMessage)}</Text>}
           <View style={styles.buttonView}>
             <Spinner isLoading={loading} size={30}>
               <Button

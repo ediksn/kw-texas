@@ -14,6 +14,7 @@ interface Props {
   testID: string
   refreshing?: boolean
   style?: ViewStyle
+  postBookmarked: (libraryId: number, videoId: number, bookmarked: boolean) => void
   onRefresh?: () => void
   onEndReached?: () => void
 }
@@ -26,31 +27,32 @@ const VideoList = ({
   testID,
   refreshing,
   style,
+  postBookmarked,
   onRefresh,
   onEndReached
 }: Props) => {
-  const renderVideoComponent = ({ item }: { item: VideoInterface }) => (
-    <VideoCard
-      testID={videoCardComponent}
-      img={item.imageUrl}
-      title={item.title}
-      firstName={item.agents[0].firstName}
-      lastName={item.agents[0].lastName}
-      visits={item.views}
-      likes={item.likesDetail.likes}
-      tags={item.scripts[0].hashtags}
-      onPress={() =>
-        navigation.navigate(onPressNavigateTo, {
-          title: item.title,
-          uri: item.videoUrl,
-          videoLikes: item.likesDetail.likes,
-          saved: item.bookmarked,
-          liked: item.liked,
-          id: item.id
-        })
-      }
-    />
-  )
+  const renderVideoComponent = ({ item }: { item: VideoInterface }) => {
+    return (
+      <VideoCard
+        testID={videoCardComponent}
+        img={item.imageUrl}
+        title={item.title}
+        firstName={item.agents[0].firstName}
+        lastName={item.agents[0].lastName}
+        visits={item.views}
+        likes={item.likesDetail.likes}
+        tags={item.scripts[0].hashtags}
+        id={item.id}
+        postBookmarked={postBookmarked}
+        onPress={() =>
+          navigation.navigate(onPressNavigateTo, {
+            id: item.id,
+            videos: data
+          })
+        }
+      />
+    )
+  }
 
   return (
     <View style={[styles.container, style]}>

@@ -21,5 +21,15 @@ export default {
         input: { meetingId: backendId, thumbUp: like }
       }
     })
+  },
+  postBookmark: async (backendId: number, bookmark: boolean) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/api-connect-scripthub/graphql', {
+      operationName: 'toggleBookmark',
+      query: 'mutation toggleBookmark($input: BookmarkInputType!) {\n  toggleBookmark(input: $input)\n}\n',
+      variables: {
+        input: { meetingId: backendId, isBookmarked: bookmark }
+      }
+    })
   }
 }

@@ -17,9 +17,9 @@ exports[`renders correctly 1`] = `
         "backgroundColor": "#006C84",
         "borderBottomLeftRadius": 100,
         "borderBottomRightRadius": 100,
-        "marginBottom": "10%",
-        "paddingLeft": "30%",
-        "paddingRight": "30%",
+        "marginBottom": 11.770588235294117,
+        "paddingLeft": 45,
+        "paddingRight": 41.19705882352941,
         "paddingTop": "5%",
       }
     }
@@ -34,6 +34,7 @@ exports[`renders correctly 1`] = `
         },
         Object {
           "color": "#006C84",
+          "marginTop": 5.885294117647058,
           "textAlign": "center",
         },
         Object {

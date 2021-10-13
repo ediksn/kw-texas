@@ -25,6 +25,7 @@ exports[`renders correctly 1`] = `
         Object {
           "alignItems": "center",
           "flexDirection": "row",
+          "height": 107.8970588235294,
           "justifyContent": "space-between",
           "paddingHorizontal": 34.285714285714285,
           "paddingVertical": 13.73235294117647,
@@ -218,6 +219,7 @@ exports[`renders correctly 1`] = `
       Object {
         "alignItems": "center",
         "flexDirection": "row",
+        "height": 109.85882352941177,
         "justifyContent": "space-between",
         "paddingHorizontal": 70.71428571428571,
         "paddingVertical": 31.388235294117646,

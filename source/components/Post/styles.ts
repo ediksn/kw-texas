@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     marginBottom: verticalScale(10)
   },
   header: {
+    height: verticalScale(55),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -79,6 +80,7 @@ export const styles = StyleSheet.create({
     opacity: 0.1
   },
   buttons: {
+    height: verticalScale(56),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

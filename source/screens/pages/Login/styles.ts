@@ -23,11 +23,17 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  input: {
+    marginVertical: verticalScale(8)
+  },
   textMessage: {
     justifyContent: 'center',
     alignItems: 'center',
+    fontFamily: 'Mulish-Regular',
+    fontStyle: 'italic',
+    color: theme.red,
     marginTop: verticalScale(5),
-    marginHorizontal: verticalScale(5)
+    marginHorizontal: verticalScale(8)
   },
   notch: {
     backgroundColor: theme.backgroundWhite

@@ -66,6 +66,7 @@ export interface VideoProduceProps {
     searchScriptMeeting: VideoInterface[]
     page: number
     storedId: number
+    bookmark: boolean
   }
 }
 
@@ -75,12 +76,13 @@ export interface VideoReducerProps {
     searchScriptMeeting: VideoInterface[]
     page: number
     storedId: number
+    bookmark: boolean
   }
 }
 
 export interface VideoProduceBmProps {
   type: string
-  payload?: {
+  payload: {
     searchScriptMeetingBm: VideoInterface[]
     page: number
   }
@@ -88,7 +90,7 @@ export interface VideoProduceBmProps {
 
 export interface VideoReducerBmProps {
   draftState: any
-  payload?: {
+  payload: {
     searchScriptMeetingBm: VideoInterface[]
     page: number
   }

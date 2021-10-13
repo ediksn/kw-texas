@@ -5,7 +5,8 @@ import { theme } from '~/constants'
 export const styles = StyleSheet.create({
   container: {
     elevation: 4,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#FFFFFF',
+    borderRadius: 4
   },
   header: {
     flexDirection: 'row',

@@ -21,8 +21,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   avatar: {
-    height: verticalScale(45),
-    width: scale(40),
+    height: moderateScale(40),
+    width: moderateScale(40),
     borderRadius: moderateScale(20)
   },
   info: {

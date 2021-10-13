@@ -8,6 +8,7 @@ exports[`renders correctly 1`] = `
         "backgroundColor": "#FFFFFF",
         "borderRadius": 4,
         "elevation": 4,
+        "marginBottom": 19.61764705882353,
       },
     ]
   }
@@ -48,8 +49,8 @@ exports[`renders correctly 1`] = `
           style={
             Object {
               "borderRadius": 31.428571428571427,
-              "height": 78.47058823529412,
-              "width": 85.71428571428571,
+              "height": 62.857142857142854,
+              "width": 62.857142857142854,
             }
           }
         />
@@ -151,35 +152,6 @@ exports[`renders correctly 1`] = `
         >
           Do you like food?
         </Text>
-        <View
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-        >
-          <Text
-            style={
-              Object {
-                "color": "#006C84",
-                "fontFamily": "Mulish-Bold",
-                "fontSize": 18.857142857142858,
-              }
-            }
-          >
-            Show 
-            more
-          </Text>
-        </View>
       </View>
       <View
         style={

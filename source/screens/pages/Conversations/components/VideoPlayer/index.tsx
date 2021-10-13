@@ -12,15 +12,17 @@ import link_button from 'assets/images/link_btn.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { styles } from './styles'
 import { Spinner } from '~/components'
-import { RootState } from '~/store'
 import { VideoInterface } from '~/interfaces/videoInterfaces'
 import { videoActions } from '~/store/actions'
+import bmVideoActions from '~/store/actions/bmVideoActions'
+import { RootState } from '~/store'
 
 interface Props {
-  backendId: number
+  libraryId: number
+  video: VideoInterface
 }
 
-const VideoPlayer = ({ backendId }: Props) => {
+const VideoPlayer = ({ libraryId, video }: Props) => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const [liked, setLiked] = useState(false)
@@ -28,11 +30,11 @@ const VideoPlayer = ({ backendId }: Props) => {
   const [bookmarked, setBookmarked] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(false)
-  const video = useSelector((state: RootState) => {
-    const videos: VideoInterface[] = state.videos.searchScriptMeeting
-    const storedId = videos.findIndex(element => element.id === backendId)
-    const storedVideo = videos[storedId]
-    return { ...storedVideo, storedId }
+  const bookmarkedLoading: boolean = useSelector((state: RootState) => {
+    const libraryVideos: VideoInterface[] = state.library.searchScriptMeeting
+    const bookmarkedVideo = libraryVideos.find(element => element.id === video.id)
+    const isBookmarked = bookmarkedVideo?.bookmarked
+    return isBookmarked || false
   })
 
   useEffect(() => {
@@ -49,15 +51,22 @@ const VideoPlayer = ({ backendId }: Props) => {
     setLikes(video.likesDetail.likes)
   }, [video.likesDetail.likes])
 
-  const getSaved = () => setBookmarked(!bookmarked)
+  useEffect(() => {
+    dispatch(bmVideoActions.refreshVideosBm())
+  }, [bookmarkedLoading])
+
+  const getBookmarked = () => {
+    setBookmarked(!bookmarked)
+    dispatch(videoActions.bookmarkVideo(libraryId, video.id, !bookmarked))
+  }
 
   const getLike = () => {
     if (liked) {
-      dispatch(videoActions.dislikeVideo(video.storedId, backendId))
       setLikes(likes - 1)
+      dispatch(videoActions.dislikeVideo(libraryId, video.id))
     } else {
-      dispatch(videoActions.likeVideo(video.storedId, backendId))
       setLikes(likes + 1)
+      dispatch(videoActions.likeVideo(libraryId, video.id))
     }
     setLiked(!liked)
   }
@@ -104,13 +113,13 @@ const VideoPlayer = ({ backendId }: Props) => {
             <Text style={styles.counter}>{likes}</Text>
           </View>
           <View style={styles.rightGroup}>
-            {video?.bookmarked && (
-              <TouchableOpacity onPress={getSaved}>
+            {bookmarked && (
+              <TouchableOpacity onPress={getBookmarked}>
                 <Image style={styles.saveBtn} resizeMode='contain' source={save_button} />
               </TouchableOpacity>
             )}
-            {!video?.bookmarked && (
-              <TouchableOpacity onPress={getSaved}>
+            {!bookmarked && (
+              <TouchableOpacity onPress={getBookmarked}>
                 <Image style={styles.saveBtn} resizeMode='contain' source={save_buttonw} />
               </TouchableOpacity>
             )}

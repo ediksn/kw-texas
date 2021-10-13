@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import threeDotsMock from 'assets/images/threeDots.png'
 import { useTranslation } from 'react-i18next'
 import { styles } from './styles'
 import mockPost from './__mocks__/mockPost'
 import avatarMock from './__mocks__/avatarNinaRoyals.png'
 import { Button } from '~/components'
 import { theme } from '~/constants'
+import Icon from '../Icon'
 
 const Post = () => {
   const { author, date, content, likes, comments, shares } = mockPost
@@ -15,25 +15,29 @@ const Post = () => {
 
   const Header = () => (
     <View style={styles.header}>
-      <Image style={styles.avatar} resizeMode='center' source={avatarMock} />
-      <View style={styles.info}>
-        <Text style={styles.name}>{author.name.toUpperCase()}</Text>
-        <Text>{date}</Text>
+      <View style={styles.avatarBox}>
+        <Image style={styles.avatar} resizeMode='center' source={avatarMock} />
+        <View style={styles.info}>
+          <Text style={styles.name}>{author.name.toUpperCase()}</Text>
+          <Text style={styles.date}>{date}</Text>
+        </View>
       </View>
       <TouchableOpacity onPress={() => null}>
-        <Image style={styles.threeDots} resizeMode='center' source={threeDotsMock} />
+        <Icon name='threedots-icon' size={25} color={theme.post.dotsColor} />
       </TouchableOpacity>
     </View>
   )
 
   const Content = () => (
-    <View>
-      <Text numberOfLines={showMore ? content.length : 5} ellipsizeMode='tail'>
-        {content}
-      </Text>
-      <TouchableOpacity onPress={() => setShowMore(!showMore)}>
-        <Text style={styles.showMore}>Show {showMore ? 'less' : 'more'}</Text>
-      </TouchableOpacity>
+    <View style={styles.body}>
+      <View style={styles.content}>
+        <Text style={styles.contentText} numberOfLines={showMore ? content.length : 5} ellipsizeMode='clip'>
+          {content}
+        </Text>
+        <TouchableOpacity onPress={() => setShowMore(!showMore)}>
+          <Text style={styles.showMore}>Show {showMore ? 'less' : 'more'}</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.infoNumbers}>
         <Text style={styles.infoNumber}>{likes.number > 0 ? `${likes.number} ${t('likes')}` : ''}</Text>
         <View style={styles.commentsSharesBox}>
@@ -55,8 +59,9 @@ const Post = () => {
         type={theme.buttons.types.TEXT}
         icon={{
           name: 'like-icon',
-          color: theme.texts.green
+          color: theme.post.green
         }}
+        fontSize={theme.fonts.SMALL_SIZE}
         viewStyle={styles.button}
       />
       <Button
@@ -64,8 +69,9 @@ const Post = () => {
         type={theme.buttons.types.TEXT}
         icon={{
           name: 'comment-icon',
-          color: theme.texts.green
+          color: theme.post.green
         }}
+        fontSize={theme.fonts.SMALL_SIZE}
         viewStyle={styles.button}
       />
       <Button
@@ -73,8 +79,9 @@ const Post = () => {
         type={theme.buttons.types.TEXT}
         icon={{
           name: 'share-icon',
-          color: theme.texts.green
+          color: theme.post.green
         }}
+        fontSize={theme.fonts.SMALL_SIZE}
         viewStyle={styles.button}
       />
     </View>

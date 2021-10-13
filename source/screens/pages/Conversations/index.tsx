@@ -31,6 +31,11 @@ export const Conversations = ({ navigation }: Props) => {
   const onEndReached = () => {
     dispatch(videoActions.getVideos(page))
   }
+
+  const postBookmarked = (libraryId: number, videoId: number, bookmarked: boolean) => {
+    dispatch(videoActions.bookmarkVideo(libraryId, videoId, !bookmarked))
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Spinner isLoading={loading && videos.length === 0}>
@@ -42,6 +47,7 @@ export const Conversations = ({ navigation }: Props) => {
           data={videos}
           keyExtractor={(item: VideoInterface) => item.id.toString()}
           refreshing={loading}
+          postBookmarked={postBookmarked}
           onRefresh={onRefresh}
           onEndReached={onEndReached}
         />

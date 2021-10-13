@@ -62,6 +62,22 @@ const actionCreators = {
     } catch (error) {
       dispatch({ type: DISLIKE_VIDEO_FAILURE })
     }
+  },
+  bookmarkVideo: (storedId: number, backendId: number, bookmark: boolean) => async (dispatch: AppDispatch) => {
+    const { BOOKMARK_VIDEO, BOOKMARK_VIDEO_SUCCESS, BOOKMARK_VIDEO_FAILURE } = VIDEO_TYPES
+    dispatch({ type: BOOKMARK_VIDEO })
+    try {
+      await videoService.postBookmark(backendId, bookmark)
+      dispatch({
+        type: BOOKMARK_VIDEO_SUCCESS,
+        payload: {
+          storedId,
+          bookmark
+        }
+      })
+    } catch (error) {
+      dispatch({ type: BOOKMARK_VIDEO_FAILURE })
+    }
   }
 }
 

@@ -12,7 +12,8 @@ const {
   REFRESH_VIDEOS_SUCCESS,
   REFRESH_VIDEOS_FAILURE,
   LIKE_VIDEO_SUCCESS,
-  DISLIKE_VIDEO_SUCCESS
+  DISLIKE_VIDEO_SUCCESS,
+  BOOKMARK_VIDEO_SUCCESS
 } = VIDEO_TYPES
 
 const REDUCERS = {
@@ -45,6 +46,9 @@ const REDUCERS = {
   [DISLIKE_VIDEO_SUCCESS]: ({ draftState, payload }: VideoReducerProps) => {
     draftState.searchScriptMeeting[payload?.storedId].likesDetail.likes -= 1
     draftState.searchScriptMeeting[payload?.storedId].liked = false
+  },
+  [BOOKMARK_VIDEO_SUCCESS]: ({ draftState, payload }: VideoReducerProps) => {
+    draftState.searchScriptMeeting[payload?.storedId].bookmarked = payload.bookmark
   }
 }
 

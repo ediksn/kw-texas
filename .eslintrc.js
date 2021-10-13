@@ -52,6 +52,13 @@ module.exports = {
     'import/prefer-default-export': 0,
     'react/jsx-props-no-spreading': 0,
     'no-restricted-syntax': ['warn', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
-    'no-use-before-define': ['off']
+    'no-use-before-define': ['off'],
+    '@typescript-eslint/naming-convention': [
+      'warn',
+      {
+        selector: 'variable',
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE', 'snake_case']
+      }
+    ]
   }
 }

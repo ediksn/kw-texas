@@ -4,41 +4,63 @@ import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   container: {
-    padding: moderateScale(10),
     elevation: 4,
     backgroundColor: '#FFFFFF',
-    borderRadius: 4
+    borderRadius: 4,
+    marginBottom: verticalScale(10)
   },
   header: {
+    height: verticalScale(55),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: verticalScale(7),
+    paddingHorizontal: scale(16)
+  },
+  avatarBox: {
     flexDirection: 'row',
     alignItems: 'center'
   },
   avatar: {
-    height: verticalScale(60),
-    width: scale(60)
+    height: moderateScale(40),
+    width: moderateScale(40),
+    borderRadius: moderateScale(20)
   },
   info: {
-    flex: 4,
-    paddingHorizontal: moderateScale(10)
+    marginLeft: moderateScale(12)
   },
   name: {
-    fontWeight: 'bold',
-    fontSize: theme.fonts.MEDIUM_SIZE
+    fontSize: theme.fonts.SMALL_SIZE,
+    fontFamily: 'Mulish-Bold',
+    color: theme.post.name
   },
   date: {
-    fontWeight: 'bold',
-    fontSize: theme.fonts.MEDIUM_SIZE
+    fontSize: theme.fonts.SMALL_SIZE,
+    fontFamily: 'Mulish-Regular',
+    color: theme.post.date
   },
   threeDots: {
     height: verticalScale(26),
     width: scale(26)
   },
+  body: {
+    padding: moderateScale(12)
+  },
+  content: {
+    marginVertical: verticalScale(12)
+  },
+  contentText: {
+    fontSize: theme.fonts.SMALL_SIZE,
+    fontFamily: 'Mulish-Regular',
+    color: theme.post.content
+  },
   showMore: {
-    fontWeight: 'bold',
-    color: theme.texts.green
+    fontSize: theme.fonts.SMALL_SIZE,
+    fontFamily: 'Mulish-Bold',
+    color: theme.post.green
   },
   infoNumbers: {
-    margin: verticalScale(10),
+    marginVertical: verticalScale(10),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
@@ -47,22 +69,26 @@ export const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   infoNumber: {
-    color: theme.texts.secondary
+    color: theme.post.contentBottom
   },
   comments: {
     marginRight: scale(10)
   },
   horizontalLine: {
-    width: '100%',
     height: verticalScale(1),
-    backgroundColor: '#444444'
+    backgroundColor: theme.post.horizontalLine,
+    opacity: 0.1
   },
   buttons: {
-    justifyContent: 'space-around',
+    height: verticalScale(56),
     flexDirection: 'row',
-    alignItems: 'center'
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: verticalScale(16),
+    paddingHorizontal: scale(33)
   },
   button: {
-    width: scale(70)
+    width: 'auto',
+    marginHorizontal: scale(4)
   }
 })

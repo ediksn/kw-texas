@@ -4,10 +4,9 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { NAVIGATION } from '~/constants/navigation'
-import { StackNavigator, TabNavigator, TabScreen, StackScreen } from './components/Navigators'
-import { Home, Login, Notifications, Groups } from './pages'
+import { TabNavigator, TabScreen } from './components/Navigators'
+import { Login, Notifications, Groups } from './pages'
 import SettingsStackScreen from './pages/Settings/navigation'
-import Recording from '~/screens/pages/Conversations/components/VideoCapture'
 import { RootState } from '~/store'
 import { Spinner } from '~/components'
 import { loginActions } from '~/store/actions'
@@ -15,10 +14,11 @@ import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
 import { theme } from '~/constants/theme'
 import Profile from './pages/Settings/pages/Profile'
 import CustomTabBar from '~/components/CustomTabBar'
+import HomeStackScreen from './pages/Home/navigation'
 
 const TabNavigation = () => {
   const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[0])
-  const TabStackScreen = () => (
+  return (
     <TabNavigator
       initialRouteName={NAVIGATION.SCREEN.HOME}
       tabBarOptions={{
@@ -36,7 +36,7 @@ const TabNavigation = () => {
           tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='home-icon' />
         }}
         name={NAVIGATION.SCREEN.HOME}
-        component={Home}
+        component={HomeStackScreen}
       />
       <TabScreen
         options={{
@@ -67,25 +67,6 @@ const TabNavigation = () => {
         component={Profile}
       />
     </TabNavigator>
-  )
-
-  return (
-    <StackNavigator>
-      <StackScreen
-        options={{
-          header: () => null
-        }}
-        name={NAVIGATION.SCREEN.TAB}
-        component={TabStackScreen}
-      />
-      <StackScreen
-        options={{
-          header: () => null
-        }}
-        name={NAVIGATION.SCREEN.RECORDING}
-        component={Recording}
-      />
-    </StackNavigator>
   )
 }
 

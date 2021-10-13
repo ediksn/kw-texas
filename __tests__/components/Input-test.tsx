@@ -2,6 +2,10 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { Input } from '~/components'
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({ t: (key: any) => key })
+}))
+
 jest.mock(
   'rn-fetch-blob',
   () => {
@@ -24,10 +28,6 @@ jest.mock(
   },
   { virtual: true }
 )
-
-jest.mock('react-i18next', () => ({
-  useTranslation: () => ({ t: (key: any) => key })
-}))
 
 test('renders correctly', () => {
   const header = renderer.create(<Input title='Input' />).toJSON()

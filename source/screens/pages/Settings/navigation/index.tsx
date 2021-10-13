@@ -6,7 +6,7 @@ import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
 import { Settings } from '~/screens/pages'
 import { NAVIGATION } from '~/constants'
 import Profile from '../pages/Profile'
-import HomeStackScreen from '../../Conversations/navigation'
+import ConversationsStackScreen from '../../Conversations/navigation'
 import { useBackButtonMinimize } from '~/hooks'
 
 const SettingsStackScreen = () => {
@@ -15,21 +15,27 @@ const SettingsStackScreen = () => {
   return (
     <StackNavigator>
       <StackScreen
+        options={{
+          header: () => null,
+          title: t('Settings')
+        }}
         name={NAVIGATION.SCREEN.SETTINGS}
         component={Settings}
-        options={{ headerTitleAlign: 'center', title: t('Settings') }}
       />
       <StackScreen
+        options={{
+          header: () => null,
+          title: t('Profile')
+        }}
         name={NAVIGATION.SCREEN.PROFILE}
         component={Profile}
-        options={{ headerTitleAlign: 'center', title: t('Profile') }}
       />
       <StackScreen
         options={{
           header: () => null
         }}
         name={NAVIGATION.SCREEN.CONVERSATIONS}
-        component={HomeStackScreen}
+        component={ConversationsStackScreen}
       />
       {/* <StackScreen
         name={NAVIGATION.SCREEN.STORYBOOK}

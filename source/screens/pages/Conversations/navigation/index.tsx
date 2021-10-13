@@ -6,6 +6,7 @@ import { StackNavigator, StackScreen, TopTabNavigator, TopTabScreen } from '~/sc
 
 import { Conversations } from '~/screens/pages'
 import { NAVIGATION, theme } from '~/constants'
+import Recording from '~/screens/pages/Conversations/components/VideoCapture'
 import { VideoPlayer } from '../VideoPlayer'
 import { Studio, Bookmarked } from '../pages'
 import { Button } from '~/components'
@@ -38,8 +39,9 @@ const TopTabNav = () => {
   )
 }
 
-const HomeStackScreen = () => {
+const ConversationsStackScreen = () => {
   const { t } = useTranslation()
+
   return (
     <StackNavigator>
       <StackScreen
@@ -69,8 +71,15 @@ const HomeStackScreen = () => {
         component={VideoPlayer}
         options={{ headerTitleAlign: 'center', title: t('Video Player') }}
       />
+      <StackScreen
+        options={{
+          header: () => null
+        }}
+        name={NAVIGATION.SCREEN.RECORDING}
+        component={Recording}
+      />
     </StackNavigator>
   )
 }
 
-export default HomeStackScreen
+export default ConversationsStackScreen

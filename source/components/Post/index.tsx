@@ -35,7 +35,7 @@ const Post = () => {
           {content}
         </Text>
         <TouchableOpacity onPress={() => setShowMore(!showMore)}>
-          <Text style={styles.showMore}>{showMore ? 'Less' : 'Show'} more</Text>
+          <Text style={styles.showMore}>Show {showMore ? 'less' : 'more'}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.infoNumbers}>

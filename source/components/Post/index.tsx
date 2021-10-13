@@ -1,24 +1,37 @@
 import React, { useState } from 'react'
+import moment from 'moment'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { moderateScale } from 'react-native-size-matters'
 import { styles } from './styles'
-import mockPost from './__mocks__/mockPost'
-import avatarMock from './__mocks__/avatarNinaRoyals.png'
 import { Button } from '~/components'
 import { theme } from '~/constants'
+import { PostInterface } from '~/interfaces/postInterface'
 import Icon from '../Icon'
 
-const Post = () => {
-  const { author, date, content, likes, comments, shares } = mockPost
+const Post = ({ post }: { post: PostInterface }) => {
+  const { created_at, created_by, content, likes_count, replies_count } = post
+
+  const getAvatar = () => {
+    const { avatar } = created_by
+
+    if (avatar.includes('//avatar')) return `https://avatar${avatar.split('//avatar')[1]}`
+
+    return avatar
+  }
+
+  const author = `${created_by.first_name.toUpperCase()} ${created_by.last_name.toUpperCase()}`
+  const date = moment(created_at).fromNow()
+  const shares = 0
   const [showMore, setShowMore] = useState(false)
   const { t } = useTranslation()
 
   const Header = () => (
     <View style={styles.header}>
       <View style={styles.avatarBox}>
-        <Image style={styles.avatar} resizeMode='center' source={avatarMock} />
+        <Image style={styles.avatar} resizeMode='cover' source={{ uri: getAvatar() }} />
         <View style={styles.info}>
-          <Text style={styles.name}>{author.name.toUpperCase()}</Text>
+          <Text style={styles.name}>{author}</Text>
           <Text style={styles.date}>{date}</Text>
         </View>
       </View>
@@ -29,22 +42,24 @@ const Post = () => {
   )
 
   const Content = () => (
-    <View style={styles.content}>
-      <View style={styles.contentText}>
-        <Text numberOfLines={showMore ? content.length : 5} ellipsizeMode='tail'>
+    <View style={styles.body}>
+      <View style={styles.content}>
+        <Text style={styles.contentText} numberOfLines={showMore ? content.length : 5} ellipsizeMode='clip'>
           {content}
         </Text>
-        <TouchableOpacity onPress={() => setShowMore(!showMore)}>
-          <Text style={styles.showMore}>{showMore ? 'Less' : 'Show'} More</Text>
-        </TouchableOpacity>
+        {content.length > 200 && (
+          <TouchableOpacity onPress={() => setShowMore(!showMore)}>
+            <Text style={styles.showMore}>Show {showMore ? 'less' : 'more'}</Text>
+          </TouchableOpacity>
+        )}
       </View>
       <View style={styles.infoNumbers}>
-        <Text style={styles.infoNumber}>{likes.number > 0 ? `${likes.number} ${t('likes')}` : ''}</Text>
+        <Text style={styles.infoNumber}>{likes_count > 0 ? `${likes_count} ${t('likes')}` : ''}</Text>
         <View style={styles.commentsSharesBox}>
-          <Text style={[styles.infoNumber, styles.comments]}>
-            {comments.number > 0 ? `${comments.number} ${t('comments')}` : ''}
+          <Text style={[styles.infoNumber, shares > 0 ? styles.comments : null]}>
+            {replies_count > 0 ? `${replies_count} ${t('comments')}` : ''}
           </Text>
-          <Text style={styles.infoNumber}>{shares.number > 0 ? `${shares.number} ${t('shares')}` : ''}</Text>
+          <Text style={styles.infoNumber}>{shares > 0 ? `${shares} ${t('shares')}` : ''}</Text>
         </View>
       </View>
     </View>
@@ -59,6 +74,7 @@ const Post = () => {
         type={theme.buttons.types.TEXT}
         icon={{
           name: 'like-icon',
+          size: moderateScale(20),
           color: theme.post.green
         }}
         fontSize={theme.fonts.SMALL_SIZE}
@@ -69,6 +85,7 @@ const Post = () => {
         type={theme.buttons.types.TEXT}
         icon={{
           name: 'comment-icon',
+          size: moderateScale(20),
           color: theme.post.green
         }}
         fontSize={theme.fonts.SMALL_SIZE}
@@ -79,6 +96,7 @@ const Post = () => {
         type={theme.buttons.types.TEXT}
         icon={{
           name: 'share-icon',
+          size: moderateScale(20),
           color: theme.post.green
         }}
         fontSize={theme.fonts.SMALL_SIZE}
@@ -89,8 +107,10 @@ const Post = () => {
 
   return (
     <View style={[styles.container]}>
-      <Header />
-      <Content />
+      <View style={styles.body}>
+        <Header />
+        <Content />
+      </View>
       <HorizontalLine />
       <Buttons />
     </View>

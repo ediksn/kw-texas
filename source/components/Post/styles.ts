@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
     borderRadius: moderateScale(20)
   },
   info: {
-    marginHorizontal: moderateScale(4)
+    marginLeft: moderateScale(12)
   },
   name: {
     fontSize: theme.fonts.SMALL_SIZE,

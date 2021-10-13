@@ -58,7 +58,7 @@ exports[`renders correctly 1`] = `
         <View
           style={
             Object {
-              "marginHorizontal": 6.285714285714286,
+              "marginLeft": 18.857142857142858,
             }
           }
         >

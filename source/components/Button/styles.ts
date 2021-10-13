@@ -21,9 +21,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   icon: {
-    height: verticalScale(24),
-    width: scale(24),
-    marginRight: scale(10)
+    textAlign: 'center',
+    marginRight: scale(9.5)
   },
   messageText: {
     fontWeight: 'bold'

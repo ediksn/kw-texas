@@ -107,7 +107,7 @@ const Post = ({ post }: { post: PostInterface }) => {
 
   return (
     <View style={[styles.container]}>
-      <View style={styles.body}>
+      <View>
         <Header />
         <Content />
       </View>

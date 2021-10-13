@@ -8,8 +8,8 @@ export const Groups = () => {
   useBackButtonMinimize()
 
   return (
-    <SafeAreaView>
-      <Text>Groups</Text>
+    <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Communities</Text>
     </SafeAreaView>
   )
 }

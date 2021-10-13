@@ -7,7 +7,7 @@ import { useBackButtonMinimize } from '~/hooks'
 export const Notifications = () => {
   useBackButtonMinimize()
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Notifications</Text>
     </SafeAreaView>
   )

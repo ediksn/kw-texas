@@ -14,7 +14,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: verticalScale(7),
     paddingHorizontal: scale(16)
   },
   avatarBox: {
@@ -44,7 +43,7 @@ export const styles = StyleSheet.create({
     width: scale(26)
   },
   body: {
-    padding: moderateScale(12)
+    paddingHorizontal: moderateScale(12)
   },
   content: {
     marginVertical: verticalScale(12)
@@ -80,12 +79,10 @@ export const styles = StyleSheet.create({
     opacity: 0.1
   },
   buttons: {
-    height: verticalScale(56),
+    height: scale(56),
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: verticalScale(16),
-    paddingHorizontal: scale(33)
+    justifyContent: 'space-around',
+    alignItems: 'center'
   },
   button: {
     width: 'auto',

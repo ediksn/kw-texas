@@ -13,7 +13,7 @@ const FONTS = {
 const TEXTS = {
   primary: '#212529',
   secondary: '#6C727E',
-  green: '#4797A5',
+  green: '#006C84',
   success: '#478943',
   error: '#C5050B',
   white: '#FFFFFF'
@@ -21,12 +21,12 @@ const TEXTS = {
 
 const BUTTONS_THEME = {
   primary: {
-    backgroundColor: '#4797A5',
+    backgroundColor: '#006C84',
     color: '#FFFFFF'
   },
   secondary: {
     backgroundColor: '#FFFFFF',
-    color: '#4797A5'
+    color: '#006C84'
   },
   types: {
     CONTAINED: 'CONTAINED',
@@ -43,6 +43,16 @@ export const BACKGROUNDS = {
   darkBackground: '#383e51',
   whiteBackground: 'white',
   darkWhiteBackground: '#D8D8D8'
+}
+
+const POST_CARD = {
+  name: '#282B33',
+  date: '#6C727E',
+  content: '#3D424D',
+  contentBottom: '#6C727E',
+  green: '#006C84',
+  horizontalLine: '#2b2b33',
+  dotsColor: '#3D424D'
 }
 
 export const theme = {
@@ -62,5 +72,6 @@ export const theme = {
   backgrounds: BACKGROUNDS,
   fonts: FONTS,
   buttons: BUTTONS_THEME,
-  texts: TEXTS
+  texts: TEXTS,
+  post: POST_CARD
 }

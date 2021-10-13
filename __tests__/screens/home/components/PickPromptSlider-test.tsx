@@ -6,6 +6,29 @@ import { homeActions } from '~/store/actions'
 import createTestStore from '../../../../__mocks__/store'
 import { pickPrompts } from '~/constants/testIds'
 
+jest.mock(
+  'rn-fetch-blob',
+  () => {
+    return {
+      DocumentDir: () => {},
+      ImageCache: {
+        get: {
+          clear: () => {}
+        }
+      },
+      fs: {
+        exists: jest.fn(),
+        dirs: {
+          MainBundleDir: () => {},
+          CacheDir: () => {},
+          DocumentDir: () => {}
+        }
+      }
+    }
+  },
+  { virtual: true }
+)
+
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
 }))

@@ -45,6 +45,16 @@ export const BACKGROUNDS = {
   darkWhiteBackground: '#D8D8D8'
 }
 
+const POST_CARD = {
+  name: '#282B33',
+  date: '#6C727E',
+  content: '#3D424D',
+  contentBottom: '#6C727E',
+  green: '#006C84',
+  horizontalLine: '#2b2b33',
+  dotsColor: '#3D424D'
+}
+
 export const theme = {
   backgroundDark: '#006C84',
   backgroundWhite: 'white',
@@ -62,5 +72,6 @@ export const theme = {
   backgrounds: BACKGROUNDS,
   fonts: FONTS,
   buttons: BUTTONS_THEME,
-  texts: TEXTS
+  texts: TEXTS,
+  post: POST_CARD
 }

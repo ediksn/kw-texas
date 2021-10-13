@@ -13,7 +13,6 @@ import {
 
 const rootReducer = combineReducers({
   login: loginReducer,
-  videos: videoReducer,
   promptVideos: promptVideoReducer,
   library: videoReducer,
   bookmarked: bmReducer,

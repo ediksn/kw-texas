@@ -43,7 +43,7 @@ const Button = ({
             <Icon name={icon.name} size={icon.size} color={icon.color} />
           </View>
         )}
-        <Text style={[styles.messageText, { color: textStyle?.color }, textTypeStyle, { fontSize }]}>{t(message)}</Text>
+        <Text style={[styles.messageText, textStyle || textTypeStyle, { fontSize }]}>{t(message)}</Text>
       </View>
     )
   }

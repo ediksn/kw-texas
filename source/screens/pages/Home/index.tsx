@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import { SafeAreaView, View, FlatList } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { styles } from './styles'
 import Post from '~/components/Post'
 import { PostInterface } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
 import { getUsrProfileActions, homeActions } from '~/store/actions'
+import { useBackButtonMinimize } from '~/hooks'
 
 export const Home = () => {
   const dispatch = useDispatch()
@@ -16,6 +18,8 @@ export const Home = () => {
   const limit: number = useSelector((state: RootState) => state.home.posts.limit)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)
   const usrId: number = usr?.kwuid
+
+  useBackButtonMinimize()
 
   useEffect(() => {
     if (usrProfile.length === 0) dispatch(getUsrProfileActions.getUsrProfile(usrId))

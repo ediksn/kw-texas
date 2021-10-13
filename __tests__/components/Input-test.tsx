@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Post from '~/components/Post'
+import { Input } from '~/components'
 
 jest.mock(
   'rn-fetch-blob',
@@ -30,6 +30,6 @@ jest.mock('react-i18next', () => ({
 }))
 
 test('renders correctly', () => {
-  const post = renderer.create(<Post />).toJSON()
-  expect(post).toMatchSnapshot()
+  const header = renderer.create(<Input title='Input' />).toJSON()
+  expect(header).toMatchSnapshot()
 })

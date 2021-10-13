@@ -1,8 +1,14 @@
 import React from 'react'
 import { Text, Image, View, ViewStyle, GestureResponderEvent, TouchableOpacity } from 'react-native'
+import save_button from 'assets/images/save_btn.png'
+import save_buttonw from 'assets/images/save_btnw.png'
+import { useDispatch, useSelector } from 'react-redux'
 import { styles } from './styles'
 import connect_thumbnail from '../../../assets/images/connect_thumbnail.png'
 import Tag from './components/Tag'
+import { RootState } from '~/store'
+import { VideoInterface } from '~/interfaces/videoInterfaces'
+import bmVideoActions from '~/store/actions/bmVideoActions'
 
 interface Props {
   testID: string
@@ -12,12 +18,42 @@ interface Props {
   lastName: string
   visits: number
   likes: number
+  id: number
+  postBookmarked: (libraryId: number, videoId: number, bookmarked: boolean) => void
   style?: ViewStyle
   tags: any
   onPress?: (event: GestureResponderEvent) => void
 }
 
-const VideoCard = ({ testID, img, title, firstName, lastName, visits, likes, tags, style, onPress }: Props) => {
+const VideoCard = ({
+  testID,
+  img,
+  title,
+  firstName,
+  lastName,
+  visits,
+  likes,
+  id,
+  postBookmarked,
+  tags,
+  style,
+  onPress
+}: Props) => {
+  const dispatch = useDispatch()
+  const storedVideo = useSelector((state: RootState) => {
+    const library: VideoInterface[] = state.library.searchScriptMeeting
+    const libraryId = library.findIndex((element: VideoInterface) => element.id === id)
+    const bookmarked = library[libraryId]?.bookmarked !== undefined ? library[libraryId]?.bookmarked : true
+    return { libraryId, bookmarked }
+  })
+
+  const getBookmarked = () => {
+    postBookmarked(storedVideo.libraryId, id, storedVideo.bookmarked)
+    setTimeout(() => {
+      dispatch(bmVideoActions.refreshVideosBm())
+    }, 200)
+  }
+
   const renderTags = () => {
     let lenghtTags = 0
     let nextTags = 0
@@ -51,7 +87,19 @@ const VideoCard = ({ testID, img, title, firstName, lastName, visits, likes, tag
             <Text style={styles.statisticsText}>{likes} likes</Text>
           </View>
         </View>
-        <View style={styles.tagContainerView}>{renderTags()}</View>
+        <View style={styles.tagContainerView}>
+          <View style={styles.tagItemView}>{renderTags()}</View>
+          {storedVideo.bookmarked && (
+            <TouchableOpacity style={styles.bookmarkedIcon} onPress={getBookmarked}>
+              <Image resizeMode='contain' source={save_button} />
+            </TouchableOpacity>
+          )}
+          {!storedVideo.bookmarked && (
+            <TouchableOpacity style={styles.bookmarkedIcon} onPress={getBookmarked}>
+              <Image resizeMode='contain' source={save_buttonw} />
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
     </TouchableOpacity>
   )

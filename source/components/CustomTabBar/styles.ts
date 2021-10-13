@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { scale, verticalScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 export const styles = (focused: boolean) =>
@@ -12,17 +13,16 @@ export const styles = (focused: boolean) =>
     selectedBar: {
       backgroundColor: focused ? theme.activeColor : theme.backgroundWhite,
       paddingTop: '5%',
-      paddingLeft: '30%',
-      paddingRight: '30%',
+      paddingLeft: scale(21),
+      paddingRight: verticalScale(21),
       borderBottomLeftRadius: 100,
       borderBottomRightRadius: 100,
-      marginBottom: '10%'
+      marginBottom: verticalScale(6)
     },
     icon: {
       color: focused ? theme.activeColor : theme.inActiveColor,
-      marginTop: '5%',
-      height: 23,
-      width: 22.5
+      marginTop: verticalScale(3),
+      textAlign: 'center'
     },
     photo: {
       aspectRatio: 1,

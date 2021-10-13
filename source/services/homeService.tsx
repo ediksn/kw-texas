@@ -1,3 +1,5 @@
+import { axiosInstanceTokens } from './config'
+
 export default {
   getPickPrompts: () => {
     return [
@@ -52,5 +54,9 @@ export default {
         image: 'teal'
       }
     ]
+  },
+  getPosts: async (limit: number) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.get(`/connect/posts?page=1&limit=${limit}&pinned_at_top=false`, {})
   }
 }

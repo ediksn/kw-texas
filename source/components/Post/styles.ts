@@ -6,9 +6,11 @@ export const styles = StyleSheet.create({
   container: {
     elevation: 4,
     backgroundColor: '#FFFFFF',
-    borderRadius: 4
+    borderRadius: 4,
+    marginBottom: verticalScale(10)
   },
   header: {
+    height: verticalScale(55),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -20,11 +22,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   avatar: {
-    height: verticalScale(40),
-    width: scale(40)
+    height: moderateScale(40),
+    width: moderateScale(40),
+    borderRadius: moderateScale(20)
   },
   info: {
-    marginHorizontal: moderateScale(4)
+    marginLeft: moderateScale(12)
   },
   name: {
     fontSize: theme.fonts.SMALL_SIZE,
@@ -57,6 +60,7 @@ export const styles = StyleSheet.create({
     color: theme.post.green
   },
   infoNumbers: {
+    marginVertical: verticalScale(10),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
@@ -76,6 +80,7 @@ export const styles = StyleSheet.create({
     opacity: 0.1
   },
   buttons: {
+    height: verticalScale(56),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

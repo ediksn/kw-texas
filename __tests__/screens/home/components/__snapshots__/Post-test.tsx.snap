@@ -8,7 +8,7 @@ exports[`renders correctly 1`] = `
         "backgroundColor": "#FFFFFF",
         "borderRadius": 4,
         "elevation": 4,
-        "padding": 15.714285714285714,
+        "marginBottom": 19.61764705882353,
       },
     ]
   }
@@ -16,154 +16,154 @@ exports[`renders correctly 1`] = `
   <View
     style={
       Object {
-        "alignItems": "center",
-        "flexDirection": "row",
+        "padding": 18.857142857142858,
       }
     }
   >
-    <Image
-      resizeMode="center"
-      source={
-        Object {
-          "testUri": "../../../source/components/Post/__mocks__/avatarNinaRoyals.png",
-        }
-      }
-      style={
-        Object {
-          "height": 117.70588235294117,
-          "width": 128.57142857142856,
-        }
-      }
-    />
-    <View
-      style={
-        Object {
-          "flex": 4,
-          "paddingHorizontal": 15.714285714285714,
-        }
-      }
-    >
-      <Text
-        style={
-          Object {
-            "fontSize": 22,
-            "fontWeight": "bold",
-          }
-        }
-      >
-        NINA ROYALS
-      </Text>
-      <Text>
-        4 hours ago
-      </Text>
-    </View>
-    <View
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
-    >
-      <Image
-        resizeMode="center"
-        source={
-          Object {
-            "testUri": "../../../assets/images/threeDots.png",
-          }
-        }
-        style={
-          Object {
-            "height": 51.00588235294117,
-            "width": 55.714285714285715,
-          }
-        }
-      />
-    </View>
-  </View>
-  <View>
-    <Text
-      ellipsizeMode="tail"
-      numberOfLines={5}
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus leo, fringilla at elit sed, tincidunt viverra dui. Nullam dignissim mi et tincidunt luctus. Nullam ut eleifend diam. Phasellus faucibus aliquam leo, vitae scelerisque nunc dignissim in. Maecenas vulputate quam id metus efficitur tristique. Ut maximus varius enim eleifend feugiat. Ut at ultricies lorem, eget molestie risus. Nam ultricies tempus sem quis fermentum. Sed a eros ac metus scelerisque hendrerit. Ut nec urna aliquam, sagittis eros non, bibendum risus. Ut congue eleifend velit eu dictum. Praesent eu mi vitae leo pulvinar ullamcorper. Sed tortor felis, tristique vitae lacinia sit amet, pellentesque ut felis. Nulla finibus erat libero, eu sodales metus auctor at. Duis iaculis leo vitae odio mollis, feugiat aliquam erat eleifend. Mauris quis dui at lorem tincidunt viverra nec vel mauris. Pellentesque laoreet dapibus purus, eget vehicula nunc scelerisque quis. Donec ac nibh sed erat consequat sagittis ut ut odio. Curabitur tempor vitae neque vel gravida. Morbi varius ligula nec tellus accumsan, quis pharetra ante dictum. Nulla pharetra ac ex id cursus. Vivamus ut lacinia nunc. Maecenas nec orci risus.
-    </Text>
-    <View
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
-    >
-      <Text
-        style={
-          Object {
-            "color": "#4797A5",
-            "fontWeight": "bold",
-          }
-        }
-      >
-        Show 
-        more
-      </Text>
-    </View>
     <View
       style={
         Object {
           "alignItems": "center",
           "flexDirection": "row",
+          "height": 107.8970588235294,
           "justifyContent": "space-between",
-          "margin": 19.61764705882353,
+          "paddingHorizontal": 34.285714285714285,
+          "paddingVertical": 13.73235294117647,
         }
       }
     >
-      <Text
-        style={
-          Object {
-            "color": "#6C727E",
-          }
-        }
-      >
-        13 likes
-      </Text>
       <View
         style={
           Object {
+            "alignItems": "center",
             "flexDirection": "row",
           }
         }
       >
+        <Image
+          resizeMode="cover"
+          source={
+            Object {
+              "uri": "https://storage.googleapis.com/kwconnect-core-qa-cd67/uploads/profile/photo_60e2b87c8b895.jpg",
+            }
+          }
+          style={
+            Object {
+              "borderRadius": 31.428571428571427,
+              "height": 62.857142857142854,
+              "width": 62.857142857142854,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "marginLeft": 18.857142857142858,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#282B33",
+                "fontFamily": "Mulish-Bold",
+                "fontSize": 18.857142857142858,
+              }
+            }
+          >
+            IRENE MURPHY
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "#6C727E",
+                "fontFamily": "Mulish-Regular",
+                "fontSize": 18.857142857142858,
+              }
+            }
+          >
+            2 months ago
+          </Text>
+        </View>
+      </View>
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
         <Text
+          allowFontScaling={false}
           style={
             Array [
               Object {
-                "color": "#6C727E",
+                "color": undefined,
+                "fontSize": 25,
               },
               Object {
-                "marginRight": 21.428571428571427,
+                "color": "#3D424D",
               },
+              Object {
+                "fontFamily": "icomoon",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
             ]
           }
         >
-          5 comments
+          
         </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "padding": 18.857142857142858,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "marginVertical": 23.541176470588233,
+          }
+        }
+      >
+        <Text
+          ellipsizeMode="clip"
+          numberOfLines={5}
+          style={
+            Object {
+              "color": "#3D424D",
+              "fontFamily": "Mulish-Regular",
+              "fontSize": 18.857142857142858,
+            }
+          }
+        >
+          Do you like food?
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginVertical": 19.61764705882353,
+          }
+        }
+      >
         <Text
           style={
             Object {
@@ -171,17 +171,46 @@ exports[`renders correctly 1`] = `
             }
           }
         >
-          2 shares
+          
         </Text>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6C727E",
+                },
+                null,
+              ]
+            }
+          >
+            
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "#6C727E",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
       </View>
     </View>
   </View>
   <View
     style={
       Object {
-        "backgroundColor": "#444444",
+        "backgroundColor": "#2b2b33",
         "height": 1.9617647058823529,
-        "width": "100%",
+        "opacity": 0.1,
       }
     }
   />
@@ -190,7 +219,10 @@ exports[`renders correctly 1`] = `
       Object {
         "alignItems": "center",
         "flexDirection": "row",
-        "justifyContent": "space-around",
+        "height": 109.85882352941177,
+        "justifyContent": "space-between",
+        "paddingHorizontal": 70.71428571428571,
+        "paddingVertical": 31.388235294117646,
       }
     }
   >
@@ -215,8 +247,9 @@ exports[`renders correctly 1`] = `
           "height": 58.85294117647059,
           "justifyContent": "center",
           "margin": 15.714285714285714,
+          "marginHorizontal": 8.571428571428571,
           "opacity": 1,
-          "width": 150,
+          "width": "auto",
         }
       }
     >
@@ -248,10 +281,10 @@ exports[`renders correctly 1`] = `
               Array [
                 Object {
                   "color": undefined,
-                  "fontSize": 20,
+                  "fontSize": 31.428571428571427,
                 },
                 Object {
-                  "color": "#4797A5",
+                  "color": "#006C84",
                 },
                 Object {
                   "fontFamily": "icomoon",
@@ -262,7 +295,7 @@ exports[`renders correctly 1`] = `
               ]
             }
           >
-            
+            
           </Text>
         </View>
         <Text
@@ -272,13 +305,11 @@ exports[`renders correctly 1`] = `
                 "fontWeight": "bold",
               },
               Object {
-                "color": undefined,
+                "color": "#006C84",
+                "fontFamily": "Mulish-Regular",
               },
               Object {
-                "color": "#4797A5",
-              },
-              Object {
-                "fontSize": 34.57142857142857,
+                "fontSize": 18.857142857142858,
               },
             ]
           }
@@ -308,8 +339,9 @@ exports[`renders correctly 1`] = `
           "height": 58.85294117647059,
           "justifyContent": "center",
           "margin": 15.714285714285714,
+          "marginHorizontal": 8.571428571428571,
           "opacity": 1,
-          "width": 150,
+          "width": "auto",
         }
       }
     >
@@ -341,10 +373,10 @@ exports[`renders correctly 1`] = `
               Array [
                 Object {
                   "color": undefined,
-                  "fontSize": 20,
+                  "fontSize": 31.428571428571427,
                 },
                 Object {
-                  "color": "#4797A5",
+                  "color": "#006C84",
                 },
                 Object {
                   "fontFamily": "icomoon",
@@ -365,13 +397,11 @@ exports[`renders correctly 1`] = `
                 "fontWeight": "bold",
               },
               Object {
-                "color": undefined,
+                "color": "#006C84",
+                "fontFamily": "Mulish-Regular",
               },
               Object {
-                "color": "#4797A5",
-              },
-              Object {
-                "fontSize": 34.57142857142857,
+                "fontSize": 18.857142857142858,
               },
             ]
           }
@@ -401,8 +431,9 @@ exports[`renders correctly 1`] = `
           "height": 58.85294117647059,
           "justifyContent": "center",
           "margin": 15.714285714285714,
+          "marginHorizontal": 8.571428571428571,
           "opacity": 1,
-          "width": 150,
+          "width": "auto",
         }
       }
     >
@@ -434,10 +465,10 @@ exports[`renders correctly 1`] = `
               Array [
                 Object {
                   "color": undefined,
-                  "fontSize": 20,
+                  "fontSize": 31.428571428571427,
                 },
                 Object {
-                  "color": "#4797A5",
+                  "color": "#006C84",
                 },
                 Object {
                   "fontFamily": "icomoon",
@@ -448,7 +479,7 @@ exports[`renders correctly 1`] = `
               ]
             }
           >
-            
+            
           </Text>
         </View>
         <Text
@@ -458,13 +489,11 @@ exports[`renders correctly 1`] = `
                 "fontWeight": "bold",
               },
               Object {
-                "color": undefined,
+                "color": "#006C84",
+                "fontFamily": "Mulish-Regular",
               },
               Object {
-                "color": "#4797A5",
-              },
-              Object {
-                "fontSize": 34.57142857142857,
+                "fontSize": 18.857142857142858,
               },
             ]
           }

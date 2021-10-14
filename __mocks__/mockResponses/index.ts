@@ -113,6 +113,8 @@ export const profileResponse = {
 }
 
 export const postResponse = {
+  creatorfirstName: 'test',
+  creatorLastName: 'test',
   id: '611187e83ff2cf15dd5c7613',
   title: 'Do you like food?',
   type: 'poll',

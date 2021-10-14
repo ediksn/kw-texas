@@ -3,6 +3,12 @@ import { NavigationContainer } from '@react-navigation/native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
 import { useSelector, useDispatch } from 'react-redux'
+import HomeUnfilled from 'assets/images/home-unfilled.png'
+import HomeFilled from 'assets/images/home-filled.png'
+import GroupsUnfilled from 'assets/images/groups-unfilled.png'
+import GroupsFilled from 'assets/images/groups-filled.png'
+import CalendarUnfilled from 'assets/images/calendar-unfilled.png'
+import CalendarFilled from 'assets/images/calendar-filled.png'
 import { NAVIGATION } from '~/constants/navigation'
 import { TabNavigator, TabScreen } from './components/Navigators'
 import { Login, Notifications, Groups } from './pages'
@@ -15,6 +21,7 @@ import { theme } from '~/constants/theme'
 import Profile from './pages/Settings/pages/Profile'
 import CustomTabBar from '~/components/CustomTabBar'
 import HomeStackScreen from './pages/Home/navigation'
+import { styles } from './styles'
 
 const TabNavigation = () => {
   const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[0])
@@ -33,35 +40,43 @@ const TabNavigation = () => {
     >
       <TabScreen
         options={{
-          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='home-icon' />
+          tabBarIcon: ({ focused }) => (
+            <CustomTabBar focused={focused} PNG={focused ? HomeFilled : HomeUnfilled} imageStyle={styles.png} />
+          )
         }}
         name={NAVIGATION.SCREEN.HOME}
         component={HomeStackScreen}
       />
       <TabScreen
         options={{
-          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='groups-icon' />
+          tabBarIcon: ({ focused }) => (
+            <CustomTabBar focused={focused} PNG={focused ? GroupsFilled : GroupsUnfilled} imageStyle={styles.png} />
+          )
         }}
         name={NAVIGATION.SCREEN.GROUPS}
         component={Groups}
       />
       <TabScreen
         options={{
-          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='notifications-icon' />
+          tabBarIcon: ({ focused }) => (
+            <CustomTabBar focused={focused} PNG={focused ? CalendarFilled : CalendarUnfilled} imageStyle={styles.png} />
+          )
         }}
         name={NAVIGATION.SCREEN.NOTIFICATIONS}
         component={Notifications}
       />
       <TabScreen
         options={{
-          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='moremenu-icon' />
+          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='notifications-icon' />
         }}
         name={NAVIGATION.SCREEN.SETTINGS}
         component={SettingsStackScreen}
       />
       <TabScreen
         options={{
-          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} imageURL={usrData?.photo_url} />
+          tabBarIcon: ({ focused }) => (
+            <CustomTabBar focused={focused} imageURL={usrData?.photo_url} imageStyle={styles.photo} />
+          )
         }}
         name={NAVIGATION.SCREEN.PROFILE}
         component={Profile}

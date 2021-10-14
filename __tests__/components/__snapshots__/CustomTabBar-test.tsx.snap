@@ -30,11 +30,11 @@ exports[`renders correctly 1`] = `
       Array [
         Object {
           "color": undefined,
-          "fontSize": 21,
+          "fontSize": 23,
         },
         Object {
           "color": "#006C84",
-          "marginTop": 5.885294117647058,
+          "marginTop": 3.9235294117647057,
           "textAlign": "center",
         },
         Object {
@@ -46,7 +46,7 @@ exports[`renders correctly 1`] = `
       ]
     }
   >
-    
+    ?
   </Text>
 </View>
 `;

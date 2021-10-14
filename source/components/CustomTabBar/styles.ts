@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 import { scale, verticalScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
-export const styles = (focused: boolean) =>
+export const styles = (focused?: boolean) =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -21,13 +21,7 @@ export const styles = (focused: boolean) =>
     },
     icon: {
       color: focused ? theme.activeColor : theme.inActiveColor,
-      marginTop: verticalScale(3),
+      marginTop: verticalScale(2),
       textAlign: 'center'
-    },
-    photo: {
-      aspectRatio: 1,
-      width: 30,
-      borderRadius: 30,
-      height: 30
     }
   })

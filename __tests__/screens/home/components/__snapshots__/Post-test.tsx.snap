@@ -13,13 +13,7 @@ exports[`renders correctly 1`] = `
     ]
   }
 >
-  <View
-    style={
-      Object {
-        "padding": 18.857142857142858,
-      }
-    }
-  >
+  <View>
     <View
       style={
         Object {
@@ -28,7 +22,6 @@ exports[`renders correctly 1`] = `
           "height": 107.8970588235294,
           "justifyContent": "space-between",
           "paddingHorizontal": 34.285714285714285,
-          "paddingVertical": 13.73235294117647,
         }
       }
     >
@@ -122,14 +115,14 @@ exports[`renders correctly 1`] = `
             ]
           }
         >
-          
+          
         </Text>
       </View>
     </View>
     <View
       style={
         Object {
-          "padding": 18.857142857142858,
+          "paddingHorizontal": 18.857142857142858,
         }
       }
     >
@@ -219,10 +212,8 @@ exports[`renders correctly 1`] = `
       Object {
         "alignItems": "center",
         "flexDirection": "row",
-        "height": 109.85882352941177,
-        "justifyContent": "space-between",
-        "paddingHorizontal": 70.71428571428571,
-        "paddingVertical": 31.388235294117646,
+        "height": 120,
+        "justifyContent": "space-around",
       }
     }
   >
@@ -269,9 +260,8 @@ exports[`renders correctly 1`] = `
         <View
           style={
             Object {
-              "height": 47.08235294117647,
-              "marginRight": 21.428571428571427,
-              "width": 51.42857142857143,
+              "marginRight": 20.357142857142858,
+              "textAlign": "center",
             }
           }
         >
@@ -295,7 +285,7 @@ exports[`renders correctly 1`] = `
               ]
             }
           >
-            
+            
           </Text>
         </View>
         <Text
@@ -361,9 +351,8 @@ exports[`renders correctly 1`] = `
         <View
           style={
             Object {
-              "height": 47.08235294117647,
-              "marginRight": 21.428571428571427,
-              "width": 51.42857142857143,
+              "marginRight": 20.357142857142858,
+              "textAlign": "center",
             }
           }
         >
@@ -453,9 +442,8 @@ exports[`renders correctly 1`] = `
         <View
           style={
             Object {
-              "height": 47.08235294117647,
-              "marginRight": 21.428571428571427,
-              "width": 51.42857142857143,
+              "marginRight": 20.357142857142858,
+              "textAlign": "center",
             }
           }
         >
@@ -479,7 +467,7 @@ exports[`renders correctly 1`] = `
               ]
             }
           >
-            
+            
           </Text>
         </View>
         <Text

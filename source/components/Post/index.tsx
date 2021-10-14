@@ -25,7 +25,7 @@ const Post = ({ post }: { post: PostInterface }) => {
     return avatar
   }
 
-  const getContentText = (count, text) => {
+  const getContentText = (count: number, text: string) => {
     if (count > 0) {
       return `${count} ${count === 1 ? text.slice(0, text.length - 1) : text}`
     }

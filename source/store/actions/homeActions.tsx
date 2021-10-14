@@ -24,7 +24,7 @@ const actionCreators = {
       dispatch({
         type: GET_POSTS_SUCCESS,
         payload: {
-          data: response?.data.results,
+          data: response?.data.data.getPosts,
           limitDefault: 10,
           limit
         }

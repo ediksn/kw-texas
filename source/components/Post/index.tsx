@@ -10,26 +10,27 @@ import { PostInterface } from '~/interfaces/postInterface'
 import Icon from '../Icon'
 
 const Post = ({ post }: { post: PostInterface }) => {
-  const { created_at, created_by, content, likes_count, replies_count } = post
-
-  const getAvatar = () => {
-    const { avatar } = created_by
-
-    if (avatar.includes('//avatar')) return `https://avatar${avatar.split('//avatar')[1]}`
-
-    return avatar
-  }
-
-  const author = `${created_by.first_name.toUpperCase()} ${created_by.last_name.toUpperCase()}`
-  const date = moment(created_at).fromNow()
+  const { createdAt, creatorfirstName, creatorLastName, creatorPhoto, content, likesCount, repliesCount } = post
+  const author = `${creatorfirstName.toUpperCase()} ${creatorLastName.toUpperCase()}`
+  const date = moment(createdAt).fromNow()
   const shares = 0
+  const parseContent = content.slice(0, 1) === '{' ? JSON.parse(content) : content
+  const contentText = Array.isArray(parseContent.blocks) ? parseContent.blocks[0].text : content
   const [showMore, setShowMore] = useState(false)
   const { t } = useTranslation()
+
+  const getLikesCommentsSharesText = (count: number, text: string) => {
+    if (count > 0) {
+      return `${count} ${count === 1 ? text.slice(0, text.length - 1) : text}`
+    }
+
+    return ''
+  }
 
   const Header = () => (
     <View style={styles.header}>
       <View style={styles.avatarBox}>
-        <Image style={styles.avatar} resizeMode='cover' source={{ uri: getAvatar() }} />
+        <Image style={styles.avatar} resizeMode='cover' source={{ uri: creatorPhoto }} />
         <View style={styles.info}>
           <Text style={styles.name}>{author}</Text>
           <Text style={styles.date}>{date}</Text>
@@ -44,22 +45,22 @@ const Post = ({ post }: { post: PostInterface }) => {
   const Content = () => (
     <View style={styles.body}>
       <View style={styles.content}>
-        <Text style={styles.contentText} numberOfLines={showMore ? content.length : 5} ellipsizeMode='clip'>
-          {content}
+        <Text style={styles.contentText} numberOfLines={showMore ? contentText.length : 5} ellipsizeMode='clip'>
+          {contentText}
         </Text>
-        {content.length > 200 && (
+        {contentText.length > 200 && (
           <TouchableOpacity onPress={() => setShowMore(!showMore)}>
             <Text style={styles.showMore}>Show {showMore ? 'less' : 'more'}</Text>
           </TouchableOpacity>
         )}
       </View>
       <View style={styles.infoNumbers}>
-        <Text style={styles.infoNumber}>{likes_count > 0 ? `${likes_count} ${t('likes')}` : ''}</Text>
+        <Text style={styles.infoNumber}>{getLikesCommentsSharesText(likesCount, t('likes'))}</Text>
         <View style={styles.commentsSharesBox}>
           <Text style={[styles.infoNumber, shares > 0 ? styles.comments : null]}>
-            {replies_count > 0 ? `${replies_count} ${t('comments')}` : ''}
+            {getLikesCommentsSharesText(repliesCount, t('comments'))}
           </Text>
-          <Text style={styles.infoNumber}>{shares > 0 ? `${shares} ${t('shares')}` : ''}</Text>
+          <Text style={styles.infoNumber}>{getLikesCommentsSharesText(shares, t('shares'))}</Text>
         </View>
       </View>
     </View>

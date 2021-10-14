@@ -19,9 +19,10 @@ exports[`renders correctly 1`] = `
         Object {
           "alignItems": "center",
           "flexDirection": "row",
-          "height": 107.8970588235294,
           "justifyContent": "space-between",
+          "minHeight": 107.8970588235294,
           "paddingHorizontal": 34.285714285714285,
+          "paddingVertical": 13.73235294117647,
         }
       }
     >
@@ -37,7 +38,7 @@ exports[`renders correctly 1`] = `
           resizeMode="cover"
           source={
             Object {
-              "uri": "https://storage.googleapis.com/kwconnect-core-qa-cd67/uploads/profile/photo_60e2b87c8b895.jpg",
+              "uri": undefined,
             }
           }
           style={
@@ -64,7 +65,7 @@ exports[`renders correctly 1`] = `
               }
             }
           >
-            IRENE MURPHY
+            TEST TEST
           </Text>
           <Text
             style={
@@ -75,7 +76,7 @@ exports[`renders correctly 1`] = `
               }
             }
           >
-            2 months ago
+            a few seconds ago
           </Text>
         </View>
       </View>

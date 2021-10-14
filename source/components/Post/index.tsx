@@ -11,6 +11,11 @@ import Icon from '../Icon'
 
 const Post = ({ post }: { post: PostInterface }) => {
   const { created_at, created_by, content, likes_count, replies_count } = post
+  const author = `${created_by.first_name.toUpperCase()} ${created_by.last_name.toUpperCase()}`
+  const date = moment(created_at).fromNow()
+  const shares = 0
+  const [showMore, setShowMore] = useState(false)
+  const { t } = useTranslation()
 
   const getAvatar = () => {
     const { avatar } = created_by
@@ -20,11 +25,13 @@ const Post = ({ post }: { post: PostInterface }) => {
     return avatar
   }
 
-  const author = `${created_by.first_name.toUpperCase()} ${created_by.last_name.toUpperCase()}`
-  const date = moment(created_at).fromNow()
-  const shares = 0
-  const [showMore, setShowMore] = useState(false)
-  const { t } = useTranslation()
+  const getContentText = (count, text) => {
+    if (count > 0) {
+      return `${count} ${count === 1 ? text.slice(0, text.length - 1) : text}`
+    }
+
+    return ''
+  }
 
   const Header = () => (
     <View style={styles.header}>
@@ -54,12 +61,12 @@ const Post = ({ post }: { post: PostInterface }) => {
         )}
       </View>
       <View style={styles.infoNumbers}>
-        <Text style={styles.infoNumber}>{likes_count > 0 ? `${likes_count} ${t('likes')}` : ''}</Text>
+        <Text style={styles.infoNumber}>{getContentText(likes_count, t('likes'))}</Text>
         <View style={styles.commentsSharesBox}>
           <Text style={[styles.infoNumber, shares > 0 ? styles.comments : null]}>
-            {replies_count > 0 ? `${replies_count} ${t('comments')}` : ''}
+            {getContentText(replies_count, t('comments'))}
           </Text>
-          <Text style={styles.infoNumber}>{shares > 0 ? `${shares} ${t('shares')}` : ''}</Text>
+          <Text style={styles.infoNumber}>{getContentText(shares, t('shares'))}</Text>
         </View>
       </View>
     </View>

@@ -13,7 +13,6 @@ lane :inc do |options|
   end
 
   # sh "COMMIT_HASH=$(git rev-parse HEAD) BUILD_VERSION=#{major}.#{minor}.#{patch} BUILD_TIME=$(date -u) envsubst < ../../.env.dist > ../../.env && cat ../../.env"
-  sh "COMMIT_HASH=$(git rev-parse HEAD) BUILD_VERSION=#{major}.#{minor}.#{patch} BUILD_TIME=$(date -u)"
   "#{major}.#{minor}.#{patch}"
 end
 
@@ -67,23 +66,20 @@ platform :ios do
       )
       match(
         app_identifier: "com.kw.agent.connect",
-        readonly: true
       )
       update_project_provisioning(
         xcodeproj: "connectmobile.xcodeproj",
-        profile: ENV["sigh_com.kw.agent.connect_appstore_profile-path"],
+        profile: ENV["sigh_com.kw.agent.connect_adhoc_profile-path"],
         target_filter: "connectmobile",
         build_configuration: "Release"
       )
     else
-      match(
-        readonly: true
-      )
+      match
     end
     increment
     cocoapods
     gym(
-      export_method: "app-store",
+      export_method: "ad-hoc",
       scheme: "connectmobile",
       clean: true,
       silent: true,
@@ -102,7 +98,6 @@ platform :ios do
       match(
         app_identifier: "com.kw.agent.connect",
         type: "development",
-        readonly: true
       )
       update_project_provisioning(
         xcodeproj: "connectmobile.xcodeproj",
@@ -114,11 +109,10 @@ platform :ios do
     else
       match(
         type: "development",
-        readonly: true
       )
       update_project_provisioning(
         xcodeproj: "connectmobile.xcodeproj",
-        profile: ENV["sigh_kellerwilliams.connect-mobile.staging_development_profile-path"],
+        profile: ENV["sigh_com.kw.agent.connect.staging_development_profile-path"],
         target_filter: "connectmobile",
         build_configuration: "Release",
         code_signing_identity: "iPhone Developer"
@@ -147,16 +141,16 @@ platform :ios do
   desc "AppCenter push"
   lane :push do
     appcenter_upload(
-      api_token: "15dd6314d3ace2a1f2c24068512dda2a89ca4d58",
+      api_token: ENV["APPCENTER_API_TOKEN"],
       owner_type: "organization",
-      owner_name: "KWCONN",
+      owner_name: ENV["APPCENTER_OWNER_NAME"],
       app_name: ENV["APPCENTER_IOS_APP"],
       file: "connectmobile.ipa",
       release_notes: changelog
     )
     appcenter_upload(
       owner_type: "organization",
-      owner_name: "KWCONN",
+      owner_name: ENV["APPCENTER_OWNER_NAME"],
       app_name: ENV["APPCENTER_IOS_APP"],
       file: "connectmobile-dev.ipa",
       destinations: ENV["APPCENTER_IOS_GROUP"],
@@ -180,7 +174,7 @@ platform :ios do
     puts ""
     puts "    after:timestamp"
     puts "      If specified, only feedback after the given timestamp will be returned"
-    puts "" 
+    puts ""
 
     # Gets app
     app = Spaceship::ConnectAPI::App.find("com.kw.agent.connect")
@@ -217,7 +211,6 @@ platform :ios do
       puts "OS Version: #{feedback.os_version}"
       # puts "Connection Status: #{feedback.connection_status}"
       puts "Locale: #{feedback.locale}"
-      
 
       # Iterate over feedback screenshots
       feedback.screenshots.each do |screenshot|
@@ -241,10 +234,9 @@ platform :android do
   lane :increment do
     sh("cd", "../")
     old = appcenter_fetch_version_number(
-      # api_token: "2374cbb9f0e7d7abf3a9481b8f6c59c4eca6f27f",
-      api_token: ENV["APPCENTER_ANDROID_API_TOKEN"],
+      api_token: ENV["APPCENTER_API_TOKEN"],
       app_name: ENV["APPCENTER_ANDROID_APP"],
-      owner_name: "KWCONN",
+      owner_name: ENV["APPCENTER_OWNER_NAME"],
     )
     new = sh("npx -c 'echo $npm_package_version'")
     version = inc(new:new, old:old["version"])
@@ -278,12 +270,11 @@ platform :android do
   desc "AppCenter push"
   lane :push do
       appcenter_upload(
-        # api_token: "2374cbb9f0e7d7abf3a9481b8f6c59c4eca6f27f",
-        api_token: ENV["APPCENTER_ANDROID_API_TOKEN"],
+        api_token: ENV["APPCENTER_API_TOKEN"],
         owner_type: "organization",
-        owner_name: "KWCONN",
+        owner_name: ENV["APPCENTER_OWNER_NAME"],
         app_name: ENV["APPCENTER_ANDROID_APP"],
-        file: ENV["ENVIRONMENT"] == "PROD" ? "../android/app/build/outputs/apk/production/release/app-production-release.apk" : "../android/app/build/outputs/apk/staging/release/app-staging-release.apk",                
+        file: ENV["ENVIRONMENT"] == "PROD" ? "../android/app/build/outputs/apk/production/release/app-production-release.apk" : "../android/app/build/outputs/apk/staging/release/app-staging-release.apk",
         destinations: ENV["APPCENTER_ANDROID_GROUP"],
         release_notes: changelog
       )

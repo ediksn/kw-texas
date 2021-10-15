@@ -2,10 +2,8 @@
 set -e
 
 ENVIRONMENT=QA
-BASE_URL=${BASE_URL_DEV}
 if [[ $CIRCLE_BRANCH =~ ^release\/v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$ ]]; then
   ENVIRONMENT=PROD
-  BASE_URL=${BASE_URL_PROD}
 fi
 
 echo "export ENVIRONMENT=${ENVIRONMENT}" >> bash_env
@@ -27,4 +25,3 @@ fi
 
 # envsubst < sentry.properties.dist > $SENTRY_PROPERTIES_PATH
 envsubst < .env.dist > .env
-echo "BASE_URL='${BASE_URL}'" > .env

@@ -17,7 +17,12 @@ const Post = ({ post }: { post: PostInterface }) => {
   const parseContent = content.slice(0, 1) === '{' ? JSON.parse(content) : content
   const contentText = Array.isArray(parseContent.blocks) ? parseContent.blocks[0].text : content
   const [showMore, setShowMore] = useState(false)
+  const [hasShowLessMore, setHasShowLessMore] = useState(false)
   const { t } = useTranslation()
+
+  const addMoreText = (event: any) => {
+    setHasShowLessMore(event.nativeEvent.lines.length > 5)
+  }
 
   const getLikesCommentsSharesText = (count: number, text: string) => {
     if (count > 0) {
@@ -45,10 +50,15 @@ const Post = ({ post }: { post: PostInterface }) => {
   const Content = () => (
     <View style={styles.body}>
       <View style={styles.content}>
-        <Text style={styles.contentText} numberOfLines={showMore ? contentText.length : 5} ellipsizeMode='clip'>
+        <Text
+          style={styles.contentText}
+          numberOfLines={showMore ? contentText.length : 5}
+          ellipsizeMode='clip'
+          onTextLayout={addMoreText}
+        >
           {contentText}
         </Text>
-        {contentText.length > 200 && (
+        {hasShowLessMore && (
           <TouchableOpacity onPress={() => setShowMore(!showMore)}>
             <Text style={styles.showMore}>Show {showMore ? 'less' : 'more'}</Text>
           </TouchableOpacity>

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { verticalScale } from 'react-native-size-matters'
 
 export const styles = StyleSheet.create({
   photo: {
@@ -10,5 +11,10 @@ export const styles = StyleSheet.create({
   png: {
     width: 30,
     height: 30
+  },
+  notifications: {
+    width: 23,
+    height: 25,
+    marginTop: verticalScale(1)
   }
 })

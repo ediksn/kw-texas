@@ -9,6 +9,8 @@ import GroupsUnfilled from 'assets/images/groups-unfilled.png'
 import GroupsFilled from 'assets/images/groups-filled.png'
 import CalendarUnfilled from 'assets/images/calendar-unfilled.png'
 import CalendarFilled from 'assets/images/calendar-filled.png'
+import NotificationsUnfilled from 'assets/images/notifications-unfilled.png'
+import NotificationsFilled from 'assets/images/notifications-filled.png'
 import { NAVIGATION } from '~/constants/navigation'
 import { TabNavigator, TabScreen } from './components/Navigators'
 import { Login, Notifications, Groups } from './pages'
@@ -67,7 +69,13 @@ const TabNavigation = () => {
       />
       <TabScreen
         options={{
-          tabBarIcon: ({ focused }) => <CustomTabBar focused={focused} name='notifications-icon' />
+          tabBarIcon: ({ focused }) => (
+            <CustomTabBar
+              focused={focused}
+              PNG={focused ? NotificationsFilled : NotificationsUnfilled}
+              imageStyle={styles.notifications}
+            />
+          )
         }}
         name={NAVIGATION.SCREEN.SETTINGS}
         component={SettingsStackScreen}

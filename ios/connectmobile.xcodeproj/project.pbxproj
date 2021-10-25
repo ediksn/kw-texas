@@ -624,7 +624,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kw.agent.connect.staging;
 				PRODUCT_NAME = connectmobile;
-				PROVISIONING_PROFILE_SPECIFIER = ""KW Connect QA Ad Hoc"";
+				PROVISIONING_PROFILE_SPECIFIER = "KW Connect QA Ad Hoc";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -655,7 +655,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kw.agent.connect.staging;
 				PRODUCT_NAME = connectmobile;
-				PROVISIONING_PROFILE_SPECIFIER = ""KW Connect QA Ad Hoc"";
+				PROVISIONING_PROFILE_SPECIFIER = "KW Connect QA Ad Hoc";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

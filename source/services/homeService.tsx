@@ -59,7 +59,7 @@ export default {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {
       query:
-        '\n    query getGlobalPosts($offset: Int!, $limit: Int!) {\n  getPosts(offset: $offset, limit: $limit) {\n    id\n    content\n    type\n    likedBy\n    likesCount\n    repliesCount\n    bookmarksCount\n    creatorfirstName\n    creatorLastName\n    creatorPhoto\n    createdAt\n    deleted\n    pinned\n    userHasAlreadyLiked\n    userHasAlreadyBookmarked\n    groupId\n    detail {\n      ... on Icon {\n        id\n        url\n      }\n      ... on pollType {\n        status\n        multiple\n        duration\n        pollVoteCount\n        voters\n        pollOption {\n          name\n          count\n          optionId\n        }\n        userHasAlreadyVoted\n      }\n    }\n  }\n}\n    ',
+        '\n    query getGlobalPosts($offset: Int!, $limit: Int!) {\n  getPosts(offset: $offset, limit: $limit) {\n    id\n    content\n    type\n    likedBy\n    likesCount\n    repliesCount\n    bookmarksCount\n    creatorId\n    creatorfirstName\n    creatorLastName\n    creatorPhoto\n    createdAt\n    deleted\n    pinned\n    userHasAlreadyLiked\n    userHasAlreadyBookmarked\n    groupId\n    }\n}\n    ',
       variables: {
         offset: 0,
         limit

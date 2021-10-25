@@ -24,12 +24,14 @@ export const Settings = ({ navigation }: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ListButton
-        title='StoryBook'
-        icon={null}
-        onPress={() => navigation.navigate(NAVIGATION.SCREEN.STORYBOOK)}
-        arrow
-      />
+      {__DEV__ && (
+        <ListButton
+          title='StoryBook'
+          icon={null}
+          onPress={() => navigation.navigate(NAVIGATION.SCREEN.STORYBOOK)}
+          arrow
+        />
+      )}
       <ListButton
         title='Profile'
         icon={profile_btn}

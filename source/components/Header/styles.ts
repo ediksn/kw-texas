@@ -13,7 +13,12 @@ export const styles = StyleSheet.create({
     borderBottomColor: theme.grey,
     borderBottomWidth: 1,
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 8
   },
   textContainer: {
     marginLeft: 'auto',

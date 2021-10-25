@@ -76,7 +76,7 @@ exports[`renders correctly 1`] = `
               }
             }
           >
-            a few seconds ago
+            Posted 10/25/21
           </Text>
         </View>
       </View>

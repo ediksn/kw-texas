@@ -12,7 +12,7 @@ import Icon from '../Icon'
 const Post = ({ post }: { post: PostInterface }) => {
   const { createdAt, creatorfirstName, creatorLastName, creatorPhoto, content, likesCount, repliesCount } = post
   const author = `${creatorfirstName.toUpperCase()} ${creatorLastName.toUpperCase()}`
-  const date = moment(createdAt).fromNow()
+  const date = moment(createdAt).format('MM/DD/YY')
   const shares = 0
   const parseContent = content.slice(0, 1) === '{' ? JSON.parse(content) : content
   const contentText = Array.isArray(parseContent.blocks) ? parseContent.blocks[0].text : content
@@ -38,7 +38,7 @@ const Post = ({ post }: { post: PostInterface }) => {
         <Image style={styles.avatar} resizeMode='cover' source={{ uri: creatorPhoto }} />
         <View style={styles.info}>
           <Text style={styles.name}>{author}</Text>
-          <Text style={styles.date}>{date}</Text>
+          <Text style={styles.date}>{`${t('Posted')} ${date}`}</Text>
         </View>
       </View>
       <TouchableOpacity onPress={() => null}>

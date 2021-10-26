@@ -1,11 +1,26 @@
+// comment for creation of story task
 import React, { useEffect, useState } from 'react'
-import { KeyboardAvoidingView, Text, View } from 'react-native'
+import { Image, KeyboardAvoidingView, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNetInfo } from '@react-native-community/netinfo'
+import kw from 'assets/images/kw-logo.png'
+import connect from 'assets/images/connect-logo.png'
+import illustration from 'assets/images/login-illustration.png'
+import Modal from 'react-native-modal'
 import { Button, Input, Spinner } from '~/components'
-import { forgotButton, IS_IOS, passwordInput, signinButton, theme, usernameInput } from '~/constants'
+import {
+  connectLogo,
+  forgotButton,
+  illustrationLogo,
+  IS_IOS,
+  kwLogo,
+  passwordInput,
+  signinButton,
+  theme,
+  usernameInput
+} from '~/constants'
 import { styles } from './styles'
 import { FORM } from '~/constants/form'
 import { loginActions } from '~/store/actions'
@@ -53,7 +68,7 @@ export const Login = () => {
   }, [username, password])
 
   const NoConnection = () => (
-    <SafeAreaView style={styles.notch}>
+    <SafeAreaView>
       <View style={styles.noConnectionContainer}>
         <Text style={styles.noConnectionText}>{t('No internet connection')}</Text>
       </View>
@@ -62,49 +77,74 @@ export const Login = () => {
 
   return (
     <>
-      {!netInfo.isConnected && <NoConnection />}
-      <SafeAreaView style={[styles.containerView, !netInfo.isConnected && { backgroundColor: 'rgba(0,0,0,.2)' }]}>
+      <Modal isVisible={!netInfo.isConnected} style={styles.noConnectionModal}>
+        <NoConnection />
+      </Modal>
+      <SafeAreaView style={styles.containerView}>
         <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={IS_IOS ? 50 : 0}>
-          <View style={styles.inputsView}>
-            <Input
-              testID={usernameInput}
-              title={t('Username')}
-              placeholder={t('Enter your username...')}
-              disabled={!netInfo.isConnected || false}
-              empty={usernameEmptyFlag}
-              error={errorFlag}
-              value={username}
-              onChangeText={setUsername}
-              style={styles.input}
-            />
-            <Input
-              testID={passwordInput}
-              title={t('Password')}
-              type={FORM.FIELDS_TYPES.PASSWORD}
-              placeholder={t('Enter password...')}
-              disabled={!netInfo.isConnected || false}
-              empty={passwordEmptyFlag}
-              error={errorFlag}
-              value={password}
-              onChangeText={setPassword}
-              style={styles.input}
-            />
-          </View>
-          {errorFlag && errorMessage && <Text style={styles.textMessage}>{t(errorMessage)}</Text>}
-          <View style={styles.buttonView}>
-            <Spinner isLoading={loading} size={30}>
+          <View style={styles.topContainer}>
+            <View style={styles.logo}>
+              <Image testID={kwLogo} source={kw} resizeMode='contain' resizeMethod='resize' style={styles.kw} />
+              <Image
+                testID={connectLogo}
+                source={connect}
+                resizeMode='contain'
+                resizeMethod='resize'
+                style={styles.connect}
+              />
+            </View>
+            <View style={styles.inputsView}>
+              <Input
+                testID={usernameInput}
+                title={t('Username')}
+                placeholder={t('Enter your username...')}
+                disabled={!netInfo.isConnected || false}
+                empty={usernameEmptyFlag}
+                error={errorFlag}
+                value={username}
+                onChangeText={setUsername}
+                style={styles.input}
+              />
+              <Input
+                testID={passwordInput}
+                title={t('Password')}
+                type={FORM.FIELDS_TYPES.PASSWORD}
+                placeholder={t('Enter password...')}
+                disabled={!netInfo.isConnected || false}
+                empty={passwordEmptyFlag}
+                error={errorFlag}
+                value={password}
+                onChangeText={setPassword}
+                style={styles.input}
+              />
+              {errorFlag && errorMessage && <Text style={styles.textMessage}>{t(errorMessage)}</Text>}
+              <Spinner isLoading={loading} styleView={styles.spinner} size={30}>
+                <Button
+                  testID={signinButton}
+                  viewStyle={styles.button}
+                  textStyle={styles.textBold}
+                  message={t('Log In')}
+                  onPress={handleLogin}
+                  disabled={!netInfo.isConnected || false}
+                />
+              </Spinner>
               <Button
-                testID={signinButton}
-                message={t('Sign In')}
-                onPress={handleLogin}
+                testID={forgotButton}
+                viewStyle={styles.button}
+                textStyle={styles.textRegular}
+                message={t('Forgot Password')}
+                type={theme.buttons.types.TEXT}
                 disabled={!netInfo.isConnected || false}
               />
-            </Spinner>
-            <Button
-              testID={forgotButton}
-              message={t('Forgot Password')}
-              type={theme.buttons.types.TEXT}
-              disabled={!netInfo.isConnected || false}
+            </View>
+          </View>
+          <View style={styles.illustrationContainer}>
+            <Image
+              testID={illustrationLogo}
+              source={illustration}
+              resizeMode='contain'
+              resizeMethod='resize'
+              style={styles.illustration}
             />
           </View>
         </KeyboardAvoidingView>

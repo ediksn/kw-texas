@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     alignItems: 'center',
-    margin: moderateScale(10)
+    margin: moderateScale(5)
   },
   messageView: {
     alignSelf: 'center'

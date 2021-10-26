@@ -38,7 +38,7 @@ export const Conversations = ({ navigation }: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner isLoading={loading && videos.length === 0}>
+      <Spinner isLoading={loading && videos.length === 0} styleView={styles.spinner}>
         <VideoList
           ListHeaderComponent={renderPickPrompts}
           testID={videoListComponent}

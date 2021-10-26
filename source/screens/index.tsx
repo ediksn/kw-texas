@@ -112,7 +112,7 @@ const RootNavigation = () => {
   const { isLogged } = useSelector((store: RootState) => store.login)
 
   return (
-    <Spinner isLoading={loading} message='KW: Connect'>
+    <Spinner isLoading={loading} message='KW: Connect' styleView={styles.spinner}>
       {isLogged ? (
         <SafeAreaView style={{ flex: 1 }} edges={['top', 'left', 'right']}>
           <TabNavigation />

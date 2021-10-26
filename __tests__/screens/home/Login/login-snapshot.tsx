@@ -3,8 +3,16 @@ import { render, RenderAPI } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
 
 import { Login } from '~/screens/pages'
-import createTestStore from '../../__mocks__/store'
-import { forgotButton, passwordInput, signinButton, usernameInput } from '~/constants'
+import createTestStore from '../../../../__mocks__/store'
+import {
+  connectLogo,
+  forgotButton,
+  illustrationLogo,
+  kwLogo,
+  passwordInput,
+  signinButton,
+  usernameInput
+} from '~/constants'
 
 let component: RenderAPI
 
@@ -38,5 +46,8 @@ describe('Login test', () => {
     expect(component.queryAllByTestId(passwordInput).length).toEqual(1)
     expect(component.queryAllByTestId(signinButton).length).toEqual(1)
     expect(component.queryAllByTestId(forgotButton).length).toEqual(1)
+    expect(component.queryAllByTestId(kwLogo).length).toEqual(1)
+    expect(component.queryAllByTestId(connectLogo).length).toEqual(1)
+    expect(component.queryAllByTestId(illustrationLogo).length).toEqual(1)
   })
 })

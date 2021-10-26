@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { scale } from 'react-native-size-matters'
+import { scale, verticalScale } from 'react-native-size-matters'
 
 import { theme } from '~/constants/theme'
 
@@ -14,10 +14,10 @@ export const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: '4%',
-    paddingBottom: '4%',
-    paddingLeft: '6%',
-    paddingRight: '6%'
+    paddingTop: verticalScale(13),
+    paddingBottom: verticalScale(10),
+    paddingLeft: scale(14),
+    paddingRight: scale(15)
   },
   title: {
     fontSize: 20,
@@ -28,19 +28,22 @@ export const styles = StyleSheet.create({
     borderColor: theme.grey
   },
   subtitle: {
-    paddingTop: '4%',
-    paddingLeft: '6%',
-    paddingRight: '6%',
-    paddingBottom: '5%',
+    paddingTop: verticalScale(10),
+    paddingLeft: scale(15),
+    paddingRight: scale(10),
+    paddingBottom: verticalScale(10),
     fontSize: 14
   },
   input: {
-    paddingLeft: '6%',
-    paddingRight: '11%'
+    marginLeft: scale(10),
+    marginBottom: verticalScale(10),
+    width: scale(290),
+    paddingLeft: scale(3),
+    paddingRight: scale(3)
   },
   footer: {
-    paddingTop: '1%',
-    paddingBottom: '1%',
+    paddingTop: scale(10),
+    paddingBottom: scale(10),
     flexDirection: 'row',
     justifyContent: 'space-between'
   },

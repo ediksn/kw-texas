@@ -65,6 +65,7 @@ export const theme = {
   greenColor: '#6C727E',
   darkGreenColor: '#006C84',
   red: '#C5050B',
+  lighRed: '#DE2121',
   darkGrey: '#282B33',
   grey: 'rgb(200,200,200)',
   darkBackground: '#383e51',

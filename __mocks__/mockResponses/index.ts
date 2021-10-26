@@ -262,3 +262,29 @@ export const postsResponse = [
     topics: []
   }
 ]
+
+export const loginResponse = {
+  id_token: 'id_token'
+}
+
+export const idTokenJWT = {
+  at_hash: 'at_hash',
+  sub: 'sub',
+  kwoid: 'kwoid',
+  auditTrackingId: 'auditTrackingId',
+  iss: 'iss',
+  tokenName: 'id_token',
+  preferred_username: 'preferred_username',
+  given_name: 'given_name',
+  aud: 'aud',
+  azp: 'azp',
+  auth_time: 1634927734,
+  name: 'name',
+  realm: 'realm',
+  exp: 1634931334,
+  tokenType: 'tokenType',
+  family_name: 'family_name',
+  iat: 1634927734,
+  email: 'email@kw.com',
+  kwuid: 'kwuid'
+}

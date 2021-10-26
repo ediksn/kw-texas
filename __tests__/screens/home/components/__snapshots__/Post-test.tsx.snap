@@ -239,7 +239,7 @@ exports[`renders correctly 1`] = `
           "elevation": 0,
           "height": 58.85294117647059,
           "justifyContent": "center",
-          "margin": 15.714285714285714,
+          "margin": 7.857142857142857,
           "marginHorizontal": 8.571428571428571,
           "opacity": 1,
           "width": "auto",
@@ -296,6 +296,7 @@ exports[`renders correctly 1`] = `
               Object {
                 "fontWeight": "bold",
               },
+              undefined,
               Object {
                 "color": "#006C84",
                 "fontFamily": "Mulish-Regular",
@@ -330,7 +331,7 @@ exports[`renders correctly 1`] = `
           "elevation": 0,
           "height": 58.85294117647059,
           "justifyContent": "center",
-          "margin": 15.714285714285714,
+          "margin": 7.857142857142857,
           "marginHorizontal": 8.571428571428571,
           "opacity": 1,
           "width": "auto",
@@ -387,6 +388,7 @@ exports[`renders correctly 1`] = `
               Object {
                 "fontWeight": "bold",
               },
+              undefined,
               Object {
                 "color": "#006C84",
                 "fontFamily": "Mulish-Regular",
@@ -421,7 +423,7 @@ exports[`renders correctly 1`] = `
           "elevation": 0,
           "height": 58.85294117647059,
           "justifyContent": "center",
-          "margin": 15.714285714285714,
+          "margin": 7.857142857142857,
           "marginHorizontal": 8.571428571428571,
           "opacity": 1,
           "width": "auto",
@@ -478,6 +480,7 @@ exports[`renders correctly 1`] = `
               Object {
                 "fontWeight": "bold",
               },
+              undefined,
               Object {
                 "color": "#006C84",
                 "fontFamily": "Mulish-Regular",

@@ -3,6 +3,7 @@ import { moderateScale } from 'react-native-size-matters'
 
 export const styles = StyleSheet.create({
   container: {
-    padding: moderateScale(10)
+    paddingHorizontal: moderateScale(10),
+    paddingTop: moderateScale(10)
   }
 })

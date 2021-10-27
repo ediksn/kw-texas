@@ -67,7 +67,7 @@ export const theme = {
   red: '#C5050B',
   lighRed: '#DE2121',
   darkGrey: '#282B33',
-  grey: 'rgb(200,200,200)',
+  grey: 'rgba(61, 66, 77, 0.2)',
   darkBackground: '#383e51',
   lightColor: '#3D424D',
   backgrounds: BACKGROUNDS,

@@ -55,7 +55,7 @@ describe('Testing redux login', () => {
   const username = 'username'
   const password = 'password'
 
-  const { LOG_IN, LOG_IN_SUCCESS } = LOGIN_TYPES
+  const { LOG_IN, LOG_IN_SUCCESS, LOGGED_IN } = LOGIN_TYPES
 
   const mockedAxios = axios as jest.Mocked<typeof axios>
 
@@ -68,11 +68,15 @@ describe('Testing redux login', () => {
     {
       type: LOG_IN_SUCCESS,
       payload: loginResponse
+    },
+    {
+      type: LOGGED_IN
     }
   ]
 
   it('testing login actions', async () => {
     await store.dispatch(loginActions.logIn({ username, password }))
+    await store.dispatch(loginActions.afterLogin())
     expect(store.getActions()).toEqual(expectedActions)
     expect(mockedAxios.post).toHaveBeenCalledTimes(1)
   })
@@ -80,13 +84,17 @@ describe('Testing redux login', () => {
   it('testing store', () => {
     const oldStore = store.getState()
     const expectedStore = { ...oldStore }
-    const mockAction: LogInProduceProps = expectedActions.find(action => action.type === LOG_IN_SUCCESS) || {
+    const mockActionLogIn: LogInProduceProps = expectedActions.find(action => action.type === LOG_IN_SUCCESS) || {
       type: 'error'
     }
     expectedStore.login = { ...oldStore.login }
     expectedStore.login.user = idTokenJWT
+    expectedStore.login.isLogged = false
+    expect(loginReducer(oldStore.login, mockActionLogIn)).toEqual(expectedStore.login)
+    const mockActionLoggedIn: LogInProduceProps = expectedActions.find(action => action.type === LOGGED_IN) || {
+      type: 'error'
+    }
     expectedStore.login.isLogged = true
-
-    expect(loginReducer(oldStore.login, mockAction)).toEqual(expectedStore.login)
+    expect(loginReducer(expectedStore.login, mockActionLoggedIn)).toEqual(expectedStore.login)
   })
 })

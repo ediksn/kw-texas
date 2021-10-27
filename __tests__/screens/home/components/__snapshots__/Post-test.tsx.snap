@@ -76,7 +76,7 @@ exports[`renders correctly 1`] = `
               }
             }
           >
-            Posted 10/25/21
+            Posted 10/26/21
           </Text>
         </View>
       </View>
@@ -116,7 +116,7 @@ exports[`renders correctly 1`] = `
             ]
           }
         >
-          
+          
         </Text>
       </View>
     </View>
@@ -287,7 +287,7 @@ exports[`renders correctly 1`] = `
               ]
             }
           >
-            
+            
           </Text>
         </View>
         <Text
@@ -471,7 +471,7 @@ exports[`renders correctly 1`] = `
               ]
             }
           >
-            
+            
           </Text>
         </View>
         <Text

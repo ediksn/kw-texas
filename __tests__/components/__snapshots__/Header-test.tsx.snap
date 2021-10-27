@@ -6,7 +6,7 @@ exports[`renders correctly 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "borderBottomColor": "rgb(200,200,200)",
+        "borderBottomColor": "rgba(61, 66, 77, 0.2)",
         "borderBottomWidth": 1,
         "display": "flex",
         "elevation": 8,

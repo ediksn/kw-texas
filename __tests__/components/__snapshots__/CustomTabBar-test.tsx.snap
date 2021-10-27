@@ -24,29 +24,17 @@ exports[`renders correctly 1`] = `
       }
     }
   />
-  <Text
-    allowFontScaling={false}
+  <Image
+    source={
+      Object {
+        "testUri": "../../../assets/images/home-filled.png",
+      }
+    }
     style={
       Array [
-        Object {
-          "color": undefined,
-          "fontSize": 23,
-        },
-        Object {
-          "color": "#006C84",
-          "marginTop": 3.9235294117647057,
-          "textAlign": "center",
-        },
-        Object {
-          "fontFamily": "icomoon",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-        Object {},
+        undefined,
       ]
     }
-  >
-    
-  </Text>
+  />
 </View>
 `;

@@ -4,15 +4,7 @@ import { Provider } from 'react-redux'
 
 import { Login } from '~/screens/pages'
 import createTestStore from '../../../../__mocks__/store'
-import {
-  connectLogo,
-  forgotButton,
-  illustrationLogo,
-  kwLogo,
-  passwordInput,
-  signinButton,
-  usernameInput
-} from '~/constants'
+import { forgotButton, illustrationLogo, kwLogo, passwordInput, signinButton, usernameInput } from '~/constants'
 
 let component: RenderAPI
 
@@ -26,6 +18,10 @@ jest.mock('@react-native-community/netinfo', () => ({
 
 jest.mock('rn-fetch-blob', () => ({
   fetch: () => ({ t: (key: any) => key })
+}))
+
+jest.mock('react-native-biometrics', () => ({
+  isSensorAvailable: jest.fn(() => Promise.resolve({ then: jest.fn() }))
 }))
 
 describe('Login test', () => {
@@ -47,7 +43,6 @@ describe('Login test', () => {
     expect(component.queryAllByTestId(signinButton).length).toEqual(1)
     expect(component.queryAllByTestId(forgotButton).length).toEqual(1)
     expect(component.queryAllByTestId(kwLogo).length).toEqual(1)
-    expect(component.queryAllByTestId(connectLogo).length).toEqual(1)
     expect(component.queryAllByTestId(illustrationLogo).length).toEqual(1)
   })
 })

@@ -7,11 +7,11 @@ const deviceWidth = Dimensions.get('window').width
 export const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center'
   },
   topContainer: {
-    marginTop: verticalScale(52)
+    marginTop: verticalScale(40)
   },
   buttonView: {
     flexDirection: 'row',
@@ -69,25 +69,31 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   kw: {
-    marginBottom: verticalScale(5),
     width: moderateScale(72),
     height: moderateScale(48)
   },
   connect: {
-    marginBottom: verticalScale(24),
-    width: moderateScale(118),
-    height: moderateScale(32)
+    fontFamily: 'Mulish-Regular',
+    fontSize: 24,
+    fontWeight: '800',
+    color: theme.greenColor,
+    lineHeight: 32,
+    opacity: 0.5,
+    marginBottom: verticalScale(20)
   },
   illustrationContainer: {
-    justifyContent: 'center',
     alignItems: 'center',
-    flex: 1
+    backgroundColor: theme.darkBackground,
+    zIndex: -1,
+    elevation: -1
   },
   illustration: {
+    position: 'absolute',
+    bottom: 0,
     marginTop: verticalScale(7.32),
     marginRight: scale(48),
     marginLeft: scale(50),
-    width: '100%',
-    height: '100%'
+    width: moderateScale(250),
+    height: moderateScale(290)
   }
 })

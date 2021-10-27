@@ -40,6 +40,10 @@ const actionCreators = {
     await Storage.remove({ key: LOGIN.SESSION })
     dispatch({ type: LOG_OUT_SUCCESS })
   },
+  afterLogin: () => async (dispatch: AppDispatch) => {
+    const { LOGGED_IN } = LOGIN_TYPES
+    dispatch({ type: LOGGED_IN })
+  },
   setUser: (id_token: string) => async (dispatch: AppDispatch) => {
     const { LOG_IN, LOG_IN_SUCCESS } = LOGIN_TYPES
 

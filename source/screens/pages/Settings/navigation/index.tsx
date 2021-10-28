@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useTranslation } from 'react-i18next'
 import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
-import { StoryBook } from '../pages/StoryBook'
+// import { StoryBook } from '../pages/StoryBook'
 import { Settings } from '~/screens/pages'
 import { NAVIGATION } from '~/constants'
 import Profile from '../pages/Profile'
@@ -37,14 +37,14 @@ const SettingsStackScreen = () => {
         name={NAVIGATION.SCREEN.CONVERSATIONS}
         component={ConversationsStackScreen}
       />
-      <StackScreen
+      {/* <StackScreen
         name={NAVIGATION.SCREEN.STORYBOOK}
         component={StoryBook}
         options={{
           header: () => null,
           title: t('Storybook')
         }}
-      />
+      /> */}
     </StackNavigator>
   )
 }

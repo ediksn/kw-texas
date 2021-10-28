@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
     alignItems: 'flex-start'
   },
   input: {
+    backgroundColor: '#FFFFFF',
     marginHorizontal: scale(27),
     marginVertical: verticalScale(8),
     width: scale(320)
@@ -94,6 +95,7 @@ export const styles = StyleSheet.create({
     marginRight: scale(48),
     marginLeft: scale(50),
     width: moderateScale(250),
-    height: moderateScale(290)
+    height: moderateScale(290),
+    zIndex: -1
   }
 })

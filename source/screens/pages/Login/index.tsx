@@ -165,7 +165,7 @@ export const Login = () => {
 
   return (
     <>
-      <Modal isVisible={!netInfo.isConnected} style={styles.noConnectionModal}>
+      <Modal isVisible={netInfo.isConnected === false} style={styles.noConnectionModal}>
         <NoConnection />
       </Modal>
       <SafeAreaView style={styles.containerView}>
@@ -220,15 +220,6 @@ export const Login = () => {
               />
             </View>
           </View>
-          <View style={styles.illustrationContainer}>
-            <Image
-              testID={illustrationLogo}
-              source={illustration}
-              resizeMode='contain'
-              resizeMethod='resize'
-              style={styles.illustration}
-            />
-          </View>
           {!!biometryTypeState && biometryAllowed && (
             <BiometricModal onAuth={handleLoginFromBiometry} biometryType={biometryTypeState} />
           )}
@@ -241,7 +232,13 @@ export const Login = () => {
           onYes={handleAllowBiometry}
         />
       </SafeAreaView>
-      <ImageBackground resizeMode='contain' resizeMethod='resize' source={illustration} style={styles.illustration} />
+      <ImageBackground
+        testID={illustrationLogo}
+        resizeMode='contain'
+        resizeMethod='resize'
+        source={illustration}
+        style={styles.illustration}
+      />
     </>
   )
 }

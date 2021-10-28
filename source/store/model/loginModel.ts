@@ -1,6 +1,6 @@
 export default {
   isLogged: false,
-  user: {},
+  user: null,
   error: {
     error_description: null,
     error: null

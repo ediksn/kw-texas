@@ -29,7 +29,7 @@
   "Pick a Prompt": "Pick a Prompt",
   "There was an issue logging you in, please try again": "There was an issue logging you in, please try again",
   "Could not lead the video": "Could not load the video",
-  "No internet connection":"No internet connection",
+  "No internet connection": "No internet connection",
   "Username or password is invalid": "Incorrect username or password",
   "likes": "likes",
   "comments": "comments",
@@ -39,5 +39,8 @@
   "Share": "Share",
   "Enter your username...": "Enter your username...",
   "Enter password...": "Enter password...",
+  "No post message": "It looks like you don’t have any posts",
+  "No post message2": "To add your first post, press the button “Create a new post” at the bottom of the screen",
+  "Create a new post": "Create a New Post",
   "Posted": "Posted"
 }

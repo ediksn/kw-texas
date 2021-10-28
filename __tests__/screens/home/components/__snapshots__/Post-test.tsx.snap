@@ -116,7 +116,11 @@ exports[`renders correctly 1`] = `
             ]
           }
         >
+<<<<<<< HEAD
+          
+=======
           
+>>>>>>> 8a149cef229fac2fef0c1ae5a512270353e8ee37
         </Text>
       </View>
     </View>
@@ -287,7 +291,11 @@ exports[`renders correctly 1`] = `
               ]
             }
           >
+<<<<<<< HEAD
+            
+=======
             
+>>>>>>> 8a149cef229fac2fef0c1ae5a512270353e8ee37
           </Text>
         </View>
         <Text
@@ -379,7 +387,7 @@ exports[`renders correctly 1`] = `
               ]
             }
           >
-            
+            
           </Text>
         </View>
         <Text
@@ -471,7 +479,11 @@ exports[`renders correctly 1`] = `
               ]
             }
           >
+<<<<<<< HEAD
+            
+=======
             
+>>>>>>> 8a149cef229fac2fef0c1ae5a512270353e8ee37
           </Text>
         </View>
         <Text

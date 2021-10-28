@@ -29,7 +29,7 @@
   "Pick a Prompt": "Elija un Prompt",
   "There was an issue logging you in, please try again": "Hubo un problema iniciando sesion, por favor intente nuevamente",
   "Could not lead the video": "No se pudo cargar el video",
-  "No internet connection":"No hay conexión a internet",
+  "No internet connection": "No hay conexión a internet",
   "Username or password is invalid": "Usuario o contraseña incorrecta",
   "likes": "me gustas",
   "comments": "comentarios",
@@ -39,5 +39,8 @@
   "Share": "Compartir",
   "Enter your username...": "Ingrese su nombre de usuario...",
   "Enter password...": "Ingrese su contraseña...",
+  "No post message": "Parece que no tienes ninguna publicación",
+  "No post message2": "Para agregar tu primer post, presiona el boton “Crear Nuevo Post” al fondo de la pantalla",
+  "Create a new post": "Create a New Post",
   "Posted": "Publicado"
 }

@@ -2,7 +2,7 @@
   "Username": "Nombre de usuario",
   "Password": "Contraseña",
   "Log In": "Iniciar sesión",
-  "Log Out" : "Cerrar Sesión",
+  "Log Out": "Cerrar Sesión",
   "Forgot Password": "Recuperar contraseña",
   "Ok": "Aceptar",
   "Loading": "Cargando",
@@ -42,5 +42,6 @@
   "No post message": "Parece que no tienes ninguna publicación",
   "No post message2": "Para agregar tu primer post, presiona el boton “Crear Nuevo Post” al fondo de la pantalla",
   "Create a new post": "Create a New Post",
-  "Posted": "Publicado"
+  "Posted": "Publicado",
+  "What are you going to share today?": "Que vas a compartir hoy?"
 }

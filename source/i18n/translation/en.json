@@ -2,7 +2,7 @@
   "Username": "Username",
   "Password": "Password",
   "Log In": "Log In",
-  "Log Out" : "Log Out",
+  "Log Out": "Log Out",
   "Forgot Password": "Forgot Password",
   "Ok": "Ok",
   "Loading": "Loading",
@@ -42,5 +42,6 @@
   "No post message": "It looks like you don’t have any posts",
   "No post message2": "To add your first post, press the button “Create a new post” at the bottom of the screen",
   "Create a new post": "Create a New Post",
-  "Posted": "Posted"
+  "Posted": "Posted",
+  "What are you going to share today?": "What are you going to share today?"
 }

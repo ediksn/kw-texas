@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
   leftButtonContainer: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    width: scale(150)
   },
   rightButtonContainer: {
     display: 'flex',
@@ -26,9 +27,11 @@ export const styles = StyleSheet.create({
   text: {
     color: theme.activeColor,
     fontFamily: 'Mulish-Bold',
-    fontSize: 16,
+    fontSize: 12,
     lineHeight: 24,
-    marginLeft: scale(11)
+    marginLeft: scale(11),
+    width: scale(200),
+    paddingLeft: scale(11)
   },
   search: {
     marginRight: scale(9)

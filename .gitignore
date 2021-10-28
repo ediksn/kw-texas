@@ -44,3 +44,4 @@ ios/fastlane/gc_keys.json
 *.p12
 *.cer
 *.mobileprovision
+*.lock

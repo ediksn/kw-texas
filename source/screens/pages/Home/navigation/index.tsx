@@ -17,7 +17,7 @@ const HomeHeader = () => {
     <View style={styles.leftButtonContainer}>
       <Image style={styles.photo} resizeMode='cover' resizeMethod='resize' source={{ uri: usrData?.photo_url }} />
       <TouchableOpacity>
-        <Text style={styles.text}>{t('Anything new?')} </Text>
+        <Text style={styles.text}>{t('What are you going to share today?')} </Text>
       </TouchableOpacity>
     </View>
   )
@@ -28,7 +28,7 @@ const HomeHeader = () => {
         <Icon name='search-icon' size={20} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.chat}>
-        <Icon name='chat-icon' size={20} />
+        <Icon name='bookmark-icon' size={20} />
       </TouchableOpacity>
     </View>
   )

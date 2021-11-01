@@ -10,7 +10,7 @@ import { PostInterface } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
 import { getUsrProfileActions, homeActions } from '~/store/actions'
 import { useBackButtonMinimize } from '~/hooks'
-import { Button, Icon } from '~/components'
+import { Spinner, Button, Icon } from '~/components'
 
 export const Home = () => {
   const dispatch = useDispatch()
@@ -66,6 +66,7 @@ export const Home = () => {
         onEndReached={onEndReached}
         onEndReachedThreshold={1}
         ListEmptyComponent={NoPost}
+        ListFooterComponent={<Spinner isLoading={loading} size={30} color='#3D424D' />}
       />
     </View>
   )

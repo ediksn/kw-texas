@@ -1,6 +1,5 @@
-/** @format */
-
 import { StyleSheet } from 'react-native'
+import { moderateScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
@@ -31,7 +30,7 @@ export const styles = StyleSheet.create({
     borderRadius: 50
   },
   text: {
-    fontSize: 17,
+    fontSize: moderateScale(16),
     fontWeight: 'bold'
   }
 })

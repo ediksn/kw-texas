@@ -44,13 +44,16 @@ exports[`renders correctly 1`] = `
       >
         <Text
           style={
-            Object {
-              "color": "#282B33",
-              "fontFamily": "Mulish-Bold",
-              "fontSize": 12,
-              "marginBottom": 7.847058823529411,
-              "marginTop": 13.73235294117647,
-            }
+            Array [
+              Object {
+                "color": "#282B33",
+                "fontFamily": "Mulish-Bold",
+                "fontSize": 12,
+                "marginBottom": 7.847058823529411,
+                "marginTop": 13.73235294117647,
+              },
+              undefined,
+            ]
           }
         >
           Input
@@ -58,6 +61,7 @@ exports[`renders correctly 1`] = `
       </View>
       <TextInput
         allowFontScaling={true}
+        autoFocus={false}
         editable={true}
         placeholderTextColor="#6C727E"
         rejectResponderTermination={true}
@@ -75,6 +79,7 @@ exports[`renders correctly 1`] = `
               "paddingVertical": 3.9235294117647057,
               "textAlignVertical": "top",
             },
+            undefined,
             undefined,
           ]
         }

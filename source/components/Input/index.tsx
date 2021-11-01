@@ -1,5 +1,5 @@
 import React, { memo, useState, useMemo } from 'react'
-import { Text, TextInput, Pressable, View, ViewStyle } from 'react-native'
+import { Text, TextInput, Pressable, View, ViewStyle, TextStyle } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { verticalScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
@@ -15,12 +15,15 @@ interface Props {
   placeholder?: string
   onChangeText?: React.Dispatch<React.SetStateAction<string>>
   disabled?: boolean
+  autoFocus?: boolean
   required?: boolean
   empty?: boolean
   type?: string
   error?: boolean
   multiline?: boolean
   style?: ViewStyle
+  styleTitle?: TextStyle
+  styleText?: TextStyle
 }
 const Input = ({
   title,
@@ -29,12 +32,15 @@ const Input = ({
   placeholder,
   onChangeText,
   disabled,
+  autoFocus = false,
   required,
   type = FORM.FIELDS_TYPES.TEXT,
   empty,
   error,
   multiline,
-  style
+  style,
+  styleTitle,
+  styleText
 }: Props) => {
   const DEVICE_WIDTH = useDeviceWidth() - 20
   const isSecureInput = type === FORM.FIELDS_TYPES.PASSWORD
@@ -70,8 +76,8 @@ const Input = ({
       <View style={styles.rowContainer}>
         <View style={styles.insideContainer}>
           <View style={styles.title}>
-            <Text style={styles.titleText}>{t(title)}</Text>
-            {required && <Text style={styles.titleText}>*</Text>}
+            <Text style={[styles.titleText, styleTitle]}>{t(title)}</Text>
+            {required && <Text style={[styles.titleText, styleTitle]}>*</Text>}
           </View>
           <TextInput
             testID={testID}
@@ -81,8 +87,9 @@ const Input = ({
             onChangeText={onChangeText}
             editable={!disabled}
             selectTextOnFocus={!disabled}
+            autoFocus={autoFocus}
             multiline={multiline}
-            style={[styles.textContainer, multiline && { height: verticalScale(60) }]}
+            style={[styles.textContainer, multiline && { height: verticalScale(60) }, styleText]}
             secureTextEntry={isSecureInput && !hasVisibility}
           />
         </View>

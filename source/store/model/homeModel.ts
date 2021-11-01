@@ -8,5 +8,11 @@ export default {
     limitDefault: 10,
     limit: 10,
     isLoading: false
+  },
+  groups: {
+    data: [],
+    limitDefault: 10,
+    limit: 10,
+    isLoading: false
   }
 }

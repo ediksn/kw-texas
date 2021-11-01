@@ -41,7 +41,7 @@ exports[`renders correctly 1`] = `
     <Text
       style={
         Object {
-          "fontSize": 17,
+          "fontSize": 25.142857142857142,
           "fontWeight": "bold",
         }
       }

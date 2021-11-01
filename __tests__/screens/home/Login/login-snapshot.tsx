@@ -8,6 +8,29 @@ import { forgotButton, illustrationLogo, kwLogo, passwordInput, signinButton, us
 
 let component: RenderAPI
 
+jest.mock(
+  'rn-fetch-blob',
+  () => {
+    return {
+      DocumentDir: () => {},
+      ImageCache: {
+        get: {
+          clear: () => {}
+        }
+      },
+      fs: {
+        exists: jest.fn(),
+        dirs: {
+          MainBundleDir: () => {},
+          CacheDir: () => {},
+          DocumentDir: () => {}
+        }
+      }
+    }
+  },
+  { virtual: true }
+)
+
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
 }))

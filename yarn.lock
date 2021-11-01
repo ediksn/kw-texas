@@ -2854,10 +2854,6 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/crypto-js@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@types/crypto-js/-/crypto-js-4.0.2.tgz#4524325a175bf819fec6e42560c389ce1fb92c97"
-  integrity sha512-sCVniU+h3GcGqxOmng11BRvf9TfN9yIs8KKjB8C8d75W69cpTfZG80gau9yTx5SxF3gvHGbJhdESzzvnjtf3Og==
 "@types/color-convert@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/color-convert/-/color-convert-2.0.0.tgz#8f5ee6b9e863dcbee5703f5a517ffb13d3ea4e22"
@@ -11695,7 +11691,7 @@ react-native-modal@^11.0.2:
 
 react-native-modal@^13.0.0:
   version "13.0.0"
-  resolved "https://registry.npmjs.org/react-native-modal/-/react-native-modal-13.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-13.0.0.tgz#b7117400cae8548e713eed760077dee44f78628e"
   integrity sha512-k6r9T31mc7HIDFj1V53ceAAN1dwc8052c4JLtDVEmEQ19Bbq9yiLXoDsQuNb+hB8A+2tVOXmo5Gq4IQfb11upw==
   dependencies:
     prop-types "^15.6.2"
@@ -12363,7 +12359,7 @@ reusify@^1.0.4:
 
 rimraf@^2.2.8, rimraf@^2.5.4, rimraf@^2.6.3, rimraf@^2.7.1:
   version "2.7.1"
-  resolved "https://registry.npmjs.org/rimraf/-/rimraf-2.7.1.tgz"
+  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.7.1.tgz#35797f13a7fdadc566142c29d4f07ccad483e3ec"
   integrity sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==
   dependencies:
     glob "^7.1.3"

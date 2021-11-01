@@ -12,7 +12,7 @@ import CalendarFilled from 'assets/images/calendar-filled.png'
 import NotificationsUnfilled from 'assets/images/notifications-unfilled.png'
 import NotificationsFilled from 'assets/images/notifications-filled.png'
 import { NAVIGATION } from '~/constants/navigation'
-import { TabNavigator, TabScreen } from './components/Navigators'
+import { TabNavigator, TabScreen, StackNavigator, StackScreen } from './components/Navigators'
 import { Login, Notifications, Groups } from './pages'
 import SettingsStackScreen from './pages/Settings/navigation'
 import { RootState } from '~/store'
@@ -24,6 +24,7 @@ import Profile from './pages/Settings/pages/Profile'
 import CustomTabBar from '~/components/CustomTabBar'
 import HomeStackScreen from './pages/Home/navigation'
 import { styles } from './styles'
+import NewPost from './pages/Home/pages/NewPost'
 
 const TabNavigation = () => {
   const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[0])
@@ -115,7 +116,17 @@ const RootNavigation = () => {
     <Spinner isLoading={loading} message='KW: Connect' styleView={styles.spinner}>
       {isLogged ? (
         <SafeAreaView style={{ flex: 1 }} edges={['top', 'left', 'right']}>
-          <TabNavigation />
+          <StackNavigator>
+            <StackScreen options={{ header: () => null }} name='tabs' component={TabNavigation} />
+            <StackScreen
+              options={{
+                cardStyle: { backgroundColor: '#F7F7F8' },
+                header: () => null
+              }}
+              name={NAVIGATION.SCREEN.NEWPOST}
+              component={NewPost}
+            />
+          </StackNavigator>
         </SafeAreaView>
       ) : (
         <Login />

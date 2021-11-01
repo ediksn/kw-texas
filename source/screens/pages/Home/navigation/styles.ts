@@ -20,14 +20,14 @@ export const styles = StyleSheet.create({
   },
   photo: {
     aspectRatio: 1,
-    width: scale(27),
-    height: scale(27),
+    width: scale(32),
+    height: scale(32),
     borderRadius: 30
   },
   text: {
     color: theme.activeColor,
     fontFamily: 'Mulish-Bold',
-    fontSize: 12,
+    fontSize: theme.fonts.SMALL_SIZE,
     lineHeight: 24,
     marginLeft: scale(11),
     width: scale(200),

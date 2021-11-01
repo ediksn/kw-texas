@@ -1,14 +1,16 @@
 import { useFocusEffect } from '@react-navigation/native'
-import { useCallback, useMemo } from 'react'
-import { Platform, Dimensions, BackHandler } from 'react-native'
+import { useCallback } from 'react'
+import { Platform, Dimensions, BackHandler, StatusBar } from 'react-native'
 
 const window = Dimensions.get('window')
 
-export const useDeviceWidth = () => useMemo(() => window.width, [window.width])
+export const useDeviceWidth = () => window.width
 
-export const useDeviceHeight = () => useMemo(() => window.height, [window.height])
+export const useDeviceHeight = () => window.height
 
-export const useIsIosPlatform = () => useMemo(() => Platform.OS === 'ios', [Platform.OS])
+export const useIsIosPlatform = () => Platform.OS === 'ios'
+
+export const useStatusBarHeight = () => StatusBar.currentHeight || 0
 
 export const useBackButtonMinimize = () => {
   useFocusEffect(

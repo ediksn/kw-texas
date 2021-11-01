@@ -1,13 +1,18 @@
+export interface FormPostInterface {
+  group?: string
+  text: string
+}
 export interface PostInterface {
   id: string
   content: string
   type: string
-  likedBy: []
-  likesCount: 0
-  repliesCount: 0
-  bookmarksCount: 0
+  likedBy: string[]
+  likesCount: number
+  repliesCount: number
+  bookmarksCount: number
   creatorfirstName: string
   creatorLastName: string
+  creatorId: string
   creatorPhoto: string
   createdAt: string
   deleted: boolean
@@ -15,7 +20,6 @@ export interface PostInterface {
   userHasAlreadyLiked: boolean
   userHasAlreadyBookmarked: boolean
   groupId: string
-  detail: any
 }
 
 export interface PostProduceProps {
@@ -28,8 +32,5 @@ export interface PostProduceProps {
 
 export interface PostReducerProps {
   draftState: any
-  payload?: {
-    data: PostInterface[]
-    limit: number
-  }
+  payload?: any
 }

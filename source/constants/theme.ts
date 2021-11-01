@@ -47,7 +47,10 @@ export const BACKGROUNDS = {
 
 const POST_CARD = {
   name: '#282B33',
+  options: '#282B33',
   date: '#6C727E',
+  inputTitle: '#6C727E',
+  inputText: '#282B33',
   content: '#3D424D',
   contentBottom: '#6C727E',
   green: '#006C84',

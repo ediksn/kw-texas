@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { View, FlatList, Text } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
 import { theme } from '~/constants'
 import { styles } from './styles'
 import Post from '~/components/Post'
@@ -13,8 +14,8 @@ import { Button, Icon } from '~/components'
 
 export const Home = () => {
   const dispatch = useDispatch()
+  const navigation = useNavigation()
   const usr: any = useSelector((state: RootState) => state.login.user)
-  const usrProfile: any = useSelector((state: RootState) => state.usrProfile.profiles)
   const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
   const limitDefault: number = useSelector((state: RootState) => state.home.posts.limitDefault)
   const limit: number = useSelector((state: RootState) => state.home.posts.limit)
@@ -24,10 +25,13 @@ export const Home = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    if (usrProfile.length === 0) dispatch(getUsrProfileActions.getUsrProfile(usrId))
-    dispatch(homeActions.getPosts(limitDefault))
-  }, [])
+    const unsubscribe = navigation.addListener('focus', () => {
+      dispatch(getUsrProfileActions.getUsrProfile(usrId))
+      dispatch(homeActions.getPosts(limitDefault))
+    })
 
+    return unsubscribe
+  }, [navigation, dispatch])
   const renderPost = ({ item }: { item: PostInterface }) => <Post post={item} />
   const keyExtractor = (post: PostInterface) => post.id.toString()
   const onRefresh = () => dispatch(homeActions.getPosts(limit))
@@ -62,7 +66,6 @@ export const Home = () => {
         onEndReached={onEndReached}
         onEndReachedThreshold={1}
         ListEmptyComponent={NoPost}
-        contentContainerStyle={styles.constentListStyle}
       />
     </View>
   )

@@ -1,3 +1,4 @@
+import { FormPostInterface } from '~/interfaces/postInterface'
 import { axiosInstanceTokens } from './config'
 
 export default {
@@ -63,6 +64,57 @@ export default {
       variables: {
         offset: 0,
         limit
+      }
+    })
+  },
+  getGroups: async (limit: number) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query:
+        '\n    query getListOfGroups($limit: Int!, $offset: Int!) {\n  getListOfJoinedGroups(limit: $limit, offset: $offset) {\n    id\n    name\n    description\n    postCount\n    membersCount\n    status\n    icon {\n      url\n      id\n    }\n  }\n}\n    ',
+      variables: {
+        offset: 0,
+        limit
+      }
+    })
+  },
+  getGroupInfo: async (id: string) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query:
+        '\n    query getGroupInfo($groupId: String!) {\n  getGroupInfo(groupId: $groupId) {\n    id\n    name\n    description\n    postCount\n    membersCount\n    status\n    icon {\n      url\n      id\n    }\n  }\n  }\n    ',
+      variables: {
+        groupId: id
+      }
+    })
+  },
+  createPost: async (form: FormPostInterface) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query:
+        '\n    mutation createPost($post: createPostInput!, $file: [Upload]) {\n  createPost(post: $post, file: $file)\n}\n    ',
+      variables: {
+        post: {
+          group: form.group,
+          content: `{"blocks":[{"key":"34ove","text":"${form.text}","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+          type: 'STANDARD',
+          source: 'GROUPS'
+        }
+      }
+    })
+  },
+  editPost: async (form: FormPostInterface) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query:
+        '\n    mutation createPost($post: createPostInput!, $file: [Upload]) {\n  createPost(post: $post, file: $file)\n}\n    ',
+      variables: {
+        post: {
+          group: form.group,
+          content: `{"blocks":[{"key":"34ove","text":"${form.text}","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+          type: 'STANDARD',
+          source: 'GROUPS'
+        }
       }
     })
   }

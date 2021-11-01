@@ -10,9 +10,15 @@ const {
   GET_PICK_PROMPTS_SUCCESS,
   GET_PICK_PROMPTS,
   GET_PICK_PROMPTS_FAILURE,
-  GET_POSTS_SUCCESS,
   GET_POSTS,
-  GET_POSTS_FAILURE
+  GET_POSTS_SUCCESS,
+  GET_POSTS_FAILURE,
+  GET_GROUPS,
+  GET_GROUPS_SUCCESS,
+  GET_GROUPS_FAILURE,
+  CREATE_POST,
+  CREATE_POST_SUCCESS,
+  CREATE_POST_FAILURE
 } = HOME_TYPES
 const HOME_INITIAL_STATE = homeModel
 
@@ -35,6 +41,26 @@ const REDUCERS = {
     draftState.posts.isLoading = false
   },
   [GET_POSTS_FAILURE]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = false
+  },
+  [GET_GROUPS]: ({ draftState }: PostReducerProps) => {
+    draftState.groups.isLoading = true
+  },
+  [GET_GROUPS_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.groups = { ...draftState.groups, ...payload }
+    draftState.groups.isLoading = false
+  },
+  [GET_GROUPS_FAILURE]: ({ draftState }: PostReducerProps) => {
+    draftState.groups.isLoading = false
+  },
+  [CREATE_POST]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = true
+  },
+  [CREATE_POST_SUCCESS]: ({ draftState, payload }: any) => {
+    draftState.posts.data = [...draftState.posts.data, payload]
+    draftState.posts.isLoading = false
+  },
+  [CREATE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = false
   }
 }

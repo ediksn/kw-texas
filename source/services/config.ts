@@ -6,7 +6,7 @@ import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
 export const getToken = async () => {
   const { LOGIN } = STORAGE_CONSTANTS
   const session: StorageLogInResponse = await Storage.get({ key: LOGIN.SESSION })
-  return `${session.token_type} ${session.access_token}`
+  return `${session?.token_type} ${session?.access_token}`
 }
 
 export const axiosInstance = axios.create({

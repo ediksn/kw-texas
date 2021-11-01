@@ -53,6 +53,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'no-restricted-syntax': ['warn', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
     'no-use-before-define': ['off'],
+    'no-underscore-dangle': ['off'],
     '@typescript-eslint/naming-convention': [
       'warn',
       {

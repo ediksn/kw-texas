@@ -2,6 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { useSelector } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
 import { Header, Icon } from '~/components'
 import { NAVIGATION } from '~/constants'
 import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
@@ -11,12 +12,13 @@ import { styles } from './styles'
 
 const HomeHeader = () => {
   const { t } = useTranslation()
+  const navigation = useNavigation()
   const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[0])
 
   const leftButton = (
     <View style={styles.leftButtonContainer}>
       <Image style={styles.photo} resizeMode='cover' resizeMethod='resize' source={{ uri: usrData?.photo_url }} />
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { edit: false })}>
         <Text style={styles.text}>{t('What are you going to share today?')} </Text>
       </TouchableOpacity>
     </View>

@@ -113,155 +113,232 @@ export const profileResponse = {
 }
 
 export const postResponse = {
-  creatorfirstName: 'test',
-  creatorLastName: 'test',
-  id: '611187e83ff2cf15dd5c7613',
-  title: 'Do you like food?',
-  type: 'poll',
-  url: 'do-you-like-food',
-  status: 'closed',
-  content: 'Do you like food?',
-  image_medium: null,
-  image_large: null,
-  favorite: true,
-  followed: false,
-  liked: false,
+  id: '6172c50ac8a0fb001c4ddf0a',
+  content: 'Great2',
+  type: 'FILE',
+  likedBy: [],
+  likesCount: 0,
+  repliesCount: 0,
+  bookmarksCount: 0,
+  creatorId: '60ca46ca877e063418825130',
+  creatorfirstName: 'Irene',
+  creatorLastName: 'Murphy',
+  creatorPhoto: 'https://avatar.kwconnect.com/556397.jpeg',
+  createdAt: '2021-10-22T14:04:58.171Z',
+  deleted: false,
   pinned: false,
-  edited: false,
-  follower: false,
-  likes_count: 0,
-  replies_count: 0,
-  created_at: '2021-08-09 19:54:16',
-  updated_at: '2021-08-16 21:25:18',
-  created_by: {
-    user_id: 250291,
-    email: 'kelle2@kw.com',
-    kw_uid: 556397,
-    first_name: 'Irene',
-    last_name: 'Murphy',
-    photo_url: 'https://storage.googleapis.com/kwconnect-core-qa-cd67/uploads/profile/photo_60e2b87c8b895.jpg',
-    avatar: 'https://storage.googleapis.com/kwconnect-core-qa-cd67/uploads/profile/photo_60e2b87c8b895.jpg',
-    market_center: 'Demo Market Center',
-    location: 'Austin, TX'
-  },
-  group: {
-    id: 1772522,
-    name: '01 Onboarding',
-    slug: '01-onboarding',
-    type: null,
-    owner: 250291,
-    url: 'https://console-qa.command.kw.com/connect/groups/group?group=01-onboarding'
-  },
-  channel: {
-    id: 41478,
-    name: 'main',
-    channel_id: null,
-    group_id: 1772522,
-    creator_id: 250291,
-    created_at: '2021-05-03 21:07:55',
-    updated_at: '2021-05-03 21:07:55'
-  },
-  tags: [],
-  mentions: [],
-  poll_options: [
-    {
-      id: '611187e83ff2cf15dd5c7614',
-      text: 'hamburguer',
-      votes_count: 0,
-      percent: 0
-    },
-    {
-      id: '611187e83ff2cf15dd5c7615',
-      text: 'pizza',
-      votes_count: 1,
-      percent: 50
-    },
-    {
-      id: '611187e83ff2cf15dd5c7616',
-      text: 'hot dog',
-      votes_count: 1,
-      percent: 50
-    }
-  ],
-  voted_options: ['611187e83ff2cf15dd5c7615', '611187e83ff2cf15dd5c7616'],
-  voted: true,
-  poll_votes_count: 2,
-  multiple: true,
-  expired: true,
-  duration: 1,
-  replies: [],
-  permissions: ['CAN_LIKE_POST', 'CAN_FAVORITE_POST', 'CAN_EDIT_POST', 'CAN_DELETE_POST', 'CAN_PIN_POST'],
-  topics: []
+  userHasAlreadyLiked: false,
+  userHasAlreadyBookmarked: false,
+  groupId: '60f5dc9b71551e6b786910a0'
 }
 
-export const postsResponse = [
-  {
-    id: '615e386e8a1690341f605de9',
-    title: 'Does anyone know how to find the list of...',
-    type: 'post',
-    url: 'does-anyone-know-how-to-find-the-list-of',
-    status: 'opened',
-    content: "Does anyone know how to find the list of UNSUBSCRIBED within our contacts so we can purge if we'd like?",
-    image_medium: null,
-    image_large: null,
-    favorite: false,
-    followed: false,
-    liked: false,
-    pinned: false,
-    edited: false,
-    follower: false,
-    likes_count: 0,
-    replies_count: 0,
-    created_at: '2021-10-06 23:59:42',
-    updated_at: '2021-10-06 23:59:42',
-    created_by: {
-      user_id: 98750,
-      email: 'michellemenna@gmail.com',
-      kw_uid: 222497,
-      first_name: 'Michelle',
-      last_name: 'Menna',
-      photo_url: '//avatar.kwconnect.com/222497.jpeg',
-      avatar: '//avatar.kwconnect.com/222497.jpeg',
-      market_center: 'JV',
-      location: 'Austin, TX'
-    },
-    group: {
-      id: 33204,
-      name: 'Command Lab',
-      slug: 'command-lab',
-      type: null,
-      owner: 286762,
-      url: 'https://console.command.kw.com/connect/groups/group?group=command-lab'
-    },
-    channel: {
-      id: 33171,
-      name: 'main',
-      channel_id: null,
-      group_id: 33204,
-      creator_id: 279663,
-      created_at: '2018-12-04 17:19:35',
-      updated_at: '2018-12-04 17:19:35'
-    },
-    tags: [
-      {
-        id: '5c084d9a9175fb7378315f7a',
-        tag: 'placeholder',
-        created_at: '2018-12-05 22:13:46'
-      }
-    ],
-    mentions: [],
-    poll_options: [],
-    voted_options: [],
-    voted: false,
-    poll_votes_count: 0,
-    multiple: false,
-    expired: false,
-    duration: null,
-    replies: [],
-    permissions: ['CAN_LIKE_POST', 'CAN_FAVORITE_POST'],
-    topics: []
+export const postsResponse = {
+  data: {
+    data: {
+      getPosts: [
+        {
+          id: '6172c50ac8a0fb001c4ddf0a',
+          content: 'Great2',
+          type: 'FILE',
+          likedBy: [],
+          likesCount: 0,
+          repliesCount: 0,
+          bookmarksCount: 0,
+          creatorId: '60ca46ca877e063418825130',
+          creatorfirstName: 'Irene',
+          creatorLastName: 'Murphy',
+          creatorPhoto: 'https://avatar.kwconnect.com/556397.jpeg',
+          createdAt: '2021-10-22T14:04:58.171Z',
+          deleted: false,
+          pinned: false,
+          userHasAlreadyLiked: false,
+          userHasAlreadyBookmarked: false,
+          groupId: '60f5dc9b71551e6b786910a0'
+        },
+        {
+          id: '6172c4fca2d4ad0018929d59',
+          content: 'Great!',
+          type: 'LINK',
+          likedBy: [],
+          likesCount: 0,
+          repliesCount: 0,
+          bookmarksCount: 0,
+          creatorId: '60ca46ca877e063418825130',
+          creatorfirstName: 'Irene',
+          creatorLastName: 'Murphy',
+          creatorPhoto: 'https://avatar.kwconnect.com/556397.jpeg',
+          createdAt: '2021-10-22T14:04:44.202Z',
+          deleted: false,
+          pinned: false,
+          userHasAlreadyLiked: false,
+          userHasAlreadyBookmarked: false,
+          groupId: '60f5dc9b71551e6b786910a0'
+        },
+        {
+          id: '61729509c8a0fb001c4dde6b',
+          content:
+            '{"blocks":[{"key":"eea1k","text":"test","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}',
+          type: 'POLL',
+          likedBy: [],
+          likesCount: 0,
+          repliesCount: 0,
+          bookmarksCount: 0,
+          creatorId: '60ca46ca877e063418825130',
+          creatorfirstName: 'Irene',
+          creatorLastName: 'Murphy',
+          creatorPhoto: 'https://avatar.kwconnect.com/556397.jpeg',
+          createdAt: '2021-10-22T10:40:09.360Z',
+          deleted: false,
+          pinned: false,
+          userHasAlreadyLiked: false,
+          userHasAlreadyBookmarked: false,
+          groupId: '60f5c7224ad3ae0019a91973'
+        },
+        {
+          id: '617284e6a2d4ad0018929cc1',
+          content: 'some test2',
+          type: 'STANDARD',
+          likedBy: [],
+          likesCount: 0,
+          repliesCount: 0,
+          bookmarksCount: 0,
+          creatorId: '60ca46ca877e063418825130',
+          creatorfirstName: 'Irene',
+          creatorLastName: 'Murphy',
+          creatorPhoto: 'https://avatar.kwconnect.com/556397.jpeg',
+          createdAt: '2021-10-22T09:31:18.517Z',
+          deleted: false,
+          pinned: false,
+          userHasAlreadyLiked: false,
+          userHasAlreadyBookmarked: false,
+          groupId: '615fdfd0a003080022b59608'
+        },
+        {
+          id: '6171b06ec8a0fb001c4dde59',
+          content: 'Proving it works cool22!',
+          type: 'FILE',
+          likedBy: [],
+          likesCount: 0,
+          repliesCount: 0,
+          bookmarksCount: 0,
+          creatorId: '60ca46ca877e063418825130',
+          creatorfirstName: 'Irene',
+          creatorLastName: 'Murphy',
+          creatorPhoto: 'https://avatar.kwconnect.com/556397.jpeg',
+          createdAt: '2021-10-21T18:24:46.655Z',
+          deleted: false,
+          pinned: false,
+          userHasAlreadyLiked: false,
+          userHasAlreadyBookmarked: false,
+          groupId: '60f5dc9b71551e6b786910a0'
+        },
+        {
+          id: '6171aa3ba2d4ad0018929ca2',
+          content: 'Proving it works cool!',
+          type: 'FILE',
+          likedBy: ['60ca46ca877e063418825130'],
+          likesCount: 1,
+          repliesCount: 0,
+          bookmarksCount: 0,
+          creatorId: '60ca46ca877e063418825130',
+          creatorfirstName: 'Irene',
+          creatorLastName: 'Murphy',
+          creatorPhoto: 'https://avatar.kwconnect.com/556397.jpeg',
+          createdAt: '2021-10-21T17:58:19.815Z',
+          deleted: false,
+          pinned: false,
+          userHasAlreadyLiked: true,
+          userHasAlreadyBookmarked: false,
+          groupId: '60f5dc9b71551e6b786910a0'
+        },
+        {
+          id: '6171aa1dc8a0fb001c4dde57',
+          content: 'Cool Demo video!',
+          type: 'LINK',
+          likedBy: [],
+          likesCount: 0,
+          repliesCount: 0,
+          bookmarksCount: 0,
+          creatorId: '60ca46ca877e063418825130',
+          creatorfirstName: 'Irene',
+          creatorLastName: 'Murphy',
+          creatorPhoto: 'https://avatar.kwconnect.com/556397.jpeg',
+          createdAt: '2021-10-21T17:57:49.327Z',
+          deleted: false,
+          pinned: false,
+          userHasAlreadyLiked: false,
+          userHasAlreadyBookmarked: false,
+          groupId: '60f5dc9b71551e6b786910a0'
+        },
+        {
+          id: '6171a11ba2d4ad0018929c9f',
+          content:
+            '{"blocks":[{"key":"34ove","text":"Post2","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}',
+          type: 'STANDARD',
+          likedBy: [],
+          likesCount: 0,
+          repliesCount: 0,
+          bookmarksCount: 0,
+          creatorId: '60ca46ca877e063418825130',
+          creatorfirstName: 'Irene',
+          creatorLastName: 'Murphy',
+          creatorPhoto: 'https://avatar.kwconnect.com/556397.jpeg',
+          createdAt: '2021-10-21T17:19:23.581Z',
+          deleted: false,
+          pinned: false,
+          userHasAlreadyLiked: false,
+          userHasAlreadyBookmarked: false,
+          groupId: '60f5c7224ad3ae0019a91973'
+        },
+        {
+          id: '6171a095c8a0fb001c4dde56',
+          content:
+            '{"blocks":[{"key":"34ove","text":"Post 1","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}',
+          type: 'STANDARD',
+          likedBy: [],
+          likesCount: 0,
+          repliesCount: 0,
+          bookmarksCount: 0,
+          creatorId: '60ca46ca877e063418825130',
+          creatorfirstName: 'Irene',
+          creatorLastName: 'Murphy',
+          creatorPhoto: 'https://avatar.kwconnect.com/556397.jpeg',
+          createdAt: '2021-10-21T17:17:09.386Z',
+          deleted: false,
+          pinned: false,
+          userHasAlreadyLiked: false,
+          userHasAlreadyBookmarked: false,
+          groupId: '60ca46fc877e063418825131'
+        },
+        {
+          id: '61717f7da2358b001df12d2c',
+          content: 'some test2',
+          type: 'STANDARD',
+          likedBy: [],
+          likesCount: 0,
+          repliesCount: 0,
+          bookmarksCount: 0,
+          creatorId: '60ca46ca877e063418825130',
+          creatorfirstName: 'Irene',
+          creatorLastName: 'Murphy',
+          creatorPhoto: 'https://avatar.kwconnect.com/556397.jpeg',
+          createdAt: '2021-10-21T14:55:57.033Z',
+          deleted: false,
+          pinned: false,
+          userHasAlreadyLiked: false,
+          userHasAlreadyBookmarked: false,
+          groupId: '615fdfd0a003080022b59608'
+        }
+      ]
+    }
   }
-]
+}
+
+export const createPostResponse = {
+  data: {
+    createPost: '6172ee6bc8a0fb001c4ddf4e'
+  }
+}
 
 export const loginResponse = {
   id_token: 'id_token'

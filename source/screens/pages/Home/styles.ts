@@ -6,6 +6,12 @@ export const styles = StyleSheet.create({
     padding: moderateScale(10),
     flex: 1
   },
+  list: {
+    flex: 1
+  },
+  contentListStyle: {
+    flexGrow: 1
+  },
   noPostWrapper: {
     justifyContent: 'center',
     alignSelf: 'center',

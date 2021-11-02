@@ -66,6 +66,8 @@ export const Home = () => {
         onEndReached={onEndReached}
         onEndReachedThreshold={1}
         ListEmptyComponent={NoPost}
+        style={styles.list}
+        contentContainerStyle={styles.contentListStyle}
         ListFooterComponent={<Spinner isLoading={loading} size={30} color='#3D424D' />}
       />
     </View>

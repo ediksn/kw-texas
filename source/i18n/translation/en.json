@@ -39,12 +39,14 @@
   "Share": "Share",
   "Enter your username...": "Enter your username...",
   "Enter password...": "Enter password...",
-  "What are you going to share today?": "What are you going to share today?",
-  "Edit": "Edit",
-  "Delete": "Delete",
-  "Save Post": "Save Post",
   "No post message": "It looks like you don’t have any posts",
   "No post message2": "To add your first post, press the button “Create a new post” at the bottom of the screen",
   "Create a new post": "Create a New Post",
-  "Posted": "Posted"
+  "Posted": "Posted",
+  "Your Events": "Your Events",
+  "No Events To Display": "No Events To Display",
+  "What are you going to share today?": "What are you going to share today?",
+  "Edit": "Edit",
+  "Delete": "Delete",
+  "Save Post": "Save Post"
 }

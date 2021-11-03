@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { ReactNode } from 'react'
-import { Text, TouchableHighlight, View, ViewStyle } from 'react-native'
+import { Text, TextStyle, TouchableHighlight, View, ViewStyle } from 'react-native'
 
 import { styles } from './styles'
 
@@ -13,9 +13,19 @@ interface Props {
   onClickLeft?: () => void
   onClickRight?: () => void
   style?: ViewStyle
+  titleStyle?: TextStyle
 }
 
-const Header = ({ title, statusBarHeight, leftButton, rightButton, onClickLeft, onClickRight, style }: Props) => {
+const Header = ({
+  title,
+  statusBarHeight,
+  leftButton,
+  rightButton,
+  onClickLeft,
+  onClickRight,
+  style,
+  titleStyle
+}: Props) => {
   const LeftButton = () => (
     <>
       {leftButton && (
@@ -35,7 +45,7 @@ const Header = ({ title, statusBarHeight, leftButton, rightButton, onClickLeft, 
     <>
       {title && (
         <View style={styles.textContainer}>
-          <Text style={styles.text}>{title}</Text>
+          <Text style={titleStyle || styles.text}>{title}</Text>
         </View>
       )}
     </>

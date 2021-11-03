@@ -39,12 +39,14 @@
   "Share": "Compartir",
   "Enter your username...": "Ingrese su nombre de usuario...",
   "Enter password...": "Ingrese su contraseña...",
-  "What are you going to share today?": "¿Qué vas a compartir hoy?",
-  "Edit": "Editar",
-  "Delete": "Eliminar",
-  "Save Post": "Guardar publicación",
   "No post message": "Parece que no tienes ninguna publicación",
   "No post message2": "Para agregar tu primer post, presiona el boton “Crear Nuevo Post” al fondo de la pantalla",
   "Create a new post": "Create a New Post",
-  "Posted": "Publicado"
+  "Posted": "Publicado",
+  "Your Events": "Tus Eventos",
+  "No Events To Display": "Sin Eventos Para Mostrar",
+  "What are you going to share today?": "Que vas a compartir hoy?",
+  "Edit": "Editar",
+  "Delete": "Eliminar",
+  "Save Post": "Guardar publicación"
 }

@@ -13,7 +13,7 @@ import NotificationsUnfilled from 'assets/images/notifications-unfilled.png'
 import NotificationsFilled from 'assets/images/notifications-filled.png'
 import { NAVIGATION } from '~/constants/navigation'
 import { TabNavigator, TabScreen, StackNavigator, StackScreen } from './components/Navigators'
-import { Login, Notifications, Groups } from './pages'
+import { Login, Groups } from './pages'
 import SettingsStackScreen from './pages/Settings/navigation'
 import { RootState } from '~/store'
 import { Spinner } from '~/components'
@@ -25,6 +25,7 @@ import HomeStackScreen from './pages/Home/navigation'
 import { styles } from './styles'
 import ProfileStackScreen from './pages/Profile/navigation'
 import NewPost from './pages/Home/pages/NewPost'
+import NotificationsStackScreen from './pages/Notifications/navigation'
 
 const TabNavigation = () => {
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
@@ -67,7 +68,7 @@ const TabNavigation = () => {
           )
         }}
         name={NAVIGATION.SCREEN.NOTIFICATIONS}
-        component={Notifications}
+        component={NotificationsStackScreen}
       />
       <TabScreen
         options={{

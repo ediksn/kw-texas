@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useCallback, useEffect } from 'react'
 import moment from 'moment'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { useTranslation } from 'react-i18next'
@@ -32,9 +32,11 @@ const Post = ({ post }: { post: PostInterface }) => {
   const user: any = useSelector((state: RootState) => state.usrProfile.profiles[0])
   const date = moment(createdAt).format('MM/DD/YY')
   const shares = 0
+  const MAX_LINES = 5
   const contentText = useContentTextPost(content)
   const [showMore, setShowMore] = useState(false)
   const [showDropDown, setShowDropDown] = useState(false)
+  const [numberOfLines, setNumberOfLines] = useState<number | undefined>()
   const [hasShowLessMore, setHasShowLessMore] = useState(false)
   const { t } = useTranslation()
   const navigation = useNavigation()
@@ -42,9 +44,20 @@ const Post = ({ post }: { post: PostInterface }) => {
   const buttonRef = useRef<any>()
   const [selectedOption, setSelectedOption] = useState<OptionInterface>()
 
-  const addMoreText = (event: any) => {
-    setHasShowLessMore(event.nativeEvent.lines.length > 5)
-  }
+  const addMoreText = useCallback(
+    (event: any) => {
+      if (event.nativeEvent.lines.length > MAX_LINES && !showMore) {
+        setHasShowLessMore(true)
+      }
+    },
+    [showMore]
+  )
+
+  useEffect(() => {
+    if (hasShowLessMore) {
+      setNumberOfLines(showMore ? undefined : MAX_LINES)
+    }
+  }, [hasShowLessMore, showMore])
 
   const getLikesCommentsSharesText = (count: number, text: string) => {
     if (count > 0) {
@@ -156,8 +169,7 @@ const Post = ({ post }: { post: PostInterface }) => {
             <Text
               testID={contentPost}
               style={styles.contentText}
-              numberOfLines={showMore ? contentText.length : 5}
-              ellipsizeMode='clip'
+              numberOfLines={numberOfLines}
               onTextLayout={addMoreText}
             >
               {contentText}

@@ -52,7 +52,8 @@ export const styles = StyleSheet.create({
   contentText: {
     fontSize: theme.fonts.SMALL_SIZE,
     fontFamily: 'Mulish-Regular',
-    color: theme.post.content
+    color: theme.post.content,
+    flexWrap: 'wrap'
   },
   showMore: {
     fontSize: theme.fonts.SMALL_SIZE,

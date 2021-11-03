@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     marginRight: scale(9.5)
   },
   messageText: {
-    fontWeight: 'bold'
+    fontFamily: 'Mulish-Bold'
   }
 })
 

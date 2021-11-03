@@ -1,9 +1,22 @@
+export const TEST_IDS = {
+  GENERAL_COMPONENTS: {
+    VIDEO_CARD_ID: 'videoCardId',
+    VIDEO_LIST_ID: 'videoListId',
+    EVENT_CARD_ID: 'eventCardId'
+  },
+  EVENT_CARD: {
+    IMAGE_ID: 'eventCardImageId',
+    DATE_ID: 'eventCardImageId',
+    TITLE_ID: 'eventCardTitleId',
+    ASSISTANCE_ID: 'eventCardAssistanceId',
+    INTERESTED_BUTTON_ID: 'eventCardInterestedButtonId',
+    SHARE_BUTTON_ID: 'eventCardShareButtonId'
+  }
+}
 export const usernameInput = 'username-input'
 export const passwordInput = 'password-input'
 export const signinButton = 'signin-button'
 export const forgotButton = 'forgot-button'
-export const videoListComponent = 'videolist-component'
-export const videoCardComponent = 'videocard-component'
 export const pickPrompts = 'pickPrompts-component'
 export const kwLogo = 'kw-logo'
 export const illustrationLogo = 'illustration-logo'

@@ -42,7 +42,8 @@ export const BACKGROUNDS = {
   errorLight: '#E9D1D2',
   darkBackground: '#383e51',
   whiteBackground: 'white',
-  darkWhiteBackground: '#D8D8D8'
+  darkWhiteBackground: '#D8D8D8',
+  greyBackground: '#E4E5E7'
 }
 
 const POST_CARD = {

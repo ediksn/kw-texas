@@ -5,7 +5,7 @@ import { theme } from '~/constants/theme'
 export const styles = StyleSheet.create({
   tagView: {
     elevation: 2,
-    backgroundColor: '#e4e5e7',
+    backgroundColor: theme.backgrounds.greyBackground,
     justifyContent: 'center',
     alignSelf: 'center',
     alignItems: 'center',

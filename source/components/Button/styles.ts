@@ -43,7 +43,7 @@ export const stylesOfType: any = {
     backgroundTypeStyle: {
       backgroundColor: 'transparent',
       borderColor: theme.backgroundColor,
-      borderWidth: moderateScale(2)
+      borderWidth: moderateScale(1)
     },
     textTypeStyle: {
       color: theme.backgroundColor,

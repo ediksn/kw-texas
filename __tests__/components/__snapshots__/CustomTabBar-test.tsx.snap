@@ -25,11 +25,8 @@ exports[`renders correctly 1`] = `
     }
   />
   <Image
-<<<<<<< HEAD
-=======
     resizeMethod="auto"
     resizeMode="cover"
->>>>>>> 38780fb72b67d7895f17d73a98704191b2b04543
     source={
       Object {
         "testUri": "../../../assets/images/home-filled.png",

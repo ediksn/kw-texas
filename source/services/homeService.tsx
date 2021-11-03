@@ -60,7 +60,7 @@ export default {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {
       query:
-        '\n    query getGlobalPosts($offset: Int!, $limit: Int!) {\n  getPosts(offset: $offset, limit: $limit) {\n    id\n    content\n    type\n    likedBy\n    likesCount\n    repliesCount\n    bookmarksCount\n    creatorId\n    creatorfirstName\n    creatorLastName\n    creatorPhoto\n    createdAt\n    deleted\n    pinned\n    userHasAlreadyLiked\n    userHasAlreadyBookmarked\n    groupId\n    }\n}\n    ',
+        '\n    query getGlobalPosts($offset: Int!, $limit: Int!) {\n  getPosts(offset: $offset, limit: $limit) {\n    id\n    content\n    type\n    likedBy\n    likesCount\n    repliesCount\n    bookmarksCount\n    creatorId\n    isUserCreatorOfThePost\n    creatorfirstName\n    creatorLastName\n    creatorPhoto\n    createdAt\n    deleted\n    pinned\n    userHasAlreadyLiked\n    userHasAlreadyBookmarked\n    groupId\n    }\n}\n    ',
       variables: {
         offset: 0,
         limit
@@ -115,6 +115,33 @@ export default {
           type: 'STANDARD',
           source: 'GROUPS'
         }
+      }
+    })
+  },
+  deletePost: async (postId: string) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query: '\n    mutation deletePost($postId: String!) {\n  deletePost(postId: $postId)\n}\n    ',
+      variables: {
+        postId
+      }
+    })
+  },
+  addBookmarkPost: async (postId: string) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query: '\n    mutation toggleBookmarkPost($postId: String!) {\n  toggleBookmarkPost(postId: $postId)\n}\n    ',
+      variables: {
+        postId
+      }
+    })
+  },
+  removeBookmarkPost: async (postId: string) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query: '\n    mutation toggleBookmarkPost($postId: String!) {\n  toggleBookmarkPost(postId: $postId)\n}\n    ',
+      variables: {
+        postId
       }
     })
   }

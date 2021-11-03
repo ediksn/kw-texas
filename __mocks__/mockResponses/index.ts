@@ -97,6 +97,7 @@ export const postResponse = {
   likesCount: 0,
   repliesCount: 0,
   bookmarksCount: 0,
+  isUserCreatorOfThePost: true,
   creatorId: '60ca46ca877e063418825130',
   creatorfirstName: 'Irene',
   creatorLastName: 'Murphy',
@@ -121,6 +122,7 @@ export const postsResponse = {
           likesCount: 0,
           repliesCount: 0,
           bookmarksCount: 0,
+          isUserCreatorOfThePost: true,
           creatorId: '60ca46ca877e063418825130',
           creatorfirstName: 'Irene',
           creatorLastName: 'Murphy',
@@ -140,6 +142,7 @@ export const postsResponse = {
           likesCount: 0,
           repliesCount: 0,
           bookmarksCount: 0,
+          isUserCreatorOfThePost: false,
           creatorId: '60ca46ca877e063418825130',
           creatorfirstName: 'Irene',
           creatorLastName: 'Murphy',
@@ -160,6 +163,7 @@ export const postsResponse = {
           likesCount: 0,
           repliesCount: 0,
           bookmarksCount: 0,
+          isUserCreatorOfThePost: false,
           creatorId: '60ca46ca877e063418825130',
           creatorfirstName: 'Irene',
           creatorLastName: 'Murphy',
@@ -179,6 +183,7 @@ export const postsResponse = {
           likesCount: 0,
           repliesCount: 0,
           bookmarksCount: 0,
+          isUserCreatorOfThePost: false,
           creatorId: '60ca46ca877e063418825130',
           creatorfirstName: 'Irene',
           creatorLastName: 'Murphy',
@@ -198,6 +203,7 @@ export const postsResponse = {
           likesCount: 0,
           repliesCount: 0,
           bookmarksCount: 0,
+          isUserCreatorOfThePost: false,
           creatorId: '60ca46ca877e063418825130',
           creatorfirstName: 'Irene',
           creatorLastName: 'Murphy',
@@ -217,6 +223,7 @@ export const postsResponse = {
           likesCount: 1,
           repliesCount: 0,
           bookmarksCount: 0,
+          isUserCreatorOfThePost: false,
           creatorId: '60ca46ca877e063418825130',
           creatorfirstName: 'Irene',
           creatorLastName: 'Murphy',
@@ -236,6 +243,7 @@ export const postsResponse = {
           likesCount: 0,
           repliesCount: 0,
           bookmarksCount: 0,
+          isUserCreatorOfThePost: false,
           creatorId: '60ca46ca877e063418825130',
           creatorfirstName: 'Irene',
           creatorLastName: 'Murphy',
@@ -256,6 +264,7 @@ export const postsResponse = {
           likesCount: 0,
           repliesCount: 0,
           bookmarksCount: 0,
+          isUserCreatorOfThePost: false,
           creatorId: '60ca46ca877e063418825130',
           creatorfirstName: 'Irene',
           creatorLastName: 'Murphy',
@@ -276,6 +285,7 @@ export const postsResponse = {
           likesCount: 0,
           repliesCount: 0,
           bookmarksCount: 0,
+          isUserCreatorOfThePost: false,
           creatorId: '60ca46ca877e063418825130',
           creatorfirstName: 'Irene',
           creatorLastName: 'Murphy',
@@ -295,6 +305,7 @@ export const postsResponse = {
           likesCount: 0,
           repliesCount: 0,
           bookmarksCount: 0,
+          isUserCreatorOfThePost: false,
           creatorId: '60ca46ca877e063418825130',
           creatorfirstName: 'Irene',
           creatorLastName: 'Murphy',
@@ -313,8 +324,16 @@ export const postsResponse = {
 
 export const createPostResponse = {
   data: {
-    createPost: '6172ee6bc8a0fb001c4ddf4e'
+    createPost: '6172c50ac8a0fb001c4ddf0a'
   }
+}
+
+export const deletePostResponse = {
+  data: { deletePost: true }
+}
+
+export const addBookmarkPostResponse = {
+  data: { toggleBookmarkPost: true }
 }
 
 export const loginResponse = {

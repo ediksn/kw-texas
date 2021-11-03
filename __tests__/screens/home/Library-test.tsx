@@ -1,6 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from 'react'
 
+jest.useFakeTimers()
+
 describe('Library Test', () => {
   it('should pass test', async () => {
     expect(true).toEqual(true)

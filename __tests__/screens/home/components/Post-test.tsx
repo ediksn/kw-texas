@@ -48,7 +48,8 @@ jest.mock('react-i18next', () => ({
 }))
 
 jest.mock('react-redux', () => ({
-  useSelector: jest.fn()
+  useSelector: jest.fn(),
+  useDispatch: jest.fn()
 }))
 
 describe('Login test', () => {

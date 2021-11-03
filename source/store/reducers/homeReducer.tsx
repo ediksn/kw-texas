@@ -18,7 +18,16 @@ const {
   GET_GROUPS_FAILURE,
   CREATE_POST,
   CREATE_POST_SUCCESS,
-  CREATE_POST_FAILURE
+  CREATE_POST_FAILURE,
+  DELETE_POST,
+  DELETE_POST_SUCCESS,
+  DELETE_POST_FAILURE,
+  ADD_BOOKMARK_POST,
+  ADD_BOOKMARK_POST_SUCCESS,
+  ADD_BOOKMARK_POST_FAILURE,
+  REMOVE_BOOKMARK_POST,
+  REMOVE_BOOKMARK_POST_SUCCESS,
+  REMOVE_BOOKMARK_POST_FAILURE
 } = HOME_TYPES
 const HOME_INITIAL_STATE = homeModel
 
@@ -61,6 +70,36 @@ const REDUCERS = {
     draftState.posts.isLoading = false
   },
   [CREATE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = false
+  },
+  [DELETE_POST]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = true
+  },
+  [DELETE_POST_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.posts.data = payload
+    draftState.posts.isLoading = false
+  },
+  [DELETE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = false
+  },
+  [ADD_BOOKMARK_POST]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = true
+  },
+  [ADD_BOOKMARK_POST_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.posts.data = payload
+    draftState.posts.isLoading = false
+  },
+  [ADD_BOOKMARK_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = false
+  },
+  [REMOVE_BOOKMARK_POST]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = true
+  },
+  [REMOVE_BOOKMARK_POST_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.posts.data = payload
+    draftState.posts.isLoading = false
+  },
+  [REMOVE_BOOKMARK_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = false
   }
 }

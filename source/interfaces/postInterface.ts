@@ -12,6 +12,7 @@ export interface PostInterface {
   bookmarksCount: number
   creatorfirstName: string
   creatorLastName: string
+  isUserCreatorOfThePost: boolean
   creatorId: string
   creatorPhoto: string
   createdAt: string

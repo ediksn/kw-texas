@@ -4,21 +4,21 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from 'react-native-size-matters'
 import { useNavigation } from '@react-navigation/native'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { styles } from './styles'
 import { Button, Dropdown } from '~/components'
 import { avatarPost, NAVIGATION, theme } from '~/constants'
 import { PostInterface } from '~/interfaces/postInterface'
 import Icon from '../Icon'
 import { useContentTextPost } from '~/hooks'
-import { RootState } from '~/store'
 import { OptionInterface } from '../../interfaces/groupInterface'
 import { authorPost, datePost, dotsOptionsPost, contentPost, buttonPost } from '../../constants/testIds'
+import { homeActions } from '~/store/actions'
 
 const Post = ({ post }: { post: PostInterface }) => {
   const {
     id,
-    creatorId,
+    isUserCreatorOfThePost,
     createdAt,
     creatorfirstName,
     creatorLastName,
@@ -26,10 +26,10 @@ const Post = ({ post }: { post: PostInterface }) => {
     content,
     likesCount,
     repliesCount,
+    userHasAlreadyBookmarked,
     groupId
   } = post
   const author = `${creatorfirstName.toUpperCase()} ${creatorLastName.toUpperCase()}`
-  const user: any = useSelector((state: RootState) => state.usrProfile.profiles[0])
   const date = moment(createdAt).format('MM/DD/YY')
   const shares = 0
   const MAX_LINES = 5
@@ -40,7 +40,7 @@ const Post = ({ post }: { post: PostInterface }) => {
   const [hasShowLessMore, setHasShowLessMore] = useState(false)
   const { t } = useTranslation()
   const navigation = useNavigation()
-  const hasMyPost = true || creatorId === user.id // In this section get new request to get userConfiguration
+  const dispatch = useDispatch()
   const buttonRef = useRef<any>()
   const [selectedOption, setSelectedOption] = useState<OptionInterface>()
 
@@ -72,6 +72,12 @@ const Post = ({ post }: { post: PostInterface }) => {
     navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { editMode: true, idPost: id, groupId })
   }
 
+  const handleDelete = () => dispatch(homeActions.deletePost(id))
+
+  const handleBookmark = () => dispatch(homeActions.addBookmark(id))
+
+  const handleRemoveBookmark = () => dispatch(homeActions.removeBookmark(id))
+
   const optionsPost = () => {
     const myOptions = [
       {
@@ -81,19 +87,29 @@ const Post = ({ post }: { post: PostInterface }) => {
       },
       {
         key: '2',
-        handleOption: () => {},
+        handleOption: () => handleDelete(),
         title: t('Delete')
-      }
-    ]
-    const options = [
+      },
       {
         key: '3',
         handleOption: () => {},
         title: t('Save Post')
       }
     ]
+    const options = [
+      {
+        key: '1',
+        handleOption: () => (userHasAlreadyBookmarked ? handleRemoveBookmark() : handleBookmark()),
+        title: userHasAlreadyBookmarked ? t('Remove from Bookmark') : t('Bookmark a post')
+      },
+      {
+        key: '2',
+        handleOption: () => {},
+        title: t('Flag a post')
+      }
+    ]
 
-    return hasMyPost ? [...myOptions, ...options] : options
+    return isUserCreatorOfThePost ? myOptions : options
   }
 
   const HorizontalLine = () => <View style={styles.horizontalLine} />

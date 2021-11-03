@@ -1,4 +1,4 @@
-import { FormPostInterface } from '~/interfaces/postInterface'
+import { FormPostInterface, PostInterface } from '~/interfaces/postInterface'
 import { homeService } from '~/services'
 import { HOME_TYPES } from '~/store/types'
 import { AppDispatch } from '..'
@@ -94,16 +94,101 @@ const actionCreators = {
   editPost: (form: FormPostInterface) => async (dispatch: AppDispatch) => {
     const { EDIT_POST, EDIT_POST_SUCCESS, EDIT_POST_FAILURE } = HOME_TYPES
     dispatch({ type: EDIT_POST })
+
     try {
       const response = await homeService.editPost(form)
-      dispatch({
-        type: EDIT_POST_SUCCESS,
-        payload: {
-          data: response?.data
-        }
-      })
+
+      if (response) {
+        dispatch({
+          type: EDIT_POST_SUCCESS,
+          payload: {
+            data: form
+          }
+        })
+      } else {
+        dispatch({ type: EDIT_POST_FAILURE, payload: 'Error on Edit Post' })
+      }
     } catch (error) {
       dispatch({ type: EDIT_POST_FAILURE, payload: error })
+    }
+  },
+  deletePost: (postId: string) => async (dispatch: AppDispatch, getState: any) => {
+    const { DELETE_POST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE } = HOME_TYPES
+    dispatch({ type: DELETE_POST })
+
+    try {
+      const {
+        data: {
+          data: { deletePost }
+        }
+      } = await homeService.deletePost(postId)
+      if (deletePost) {
+        const posts: PostInterface[] = getState().home.posts.data
+        const newPosts = posts.filter((post: PostInterface) => post.id !== postId)
+
+        dispatch({
+          type: DELETE_POST_SUCCESS,
+          payload: newPosts
+        })
+      } else {
+        dispatch({ type: DELETE_POST_FAILURE, payload: `Error on Delete Post ${postId}` })
+      }
+    } catch (error) {
+      dispatch({ type: DELETE_POST_FAILURE, payload: error })
+    }
+  },
+  addBookmark: (postId: string) => async (dispatch: AppDispatch, getState: any) => {
+    const { ADD_BOOKMARK_POST, ADD_BOOKMARK_POST_SUCCESS, ADD_BOOKMARK_POST_FAILURE } = HOME_TYPES
+    dispatch({ type: ADD_BOOKMARK_POST })
+
+    try {
+      const {
+        data: {
+          data: { toggleBookmarkPost }
+        }
+      } = await homeService.addBookmarkPost(postId)
+      if (toggleBookmarkPost) {
+        const posts: PostInterface[] = getState().home.posts.data
+        const newPosts = posts.map((post: PostInterface) =>
+          post.id === postId ? { ...post, userHasAlreadyBookmarked: true } : post
+        )
+
+        dispatch({
+          type: ADD_BOOKMARK_POST_SUCCESS,
+          payload: newPosts
+        })
+      } else {
+        dispatch({ type: ADD_BOOKMARK_POST_FAILURE, payload: `Error on Add Bookmark Post ${postId}` })
+      }
+    } catch (error) {
+      dispatch({ type: ADD_BOOKMARK_POST_FAILURE, payload: error })
+    }
+  },
+  removeBookmark: (postId: string) => async (dispatch: AppDispatch, getState: any) => {
+    const { REMOVE_BOOKMARK_POST, REMOVE_BOOKMARK_POST_SUCCESS, REMOVE_BOOKMARK_POST_FAILURE } = HOME_TYPES
+    dispatch({ type: REMOVE_BOOKMARK_POST })
+
+    try {
+      const {
+        data: {
+          data: { toggleBookmarkPost }
+        }
+      } = await homeService.removeBookmarkPost(postId)
+      if (toggleBookmarkPost) {
+        const posts: PostInterface[] = getState().home.posts.data
+        const newPosts = posts.map((post: PostInterface) =>
+          post.id === postId ? { ...post, userHasAlreadyBookmarked: false } : post
+        )
+
+        dispatch({
+          type: REMOVE_BOOKMARK_POST_SUCCESS,
+          payload: newPosts
+        })
+      } else {
+        dispatch({ type: REMOVE_BOOKMARK_POST_FAILURE, payload: `Error on Remove Bookmark Post ${postId}` })
+      }
+    } catch (error) {
+      dispatch({ type: REMOVE_BOOKMARK_POST_FAILURE, payload: error })
     }
   }
 }

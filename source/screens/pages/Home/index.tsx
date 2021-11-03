@@ -5,12 +5,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import { theme } from '~/constants'
 import { styles } from './styles'
-import Post from '~/components/Post'
 import { PostInterface } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
 import { getUsrProfileActions, homeActions } from '~/store/actions'
 import { useBackButtonMinimize } from '~/hooks'
-import { Spinner, Button, Icon } from '~/components'
+import { Spinner, Button, Icon, Post } from '~/components'
 
 export const Home = () => {
   const dispatch = useDispatch()
@@ -65,7 +64,7 @@ export const Home = () => {
         onRefresh={onRefresh}
         onEndReached={onEndReached}
         onEndReachedThreshold={1}
-        ListEmptyComponent={NoPost}
+        ListEmptyComponent={(!loading && NoPost) || <></>}
         style={styles.list}
         contentContainerStyle={styles.contentListStyle}
         ListFooterComponent={<Spinner isLoading={loading} size={30} color='#3D424D' />}

@@ -5,9 +5,12 @@ import { LOGIN_TYPES } from '../types'
 import LOGIN_INITIAL_STATE from '../model/loginModel'
 import { LogInProduceProps, LogInReducerProps } from '../../interfaces/loginInterface'
 
-const { LOG_IN_SUCCESS, LOG_IN_FAILURE, LOG_OUT_SUCCESS, LOGGED_IN } = LOGIN_TYPES
+const { LOG_IN_SUCCESS, SET_SESSION_USER_SUCCESS, LOG_IN_FAILURE, LOG_OUT_SUCCESS, SET_LOGGED_SUCCESS } = LOGIN_TYPES
 
 const REDUCERS = {
+  [SET_SESSION_USER_SUCCESS]: ({ draftState, payload }: LogInReducerProps) => {
+    draftState.user = jwt<JwtPayload>(payload.id_token)
+  },
   [LOG_IN_SUCCESS]: ({ draftState, payload }: LogInReducerProps) => {
     draftState.user = jwt<JwtPayload>(payload.id_token)
   },
@@ -18,7 +21,7 @@ const REDUCERS = {
     draftState.user = null
     draftState.isLogged = false
   },
-  [LOGGED_IN]: ({ draftState }: LogInReducerProps) => {
+  [SET_LOGGED_SUCCESS]: ({ draftState }: LogInReducerProps) => {
     draftState.isLogged = true
   }
 }

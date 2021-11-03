@@ -41,14 +41,14 @@ const actionCreators = {
     dispatch({ type: LOG_OUT_SUCCESS })
   },
   afterLogin: () => async (dispatch: AppDispatch) => {
-    const { LOGGED_IN } = LOGIN_TYPES
-    dispatch({ type: LOGGED_IN })
+    const { SET_LOGGED_SUCCESS } = LOGIN_TYPES
+    dispatch({ type: SET_LOGGED_SUCCESS })
   },
   setUser: (id_token: string) => async (dispatch: AppDispatch) => {
-    const { LOG_IN, LOG_IN_SUCCESS } = LOGIN_TYPES
+    const { SET_SESSION_USER, SET_SESSION_USER_SUCCESS } = LOGIN_TYPES
 
-    dispatch({ type: LOG_IN })
-    dispatch({ type: LOG_IN_SUCCESS, payload: { id_token } })
+    dispatch({ type: SET_SESSION_USER })
+    dispatch({ type: SET_SESSION_USER_SUCCESS, payload: { id_token } })
   }
 }
 

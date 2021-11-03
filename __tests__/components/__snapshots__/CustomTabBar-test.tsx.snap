@@ -25,6 +25,8 @@ exports[`renders correctly 1`] = `
     }
   />
   <Image
+    resizeMethod="auto"
+    resizeMode="cover"
     source={
       Object {
         "testUri": "../../../assets/images/home-filled.png",

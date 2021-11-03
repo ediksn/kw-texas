@@ -1,7 +1,7 @@
 /** @format */
 
 import { StyleSheet } from 'react-native'
-import { verticalScale } from 'react-native-size-matters'
+import { moderateScale, verticalScale } from 'react-native-size-matters'
 
 export const styles = StyleSheet.create({
   spinner: {
@@ -10,16 +10,16 @@ export const styles = StyleSheet.create({
   photo: {
     aspectRatio: 1,
     borderRadius: 30,
-    width: 28,
-    height: 28
+    width: moderateScale(28),
+    height: moderateScale(26)
   },
   png: {
-    width: 30,
-    height: 30
+    width: moderateScale(28),
+    height: moderateScale(28)
   },
   notifications: {
-    width: 23,
-    height: 25,
+    width: moderateScale(22),
+    height: moderateScale(24),
     marginTop: verticalScale(1)
   }
 })

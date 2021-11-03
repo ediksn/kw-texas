@@ -1,10 +1,11 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { profileResponse } from '../../../../../../__mocks__/mockResponses'
-import Header from '~/screens/pages/Settings/pages/Profile/components/Header'
+import Header from '~/screens/pages/Profile/components/Header'
+import { ProfileInterface } from '~/interfaces/usrInterface'
 
 test('renders correctly', () => {
-  const data: any = [profileResponse]
-  const header = renderer.create(<Header data={data} />).toJSON()
+  const data: ProfileInterface = profileResponse
+  const header = renderer.create(<Header userData={data} />).toJSON()
   expect(header).toMatchSnapshot()
 })

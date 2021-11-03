@@ -13,11 +13,12 @@ import { styles } from './styles'
 const HomeHeader = () => {
   const { t } = useTranslation()
   const navigation = useNavigation()
-  const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[0])
+  const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
+  const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
 
   const leftButton = (
     <View style={styles.leftButtonContainer}>
-      <Image style={styles.photo} resizeMode='cover' resizeMethod='resize' source={{ uri: usrData?.photo_url }} />
+      <Image style={styles.photo} resizeMode='cover' resizeMethod='resize' source={{ uri: usrData?.photo }} />
       <TouchableOpacity onPress={() => navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { edit: false })}>
         <Text style={styles.text}>{t('What are you going to share today?')} </Text>
       </TouchableOpacity>

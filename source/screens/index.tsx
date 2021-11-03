@@ -20,14 +20,15 @@ import { Spinner } from '~/components'
 import { loginActions } from '~/store/actions'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
 import { theme } from '~/constants/theme'
-import Profile from './pages/Settings/pages/Profile'
 import CustomTabBar from '~/components/CustomTabBar'
 import HomeStackScreen from './pages/Home/navigation'
 import { styles } from './styles'
+import ProfileStackScreen from './pages/Profile/navigation'
 import NewPost from './pages/Home/pages/NewPost'
 
 const TabNavigation = () => {
-  const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[0])
+  const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
+  const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
   return (
     <TabNavigator
       initialRouteName={NAVIGATION.SCREEN.HOME}
@@ -84,11 +85,11 @@ const TabNavigation = () => {
       <TabScreen
         options={{
           tabBarIcon: ({ focused }) => (
-            <CustomTabBar focused={focused} imageURL={usrData?.photo_url} imageStyle={styles.photo} />
+            <CustomTabBar focused={focused} imageURL={usrData?.photo} imageStyle={styles.photo} />
           )
         }}
         name={NAVIGATION.SCREEN.PROFILE}
-        component={Profile}
+        component={ProfileStackScreen}
       />
     </TabNavigator>
   )

@@ -20,13 +20,13 @@ export const Home = () => {
   const limitDefault: number = useSelector((state: RootState) => state.home.posts.limitDefault)
   const limit: number = useSelector((state: RootState) => state.home.posts.limit)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)
-  const usrId: number = usr?.kwuid
+  const kwuId: number = usr?.kwuid
   useBackButtonMinimize()
   const { t } = useTranslation()
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      dispatch(getUsrProfileActions.getUsrProfile(usrId))
+      dispatch(getUsrProfileActions.getUsrProfile(kwuId))
       dispatch(homeActions.getPosts(limitDefault))
     })
 

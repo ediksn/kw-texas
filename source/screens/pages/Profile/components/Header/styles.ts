@@ -1,6 +1,7 @@
 /** @format */
 
 import { StyleSheet } from 'react-native'
+import { moderateScale, verticalScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
@@ -9,14 +10,14 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F2F2F2',
     flexDirection: 'column',
     justifyContent: 'center',
-    padding: 25
+    padding: moderateScale(25)
   },
   avatar: {
     alignItems: 'center',
     aspectRatio: 1,
     backgroundColor: '#CCCCCC',
     borderRadius: 30,
-    height: 60,
+    height: moderateScale(60),
     justifyContent: 'center',
     overflow: 'hidden'
   },
@@ -25,7 +26,7 @@ export const styles = StyleSheet.create({
   },
   photo: {
     aspectRatio: 1,
-    width: 60
+    width: moderateScale(60)
   },
   initials: {
     color: '#ffffff',
@@ -37,7 +38,7 @@ export const styles = StyleSheet.create({
     color: '#282B33',
     fontFamily: 'Mulish-ExtraBold',
     fontSize: 20,
-    marginTop: 8,
+    marginTop: verticalScale(8),
     textAlign: 'center'
   },
   role: {
@@ -53,6 +54,13 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     height: 16,
-    marginTop: 4
+    marginTop: verticalScale(4)
+  },
+  subtitle: {
+    marginTop: verticalScale(4),
+    fontFamily: 'Mulish-Regular',
+    fontWeight: '400',
+    fontSize: 12,
+    lineHeight: 16
   }
 })

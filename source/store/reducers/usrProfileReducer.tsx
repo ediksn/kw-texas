@@ -4,7 +4,15 @@ import { USR_TYPES } from '../types'
 import { UsrProfileProduceProps, UsrProfileReducerProps } from '~/interfaces/usrInterface'
 import { USRPROFILE_INITIAL_STATE } from '../model/usrProfileModel'
 
-const { GET_USRPROFILE, GET_USRPROFILE_SUCCESS, GET_USRPROFILE_FAILURE } = USR_TYPES
+const {
+  GET_USRPROFILE,
+  GET_USRPROFILE_SUCCESS,
+  GET_USRPROFILE_FAILURE,
+  GET_ACCOUNTS,
+  GET_ACCOUNTS_SUCCESS,
+  GET_ACCOUNTS_FAILURE,
+  CHANGE_ACTIVE_ACCOUNT_SUCCESS
+} = USR_TYPES
 
 const REDUCERS = {
   [GET_USRPROFILE]: ({ draftState }: UsrProfileReducerProps) => {
@@ -12,10 +20,23 @@ const REDUCERS = {
   },
   [GET_USRPROFILE_SUCCESS]: ({ draftState, payload }: UsrProfileReducerProps) => {
     draftState.isLoading = false
-    draftState.profiles = [payload]
+    draftState.profiles = payload
   },
   [GET_USRPROFILE_FAILURE]: ({ draftState }: UsrProfileReducerProps) => {
     draftState.isLoading = false
+  },
+  [GET_ACCOUNTS]: ({ draftState }: UsrProfileReducerProps) => {
+    draftState.isLoading = true
+  },
+  [GET_ACCOUNTS_SUCCESS]: ({ draftState, payload }: UsrProfileReducerProps) => {
+    draftState.isLoading = false
+    draftState.accounts = payload
+  },
+  [GET_ACCOUNTS_FAILURE]: ({ draftState }: UsrProfileReducerProps) => {
+    draftState.isLoading = false
+  },
+  [CHANGE_ACTIVE_ACCOUNT_SUCCESS]: ({ draftState, payload }: UsrProfileReducerProps) => {
+    draftState.activeAccount = payload
   }
 }
 

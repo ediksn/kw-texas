@@ -1,6 +1,8 @@
 /** @format */
 
 import { StyleSheet } from 'react-native'
+import { moderateScale, verticalScale } from 'react-native-size-matters'
+import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   container: {
@@ -12,35 +14,26 @@ export const styles = StyleSheet.create({
   separator: {
     backgroundColor: 'rgba(174, 178, 186, 0.2);',
     height: 1,
-    marginVertical: 20
-  },
-  scrollView: {
-    marginHorizontal: 20,
-    marginVertical: 10
+    marginTop: verticalScale(24)
   },
   field: {
     marginVertical: 10
   },
   title: {
-    fontSize: 18,
-    color: '#282B33',
-    fontFamily: 'Mulish-Bold',
-    marginVertical: 10
+    fontSize: 12,
+    color: theme.darkGrey,
+    fontFamily: 'Mulish-Regular',
+    fontWeight: '700',
+    lineHeight: 16,
+    letterSpacing: 1.2,
+    textTransform: 'uppercase',
+    marginTop: verticalScale(16),
+    marginLeft: moderateScale(16)
   },
   subtitle: {
     fontSize: 14,
     color: '#282B33',
     lineHeight: 26,
     fontFamily: 'Mulish-Bold'
-  },
-  description: {
-    fontSize: 14,
-    color: '#000',
-    fontFamily: 'Mulish-Regular'
-  },
-  socialText: {
-    fontSize: 14,
-    color: '#000',
-    fontFamily: 'Mulish-Regular'
   }
 })

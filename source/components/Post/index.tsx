@@ -187,6 +187,7 @@ const Post = ({ post }: { post: PostInterface }) => {
               style={styles.contentText}
               numberOfLines={numberOfLines}
               onTextLayout={addMoreText}
+              ellipsizeMode='clip'
             >
               {contentText}
             </Text>

@@ -19,6 +19,7 @@ export const Home = () => {
   const limitDefault: number = useSelector((state: RootState) => state.home.posts.limitDefault)
   const limit: number = useSelector((state: RootState) => state.home.posts.limit)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)
+  const hasMoreLoading: boolean = useSelector((state: RootState) => state.home.posts.hasMoreLoading)
   const kwuId: number = usr?.kwuid
   useBackButtonMinimize()
   const { t } = useTranslation()
@@ -34,7 +35,7 @@ export const Home = () => {
   const renderPost = ({ item }: { item: PostInterface }) => <Post post={item} />
   const keyExtractor = (post: PostInterface) => post.id.toString()
   const onRefresh = () => dispatch(homeActions.getPosts(limit))
-  const onEndReached = () => dispatch(homeActions.getPosts(limit + 10))
+  const onEndReached = () => dispatch(homeActions.getPosts(limit + 10, true))
 
   const NoPost = () => (
     <View style={styles.noPostWrapper}>
@@ -67,7 +68,7 @@ export const Home = () => {
         ListEmptyComponent={(!loading && NoPost) || <></>}
         style={styles.list}
         contentContainerStyle={styles.contentListStyle}
-        ListFooterComponent={<Spinner isLoading={loading} size={30} color='#3D424D' />}
+        ListFooterComponent={<Spinner isLoading={hasMoreLoading} size={30} color='#3D424D' />}
       />
     </View>
   )

@@ -17,23 +17,25 @@ const actionCreators = {
       dispatch({ type: GET_PICK_PROMPTS_FAILURE, payload: error })
     }
   },
-  getPosts: (limit: number) => async (dispatch: AppDispatch) => {
-    const { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAILURE } = HOME_TYPES
-    dispatch({ type: GET_POSTS })
-    try {
-      const response = await homeService.getPosts(limit)
-      dispatch({
-        type: GET_POSTS_SUCCESS,
-        payload: {
-          data: response?.data.data.getPosts,
-          limitDefault: 10,
-          limit
-        }
-      })
-    } catch (error) {
-      dispatch({ type: GET_POSTS_FAILURE, payload: error })
-    }
-  },
+  getPosts:
+    (limit: number, hasMoreLoading: boolean = false) =>
+    async (dispatch: AppDispatch) => {
+      const { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAILURE } = HOME_TYPES
+      dispatch({ type: GET_POSTS, payload: hasMoreLoading })
+      try {
+        const response = await homeService.getPosts(limit)
+        dispatch({
+          type: GET_POSTS_SUCCESS,
+          payload: {
+            data: response?.data.data.getPosts,
+            limitDefault: 10,
+            limit
+          }
+        })
+      } catch (error) {
+        dispatch({ type: GET_POSTS_FAILURE, payload: error })
+      }
+    },
   getGroups: (limit: number) => async (dispatch: AppDispatch) => {
     const { GET_GROUPS, GET_GROUPS_SUCCESS, GET_GROUPS_FAILURE } = HOME_TYPES
     dispatch({ type: GET_GROUPS })

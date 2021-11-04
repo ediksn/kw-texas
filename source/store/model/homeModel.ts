@@ -7,7 +7,8 @@ export default {
     data: [],
     limitDefault: 10,
     limit: 10,
-    isLoading: false
+    isLoading: false,
+    hasMoreLoading: false
   },
   groups: {
     data: [],

@@ -42,8 +42,9 @@ const REDUCERS = {
   [GET_PICK_PROMPTS_FAILURE]: ({ draftState }: PickPromptsReducerProps) => {
     draftState.pickPrompts.isLoading = false
   },
-  [GET_POSTS]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = true
+  [GET_POSTS]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.posts.isLoading = !payload
+    draftState.posts.hasMoreLoading = payload
   },
   [GET_POSTS_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
     draftState.posts = { ...draftState.posts, ...payload }

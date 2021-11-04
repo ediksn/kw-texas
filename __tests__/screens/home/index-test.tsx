@@ -68,7 +68,8 @@ describe('Home', () => {
 
   const expectedGetPostsActions: ProduceProps[] = [
     {
-      type: GET_POSTS
+      type: GET_POSTS,
+      payload: false
     },
     {
       type: GET_POSTS_SUCCESS,

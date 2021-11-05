@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { View, FlatList, Text } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigation } from '@react-navigation/native'
 import { theme } from '~/constants'
 import { styles } from './styles'
 import { PostInterface } from '~/interfaces/postInterface'
@@ -13,7 +12,6 @@ import { Spinner, Button, Icon, Post } from '~/components'
 
 export const Home = () => {
   const dispatch = useDispatch()
-  const navigation = useNavigation()
   const usr: any = useSelector((state: RootState) => state.login.user)
   const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
   const limitDefault: number = useSelector((state: RootState) => state.home.posts.limitDefault)
@@ -25,13 +23,9 @@ export const Home = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-      dispatch(getUsrProfileActions.getUsrProfile(kwuId))
-      dispatch(homeActions.getPosts(limitDefault))
-    })
-
-    return unsubscribe
-  }, [navigation, dispatch])
+    dispatch(getUsrProfileActions.getUsrProfile(kwuId))
+    dispatch(homeActions.getPosts(limitDefault))
+  }, [dispatch])
   const renderPost = ({ item }: { item: PostInterface }) => <Post post={item} />
   const keyExtractor = (post: PostInterface) => post.id.toString()
   const onRefresh = () => dispatch(homeActions.getPosts(limit))

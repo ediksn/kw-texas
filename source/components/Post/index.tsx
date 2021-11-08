@@ -169,7 +169,7 @@ const Post = ({ post }: { post: PostInterface }) => {
             </View>
           </View>
           <TouchableOpacity testID={dotsOptionsPost} ref={buttonRef} onPress={() => setShowDropDown(!showDropDown)}>
-            <Icon name='threedots-icon' size={8} color={theme.post.dotsColor} />
+            <Icon name='threedots-icon' size={5} color={theme.post.dotsColor} />
           </TouchableOpacity>
           <Dropdown
             buttonRef={buttonRef}

@@ -66,8 +66,7 @@ const REDUCERS = {
   [CREATE_POST]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = true
   },
-  [CREATE_POST_SUCCESS]: ({ draftState, payload }: any) => {
-    draftState.posts.data = [...draftState.posts.data, payload]
+  [CREATE_POST_SUCCESS]: ({ draftState }: any) => {
     draftState.posts.isLoading = false
   },
   [CREATE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {

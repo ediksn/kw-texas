@@ -68,23 +68,24 @@ describe('New Post Action', () => {
 
   const mockedAxios = axios as jest.Mocked<typeof axios>
   const form: FormPostInterface = { group: '1', text: 'New test Post' }
-  const newSpace: any = { ...form, id: createPostResponse.data.createPost }
-  const { CREATE_POST, CREATE_POST_SUCCESS } = HOME_TYPES
+  const newPost: any = { groupId: form.group, content: form.text, id: createPostResponse.data.createPost }
+  const { CREATE_POST, CREATE_POST_SUCCESS, GET_POSTS } = HOME_TYPES
   const expectedActions: ProduceProps[] = [
     {
       type: CREATE_POST
     },
     {
-      type: CREATE_POST_SUCCESS,
-      payload: {
-        data: newSpace
-      }
+      type: CREATE_POST_SUCCESS
+    },
+    {
+      type: GET_POSTS,
+      payload: false
     }
   ]
 
   it('should create an action CREATE_POST_SUCCESS when user create new Post', async () => {
-    mockedAxios.post.mockResolvedValue({ data: createPostResponse })
-    await storeModels.dispatch(homeActions.createPost(newSpace))
+    mockedAxios.post.mockResolvedValueOnce({ data: createPostResponse })
+    await storeModels.dispatch(homeActions.createPost(form))
     expect(storeModels.getActions()).toEqual(expectedActions)
     expect(mockedAxios.post).toHaveBeenCalledTimes(1)
   })
@@ -92,9 +93,8 @@ describe('New Post Action', () => {
   it('should return array of posts in state', () => {
     const oldStore: any = storeModels.getState()
     const expectedStore = { ...oldStore }
-    expectedStore.home.posts.data = [...expectedStore.home.posts.data, newSpace]
     expectedStore.home.posts.isLoading = false
-    expect(homeReducer(oldStore.home, newSpace)).toEqual(expectedStore.home)
+    expect(homeReducer(oldStore.home, newPost)).toEqual(expectedStore.home)
   })
 })
 

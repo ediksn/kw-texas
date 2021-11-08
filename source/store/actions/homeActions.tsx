@@ -68,8 +68,9 @@ const actionCreators = {
     }
     return null
   },
-  createPost: (form: FormPostInterface) => async (dispatch: AppDispatch) => {
+  createPost: (form: FormPostInterface) => async (dispatch: any, getState: any) => {
     const { CREATE_POST, CREATE_POST_SUCCESS, CREATE_POST_FAILURE } = HOME_TYPES
+    const { limitDefault }: any = getState().home.posts
     dispatch({ type: CREATE_POST })
 
     try {
@@ -81,11 +82,9 @@ const actionCreators = {
 
       if (createPost) {
         dispatch({
-          type: CREATE_POST_SUCCESS,
-          payload: {
-            data: { ...form, id: createPost }
-          }
+          type: CREATE_POST_SUCCESS
         })
+        dispatch(actionCreators.getPosts(limitDefault))
       } else {
         dispatch({ type: CREATE_POST_FAILURE, payload: 'Error on Create Post' })
       }

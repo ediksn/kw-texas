@@ -18,7 +18,8 @@ const NewPost = () => {
   const dispatch = useDispatch()
   const { params } = useRoute()
   const { editMode, idPost, groupId }: any = params
-  const user: any = useSelector((state: RootState) => state.usrProfile.profiles[0])
+  const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
+  const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
   const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)
   const groups: GroupInterface[] = useSelector((state: RootState) => state.home.groups.data)
@@ -116,9 +117,9 @@ const NewPost = () => {
       >
         <View style={styles.body}>
           <View style={styles.avatarBox}>
-            <Image style={styles.avatar} resizeMode='cover' source={{ uri: user?.photo_url }} />
+            <Image style={styles.avatar} resizeMode='cover' source={{ uri: usrData?.userProfile.photo }} />
             <View style={styles.info}>
-              <Text style={styles.name}>{user?.name.toUpperCase()}</Text>
+              <Text style={styles.name}>{usrData?.name.toUpperCase()}</Text>
               <TouchableOpacity ref={buttonRef} style={styles.dropTouch} onPress={() => setShowDropDown(!showDropDown)}>
                 <Text style={styles.group} ellipsizeMode='tail' numberOfLines={1}>
                   {groupSelected?.title}

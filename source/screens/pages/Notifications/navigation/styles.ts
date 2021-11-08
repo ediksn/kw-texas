@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     height: scale(60)
   },
   titleStyle: {
-    fontWeight: 'normal',
-    fontSize: scale(17)
+    fontWeight: 'bold',
+    fontSize: theme.fonts.LARGE_SIZE
   }
 })

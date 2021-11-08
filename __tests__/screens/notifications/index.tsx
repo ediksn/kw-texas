@@ -1,8 +1,11 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
+import { EventsInterface } from '~/interfaces/eventsInterface'
 import { Notifications } from '~/screens/pages/Notifications/index'
 
 let mockLoading = false
+let mockTodayEvents: EventsInterface[] = []
+let mockTomorrowEvents: EventsInterface[] = []
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
@@ -58,12 +61,16 @@ jest.mock('@react-navigation/native', () => {
 
 jest.mock('~/screens/pages/Notifications/hooks/useNavigation', () => {
   return jest.fn(() => ({
-    loading: mockLoading
+    loading: mockLoading,
+    todayEvents: mockTodayEvents,
+    tomorrowEvents: mockTomorrowEvents
   }))
 })
 
 beforeAll(() => {
   mockLoading = false
+  mockTodayEvents = []
+  mockTomorrowEvents = []
 })
 
 test('renders correctly', () => {

@@ -9,16 +9,7 @@ import kw from 'assets/images/kw-logo.png'
 import illustration from 'assets/images/login-illustration.png'
 import Modal from 'react-native-modal'
 import { Button, Input, Spinner } from '~/components'
-import {
-  forgotButton,
-  illustrationLogo,
-  IS_IOS,
-  kwLogo,
-  passwordInput,
-  signinButton,
-  theme,
-  usernameInput
-} from '~/constants'
+import { illustrationLogo, IS_IOS, kwLogo, passwordInput, signinButton, usernameInput } from '~/constants'
 import { styles } from './styles'
 import { FORM } from '~/constants/form'
 import { loginActions } from '~/store/actions'
@@ -210,14 +201,6 @@ export const Login = () => {
                   disabled={!netInfo.isConnected || false}
                 />
               </Spinner>
-              <Button
-                testID={forgotButton}
-                viewStyle={styles.button}
-                textStyle={styles.textRegular}
-                message={t('Forgot Password')}
-                type={theme.buttons.types.TEXT}
-                disabled={!netInfo.isConnected || false}
-              />
             </View>
           </View>
           {!!biometryTypeState && biometryAllowed && (

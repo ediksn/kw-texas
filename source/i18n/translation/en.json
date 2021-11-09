@@ -1,4 +1,6 @@
 {
+  "No": "No",
+  "Yes": "Yes",
   "Username": "Username",
   "Password": "Password",
   "Log In": "Log In",
@@ -72,5 +74,11 @@
   "Your Events": "Your Events",
   "No Events To Display": "No Events To Display",
   "TODAY": "TODAY",
-  "TOMORROW": "TOMORROW"
+  "TOMORROW": "TOMORROW",
+  "components_BiometricPermission_FaceID": "FaceID",
+  "components_BiometricPermission_Fingerprint": "Fingerprint",
+  "components_BiometricPermission_AllowFaceID": "Do you want to allow app to use Face ID to authenticate?",
+  "components_BiometricPermission_AllowFingerprint": "Do you want to allow app to use Fingerprint to authenticate?",
+  "components_BiometricModal_FaceID": "Or use Face ID",
+  "components_BiometricModal_Fingerprint": "Or use Fingerprint"
 }

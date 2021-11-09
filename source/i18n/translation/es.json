@@ -1,4 +1,6 @@
 {
+  "No": "No",
+  "Yes": "Si",
   "Username": "Nombre de usuario",
   "Password": "Contraseña",
   "Log In": "Iniciar sesión",
@@ -73,5 +75,11 @@
   "Your Events": "Tus Eventos",
   "No Events To Display": "Sin Eventos Para Mostrar",
   "TODAY": "HOY",
-  "TOMOWRROW": "MAÑANA"
+  "TOMOWRROW": "MAÑANA",
+  "components_BiometricPermission_FaceID": "Reconocimiento Facial",
+  "components_BiometricPermission_Fingerprint": "Huella Digital",
+  "components_BiometricPermission_AllowFaceID": "¿Quiere permitirle a la aplicación utilizar el reconocimiento facial para iniciar sesión?",
+  "components_BiometricPermission_AllowFingerprint": "¿Quiere permitirle a la aplicación utilizar la huella digital para iniciar sesión?",
+  "components_BiometricModal_FaceID": "O usa tu reconocimiento facial",
+  "components_BiometricModal_Fingerprint": "O usa tu huella digital"
 }

@@ -21,14 +21,14 @@ const BiometricPermission = memo(({ onYes, onNo, onRequestClose, biometryType, i
   const { t } = useTranslation()
 
   const headers: { [index: string]: string } = {
-    [ReactNativeBiometrics.FaceID]: t('Face ID'),
-    [ReactNativeBiometrics.TouchID]: t('Fingerprint'),
-    [ReactNativeBiometrics.Biometrics]: t('Fingerprint')
+    [ReactNativeBiometrics.FaceID]: t('components_BiometricPermission_FaceID'),
+    [ReactNativeBiometrics.TouchID]: t('components_BiometricPermission_Fingerprint'),
+    [ReactNativeBiometrics.Biometrics]: t('components_BiometricPermission_Fingerprint')
   }
   const bodies: { [index: string]: string } = {
-    [ReactNativeBiometrics.FaceID]: t('Do you want to allow app to use Face ID to authenticate?'),
-    [ReactNativeBiometrics.TouchID]: t('Do you want to allow app to use Fingerprint to authenticate?'),
-    [ReactNativeBiometrics.Biometrics]: t('Do you want to allow app to use Fingerprint to authenticate?')
+    [ReactNativeBiometrics.FaceID]: t('components_BiometricPermission_AllowFaceID'),
+    [ReactNativeBiometrics.TouchID]: t('components_BiometricPermission_AllowFingerprint'),
+    [ReactNativeBiometrics.Biometrics]: t('components_BiometricPermission_AllowFingerprint')
   }
 
   return (

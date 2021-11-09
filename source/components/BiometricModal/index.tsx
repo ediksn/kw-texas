@@ -19,9 +19,9 @@ const BiometricModal = ({ onAuth, biometryType }: Props) => {
   const { t } = useTranslation()
 
   const texts: { [index: string]: string } = {
-    [ReactNativeBiometrics.FaceID]: t('Or use Face ID'),
-    [ReactNativeBiometrics.Biometrics]: t('Or use Fingerprint'),
-    [ReactNativeBiometrics.TouchID]: t('Or use Fingerprint')
+    [ReactNativeBiometrics.FaceID]: t('components_BiometricModal_FaceID'),
+    [ReactNativeBiometrics.Biometrics]: t('components_BiometricModal_Fingerprint'),
+    [ReactNativeBiometrics.TouchID]: t('components_BiometricModal_Fingerprint')
   }
   const icons: { [index: string]: string } = {
     [ReactNativeBiometrics.FaceID]: 'faceid-icon',

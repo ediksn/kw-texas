@@ -8,7 +8,7 @@ import { styles } from './styles'
 import { IS_IOS, NAVIGATION, theme } from '~/constants'
 import { RootState } from '~/store'
 import { FormPostInterface, PostInterface } from '~/interfaces/postInterface'
-import { useContentTextPost } from '~/hooks'
+import { useUnRichContent, useRichContent } from '~/hooks'
 import { homeActions } from '~/store/actions'
 import { GroupInterface, OptionInterface } from '~/interfaces/groupInterface'
 
@@ -26,7 +26,7 @@ const NewPost = () => {
   const limitDefault: number = useSelector((state: RootState) => state.home.groups.limitDefault)
   const currentPost = posts.find(p => p.id === idPost)
   const content = currentPost?.content || ''
-  const contentText = useContentTextPost(content)
+  const contentText = useUnRichContent(content)
   const [inputValue, setInputValue] = useState(editMode ? contentText : '')
   const [showDropDown, setShowDropDown] = useState(false)
   const [groupSelected, setGroupSelected] = useState<OptionInterface>({
@@ -54,7 +54,7 @@ const NewPost = () => {
     setShowDropDown(false)
     const form: FormPostInterface = {
       group: groupSelected.key,
-      text: inputValue
+      text: useRichContent(inputValue)
     }
 
     dispatch(editMode ? homeActions.editPost(form) : homeActions.createPost(form))

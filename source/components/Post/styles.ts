@@ -89,5 +89,9 @@ export const styles = StyleSheet.create({
   button: {
     width: 'auto',
     marginHorizontal: scale(4)
+  },
+  touchableArea: {
+    marginRight: moderateScale(-5),
+    padding: moderateScale(5)
   }
 })

@@ -10,7 +10,7 @@ import { Button, Dropdown } from '~/components'
 import { avatarPost, NAVIGATION, theme } from '~/constants'
 import { PostInterface } from '~/interfaces/postInterface'
 import Icon from '../Icon'
-import { useContentTextPost } from '~/hooks'
+import { useUnRichContent } from '~/hooks'
 import { OptionInterface } from '../../interfaces/groupInterface'
 import { authorPost, datePost, dotsOptionsPost, contentPost, buttonPost } from '../../constants/testIds'
 import { homeActions } from '~/store/actions'
@@ -33,7 +33,7 @@ const Post = ({ post }: { post: PostInterface }) => {
   const date = moment(createdAt).format('MM/DD/YY')
   const shares = 0
   const MAX_LINES = 5
-  const contentText = useContentTextPost(content)
+  const contentText = useUnRichContent(content)
   const [showMore, setShowMore] = useState(false)
   const [showDropDown, setShowDropDown] = useState(false)
   const [numberOfLines, setNumberOfLines] = useState<number | undefined>()
@@ -168,7 +168,12 @@ const Post = ({ post }: { post: PostInterface }) => {
               <Text testID={datePost} style={styles.date}>{`${t('Posted')} ${date}`}</Text>
             </View>
           </View>
-          <TouchableOpacity testID={dotsOptionsPost} ref={buttonRef} onPress={() => setShowDropDown(!showDropDown)}>
+          <TouchableOpacity
+            style={styles.touchableArea}
+            testID={dotsOptionsPost}
+            ref={buttonRef}
+            onPress={() => setShowDropDown(!showDropDown)}
+          >
             <Icon name='threedots-icon' size={5} color={theme.post.dotsColor} />
           </TouchableOpacity>
           <Dropdown

@@ -96,7 +96,7 @@ export default {
       variables: {
         post: {
           group: form.group,
-          content: `{"blocks":[{"key":"34ove","text":"${form.text}","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
+          content: form.text,
           type: 'STANDARD',
           source: 'GROUPS'
         }

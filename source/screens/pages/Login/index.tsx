@@ -139,6 +139,7 @@ export const Login = () => {
   }
 
   const handleAllowBiometry = async () => {
+    setAllowModal(false)
     Storage.save({ key: BIOMETRIC.PERMISSION, value: { ALLOWED: true } })
     await ReactNativeBiometrics.createKeys()
     await ReactNativeBiometrics.createSignature({
@@ -151,7 +152,6 @@ export const Login = () => {
     Storage.saveCredentials({ username, password })
     dispatch(loginActions.afterLogin())
     setLoading(false)
-    setAllowModal(false)
   }
 
   return (

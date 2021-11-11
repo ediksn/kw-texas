@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
   container: {
     display: 'flex',
     width: '100%',
-    padding: 15,
+    paddingVertical: 15,
+    paddingHorizontal: 17,
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
@@ -25,12 +26,11 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     fontFamily: 'Mulish-Bold',
     color: theme.darkBackground,
-    marginLeft: 23
+    marginLeft: 17
   },
   logoutBtn: {
-    marginTop: 4,
-    marginLeft: 7,
-    marginRight: 15,
+    justifyContent: 'center',
+    marginRight: 0,
     tintColor: theme.darkBackground
   },
   arrowBtn: {

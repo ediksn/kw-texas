@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import logout_btn from 'assets/images/logout_btn.png'
 import { RootState } from '~/store'
+import { theme } from '~/constants'
 
 import Header from './components/Header'
 
@@ -57,7 +57,17 @@ const Profile = () => {
           <Text style={styles.title}>Other accounts</Text>
           <AccountList />
           <View style={styles.separator} />
-          <ListButton title='Log out' icon={logout_btn} onPress={handleLogOut} arrow={false} />
+
+          <ListButton
+            title='Log out'
+            onPress={handleLogOut}
+            arrow={false}
+            svg
+            svgTitle='logout_btn'
+            svgSize={18}
+            icon={false}
+            svgColor={theme.darkGrey}
+          />
         </ScrollView>
       </Spinner>
     </>

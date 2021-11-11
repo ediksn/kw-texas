@@ -15,14 +15,16 @@ export const styles = StyleSheet.create({
   avatar: {
     alignItems: 'center',
     aspectRatio: 1,
-    backgroundColor: '#CCCCCC',
+    backgroundColor: theme.backgrounds.whiteBackground,
     borderRadius: 30,
     height: moderateScale(60),
     justifyContent: 'center',
     overflow: 'hidden'
   },
-  avatarText: {
-    fontSize: theme.fonts.BIG_SIZE
+  defaultAvatar: {
+    width: moderateScale(42),
+    height: moderateScale(42),
+    opacity: 0.5
   },
   photo: {
     aspectRatio: 1,

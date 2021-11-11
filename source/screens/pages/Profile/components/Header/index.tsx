@@ -1,7 +1,8 @@
 import React from 'react'
 import { Image, Text, View } from 'react-native'
-import { ProfileInterface } from '~/interfaces/usrInterface'
 
+import DefaultAvatar from 'assets/images/default-avatar.png'
+import { ProfileInterface } from '~/interfaces/usrInterface'
 import { styles } from './styles'
 
 interface Props {
@@ -13,13 +14,10 @@ const Header = ({ userData }: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.avatar}>
-        {userData?.userProfile.photo ? (
+        {userData?.photo ? (
           <Image style={styles.photo} resizeMode='cover' resizeMethod='resize' source={{ uri: userData?.photo }} />
         ) : (
-          <Text style={styles.avatarText}>{`${userData?.userProfile.first_name?.substr(
-            0,
-            1
-          )}${userData?.userProfile.last_name?.substr(0, 1)}`}</Text>
+          <Image style={styles.defaultAvatar} resizeMode='contain' resizeMethod='resize' source={DefaultAvatar} />
         )}
       </View>
       <Text style={styles.name} numberOfLines={2}>

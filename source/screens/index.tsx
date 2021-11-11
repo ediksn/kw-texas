@@ -11,6 +11,7 @@ import CalendarUnfilled from 'assets/images/calendar-unfilled.png'
 import CalendarFilled from 'assets/images/calendar-filled.png'
 import NotificationsUnfilled from 'assets/images/notifications-unfilled.png'
 import NotificationsFilled from 'assets/images/notifications-filled.png'
+import DefaultAvatar from 'assets/images/default-avatar.png'
 import { NAVIGATION } from '~/constants/navigation'
 import { TabNavigator, TabScreen, StackNavigator, StackScreen } from './components/Navigators'
 import { Login, Groups } from './pages'
@@ -85,9 +86,11 @@ const TabNavigation = () => {
       />
       <TabScreen
         options={{
-          tabBarIcon: ({ focused }) => (
-            <CustomTabBar focused={focused} imageURL={usrData?.photo} imageStyle={styles.photo} />
-          )
+          tabBarIcon: ({ focused }) => {
+            if (usrData?.photo !== undefined)
+              return <CustomTabBar focused={focused} imageURL={usrData.photo} imageStyle={styles.photo} />
+            return <CustomTabBar focused={focused} PNG={DefaultAvatar} imageStyle={styles.defaultAvatar} />
+          }
         }}
         name={NAVIGATION.SCREEN.PROFILE}
         component={ProfileStackScreen}

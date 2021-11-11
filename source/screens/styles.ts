@@ -21,5 +21,10 @@ export const styles = StyleSheet.create({
     width: moderateScale(22),
     height: moderateScale(24),
     marginTop: verticalScale(1)
+  },
+  defaultAvatar: {
+    width: moderateScale(26),
+    height: moderateScale(26),
+    opacity: 0.5
   }
 })

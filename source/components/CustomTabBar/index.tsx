@@ -20,7 +20,7 @@ const CustomTabBar = ({ name, focused, PNG, imageURL, imageStyle }: Props) => {
       {name ? (
         <Icon name={name} size={23} style={styles(focused).icon} />
       ) : PNG ? (
-        <Image style={[imageStyle]} resizeMode='cover' resizeMethod='auto' source={PNG} />
+        <Image style={[imageStyle]} resizeMode='contain' resizeMethod='auto' source={PNG} />
       ) : (
         <Image style={[imageStyle]} resizeMode='cover' resizeMethod='resize' source={{ uri: imageURL }} />
       )}

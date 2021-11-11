@@ -38,5 +38,10 @@ export const styles = StyleSheet.create({
   },
   chat: {
     marginLeft: scale(9)
+  },
+  defaultAvatar: {
+    width: scale(30),
+    height: scale(30),
+    opacity: 0.5
   }
 })

@@ -2,6 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { useSelector } from 'react-redux'
+import DefaultAvatar from 'assets/images/default-avatar.png'
 import { useNavigation } from '@react-navigation/native'
 import { Header, Icon } from '~/components'
 import { NAVIGATION } from '~/constants'
@@ -18,7 +19,10 @@ const HomeHeader = () => {
 
   const leftButton = (
     <View style={styles.leftButtonContainer}>
-      <Image style={styles.photo} resizeMode='cover' resizeMethod='resize' source={{ uri: usrData?.photo }} />
+      <Image
+        style={usrData?.photo !== undefined ? styles.photo : styles.defaultAvatar}
+        source={usrData?.photo ? { uri: usrData?.photo } : DefaultAvatar}
+      />
       <TouchableOpacity onPress={() => navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { edit: false })}>
         <Text style={styles.text}>{t('What are you going to share today?')} </Text>
       </TouchableOpacity>

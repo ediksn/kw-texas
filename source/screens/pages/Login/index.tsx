@@ -36,6 +36,7 @@ export const Login = () => {
   const [biometryAllowed, setBiometryAllowed] = useState(false)
   const [biometryTypeState, setBiometryTypeState] = useState('')
   const [allowModal, setAllowModal] = useState(false)
+  const [loginDisabled, setLoginDisabled] = useState(true)
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -92,6 +93,7 @@ export const Login = () => {
     setErrorFlag(false)
     setUsernameEmptyFlag(false)
     setPasswordEmptyFlag(false)
+    setLoginDisabled(!username.length && !password.length)
   }, [username, password])
 
   useEffect(() => {
@@ -198,7 +200,7 @@ export const Login = () => {
                   textStyle={styles.textBold}
                   message={t('Log In')}
                   onPress={handleLogin}
-                  disabled={!netInfo.isConnected || false}
+                  disabled={!netInfo.isConnected || loginDisabled}
                 />
               </Spinner>
             </View>

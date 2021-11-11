@@ -33,7 +33,7 @@ const AccountRow = ({ index, image, name, rol, isDefault, setChangingAccount }: 
       </View>
       {isDefault && (
         <View style={styles.defaultTag}>
-          <Text>Default</Text>
+          <Text style={styles.defaultTagText}>Default</Text>
         </View>
       )}
     </TouchableOpacity>

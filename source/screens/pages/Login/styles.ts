@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
   containerView: {
     flex: 1,
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: theme.backgrounds.whiteBackground
   },
   topContainer: {
     marginTop: verticalScale(40)

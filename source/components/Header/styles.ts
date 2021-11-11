@@ -8,15 +8,14 @@ export const styles = StyleSheet.create({
     maxWidth: '100%',
     alignItems: 'center',
     paddingVertical: '2%',
-    borderBottomColor: theme.grey,
-    borderBottomWidth: 1,
     display: 'flex',
     justifyContent: 'space-between',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
-    elevation: 8
+    elevation: 8,
+    backgroundColor: theme.backgrounds.whiteBackground
   },
   textContainer: {
     marginLeft: 'auto',

@@ -52,5 +52,11 @@ export const styles = StyleSheet.create({
     paddingBottom: moderateScale(4),
     marginRight: moderateScale(16),
     borderRadius: 12
+  },
+  defaultTagText: {
+    fontFamily: 'Mulish-Bold',
+    fontWeight: '700',
+    fontSize: 12,
+    lineHeight: 16
   }
 })

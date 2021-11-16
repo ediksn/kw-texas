@@ -38,6 +38,6 @@ describe('Login test', () => {
     expect(component.queryAllByTestId(passwordInput).length).toEqual(1)
     expect(component.queryAllByTestId(signinButton).length).toEqual(1)
     expect(component.queryAllByTestId(kwLogo).length).toEqual(1)
-    expect(component.queryAllByTestId(illustrationLogo).length).toEqual(1)
+    expect(component.queryAllByTestId(illustrationLogo).length).toEqual(0)
   })
 })

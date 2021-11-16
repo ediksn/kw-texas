@@ -3,6 +3,7 @@ import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 const deviceWidth = Dimensions.get('window').width
+export const illustrationHeight = moderateScale(290)
 
 export const styles = StyleSheet.create({
   containerView: {
@@ -96,7 +97,7 @@ export const styles = StyleSheet.create({
     marginRight: scale(48),
     marginLeft: scale(50),
     width: moderateScale(250),
-    height: moderateScale(290),
+    height: illustrationHeight,
     zIndex: -1
   }
 })

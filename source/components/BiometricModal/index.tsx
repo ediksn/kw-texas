@@ -13,9 +13,10 @@ import { styles } from './styles'
 interface Props {
   onAuth: any
   biometryType: string
+  setBiometricPosition: React.Dispatch<React.SetStateAction<number>>
 }
 
-const BiometricModal = ({ onAuth, biometryType }: Props) => {
+const BiometricModal = ({ onAuth, biometryType, setBiometricPosition }: Props) => {
   const { t } = useTranslation()
 
   const texts: { [index: string]: string } = {
@@ -30,9 +31,13 @@ const BiometricModal = ({ onAuth, biometryType }: Props) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View
+      style={styles.container}
+      onLayout={event => {
+        setBiometricPosition(event.nativeEvent.layout.y)
+      }}
+    >
       <Text style={styles.text}>{texts[biometryType]}</Text>
-
       <TouchableOpacity onPress={onAuth}>
         <Icon size={40} name={icons[biometryType]} color={theme.activeColor} />
       </TouchableOpacity>

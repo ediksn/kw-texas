@@ -10,7 +10,7 @@ import illustration from 'assets/images/login-illustration.png'
 import Modal from 'react-native-modal'
 import { Button, Input, Spinner } from '~/components'
 import { illustrationLogo, IS_IOS, kwLogo, passwordInput, signinButton, usernameInput } from '~/constants'
-import { styles } from './styles'
+import { illustrationHeight, styles } from './styles'
 import { FORM } from '~/constants/form'
 import { loginActions } from '~/store/actions'
 import { ErrorInterface } from '~/interfaces/errorInterface'
@@ -19,6 +19,7 @@ import { loginErrors } from '~/functions'
 import BiometricModal from '~/components/BiometricModal'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
 import BiometricPermission from '~/components/BiometricPermission'
+import { useDeviceHeight } from '~/hooks'
 
 export const Login = () => {
   const { t } = useTranslation()
@@ -37,8 +38,11 @@ export const Login = () => {
   const [biometryTypeState, setBiometryTypeState] = useState('')
   const [allowModal, setAllowModal] = useState(false)
   const [loginDisabled, setLoginDisabled] = useState(true)
-
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const [biometricPosition, setBiometricPosition] = useState(0)
+  const [showIllustration, setShowIllustration] = useState(false)
+  const screenHeight = useDeviceHeight()
 
   const error: ErrorInterface = useSelector((state: RootState) => state.login.error)
   const user = useSelector((state: RootState) => state.login.user)
@@ -62,6 +66,13 @@ export const Login = () => {
       setErrorMessage(null)
     }
   }
+
+  useEffect(() => {
+    if (biometryAllowed && biometryTypeState !== '' && biometryTypeState !== 'none') {
+      if (screenHeight - illustrationHeight < biometricPosition) setShowIllustration(false)
+      else if (biometricPosition > 0) setShowIllustration(true)
+    } else if (biometryTypeState === 'none') setShowIllustration(true)
+  }, [biometricPosition, biometryTypeState])
 
   useEffect(() => {
     if (user !== null) {
@@ -111,6 +122,7 @@ export const Login = () => {
           }
         })
       })
+      if (biometryTypeState === '') setBiometryTypeState('none')
     })
   }, [])
 
@@ -206,7 +218,11 @@ export const Login = () => {
             </View>
           </View>
           {!!biometryTypeState && biometryAllowed && (
-            <BiometricModal onAuth={handleLoginFromBiometry} biometryType={biometryTypeState} />
+            <BiometricModal
+              onAuth={handleLoginFromBiometry}
+              biometryType={biometryTypeState}
+              setBiometricPosition={setBiometricPosition}
+            />
           )}
         </KeyboardAvoidingView>
         <BiometricPermission
@@ -216,14 +232,16 @@ export const Login = () => {
           onRequestClose={handleCloseModal}
           onYes={handleAllowBiometry}
         />
+        {showIllustration && (
+          <ImageBackground
+            testID={illustrationLogo}
+            resizeMode='contain'
+            resizeMethod='resize'
+            source={illustration}
+            style={styles.illustration}
+          />
+        )}
       </SafeAreaView>
-      <ImageBackground
-        testID={illustrationLogo}
-        resizeMode='contain'
-        resizeMethod='resize'
-        source={illustration}
-        style={styles.illustration}
-      />
     </>
   )
 }

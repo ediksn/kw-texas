@@ -53,11 +53,14 @@ const Profile = () => {
       <Spinner isLoading={loading || changingAccount}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Header userData={profiles[activeAccount]} />
-          <View style={styles.separator} />
-          <Text style={styles.title}>Other accounts</Text>
-          <AccountList />
-          <View style={styles.separator} />
-
+          {profiles.length && (
+            <>
+              <View style={styles.separator} />
+              <Text style={styles.title}>Other accounts</Text>
+              <AccountList />
+              <View style={styles.separator} />
+            </>
+          )}
           <ListButton
             title='Log out'
             onPress={handleLogOut}

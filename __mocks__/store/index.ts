@@ -7,7 +7,8 @@ import {
   homeReducer,
   promptVideoReducer,
   uploadVideoReducer,
-  usrProfileReducer
+  usrProfileReducer,
+  toastReducer
 } from '~/store/reducers'
 
 export default function createTestStore() {
@@ -20,7 +21,8 @@ export default function createTestStore() {
       bookmarked: bmReducer,
       home: homeReducer,
       uploadVideo: uploadVideoReducer,
-      usrProfile: usrProfileReducer
+      usrProfile: usrProfileReducer,
+      toast: toastReducer
     }),
     applyMiddleware(thunk)
   )

@@ -75,10 +75,16 @@
   "No Events To Display": "No Events To Display",
   "TODAY": "TODAY",
   "TOMORROW": "TOMORROW",
+  "home_post_toast_message_added": "Post added",
+  "home_post_toast_message_edited": "Post edited",
+  "home_post_toast_message_added_bookmark": "Post added to bookmark",
+  "home_post_toast_message_removed_bookmark": "Post removed from bookmark",
+  "home_post_toast_message_deleted": "Post deleted",
   "components_BiometricPermission_FaceID": "FaceID",
   "components_BiometricPermission_Fingerprint": "Fingerprint",
   "components_BiometricPermission_AllowFaceID": "Do you want to allow app to use Face ID to authenticate?",
   "components_BiometricPermission_AllowFingerprint": "Do you want to allow app to use Fingerprint to authenticate?",
   "components_BiometricModal_FaceID": "Or use Face ID",
-  "components_BiometricModal_Fingerprint": "Or use Fingerprint"
+  "components_BiometricModal_Fingerprint": "Or use Fingerprint",
+  "Something went wrong": "Something went wrong"
 }

@@ -1,7 +1,9 @@
 import React, { memo } from 'react'
 import { View, Image, ImageStyle } from 'react-native'
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons'
+import { useDispatch } from 'react-redux'
 import Icomoon from '~/selection.json'
+import { toastActions } from '~/store/actions'
 import { styles } from './styles'
 
 const Icon = createIconSetFromIcoMoon(Icomoon)
@@ -14,8 +16,11 @@ interface Props {
   imageStyle?: ImageStyle
 }
 const CustomTabBar = ({ name, focused, PNG, imageURL, imageStyle }: Props) => {
+  const dispatch = useDispatch()
+  const onLayout = (event: any) => dispatch(toastActions.storeMenuHeight(event.nativeEvent.layout.height))
+
   return (
-    <View style={styles(focused).container}>
+    <View onLayout={onLayout} style={styles(focused).container}>
       <View style={styles(focused).selectedBar} />
       {name ? (
         <Icon name={name} size={23} style={styles(focused).icon} />

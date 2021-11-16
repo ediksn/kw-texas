@@ -76,10 +76,16 @@
   "No Events To Display": "Sin Eventos Para Mostrar",
   "TODAY": "HOY",
   "TOMOWRROW": "MAÑANA",
+  "Post added": "Publicación agregada",
+  "Post edited": "Publicación modificada",
+  "Post added to bookmark": "Publicación agregada a favorita",
+  "Post removed from bookmark": "Publicación eliminada de favorita",
+  "Post deleted": "Publicación eliminada",
   "components_BiometricPermission_FaceID": "Reconocimiento Facial",
   "components_BiometricPermission_Fingerprint": "Huella Digital",
   "components_BiometricPermission_AllowFaceID": "¿Quiere permitirle a la aplicación utilizar el reconocimiento facial para iniciar sesión?",
   "components_BiometricPermission_AllowFingerprint": "¿Quiere permitirle a la aplicación utilizar la huella digital para iniciar sesión?",
   "components_BiometricModal_FaceID": "O usa tu reconocimiento facial",
-  "components_BiometricModal_Fingerprint": "O usa tu huella digital"
+  "components_BiometricModal_Fingerprint": "O usa tu huella digital",
+  "Something went wrong": "Algo salió mal"
 }

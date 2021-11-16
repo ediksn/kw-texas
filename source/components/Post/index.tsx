@@ -13,7 +13,7 @@ import Icon from '../Icon'
 import { useUnRichContent } from '~/hooks'
 import { OptionInterface } from '../../interfaces/groupInterface'
 import { authorPost, datePost, dotsOptionsPost, contentPost, buttonPost } from '../../constants/testIds'
-import { homeActions } from '~/store/actions'
+import { homeActions, toastActions } from '~/store/actions'
 
 const Post = ({ post }: { post: PostInterface }) => {
   const {
@@ -72,11 +72,32 @@ const Post = ({ post }: { post: PostInterface }) => {
     navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { editMode: true, idPost: id, groupId })
   }
 
-  const handleDelete = () => dispatch(homeActions.deletePost(id))
+  const handleDelete = async () => {
+    const res: any = await dispatch(homeActions.deletePost(id))
+    if (res) {
+      dispatch(toastActions.showSuccessToast('home_post_toast_message_deleted'))
+    } else {
+      dispatch(toastActions.showErrorToast('Something went wrong'))
+    }
+  }
 
-  const handleBookmark = () => dispatch(homeActions.addBookmark(id))
+  const handleBookmark = async () => {
+    const res: any = await dispatch(homeActions.addBookmark(id))
+    if (res) {
+      dispatch(toastActions.showSuccessToast('home_post_toast_message_added_bookmark'))
+    } else {
+      dispatch(toastActions.showErrorToast('Something went wrong'))
+    }
+  }
 
-  const handleRemoveBookmark = () => dispatch(homeActions.removeBookmark(id))
+  const handleRemoveBookmark = async () => {
+    const res: any = await dispatch(homeActions.removeBookmark(id))
+    if (res) {
+      dispatch(toastActions.showSuccessToast('home_post_toast_message_removed_bookmark'))
+    } else {
+      dispatch(toastActions.showErrorToast('Something went wrong'))
+    }
+  }
 
   const optionsPost = () => {
     const myOptions = [

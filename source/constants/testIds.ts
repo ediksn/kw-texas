@@ -2,7 +2,8 @@ export const TEST_IDS = {
   GENERAL_COMPONENTS: {
     VIDEO_CARD_ID: 'videoCardId',
     VIDEO_LIST_ID: 'videoListId',
-    EVENT_CARD_ID: 'eventCardId'
+    EVENT_CARD_ID: 'eventCardId',
+    TOAST_ID: 'toastId'
   },
   EVENT_CARD: {
     IMAGE_ID: 'eventCardImageId',
@@ -11,6 +12,10 @@ export const TEST_IDS = {
     ASSISTANCE_ID: 'eventCardAssistanceId',
     INTERESTED_BUTTON_ID: 'eventCardInterestedButtonId',
     SHARE_BUTTON_ID: 'eventCardShareButtonId'
+  },
+  TOAST: {
+    ICON_ID: 'toastIconId',
+    TITLE_ID: 'toastTitleId'
   }
 }
 export const usernameInput = 'username-input'

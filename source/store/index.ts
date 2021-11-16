@@ -8,7 +8,8 @@ import {
   videoReducer,
   uploadVideoReducer,
   homeReducer,
-  usrProfileReducer
+  usrProfileReducer,
+  toastReducer
 } from './reducers'
 
 const rootReducer = combineReducers({
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   bookmarked: bmReducer,
   home: homeReducer,
   uploadVideo: uploadVideoReducer,
-  usrProfile: usrProfileReducer
+  usrProfile: usrProfileReducer,
+  toast: toastReducer
 })
 
 const middlewares = [thunk]

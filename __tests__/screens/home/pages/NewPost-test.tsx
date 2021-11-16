@@ -14,50 +14,47 @@ import { FormPostInterface } from '../../../../source/interfaces/postInterface'
 
 afterEach(cleanup)
 
-jest.useFakeTimers()
-
-jest.mock(
-  'rn-fetch-blob',
-  () => {
-    return {
-      DocumentDir: () => {},
-      ImageCache: {
-        get: {
-          clear: () => {}
-        }
-      },
-      fs: {
-        exists: jest.fn(),
-        dirs: {
-          MainBundleDir: () => {},
-          CacheDir: () => {},
-          DocumentDir: () => {}
-        }
-      }
-    }
-  },
-  { virtual: true }
-)
-
 jest.mock('@react-navigation/native', () => ({
-  useNavigation: () => ({ navigate: jest.fn(), goBack: jest.fn() }),
+  createNavigatorFactory: jest.fn(),
+  useNavigation: () => ({
+    navigate: jest.fn(),
+    dispatch: jest.fn(),
+    goBack: jest.fn(),
+    setOptions: jest.fn()
+  }),
   useRoute: () => ({
     params: {
       editMode: false,
       idPost: '1',
       groupId: '1'
     }
+  }),
+  useFocusEffect: jest.fn()
+}))
+
+jest.mock('@react-navigation/material-top-tabs', () => ({
+  createMaterialTopTabNavigator: () => ({
+    Navigator: jest.mock,
+    Screen: jest.mock
+  })
+}))
+
+jest.mock('@react-navigation/stack', () => ({
+  createStackNavigator: () => ({
+    Navigator: jest.mock,
+    Screen: jest.mock
+  })
+}))
+
+jest.mock('@react-navigation/bottom-tabs', () => ({
+  createBottomTabNavigator: () => ({
+    Navigator: jest.mock,
+    Screen: jest.mock
   })
 }))
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
-}))
-
-jest.mock('axios')
-
-jest.mock('@react-native-community/async-storage', () => ({
-  AsyncStorage: jest.fn()
 }))
 
 describe('New Post Action', () => {
@@ -69,7 +66,7 @@ describe('New Post Action', () => {
   const mockedAxios = axios as jest.Mocked<typeof axios>
   const form: FormPostInterface = { group: '1', text: 'New test Post' }
   const newPost: any = { groupId: form.group, content: form.text, id: createPostResponse.data.createPost }
-  const { CREATE_POST, CREATE_POST_SUCCESS, GET_POSTS } = HOME_TYPES
+  const { CREATE_POST, CREATE_POST_SUCCESS, GET_POSTS, GET_POSTS_SUCCESS } = HOME_TYPES
   const expectedActions: ProduceProps[] = [
     {
       type: CREATE_POST
@@ -80,6 +77,14 @@ describe('New Post Action', () => {
     {
       type: GET_POSTS,
       payload: false
+    },
+    {
+      type: GET_POSTS_SUCCESS,
+      payload: {
+        data: undefined,
+        limit: 10,
+        limitDefault: 10
+      }
     }
   ]
 
@@ -87,7 +92,7 @@ describe('New Post Action', () => {
     mockedAxios.post.mockResolvedValueOnce({ data: createPostResponse })
     await storeModels.dispatch(homeActions.createPost(form))
     expect(storeModels.getActions()).toEqual(expectedActions)
-    expect(mockedAxios.post).toHaveBeenCalledTimes(1)
+    expect(mockedAxios.post).toHaveBeenCalledTimes(2)
   })
 
   it('should return array of posts in state', () => {

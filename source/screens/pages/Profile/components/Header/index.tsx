@@ -10,7 +10,6 @@ interface Props {
 }
 
 const Header = ({ userData }: Props) => {
-  console.log(userData)
   return (
     <View style={styles.container}>
       <View style={styles.avatar}>

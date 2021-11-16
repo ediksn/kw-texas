@@ -58,6 +58,7 @@
     "react-native-camera": "^4.0.1",
     "react-native-camera-hooks": "^0.5.1",
     "react-native-config": "^1.4.4",
+    "react-native-extra-dimensions-android": "^1.2.5",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-localize": "^2.1.1",
     "react-native-modal": "^13.0.0",
@@ -89,6 +90,7 @@
     "@types/draft-js": "^0.11.6",
     "@types/lodash": "^4.14.172",
     "@types/react-native": "^0.64.5",
+    "@types/react-native-extra-dimensions-android": "^1.2.0",
     "@types/react-native-video": "^5.0.8",
     "@types/react-test-renderer": "^16.9.2",
     "@types/redux-mock-store": "^1.0.3",
@@ -117,10 +119,16 @@
     "@types/react": "^17"
   },
   "jest": {
+    "setupFilesAfterEnv": ["<rootDir>/jest/setup.ts"],
     "preset": "react-native",
     "transformIgnorePatterns": [
-      "node_modules/(?!@react-native|react-native|rn-fetch-blob)"
+      "node_modules/(?!@react-native|react-native|rn-fetch-blob)",
+      "<rootDir>/__tests__/setup.ts"
     ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/fileTransformer.js",
+      "\\.(css|less)$": "<rootDir>/fileTransformer.js"
+    },
     "moduleFileExtensions": [
       "ts",
       "tsx",

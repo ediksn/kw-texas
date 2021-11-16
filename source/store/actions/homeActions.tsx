@@ -84,15 +84,16 @@ const actionCreators = {
         dispatch({
           type: CREATE_POST_SUCCESS
         })
-        dispatch(actionCreators.getPosts(limitDefault))
-      } else {
-        dispatch({ type: CREATE_POST_FAILURE, payload: 'Error on Create Post' })
+        await dispatch(actionCreators.getPosts(limitDefault))
+        return true
       }
+      dispatch({ type: CREATE_POST_FAILURE, payload: 'Error on Create Post' })
     } catch (error) {
       dispatch({ type: CREATE_POST_FAILURE, payload: error })
     }
+    return false
   },
-  editPost: (form: FormPostInterface) => async (dispatch: AppDispatch) => {
+  editPost: (form: FormPostInterface) => async (dispatch: any) => {
     const { EDIT_POST, EDIT_POST_SUCCESS, EDIT_POST_FAILURE } = HOME_TYPES
     dispatch({ type: EDIT_POST })
 
@@ -106,14 +107,15 @@ const actionCreators = {
             data: form
           }
         })
-      } else {
-        dispatch({ type: EDIT_POST_FAILURE, payload: 'Error on Edit Post' })
+        return true
       }
+      dispatch({ type: EDIT_POST_FAILURE, payload: 'Error on Edit Post' })
     } catch (error) {
       dispatch({ type: EDIT_POST_FAILURE, payload: error })
     }
+    return false
   },
-  deletePost: (postId: string) => async (dispatch: AppDispatch, getState: any) => {
+  deletePost: (postId: string) => async (dispatch: any, getState: any) => {
     const { DELETE_POST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE } = HOME_TYPES
     dispatch({ type: DELETE_POST })
 
@@ -131,14 +133,15 @@ const actionCreators = {
           type: DELETE_POST_SUCCESS,
           payload: newPosts
         })
-      } else {
-        dispatch({ type: DELETE_POST_FAILURE, payload: `Error on Delete Post ${postId}` })
+        return true
       }
+      dispatch({ type: DELETE_POST_FAILURE, payload: `Error on Delete Post ${postId}` })
     } catch (error) {
       dispatch({ type: DELETE_POST_FAILURE, payload: error })
     }
+    return false
   },
-  addBookmark: (postId: string) => async (dispatch: AppDispatch, getState: any) => {
+  addBookmark: (postId: string) => async (dispatch: any, getState: any) => {
     const { ADD_BOOKMARK_POST, ADD_BOOKMARK_POST_SUCCESS, ADD_BOOKMARK_POST_FAILURE } = HOME_TYPES
     dispatch({ type: ADD_BOOKMARK_POST })
 
@@ -158,14 +161,15 @@ const actionCreators = {
           type: ADD_BOOKMARK_POST_SUCCESS,
           payload: newPosts
         })
-      } else {
-        dispatch({ type: ADD_BOOKMARK_POST_FAILURE, payload: `Error on Add Bookmark Post ${postId}` })
+        return true
       }
+      dispatch({ type: ADD_BOOKMARK_POST_FAILURE, payload: `Error on Add Bookmark Post ${postId}` })
     } catch (error) {
       dispatch({ type: ADD_BOOKMARK_POST_FAILURE, payload: error })
     }
+    return false
   },
-  removeBookmark: (postId: string) => async (dispatch: AppDispatch, getState: any) => {
+  removeBookmark: (postId: string) => async (dispatch: any, getState: any) => {
     const { REMOVE_BOOKMARK_POST, REMOVE_BOOKMARK_POST_SUCCESS, REMOVE_BOOKMARK_POST_FAILURE } = HOME_TYPES
     dispatch({ type: REMOVE_BOOKMARK_POST })
 
@@ -185,12 +189,13 @@ const actionCreators = {
           type: REMOVE_BOOKMARK_POST_SUCCESS,
           payload: newPosts
         })
-      } else {
-        dispatch({ type: REMOVE_BOOKMARK_POST_FAILURE, payload: `Error on Remove Bookmark Post ${postId}` })
+        return true
       }
+      dispatch({ type: REMOVE_BOOKMARK_POST_FAILURE, payload: `Error on Remove Bookmark Post ${postId}` })
     } catch (error) {
       dispatch({ type: REMOVE_BOOKMARK_POST_FAILURE, payload: error })
     }
+    return false
   }
 }
 

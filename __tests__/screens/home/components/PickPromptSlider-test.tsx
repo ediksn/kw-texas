@@ -6,39 +6,41 @@ import { homeActions } from '~/store/actions'
 import createTestStore from '../../../../__mocks__/store'
 import { pickPrompts } from '~/constants/testIds'
 
-jest.mock(
-  'rn-fetch-blob',
-  () => {
-    return {
-      DocumentDir: () => {},
-      ImageCache: {
-        get: {
-          clear: () => {}
-        }
-      },
-      fs: {
-        exists: jest.fn(),
-        dirs: {
-          MainBundleDir: () => {},
-          CacheDir: () => {},
-          DocumentDir: () => {}
-        }
-      }
-    }
-  },
-  { virtual: true }
-)
+jest.mock('@react-navigation/native', () => ({
+  createNavigatorFactory: jest.fn(),
+  useNavigation: () => ({
+    navigate: jest.fn(),
+    dispatch: jest.fn(),
+    goBack: jest.fn(),
+    setOptions: jest.fn()
+  }),
+  useRoute: jest.fn(),
+  useFocusEffect: jest.fn()
+}))
+
+jest.mock('@react-navigation/material-top-tabs', () => ({
+  createMaterialTopTabNavigator: () => ({
+    Navigator: jest.mock,
+    Screen: jest.mock
+  })
+}))
+
+jest.mock('@react-navigation/stack', () => ({
+  createStackNavigator: () => ({
+    Navigator: jest.mock,
+    Screen: jest.mock
+  })
+}))
+
+jest.mock('@react-navigation/bottom-tabs', () => ({
+  createBottomTabNavigator: () => ({
+    Navigator: jest.mock,
+    Screen: jest.mock
+  })
+}))
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
-}))
-
-jest.mock('rn-fetch-blob', () => ({
-  fetch: () => ({ t: (key: any) => key })
-}))
-
-jest.mock('@react-navigation/native', () => ({
-  useFocusEffect: () => ({ t: (key: any) => key })
 }))
 
 const goBack = jest.fn()

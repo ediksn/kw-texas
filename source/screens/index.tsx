@@ -1,7 +1,6 @@
 import React, { memo, useLayoutEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
-
 import { useSelector, useDispatch } from 'react-redux'
 import HomeUnfilled from 'assets/images/home-unfilled.png'
 import HomeFilled from 'assets/images/home-filled.png'
@@ -17,7 +16,7 @@ import { TabNavigator, TabScreen, StackNavigator, StackScreen } from './componen
 import { Login, Groups } from './pages'
 import SettingsStackScreen from './pages/Settings/navigation'
 import { RootState } from '~/store'
-import { Spinner } from '~/components'
+import { Spinner, Toast } from '~/components'
 import { loginActions } from '~/store/actions'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
 import { theme } from '~/constants/theme'
@@ -27,10 +26,12 @@ import { styles } from './styles'
 import ProfileStackScreen from './pages/Profile/navigation'
 import NewPost from './pages/Home/pages/NewPost'
 import NotificationsStackScreen from './pages/Notifications/navigation'
+import { ToastProps } from '~/interfaces/toastInterface'
 
 const TabNavigation = () => {
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
   const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
+
   return (
     <TabNavigator
       initialRouteName={NAVIGATION.SCREEN.HOME}
@@ -116,6 +117,7 @@ const RootNavigation = () => {
   }, [dispatch])
 
   const { isLogged } = useSelector((store: RootState) => store.login)
+  const { open, title, type, menuHeight }: ToastProps = useSelector((store: RootState) => store.toast)
 
   return (
     <Spinner isLoading={loading} message='KW: Connect' styleView={styles.spinner}>
@@ -132,6 +134,7 @@ const RootNavigation = () => {
               component={NewPost}
             />
           </StackNavigator>
+          <Toast open={open} title={title} type={type} menuHeight={menuHeight} />
         </SafeAreaView>
       ) : (
         <Login />

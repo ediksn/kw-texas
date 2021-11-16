@@ -12,41 +12,34 @@ import {
 } from '../../../__mocks__/mockResponses/index'
 import { PostInterface } from '../../../source/interfaces/postInterface'
 
-jest.mock(
-  'rn-fetch-blob',
-  () => {
-    return {
-      DocumentDir: () => {},
-      ImageCache: {
-        get: {
-          clear: () => {}
-        }
-      },
-      fs: {
-        exists: jest.fn(),
-        dirs: {
-          MainBundleDir: () => {},
-          CacheDir: () => {},
-          DocumentDir: () => {}
-        }
-      }
-    }
-  },
-  { virtual: true }
-)
-
-jest.mock('@react-navigation/native', () => ({
-  useNavigation: () => ({ navigate: jest.fn(), goBack: jest.fn() })
-}))
-
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
 }))
 
-jest.mock('axios')
+jest.mock('@react-navigation/native', () => ({
+  useNavigation: () => ({ navigate: jest.fn(), goBack: jest.fn() }),
+  createNavigatorFactory: jest.fn()
+}))
 
-jest.mock('@react-native-community/async-storage', () => ({
-  AsyncStorage: jest.fn()
+jest.mock('@react-navigation/material-top-tabs', () => ({
+  createMaterialTopTabNavigator: () => ({
+    Navigator: jest.mock,
+    Screen: jest.mock
+  })
+}))
+
+jest.mock('@react-navigation/stack', () => ({
+  createStackNavigator: () => ({
+    Navigator: jest.mock,
+    Screen: jest.mock
+  })
+}))
+
+jest.mock('@react-navigation/bottom-tabs', () => ({
+  createBottomTabNavigator: () => ({
+    Navigator: jest.mock,
+    Screen: jest.mock
+  })
 }))
 
 jest.mock('react-redux', () => ({

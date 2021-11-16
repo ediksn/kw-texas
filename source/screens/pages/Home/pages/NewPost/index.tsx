@@ -9,7 +9,7 @@ import { IS_IOS, NAVIGATION, theme } from '~/constants'
 import { RootState } from '~/store'
 import { FormPostInterface, PostInterface } from '~/interfaces/postInterface'
 import { useUnRichContent, useRichContent } from '~/hooks'
-import { homeActions } from '~/store/actions'
+import { homeActions, toastActions } from '~/store/actions'
 import { GroupInterface, OptionInterface } from '~/interfaces/groupInterface'
 
 const NewPost = () => {
@@ -57,8 +57,15 @@ const NewPost = () => {
       text: useRichContent(inputValue)
     }
 
-    dispatch(editMode ? homeActions.editPost(form) : homeActions.createPost(form))
-    navigation.goBack()
+    const res: any = await dispatch(editMode ? homeActions.editPost(form) : homeActions.createPost(form))
+    if (res) {
+      dispatch(
+        toastActions.showSuccessToast(editMode ? 'home_post_toast_message_edited' : 'home_post_toast_message_added')
+      )
+      navigation.goBack()
+    } else {
+      dispatch(toastActions.showErrorToast('Something went wrong'))
+    }
   }
 
   const handleGroup = ({ id, name }: GroupInterface) => {

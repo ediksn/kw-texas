@@ -8,43 +8,16 @@ import { illustrationLogo, kwLogo, passwordInput, signinButton, usernameInput } 
 
 let component: RenderAPI
 
-jest.mock(
-  'rn-fetch-blob',
-  () => {
-    return {
-      DocumentDir: () => {},
-      ImageCache: {
-        get: {
-          clear: () => {}
-        }
-      },
-      fs: {
-        exists: jest.fn(),
-        dirs: {
-          MainBundleDir: () => {},
-          CacheDir: () => {},
-          DocumentDir: () => {}
-        }
-      }
-    }
-  },
-  { virtual: true }
-)
-
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
 }))
 
-jest.mock('@react-native-community/netinfo', () => ({
-  useNetInfo: () => ({ t: (key: any) => key })
-}))
-
-jest.mock('rn-fetch-blob', () => ({
-  fetch: () => ({ t: (key: any) => key })
-}))
-
 jest.mock('react-native-biometrics', () => ({
   isSensorAvailable: jest.fn(() => Promise.resolve({ then: jest.fn() }))
+}))
+
+jest.mock('@react-native-community/netinfo', () => ({
+  useNetInfo: () => ({ t: (key: any) => key })
 }))
 
 describe('Login test', () => {

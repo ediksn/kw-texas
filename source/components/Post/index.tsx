@@ -27,6 +27,7 @@ const Post = ({ post }: { post: PostInterface }) => {
     likesCount,
     repliesCount,
     userHasAlreadyBookmarked,
+    userHasAlreadyLiked,
     groupId
   } = post
   const author = `${creatorfirstName.toUpperCase()} ${creatorLastName.toUpperCase()}`
@@ -43,6 +44,7 @@ const Post = ({ post }: { post: PostInterface }) => {
   const dispatch = useDispatch()
   const buttonRef = useRef<any>()
   const [selectedOption, setSelectedOption] = useState<OptionInterface>()
+  const [liked, setLiked] = useState(userHasAlreadyLiked)
 
   const addMoreText = useCallback(
     (event: any) => {
@@ -99,6 +101,15 @@ const Post = ({ post }: { post: PostInterface }) => {
     }
   }
 
+  const handleLikePost = () => {
+    if (liked) {
+      dispatch(homeActions.addLike(id))
+    } else {
+      dispatch(homeActions.removeLike(id))
+    }
+    setLiked(!liked)
+  }
+
   const optionsPost = () => {
     const myOptions = [
       {
@@ -142,12 +153,13 @@ const Post = ({ post }: { post: PostInterface }) => {
         message={t('Like')}
         type={theme.buttons.types.TEXT}
         icon={{
-          name: 'like-icon',
+          name: liked ? 'like-filled-icon' : 'like-icon',
           size: moderateScale(20),
           color: theme.post.green
         }}
         fontSize={theme.fonts.SMALL_SIZE}
         viewStyle={styles.button}
+        onPress={handleLikePost}
       />
       <Button
         testID={buttonPost}

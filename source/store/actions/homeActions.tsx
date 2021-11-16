@@ -196,6 +196,57 @@ const actionCreators = {
       dispatch({ type: REMOVE_BOOKMARK_POST_FAILURE, payload: error })
     }
     return false
+  },
+  addLike: (postId: string) => async (dispatch: AppDispatch, getState: any) => {
+    const { ADD_LIKE_POST, ADD_LIKE_POST_SUCCESS, ADD_LIKE_POST_FAILURE } = HOME_TYPES
+    dispatch({ type: ADD_LIKE_POST })
+
+    try {
+      const {
+        data: { data: toggleLikePost }
+      } = await homeService.toggleLikePost(postId)
+      if (toggleLikePost) {
+        const posts: PostInterface[] = getState().home.posts.data
+        const newPosts = posts.map((post: PostInterface) =>
+          post.id === postId ? { ...post, userHasAlreadyLiked: true } : post
+        )
+
+        dispatch({
+          type: ADD_LIKE_POST_SUCCESS,
+          payload: newPosts
+        })
+      } else {
+        dispatch({ type: ADD_LIKE_POST_FAILURE, payload: `Error on Like Post ${postId}` })
+      }
+    } catch (error) {
+      dispatch({ type: ADD_LIKE_POST_FAILURE, payload: error })
+    }
+    return false
+  },
+  removeLike: (postId: string) => async (dispatch: AppDispatch, getState: any) => {
+    const { REMOVE_LIKE_POST, REMOVE_LIKE_POST_SUCCESS, REMOVE_LIKE_POST_FAILURE } = HOME_TYPES
+    dispatch({ type: REMOVE_LIKE_POST })
+
+    try {
+      const {
+        data: { data: toggleLikePost }
+      } = await homeService.toggleLikePost(postId)
+      if (toggleLikePost) {
+        const posts: PostInterface[] = getState().home.posts.data
+        const newPosts = posts.map((post: PostInterface) =>
+          post.id === postId ? { ...post, userHasAlreadyLiked: false } : post
+        )
+        dispatch({
+          type: REMOVE_LIKE_POST_SUCCESS,
+          payload: newPosts
+        })
+      } else {
+        dispatch({ type: REMOVE_LIKE_POST_FAILURE, payload: `Error on Remove Like Post ${postId}` })
+      }
+    } catch (error) {
+      dispatch({ type: REMOVE_LIKE_POST_FAILURE, payload: error })
+    }
+    return false
   }
 }
 

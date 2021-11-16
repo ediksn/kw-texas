@@ -354,6 +354,10 @@ export const addBookmarkPostResponse = {
   data: { toggleBookmarkPost: true }
 }
 
+export const addLikePostResponse = {
+  data: { toggleLikePost: true }
+}
+
 export const loginResponse = {
   id_token: 'id_token'
 }

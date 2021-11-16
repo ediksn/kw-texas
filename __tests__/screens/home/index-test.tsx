@@ -8,7 +8,8 @@ import {
   deletePostResponse,
   createPostResponse,
   postsResponse,
-  addBookmarkPostResponse
+  addBookmarkPostResponse,
+  addLikePostResponse
 } from '../../../__mocks__/mockResponses/index'
 import { PostInterface } from '../../../source/interfaces/postInterface'
 
@@ -56,7 +57,9 @@ describe('Home', () => {
     DELETE_POST,
     DELETE_POST_SUCCESS,
     ADD_BOOKMARK_POST,
-    ADD_BOOKMARK_POST_SUCCESS
+    ADD_BOOKMARK_POST_SUCCESS,
+    ADD_LIKE_POST,
+    ADD_LIKE_POST_SUCCESS
   } = HOME_TYPES
 
   const expectedGetPostsActions: ProduceProps[] = [
@@ -153,5 +156,40 @@ describe('Home', () => {
     expectedStore.home.posts.data = mockAction?.payload
     expectedStore.home.posts.isLoading = false
     // expect(homeReducer(oldStore.home, mockAction)).toEqual(expectedStore.home)
+  })
+
+  const newPostsAfterLike: PostInterface[] = postsResponse.data.data.getPosts.map((post: PostInterface) =>
+    post.id === postId ? { ...post, userHasAlreadyLiked: true } : post
+  )
+  const expectedLikePostActions: ProduceProps[] = [
+    {
+      type: ADD_LIKE_POST
+    },
+    {
+      type: ADD_LIKE_POST_SUCCESS,
+      payload: newPostsAfterLike
+    }
+  ]
+
+  it('Action ADD_LIKE_POST_SUCCESS', () => {
+    storeModels.clearActions()
+    const currentStore: any = storeModels.getState()
+    currentStore.home.posts.data = postsResponse.data.data.getPosts
+    mockedAxios.post.mockResolvedValue({ data: addLikePostResponse })
+    storeModels.dispatch(homeActions.addLike(postId)).then(() => {
+      expect(storeModels.getActions()).toEqual(expectedLikePostActions)
+      expect(mockedAxios.post).toHaveBeenCalledTimes(4)
+    })
+  })
+
+  it('Store ADD_LIKE_POST_SUCCESS', () => {
+    const mockAction: any = expectedLikePostActions.find(action => action.type === ADD_LIKE_POST_SUCCESS)
+    const oldStore: any = storeModels.getState()
+    const expectedStore = { ...oldStore }
+    expectedStore.home.posts.data = mockAction?.payload
+    expectedStore.home.posts.isLoading = false
+    storeModels.dispatch(homeActions.addLike(postId)).then(() => {
+      expect(oldStore.home).toEqual(expectedStore.home)
+    })
   })
 })

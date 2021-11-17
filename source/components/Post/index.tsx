@@ -27,8 +27,8 @@ const Post = ({ post }: { post: PostInterface }) => {
     likesCount,
     repliesCount,
     userHasAlreadyBookmarked,
-    userHasAlreadyLiked,
-    groupId
+    groupInfo,
+    userHasAlreadyLiked
   } = post
   const author = `${creatorfirstName.toUpperCase()} ${creatorLastName.toUpperCase()}`
   const date = moment(createdAt).format('MM/DD/YY')
@@ -71,7 +71,7 @@ const Post = ({ post }: { post: PostInterface }) => {
 
   const handleEdit = () => {
     setShowDropDown(false)
-    navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { editMode: true, idPost: id, groupId })
+    navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { editMode: true, idPost: id, groupId: groupInfo.id })
   }
 
   const handleDelete = async () => {

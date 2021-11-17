@@ -35,5 +35,30 @@ export const styles = StyleSheet.create({
     color: '#282B33',
     lineHeight: 26,
     fontFamily: 'Mulish-Bold'
+  },
+  avatarPhoto: {
+    alignItems: 'center',
+    aspectRatio: 1,
+    backgroundColor: theme.backgrounds.whiteBackground,
+    borderRadius: 30,
+    height: moderateScale(40),
+    justifyContent: 'center',
+    overflow: 'hidden',
+    marginRight: moderateScale(8)
+  },
+  containerAvatarDefault: {
+    alignItems: 'center',
+    aspectRatio: 1,
+    backgroundColor: theme.backgrounds.whiteBackground,
+    borderRadius: 30,
+    height: moderateScale(40),
+    justifyContent: 'center',
+    overflow: 'hidden',
+    marginRight: moderateScale(8)
+  },
+  avatarDefault: {
+    width: moderateScale(32),
+    height: moderateScale(32),
+    opacity: 0.5
   }
 })

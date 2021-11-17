@@ -88,7 +88,7 @@ const TabNavigation = () => {
       <TabScreen
         options={{
           tabBarIcon: ({ focused }) => {
-            if (usrData?.photo !== undefined)
+            if (usrData?.photo && usrData?.photo !== undefined && usrData?.photo !== '')
               return <CustomTabBar focused={focused} imageURL={usrData.photo} imageStyle={styles.photo} />
             return <CustomTabBar focused={focused} PNG={DefaultAvatar} imageStyle={styles.defaultAvatar} />
           }

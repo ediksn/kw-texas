@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import DefaultAvatar from 'assets/images/default-avatar.png'
 import { RootState } from '~/store'
 import { theme } from '~/constants'
 
@@ -36,11 +37,13 @@ const Profile = () => {
             <AccountRow
               key={account.id}
               index={index}
-              image={account.photo}
+              image={account.photo ? { uri: account.photo } : DefaultAvatar}
               name={account.name}
               rol='Buyer Specialist'
               isDefault={account.isDefault}
               setChangingAccount={setChangingAccount}
+              containerImage={!account.photo && styles.containerAvatarDefault}
+              styleImage={account.photo ? styles.avatarPhoto : styles.avatarDefault}
             />
           )
         return null

@@ -20,7 +20,10 @@ export interface PostInterface {
   pinned: boolean
   userHasAlreadyLiked: boolean
   userHasAlreadyBookmarked: boolean
-  groupId: string
+  groupInfo: {
+    id: string
+    name: string
+  }
 }
 
 export interface PostProduceProps {

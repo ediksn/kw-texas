@@ -13,16 +13,6 @@ export const styles = StyleSheet.create({
   leftSubcontainer: {
     flexDirection: 'row'
   },
-  avatar: {
-    alignItems: 'center',
-    aspectRatio: 1,
-    backgroundColor: '#CCCCCC',
-    borderRadius: 30,
-    height: moderateScale(40),
-    justifyContent: 'center',
-    overflow: 'hidden',
-    marginRight: moderateScale(8)
-  },
   icon: {
     width: 20,
     height: 20,

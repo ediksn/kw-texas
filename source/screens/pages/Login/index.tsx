@@ -59,6 +59,7 @@ export const Login = () => {
     if (username && password) {
       setLoading(true)
       await dispatch(loginActions.logIn({ username, password }))
+      Storage.saveCredentials({ username, password })
     } else {
       setErrorFlag(true)
       if (username === '') setUsernameEmptyFlag(true)

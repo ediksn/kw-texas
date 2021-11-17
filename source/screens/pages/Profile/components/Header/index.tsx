@@ -22,7 +22,7 @@ const Header = ({ userData }: Props) => {
       <Text style={styles.name} numberOfLines={2}>
         {userData?.userProfile.first_name} {userData?.userProfile.last_name}
       </Text>
-      <Text style={styles.subtitle}>{userData.role}</Text>
+      <Text style={styles.subtitle}>{userData.isDefault ? userData.name : userData.role}</Text>
     </View>
   )
 }

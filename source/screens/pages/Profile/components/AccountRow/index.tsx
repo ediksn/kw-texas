@@ -1,28 +1,33 @@
 import React, { useCallback } from 'react'
 import GroupsUnfilled from 'assets/images/groups-unfilled.png'
-import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Text, TouchableOpacity, View, ImageStyle } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { styles } from './styles'
 import { getUsrProfileActions } from '~/store/actions'
 
 interface Props {
   index: number
-  image: string
+  image: any
   name: string
   rol: string
   isDefault: boolean
   setChangingAccount: (state: boolean) => void
+  containerImage: any
+  styleImage: ImageStyle
 }
-const AccountRow = ({ index, image, name, rol, isDefault, setChangingAccount }: Props) => {
+const AccountRow = ({ index, image, name, rol, isDefault, setChangingAccount, containerImage, styleImage }: Props) => {
   const dispatch = useDispatch()
   const handleOnChangeAccount = useCallback(() => {
     setChangingAccount(true)
     dispatch(getUsrProfileActions.changeAccount(index))
   }, [])
+
   return (
     <TouchableOpacity style={styles.container} onPress={handleOnChangeAccount}>
       <View style={styles.leftSubcontainer}>
-        <Image source={{ uri: image }} style={styles.avatar} />
+        <View style={containerImage}>
+          <Image source={image} style={styleImage} />
+        </View>
         <View>
           <Text style={styles.name}>{name}</Text>
           <View style={styles.role}>

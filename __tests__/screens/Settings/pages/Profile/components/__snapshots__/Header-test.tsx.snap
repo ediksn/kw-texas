@@ -68,7 +68,7 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    Buyer Specialist
+    Kelle Test Team
   </Text>
 </View>
 `;

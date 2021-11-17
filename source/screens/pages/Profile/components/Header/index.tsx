@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, Text, View } from 'react-native'
-
+import GroupsUnfilled from 'assets/images/groups-unfilled.png'
 import DefaultAvatar from 'assets/images/default-avatar.png'
 import { ProfileInterface } from '~/interfaces/usrInterface'
 import { styles } from './styles'
@@ -20,9 +20,15 @@ const Header = ({ userData }: Props) => {
         )}
       </View>
       <Text style={styles.name} numberOfLines={2}>
-        {userData?.userProfile.first_name} {userData?.userProfile.last_name}
+        {userData.name}
       </Text>
-      <Text style={styles.subtitle}>{userData.isDefault ? userData.name : userData.role}</Text>
+      <View style={styles.role2}>
+        {!userData.isPersonal && (
+          <Image source={GroupsUnfilled} resizeMode='contain' resizeMethod='resize' style={styles.icon2} />
+        )}
+
+        <Text style={styles.subtitle}>{userData.isPersonal ? 'Personal' : userData.role}</Text>
+      </View>
     </View>
   )
 }

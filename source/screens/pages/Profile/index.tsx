@@ -29,27 +29,29 @@ const Profile = () => {
 
   const handleLogOut = () => dispatch(loginActions.logOut())
 
-  const AccountList = () => (
-    <>
-      {profiles.map((account: ProfileInterface, index: number) => {
-        if (account !== profiles[activeAccount])
-          return (
-            <AccountRow
-              key={account.id}
-              index={index}
-              image={account.photo ? { uri: account.photo } : DefaultAvatar}
-              name={account.name}
-              rol='Buyer Specialist'
-              isDefault={account.isDefault}
-              setChangingAccount={setChangingAccount}
-              containerImage={!account.photo && styles.containerAvatarDefault}
-              styleImage={account.photo ? styles.avatarPhoto : styles.avatarDefault}
-            />
-          )
-        return null
-      })}
-    </>
-  )
+  const AccountList = () => {
+    return (
+      <>
+        {profiles.map((account: ProfileInterface, index: number) => {
+          if (account !== profiles[activeAccount])
+            return (
+              <AccountRow
+                key={account.id}
+                index={index}
+                image={account.photo ? { uri: account.photo } : DefaultAvatar}
+                name={account.name}
+                rol={account.role}
+                isDefault={account.isDefault}
+                setChangingAccount={setChangingAccount}
+                containerImage={!account.photo && styles.containerAvatarDefault}
+                styleImage={account.photo ? styles.avatarPhoto : styles.avatarDefault}
+              />
+            )
+          return null
+        })}
+      </>
+    )
+  }
 
   return (
     <>

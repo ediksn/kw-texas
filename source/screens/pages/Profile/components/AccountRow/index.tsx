@@ -31,7 +31,10 @@ const AccountRow = ({ index, image, name, rol, isDefault, setChangingAccount, co
         <View>
           <Text style={styles.name}>{name}</Text>
           <View style={styles.role}>
-            <Image source={GroupsUnfilled} resizeMode='contain' resizeMethod='resize' style={styles.icon} />
+            {isDefault ? (
+              <Image source={GroupsUnfilled} resizeMode='contain' resizeMethod='resize' style={styles.icon} />
+            ) : null}
+
             <Text style={styles.roleText}>{rol}</Text>
           </View>
         </View>

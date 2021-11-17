@@ -49,6 +49,16 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     textTransform: 'capitalize'
   },
+  role2: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  icon2: {
+    width: 20,
+    height: 20,
+    marginRight: moderateScale(5),
+    alignSelf: 'flex-end'
+  },
   icon: {
     marginRight: 4
   },

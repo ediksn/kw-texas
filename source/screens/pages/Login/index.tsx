@@ -64,7 +64,7 @@ export const Login = () => {
       setErrorFlag(true)
       if (username === '') setUsernameEmptyFlag(true)
       if (password === '') setPasswordEmptyFlag(true)
-      setErrorMessage(null)
+      setErrorMessage(loginErrors('invalid_request'))
     }
   }
 

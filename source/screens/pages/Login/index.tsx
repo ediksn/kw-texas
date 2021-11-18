@@ -20,6 +20,7 @@ import BiometricModal from '~/components/BiometricModal'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
 import BiometricPermission from '~/components/BiometricPermission'
 import { useDeviceHeight } from '~/hooks'
+import { useStatusBarHeight } from '../../../hooks/settings'
 
 export const Login = () => {
   const { t } = useTranslation()
@@ -40,9 +41,10 @@ export const Login = () => {
   const [loginDisabled, setLoginDisabled] = useState(true)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  const [biometricPosition, setBiometricPosition] = useState(0)
+  const [biometricPosition, setBiometricPosition] = useState(-1)
   const [showIllustration, setShowIllustration] = useState(false)
   const screenHeight = useDeviceHeight()
+  const statusBarHeight = useStatusBarHeight()
 
   const error: ErrorInterface = useSelector((state: RootState) => state.login.error)
   const user = useSelector((state: RootState) => state.login.user)
@@ -69,10 +71,10 @@ export const Login = () => {
   }
 
   useEffect(() => {
-    if (biometryAllowed && biometryTypeState !== '' && biometryTypeState !== 'none') {
-      if (screenHeight - illustrationHeight < biometricPosition) setShowIllustration(false)
+    if (biometricPosition !== -1) {
+      if (screenHeight - illustrationHeight - statusBarHeight < biometricPosition) setShowIllustration(false)
       else if (biometricPosition > 0) setShowIllustration(true)
-    } else if (biometryTypeState === 'none') setShowIllustration(true)
+    } else setShowIllustration(true)
   }, [biometricPosition, biometryTypeState])
 
   useEffect(() => {
@@ -115,7 +117,8 @@ export const Login = () => {
           setBiometryAllowed(true)
         }
         if (biometryType !== undefined) setBiometryTypeState(biometryType)
-        ReactNativeBiometrics.biometricKeysExist().then(async result => {
+        else setBiometryTypeState('none')
+        ReactNativeBiometrics.biometricKeysExist().then(async (result: any) => {
           if (result.keysExist) {
             if (await Storage.getCredentials()) {
               ReactNativeBiometrics.deleteKeys()
@@ -123,7 +126,6 @@ export const Login = () => {
           }
         })
       })
-      if (biometryTypeState === '') setBiometryTypeState('none')
     })
   }, [])
 

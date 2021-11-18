@@ -65,10 +65,8 @@ const PickPromptSlider = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <HeaderTitleBox
-        title={t('Pick a Prompt')}
-        description={t(
-          'Click on one of the prompts below to start building your library. Take your time and have fun with it!'
-        )}
+        title={t('components_Conversations_Pick_Prompt')}
+        description={t('components_Conversations_Pick_description')}
       />
 
       <ScrollView horizontal contentContainerStyle={styles.containerScroll}>

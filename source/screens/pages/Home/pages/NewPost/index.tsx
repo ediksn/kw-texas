@@ -31,7 +31,7 @@ const NewPost = () => {
   const [showDropDown, setShowDropDown] = useState(false)
   const [groupSelected, setGroupSelected] = useState<OptionInterface>({
     key: '0',
-    title: t('SELECT COMMUNITY'),
+    title: t('components_NewPost_Select_Community'),
     color: theme.post.inputText
   })
   const hasValidForm = !editMode && inputValue !== '' && groupSelected.key !== '0'
@@ -79,7 +79,7 @@ const NewPost = () => {
       {
         key: '0',
         isTitle: true,
-        title: t('SELECT COMMUNITY'),
+        title: t('components_NewPost_Select_Community'),
         color: theme.post.inputText
       }
     ]
@@ -150,7 +150,7 @@ const NewPost = () => {
             ref={inputRef}
             value={inputValue}
             onChangeText={text => setInputValue(text)}
-            placeholder={t('What are you going to share today?')}
+            placeholder={t('components_NewPost_Share_today')}
             placeholderTextColor={theme.post.inputTitle}
             textAlignVertical='top'
             autoFocus={!showDropDown}

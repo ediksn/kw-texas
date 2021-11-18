@@ -39,11 +39,11 @@ const BiometricPermission = memo(({ onYes, onNo, onRequestClose, biometryType, i
 
       <View style={styles.buttons}>
         <TouchableOpacity onPress={onNo} style={[styles.button, styles.buttonNegative]}>
-          <Text style={styles.textNegative}>{t('No')}</Text>
+          <Text style={styles.textNegative}>{t('general_text_No')}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={onYes} style={styles.button}>
-          <Text style={styles.textPositive}>{t('Yes')}</Text>
+          <Text style={styles.textPositive}>{t('general_text_Yes')}</Text>
         </TouchableOpacity>
       </View>
     </ModalBottom>

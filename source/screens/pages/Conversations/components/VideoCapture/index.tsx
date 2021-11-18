@@ -65,10 +65,14 @@ const Recording = () => {
     if (finished === true) {
       return (
         <View style={styles.buttonsContainer}>
-          <Button THEME={theme.buttons.secondary} message={t('Preview')} viewStyle={styles.buttonsText} />
           <Button
             THEME={theme.buttons.secondary}
-            message={t('Retry')}
+            message={t('components_Conversations_Preview')}
+            viewStyle={styles.buttonsText}
+          />
+          <Button
+            THEME={theme.buttons.secondary}
+            message={t('components_Conversations_Retry')}
             viewStyle={styles.buttonsText}
             onPress={() => {
               setFinished(false)
@@ -77,7 +81,7 @@ const Recording = () => {
           />
           <Button
             THEME={theme.buttons.secondary}
-            message={t('Save')}
+            message={t('components_Conversations_Save')}
             viewStyle={styles.buttonsText}
             onPress={() => {
               setModalVisible(true)

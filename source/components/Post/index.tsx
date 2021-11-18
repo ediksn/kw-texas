@@ -115,29 +115,29 @@ const Post = ({ post }: { post: PostInterface }) => {
       {
         key: '1',
         handleOption: () => handleEdit(),
-        title: t('Edit')
+        title: t('components_NewPost_Edit')
       },
       {
         key: '2',
         handleOption: () => handleDelete(),
-        title: t('Delete')
+        title: t('components_NewPost_Delete')
       },
       {
         key: '3',
         handleOption: () => {},
-        title: t('Save Post')
+        title: t('components_NewPost_Save_Post')
       }
     ]
     const options = [
       {
         key: '1',
         handleOption: () => (userHasAlreadyBookmarked ? handleRemoveBookmark() : handleBookmark()),
-        title: userHasAlreadyBookmarked ? t('Remove from Bookmark') : t('Bookmark a post')
+        title: userHasAlreadyBookmarked ? t('components_Home_Remove_Bookmark') : t('components_Home_Bookmark_Post')
       },
       {
         key: '2',
         handleOption: () => {},
-        title: t('Flag a post')
+        title: t('components_Home_Flag_Post')
       }
     ]
 
@@ -150,7 +150,7 @@ const Post = ({ post }: { post: PostInterface }) => {
     <View style={styles.buttons}>
       <Button
         testID={buttonPost}
-        message={t('Like')}
+        message={t('components_Post_Like')}
         type={theme.buttons.types.TEXT}
         icon={{
           name: liked ? 'like-filled-icon' : 'like-icon',
@@ -163,7 +163,7 @@ const Post = ({ post }: { post: PostInterface }) => {
       />
       <Button
         testID={buttonPost}
-        message={t('Comment')}
+        message={t('components_Post_Comment')}
         type={theme.buttons.types.TEXT}
         icon={{
           name: 'comment-icon',
@@ -175,7 +175,7 @@ const Post = ({ post }: { post: PostInterface }) => {
       />
       <Button
         testID={buttonPost}
-        message={t('Share')}
+        message={t('components_Post_Share')}
         type={theme.buttons.types.TEXT}
         icon={{
           name: 'share-icon',
@@ -198,7 +198,7 @@ const Post = ({ post }: { post: PostInterface }) => {
               <Text testID={authorPost} style={styles.name}>
                 {author}
               </Text>
-              <Text testID={datePost} style={styles.date}>{`${t('Posted')} ${date}`}</Text>
+              <Text testID={datePost} style={styles.date}>{`${t('components_Post_Posted')} ${date}`}</Text>
             </View>
           </View>
           <TouchableOpacity
@@ -236,12 +236,12 @@ const Post = ({ post }: { post: PostInterface }) => {
             )}
           </View>
           <View style={styles.infoNumbers}>
-            <Text style={styles.infoNumber}>{getLikesCommentsSharesText(likesCount, t('likes'))}</Text>
+            <Text style={styles.infoNumber}>{getLikesCommentsSharesText(likesCount, t('components_Post_likes'))}</Text>
             <View style={styles.commentsSharesBox}>
               <Text style={[styles.infoNumber, shares > 0 ? styles.comments : null]}>
-                {getLikesCommentsSharesText(repliesCount, t('comments'))}
+                {getLikesCommentsSharesText(repliesCount, t('components_Post_comments'))}
               </Text>
-              <Text style={styles.infoNumber}>{getLikesCommentsSharesText(shares, t('shares'))}</Text>
+              <Text style={styles.infoNumber}>{getLikesCommentsSharesText(shares, t('components_Post_shares'))}</Text>
             </View>
           </View>
         </View>

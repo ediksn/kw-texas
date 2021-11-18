@@ -51,7 +51,7 @@ const SaveVideo = ({ setOpen, videoUri, timeRecorded }: Props) => {
 
   const Header = () => (
     <View style={styles.header}>
-      <Text style={styles.title}>{t('Save Video')}</Text>
+      <Text style={styles.title}>{t('components_Conversations_Save_Video')}</Text>
       <TouchableOpacity onPress={() => setOpen(false)}>
         <Text style={styles.title}>X</Text>
       </TouchableOpacity>
@@ -60,9 +60,19 @@ const SaveVideo = ({ setOpen, videoUri, timeRecorded }: Props) => {
 
   const Footer = () => (
     <View style={styles.footer}>
-      <Button message={t('Save and Keep Private')} fontSize={13} type='OUTLINED' viewStyle={styles.button} />
+      <Button
+        message={t('components_Conversations_Save_Keep_Private')}
+        fontSize={13}
+        type='OUTLINED'
+        viewStyle={styles.button}
+      />
 
-      <Button message={t('Publish to Library')} fontSize={13} viewStyle={styles.button} onPress={handlePublish} />
+      <Button
+        message={t('components_Conversations_Publish_Librar')}
+        fontSize={13}
+        viewStyle={styles.button}
+        onPress={handlePublish}
+      />
     </View>
   )
 
@@ -72,14 +82,10 @@ const SaveVideo = ({ setOpen, videoUri, timeRecorded }: Props) => {
         <View style={styles.container}>
           <Header />
           <View style={styles.divider} />
-          <Text style={styles.subtitle}>
-            {t(
-              'Add details to finish saving your video. You can choose to publish your recording to all beta participants or keep it private..'
-            )}
-          </Text>
+          <Text style={styles.subtitle}>{t('components_Conversations_Add_Details')}</Text>
           <Input
-            title={t('Recording Title')}
-            placeholder={t('Enter text...')}
+            title={t('components_Conversations_Recording_Title')}
+            placeholder={t('components_Conversations_Enter_text')}
             value={name}
             onChangeText={setName}
             required
@@ -88,8 +94,8 @@ const SaveVideo = ({ setOpen, videoUri, timeRecorded }: Props) => {
             style={styles.input}
           />
           <Input
-            title={t('Description')}
-            placeholder={t('Enter text...')}
+            title={t('components_Conversations_Description')}
+            placeholder={t('components_Conversations_Enter_text')}
             value={description}
             onChangeText={setDescription}
             multiline

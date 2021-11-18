@@ -16,7 +16,7 @@ const SettingsStackScreen = () => {
       <StackScreen
         options={{
           header: () => null,
-          title: t('Settings')
+          title: t('components_Settings')
         }}
         name={NAVIGATION.SCREEN.SETTINGS}
         component={Settings}
@@ -33,7 +33,7 @@ const SettingsStackScreen = () => {
         component={StoryBook}
         options={{
           header: () => null,
-          title: t('Storybook')
+          title: t('components_StoryBook')
         }}
       /> */}
     </StackNavigator>

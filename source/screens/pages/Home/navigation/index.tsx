@@ -24,7 +24,7 @@ const HomeHeader = () => {
         source={usrData?.photo ? { uri: usrData?.photo } : DefaultAvatar}
       />
       <TouchableOpacity onPress={() => navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { edit: false })}>
-        <Text style={styles.text}>{t('What are you going to share today?')} </Text>
+        <Text style={styles.text}>{t('components_NewPost_Share_today')} </Text>
       </TouchableOpacity>
     </View>
   )

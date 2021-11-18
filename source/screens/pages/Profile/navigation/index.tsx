@@ -13,7 +13,7 @@ const AccountHeader = () => {
 
   return {
     header: () => {
-      return <Header style={styles.container} title={t('Account')} />
+      return <Header style={styles.container} title={t('components_Account')} />
     }
   }
 }

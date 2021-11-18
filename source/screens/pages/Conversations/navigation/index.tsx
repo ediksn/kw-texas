@@ -32,9 +32,21 @@ const TopTabNav = () => {
         }
       }}
     >
-      <TopTabScreen options={{ title: t('Library') }} name={NAVIGATION.SCREEN.LIBRARY} component={Conversations} />
-      <TopTabScreen options={{ title: t('Studio') }} name={NAVIGATION.SCREEN.STUDIO} component={Studio} />
-      <TopTabScreen options={{ title: t('Bookmarked') }} name={NAVIGATION.SCREEN.BOOKMARKED} component={Bookmarked} />
+      <TopTabScreen
+        options={{ title: t('components_Library') }}
+        name={NAVIGATION.SCREEN.LIBRARY}
+        component={Conversations}
+      />
+      <TopTabScreen
+        options={{ title: t('components_Conversations_Studio') }}
+        name={NAVIGATION.SCREEN.STUDIO}
+        component={Studio}
+      />
+      <TopTabScreen
+        options={{ title: t('components_Bookmark') }}
+        name={NAVIGATION.SCREEN.BOOKMARKED}
+        component={Bookmarked}
+      />
     </TopTabNavigator>
   )
 }
@@ -49,7 +61,7 @@ const ConversationsStackScreen = () => {
         component={TopTabNav}
         options={({ navigation }) => ({
           headerTitleAlign: 'center',
-          title: t('Conversations'),
+          title: t('components_Conversations'),
           headerStyle: {
             elevation: 0,
             shadowOpacity: 0,
@@ -57,7 +69,7 @@ const ConversationsStackScreen = () => {
           },
           headerRight: () => (
             <Button
-              message={t('Create')}
+              message={t('components_Post_Create')}
               type={theme.buttons.types.TEXT}
               THEME={theme.buttons.primary}
               viewStyle={styles.button}
@@ -69,7 +81,7 @@ const ConversationsStackScreen = () => {
       <StackScreen
         name={NAVIGATION.SCREEN.VIDEOPLAYER}
         component={VideoPlayer}
-        options={{ headerTitleAlign: 'center', title: t('Video Player') }}
+        options={{ headerTitleAlign: 'center', title: t('components_Comversations_Video_Player') }}
       />
       <StackScreen
         options={{

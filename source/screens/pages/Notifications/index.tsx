@@ -31,7 +31,7 @@ export const Notifications = () => {
         >
           <View style={styles.titleStyle}>
             <Image source={url} style={styles.icon} />
-            <Text style={styles.text}>{t('TODAY')}</Text>
+            <Text style={styles.text}>{t('components_Events_today')}</Text>
           </View>
           <FlatList
             renderItem={renderEvents}
@@ -44,7 +44,7 @@ export const Notifications = () => {
           />
           <View style={styles.titleStyle}>
             <Image source={url} style={styles.icon} />
-            <Text style={styles.text}>{t('TOMORROW')}</Text>
+            <Text style={styles.text}>{t('components_Events_tomorrow')}</Text>
           </View>
           <FlatList
             renderItem={renderEvents}

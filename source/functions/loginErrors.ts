@@ -1,16 +1,16 @@
 export const loginErrors = (error: string | null) => {
   switch (error) {
     case 'invalid_request': {
-      return 'Username or password is invalid'
+      return 'components_Login_Username_password_invalid'
     }
     case 'invalid_grant': {
-      return 'Username or password is invalid'
+      return 'components_Login_Username_password_invalid'
     }
     case 'network_failed': {
-      return 'There was an issue logging you in, please ty again'
+      return 'components_Login_Issue'
     }
     default: {
-      return 'There was an issue logging you in, please ty again'
+      return 'components_Login_Issue'
     }
   }
 }

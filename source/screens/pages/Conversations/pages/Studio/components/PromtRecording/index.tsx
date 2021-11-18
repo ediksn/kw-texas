@@ -50,7 +50,7 @@ const PromtRecording = ({ activeSlideSelected }: Props) => {
 
   return (
     <SafeAreaView>
-      <Text style={styles.title}>{t('Prompt Recording')}</Text>
+      <Text style={styles.title}>{t('components_Conversations_Prompt_Recording')}</Text>
       <View style={styles.promptRecordingView}>
         <Carousel
           ref={carouselRef}

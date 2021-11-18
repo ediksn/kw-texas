@@ -35,13 +35,13 @@ export const Home = () => {
     <View style={styles.noPostWrapper}>
       <Icon name='message-icon' size={55} color={theme.backgroundDark} />
       <Text style={styles.noPostMessage} testID='no_post_message'>
-        {t('No post message')}
+        {t('components_Home_No_post_message')}
       </Text>
       <Text style={styles.noPostMessage2} testID='no_post_message2'>
-        {t('No post message2')}
+        {t('components_Home_No_post_message2')}
       </Text>
       <Button
-        message={t('Create a new post')}
+        message={t('components_Home_Create_new_post')}
         viewStyle={styles.button}
         textStyle={styles.buttonText}
         testID='create_new_post_button'

@@ -50,7 +50,7 @@ export const Login = () => {
   const NoConnection = () => (
     <SafeAreaView>
       <View style={styles.noConnectionContainer}>
-        <Text style={styles.noConnectionText}>{t('No internet connection')}</Text>
+        <Text style={styles.noConnectionText}>{t('error_Internet')}</Text>
       </View>
     </SafeAreaView>
   )
@@ -115,9 +115,9 @@ export const Login = () => {
           setBiometryAllowed(true)
         }
         if (biometryType !== undefined) setBiometryTypeState(biometryType)
-        ReactNativeBiometrics.biometricKeysExist().then(result => {
+        ReactNativeBiometrics.biometricKeysExist().then(async result => {
           if (result.keysExist) {
-            if (Storage.getCredentials()) {
+            if (await Storage.getCredentials()) {
               ReactNativeBiometrics.deleteKeys()
             }
           }
@@ -130,7 +130,7 @@ export const Login = () => {
   const handleLoginFromBiometry = useCallback(async () => {
     const permission = await Storage.get({ key: BIOMETRIC.PERMISSION })
     if (permission.ALLOWED === true) {
-      const options = { promptMessage: t('Sign in') }
+      const options = { promptMessage: t('components_Login_Sign_in') }
       const result = await ReactNativeBiometrics.simplePrompt(options)
       if (result.success) {
         const credentials = await Storage.getCredentials()
@@ -179,13 +179,13 @@ export const Login = () => {
           <View style={styles.topContainer}>
             <View style={styles.logo}>
               <Image testID={kwLogo} source={kw} resizeMode='contain' resizeMethod='resize' style={styles.kw} />
-              <Text style={styles.connect}>{t('CONNECT')}</Text>
+              <Text style={styles.connect}>{t('components_Login_connect')}</Text>
             </View>
             <View style={styles.inputsView}>
               <Input
                 testID={usernameInput}
-                title={t('Username')}
-                placeholder={t('Enter your username...')}
+                title={t('components_Login_Username')}
+                placeholder={t('components_Login_Enter_username')}
                 disabled={!netInfo.isConnected || false}
                 empty={usernameEmptyFlag}
                 error={errorFlag}
@@ -195,9 +195,9 @@ export const Login = () => {
               />
               <Input
                 testID={passwordInput}
-                title={t('Password')}
+                title={t('components_Login_Password')}
                 type={FORM.FIELDS_TYPES.PASSWORD}
-                placeholder={t('Enter password...')}
+                placeholder={t('components_Login_Enter_password')}
                 disabled={!netInfo.isConnected || false}
                 empty={passwordEmptyFlag}
                 error={errorFlag}
@@ -211,7 +211,7 @@ export const Login = () => {
                   testID={signinButton}
                   viewStyle={styles.button}
                   textStyle={styles.textBold}
-                  message={t('Log In')}
+                  message={t('components_Login_Log_In')}
                   onPress={handleLogin}
                   disabled={!netInfo.isConnected || loginDisabled}
                 />

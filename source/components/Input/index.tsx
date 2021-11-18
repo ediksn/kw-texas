@@ -52,7 +52,7 @@ const Input = ({
       {required && empty && (
         <View style={styles.title}>
           <Text style={styles.error}>{title}</Text>
-          <Text style={styles.error}> {t('is required')}</Text>
+          <Text style={styles.error}> {t('input_is_requiredd')}</Text>
         </View>
       )}
     </>

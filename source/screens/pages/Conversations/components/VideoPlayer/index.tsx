@@ -87,7 +87,7 @@ const VideoPlayer = ({ libraryId, video }: Props) => {
         />
         {error && (
           <View style={styles.loadingContainer}>
-            <Text> {t('Could not load the video')} </Text>
+            <Text> {t('error_Video')} </Text>
           </View>
         )}
         {isLoading && !error && (

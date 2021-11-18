@@ -25,7 +25,7 @@ export const Studio = ({ route }: Route) => {
       <ScrollView>
         <PromtRecording activeSlideSelected={activeSlideSelected} />
         <Button
-          message={t('Conversation Recording')}
+          message={t('components_Conversations_Conversation_Recording')}
           THEME={theme.buttons.primary}
           viewStyle={styles.button}
           onPress={() => navigation.navigate(NAVIGATION.SCREEN.RECORDING)}

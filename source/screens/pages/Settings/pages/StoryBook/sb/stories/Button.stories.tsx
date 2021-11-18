@@ -12,7 +12,7 @@ const ButtonStories = () => {
 
   return (
     <Button
-      message={text('Message', 'Ok')}
+      message={text('Message', 'general_text_Ok')}
       THEME={buttonThemes[select('Theme', ['primary', 'secondary'], 'primary')]}
       fontSize={theme.fonts[select('Font Sizes', Object.keys(theme.fonts), 'MEDIUM_SIZE')]}
       type={select('Type', Object.keys(theme.buttons.types), theme.buttons.types.CONTAINED)}

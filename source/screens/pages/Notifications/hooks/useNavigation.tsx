@@ -72,7 +72,7 @@ const useNotification = (): {
   }
 
   const emptyNotifications = () => {
-    const title = 'No Events To Display'
+    const title = 'components_Events_Empty'
     return <EmptyList title={title} icon={NotificationsFilled} iconStyle={styles.iconStyle} />
   }
   return {

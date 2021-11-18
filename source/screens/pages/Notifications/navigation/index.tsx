@@ -9,7 +9,7 @@ import { styles } from './styles'
 const NoitificationsHeader = () => {
   const { t } = useTranslation()
 
-  const titleText = t('Your Events')
+  const titleText = t('components_Events_Your_Events')
 
   return {
     header: () => {

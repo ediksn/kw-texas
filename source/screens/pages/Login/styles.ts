@@ -64,9 +64,6 @@ export const styles = StyleSheet.create({
   textRegular: {
     fontFamily: 'Mulish-Regular'
   },
-  spinner: {
-    marginVertical: verticalScale(5)
-  },
   logo: {
     justifyContent: 'center',
     alignItems: 'center'

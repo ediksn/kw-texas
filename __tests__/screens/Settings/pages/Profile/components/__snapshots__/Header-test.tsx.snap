@@ -53,22 +53,46 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    Irene
-     
-    Murphy
+    Kelle Test Team
   </Text>
-  <Text
+  <View
     style={
       Object {
-        "fontFamily": "Mulish-Regular",
-        "fontSize": 12,
-        "fontWeight": "400",
-        "lineHeight": 16,
-        "marginTop": 7.847058823529411,
+        "alignItems": "center",
+        "flexDirection": "row",
       }
     }
   >
-    Kelle Test Team
-  </Text>
+    <Image
+      resizeMethod="resize"
+      resizeMode="contain"
+      source={
+        Object {
+          "process": [Function],
+        }
+      }
+      style={
+        Object {
+          "alignSelf": "flex-end",
+          "height": 20,
+          "marginRight": 7.857142857142857,
+          "width": 20,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "fontFamily": "Mulish-Regular",
+          "fontSize": 12,
+          "fontWeight": "400",
+          "lineHeight": 16,
+          "marginTop": 7.847058823529411,
+        }
+      }
+    >
+      Buyer Specialist
+    </Text>
+  </View>
 </View>
 `;

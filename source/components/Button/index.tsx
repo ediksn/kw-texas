@@ -4,7 +4,7 @@ import { Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native
 import { moderateScale } from 'react-native-size-matters'
 import { styles, stylesOfType } from './styles'
 import { theme } from '~/constants'
-import { Icon } from '~/components'
+import { Icon, Spinner } from '~/components'
 
 interface Props {
   testID?: string
@@ -15,6 +15,7 @@ interface Props {
   viewStyle?: ViewStyle
   textStyle?: TextStyle
   disabled?: boolean
+  loading?: boolean
   onPress?: () => void
   icon?: any
 }
@@ -28,6 +29,7 @@ const Button = ({
   viewStyle,
   textStyle,
   disabled,
+  loading,
   onPress,
   icon
 }: Props) => {
@@ -56,7 +58,9 @@ const Button = ({
       style={[styles.containerView, viewStyle, backgroundTypeStyle]}
       onPress={onPress}
     >
-      <Message />
+      <Spinner isLoading={loading} styleView={styles.spinner} size={30} color={theme.backgroundWhite}>
+        <Message />
+      </Spinner>
     </TouchableOpacity>
   )
 }

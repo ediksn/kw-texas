@@ -8,7 +8,7 @@ import ReactNativeBiometrics from 'react-native-biometrics'
 import kw from 'assets/images/kw-logo.png'
 import illustration from 'assets/images/login-illustration.png'
 import Modal from 'react-native-modal'
-import { Button, Input, Spinner } from '~/components'
+import { Button, Input } from '~/components'
 import { illustrationLogo, IS_IOS, kwLogo, passwordInput, signinButton, usernameInput } from '~/constants'
 import { illustrationHeight, styles } from './styles'
 import { FORM } from '~/constants/form'
@@ -83,6 +83,7 @@ export const Login = () => {
         Storage.get({ key: BIOMETRIC.PERMISSION }).then((result: any) => {
           if (result == null) {
             setAllowModal(true)
+            setLoading(false)
           } else {
             dispatch(loginActions.afterLogin())
             setLoading(false)
@@ -146,7 +147,6 @@ export const Login = () => {
 
   const handleCloseModal = () => {
     dispatch(loginActions.afterLogin())
-    setLoading(false)
     setAllowModal(false)
   }
 
@@ -168,7 +168,6 @@ export const Login = () => {
     })
     Storage.saveCredentials({ username, password })
     dispatch(loginActions.afterLogin())
-    setLoading(false)
   }
 
   return (
@@ -208,16 +207,15 @@ export const Login = () => {
                 style={styles.input}
               />
               {errorFlag && errorMessage && <Text style={styles.textMessage}>{t(errorMessage)}</Text>}
-              <Spinner isLoading={loading} styleView={styles.spinner} size={30}>
-                <Button
-                  testID={signinButton}
-                  viewStyle={styles.button}
-                  textStyle={styles.textBold}
-                  message={t('components_Login_Log_In')}
-                  onPress={handleLogin}
-                  disabled={!netInfo.isConnected || loginDisabled}
-                />
-              </Spinner>
+              <Button
+                testID={signinButton}
+                viewStyle={styles.button}
+                textStyle={styles.textBold}
+                message={t('Log In')}
+                onPress={handleLogin}
+                disabled={!netInfo.isConnected || loginDisabled}
+                loading={loading}
+              />
             </View>
           </View>
           {!!biometryTypeState && biometryAllowed && (

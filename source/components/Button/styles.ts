@@ -26,6 +26,9 @@ export const styles = StyleSheet.create({
   },
   messageText: {
     fontFamily: 'Mulish-Bold'
+  },
+  spinner: {
+    marginVertical: verticalScale(5)
   }
 })
 

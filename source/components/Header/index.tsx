@@ -1,9 +1,7 @@
-/** @format */
-
 import React, { ReactNode } from 'react'
 import { Text, TextStyle, TouchableHighlight, View, ViewStyle } from 'react-native'
-
 import { styles } from './styles'
+import { BACKGROUNDS } from '../../constants/theme'
 
 interface Props {
   title?: string
@@ -11,7 +9,7 @@ interface Props {
   leftButton?: ReactNode
   rightButton?: ReactNode
   onClickLeft?: () => void
-  onClickRight?: () => void
+  onClickRight?: any
   style?: ViewStyle
   titleStyle?: TextStyle
 }
@@ -56,7 +54,7 @@ const Header = ({
         <TouchableHighlight
           style={styles.touchableHighlight}
           activeOpacity={0.6}
-          underlayColor='#DDDDDD'
+          underlayColor={onClickRight ? BACKGROUNDS.ligthGreyBackground : 'transparent'}
           onPress={onClickRight}
         >
           {rightButton}

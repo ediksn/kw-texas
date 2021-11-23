@@ -120,7 +120,7 @@ const NewPost = () => {
         leftButton={leftButton}
         onClickLeft={() => navigation.navigate(NAVIGATION.SCREEN.HOME)}
         rightButton={rightButton}
-        onClickRight={() => (hasValidForm && handleSubmit()) || null}
+        onClickRight={hasValidForm ? () => handleSubmit() : null}
       />
       <KeyboardAvoidingView
         behavior={IS_IOS ? 'padding' : undefined}

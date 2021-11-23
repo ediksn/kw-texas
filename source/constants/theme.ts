@@ -43,7 +43,8 @@ export const BACKGROUNDS = {
   darkBackground: '#383e51',
   whiteBackground: 'white',
   darkWhiteBackground: '#D8D8D8',
-  greyBackground: '#E4E5E7'
+  greyBackground: '#E4E5E7',
+  ligthGreyBackground: '#DDDDDD'
 }
 
 const POST_CARD = {

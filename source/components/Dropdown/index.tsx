@@ -6,6 +6,7 @@ import { Icon } from '~/components'
 import { styles } from './styles'
 import { useDeviceHeight } from '../../hooks/settings'
 import { OptionInterface } from '~/interfaces/groupInterface'
+import { theme } from '~/constants'
 
 const keyExtractor = (item: any, index: any) => {
   return item.key || index
@@ -119,7 +120,7 @@ const Dropdown = memo(
         return (
           <BaseButton
             style={[styles.item, { height: itemHeight }, item.separated && styles.itemSeparated]}
-            onPress={handleSelect(item)}
+            onPress={item.handleOption}
           >
             <>
               <Text
@@ -134,9 +135,7 @@ const Dropdown = memo(
               </Text>
 
               {!selectedOption?.handleOption && selectedOption?.key === item.key && (
-                <View style={styles.checkmark}>
-                  <Icon name='check-icon' size={24} />
-                </View>
+                <Icon name='check-icon' size={20} color={theme.darkGreenColor} />
               )}
             </>
           </BaseButton>

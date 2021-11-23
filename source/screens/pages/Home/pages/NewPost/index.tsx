@@ -144,7 +144,7 @@ const NewPost = () => {
                 onRequestClose={() => setShowDropDown(false)}
                 onSelectOption={setGroupSelected}
                 options={getMyGroupsFormatted()}
-                selectedOption={setGroupSelected}
+                selectedOption={groupSelected}
                 width={239}
                 center
               />

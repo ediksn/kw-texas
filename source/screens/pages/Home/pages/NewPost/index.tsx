@@ -43,6 +43,7 @@ const NewPost = () => {
     if (editMode && groupId) {
       setTimeout(async () => {
         const res: any = await dispatch(homeActions.getGroupInfo(groupId))
+        res.name = res.name.trim()
         if (res) {
           setGroupSelected({ key: res.id, title: res.name })
         }
@@ -69,7 +70,11 @@ const NewPost = () => {
   }
 
   const handleGroup = ({ id, name }: GroupInterface) => {
-    setGroupSelected({ key: id, title: name })
+    const groupSelectedFromDrop = {
+      key: id,
+      name: name.trim().length > 1 ? name : 'NO NAME'
+    }
+    setGroupSelected(groupSelectedFromDrop)
     setShowDropDown(false)
     inputRef?.current?.focus()
   }
@@ -90,7 +95,7 @@ const NewPost = () => {
         {
           key: group.id,
           handleOption: () => handleGroup(group),
-          title: group.name
+          title: group.name.trim().length > 1 ? group.name : 'NO NAME'
         }
       ]
     })

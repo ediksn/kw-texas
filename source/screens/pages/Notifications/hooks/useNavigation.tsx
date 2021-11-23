@@ -2,7 +2,6 @@ import React, { Dispatch, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import NotificationsFilled from 'assets/images/calendar-filled.png'
 import NotificationsUnFilled from 'assets/images/calendar-unfilled.png'
-import moment from 'moment'
 import { ImageSourcePropType } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import EmptyList from '~/components/EmptyList'
@@ -32,24 +31,13 @@ const useNotification = (): {
   t: (text: string) => string
 } => {
   const { t } = useTranslation()
-  const eventDefault: EventsInterface = {
-    id: 1,
-    name: 'Online Event for KW Texas Agents',
-    price: '',
-    location: 'KW Texas',
-    starts: moment(),
-    ends: moment(),
-    published: true,
-    instructors: [],
-    bookmarked: false,
-    slug: ''
-  }
+
   const url = NotificationsUnFilled
   const dispatch = useDispatch()
   const usr: any = useSelector((state: RootState) => state.login.user)
   const usrProfile: any = useSelector((state: RootState) => state.usrProfile.profiles)
-  const todayEvents: EventsInterface[] = [eventDefault]
-  const tomorrowEvents: EventsInterface[] = [{ ...eventDefault, starts: (eventDefault.starts = moment().add(1, 'd')) }]
+  const todayEvents: EventsInterface[] = []
+  const tomorrowEvents: EventsInterface[] = []
   const limitDefault: number = useSelector((state: RootState) => state.home.posts.limitDefault)
   const limit: number = useSelector((state: RootState) => state.home.posts.limit)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)

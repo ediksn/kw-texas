@@ -58,7 +58,7 @@ export const Notifications = () => {
         </ScrollView>
       )}
       {todayEvents.length < 1 && tomorrowEvents.length < 1 && (
-        <View style={styles.containerEmpty}>{emptyNotifications}</View>
+        <View style={styles.containerEmpty}>{emptyNotifications()}</View>
       )}
     </SafeAreaView>
   )

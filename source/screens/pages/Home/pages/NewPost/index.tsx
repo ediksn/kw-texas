@@ -72,7 +72,7 @@ const NewPost = () => {
   const handleGroup = ({ id, name }: GroupInterface) => {
     const groupSelectedFromDrop = {
       key: id,
-      name: name.trim().length > 1 ? name : 'NO NAME'
+      title: name.trim().length > 1 ? name : 'NO NAME'
     }
     setGroupSelected(groupSelectedFromDrop)
     setShowDropDown(false)

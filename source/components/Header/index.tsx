@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react'
 import { Text, TextStyle, TouchableHighlight, View, ViewStyle } from 'react-native'
 import { styles } from './styles'
-import { BACKGROUNDS } from '../../constants/theme'
 
 interface Props {
   title?: string
@@ -30,7 +29,7 @@ const Header = ({
         <TouchableHighlight
           style={styles.touchableHighlight}
           activeOpacity={0.6}
-          underlayColor='#DDDDDD'
+          underlayColor='transparent'
           onPress={onClickLeft}
         >
           {leftButton}
@@ -54,7 +53,7 @@ const Header = ({
         <TouchableHighlight
           style={styles.touchableHighlight}
           activeOpacity={0.6}
-          underlayColor={onClickRight ? BACKGROUNDS.ligthGreyBackground : 'transparent'}
+          underlayColor='transparent'
           onPress={onClickRight}
         >
           {rightButton}

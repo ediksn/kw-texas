@@ -1,3 +1,4 @@
+import { useUnRichContent } from '~/hooks'
 import { FormPostInterface } from '~/interfaces/postInterface'
 import { axiosInstanceTokens } from './config'
 
@@ -98,7 +99,8 @@ export default {
           group: form.group,
           content: form.text,
           type: 'STANDARD',
-          source: 'GROUPS'
+          source: 'GROUPS',
+          plainTextContent: useUnRichContent(form.text)
         }
       }
     })

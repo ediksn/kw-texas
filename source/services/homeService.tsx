@@ -1,6 +1,7 @@
+import { Platform } from 'react-native'
 import { useUnRichContent } from '~/hooks'
 import { FormPostInterface } from '~/interfaces/postInterface'
-import { axiosInstanceTokens } from './config'
+import { axiosInstanceFormTokens, axiosInstanceTokens } from './config'
 
 export default {
   getPickPrompts: () => {
@@ -90,7 +91,46 @@ export default {
     })
   },
   createPost: async (form: FormPostInterface) => {
-    const axiosInstance = await axiosInstanceTokens()
+    const axiosInstance = await axiosInstanceFormTokens()
+    if (form.hasImages && form.images) {
+      const formData = new FormData()
+      const fileMap: any = {}
+      const fileList: any = []
+      form.images.map((file, index) => {
+        // eslint-disable-next-line no-param-reassign
+        file.uri = Platform.OS === 'ios' ? file.uri.replace('file://', '') : file.uri
+        fileMap[index] = [`variables.file.${index}`]
+        fileList.push(null)
+        return true
+      })
+      const query =
+        'mutation createPost($post: createPostInput!, $file: [Upload]) {\n  createPost(post: $post, file: $file)\n}'
+      const operations = JSON.stringify({
+        query,
+        variables: {
+          post: {
+            group: form.group,
+            content: form.text,
+            type: 'FILE',
+            source: 'GROUPS',
+            plainTextContent: useUnRichContent(form.text)
+          },
+          file: [null]
+        },
+        operationName: 'createPost'
+      })
+      formData.append('operations', operations)
+      formData.append('map', JSON.stringify(fileMap))
+      form.images.map((file, index) => {
+        formData.append(String(index), {
+          name: file.fileName,
+          type: file.type,
+          uri: file.uri
+        })
+        return true
+      })
+      return axiosInstance.post('/connect-groups-api/graphql', formData)
+    }
     return axiosInstance.post('/connect-groups-api/graphql', {
       query:
         '\n    mutation createPost($post: createPostInput!, $file: [Upload]) {\n  createPost(post: $post, file: $file)\n}\n    ',

@@ -569,3 +569,22 @@ export const idTokenJWT = {
   email: 'email@kw.com',
   kwuid: 'kwuid'
 }
+
+export const pickerResponse = [
+  {
+    type: 'image/jpg',
+    fileName: 'image1.jpg',
+    width: 3000,
+    height: 2002,
+    uri: 'http://placehold.it/120x120&text=image1',
+    fileSize: 6581432
+  },
+  {
+    type: 'image/jpg',
+    fileName: 'image2.jpg',
+    width: 3000,
+    height: 2002,
+    uri: 'http://placehold.it/120x120&text=image2',
+    fileSize: 6581432
+  }
+]

@@ -1,6 +1,8 @@
 export interface FormPostInterface {
   group?: string
   text: string
+  hasImages?: boolean
+  images?: any[]
 }
 export interface PostInterface {
   id: string

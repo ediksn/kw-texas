@@ -65,6 +65,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     marginTop: verticalScale(32),
     paddingTop: 0,
+    marginBottom: verticalScale(10),
     fontSize: theme.fonts.LARGE_SIZE,
     fontFamily: 'Mulish-Regular',
     color: theme.post.inputText
@@ -77,5 +78,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center'
+  },
+  iconDisabled: {
+    opacity: 0.5
   }
 })

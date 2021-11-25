@@ -3,6 +3,7 @@ import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, Platform
 import { useTranslation } from 'react-i18next'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
+import { launchImageLibrary, launchCamera, MediaType } from 'react-native-image-picker'
 import AndroidKeyboardAdjust from 'react-native-android-keyboard-adjust'
 import { Icon, Header, Dropdown, Spinner } from '~/components'
 import { styles } from './styles'
@@ -12,6 +13,8 @@ import { FormPostInterface, PostInterface } from '~/interfaces/postInterface'
 import { useUnRichContent, useRichContent } from '~/hooks'
 import { homeActions, toastActions } from '~/store/actions'
 import { GroupInterface, OptionInterface } from '~/interfaces/groupInterface'
+import ImagePickerPreview from '~/components/ImagePickerPreview'
+import { UploadImageInterface } from '~/interfaces/uploadImageInterface'
 import { MAX_CHARACTERS_NEW_POST } from '~/utils/constants'
 import Avatar from '~/components/Avatar'
 
@@ -38,6 +41,7 @@ const NewPost = () => {
     title: t('components_NewPost_Select_Community'),
     color: theme.post.inputText
   })
+  const [pickerResponse, setPickerResponse] = useState<UploadImageInterface[]>([])
   const hasValidForm = !editMode && inputValue !== '' && groupSelected.key !== '0'
   const buttonRef = useRef<any>()
   const inputRef = useRef<any>()
@@ -56,11 +60,19 @@ const NewPost = () => {
     }
   }, [])
 
+  useEffect(() => {
+    if (pickerResponse.length > 15) {
+      dispatch(toastActions.showErrorToast('home_post_toast_message_image_limit'))
+    }
+  }, [pickerResponse])
+
   const handleSubmit = async () => {
     setShowDropDown(false)
     const form: FormPostInterface = {
       group: groupSelected.key,
-      text: useRichContent(inputValue)
+      text: useRichContent(inputValue),
+      hasImages: pickerResponse.length > 0,
+      images: pickerResponse.length > 0 ? pickerResponse : undefined
     }
 
     const res: any = await dispatch(editMode ? homeActions.editPost(form) : homeActions.createPost(form))
@@ -106,6 +118,36 @@ const NewPost = () => {
     })
 
     return myGroups
+  }
+
+  const handleAttachImage = async () => {
+    const options = {
+      selectionLimit: 15 - pickerResponse.length,
+      mediaType: 'photo' as MediaType,
+      includeBase64: false
+    }
+    launchImageLibrary(options, (res: any) => {
+      if (!res.didCancel && !res.error) {
+        setPickerResponse((oldState: UploadImageInterface[]) => oldState.concat(res.assets))
+      }
+    })
+  }
+
+  const handleTakePicture = async () => {
+    const options = {
+      selectionLimit: 15 - pickerResponse.length,
+      mediaType: 'photo' as MediaType,
+      includeBase64: false
+    }
+    launchCamera(options, (res: any) => {
+      if (!res.didCancel && !res.error) {
+        setPickerResponse((oldState: UploadImageInterface[]) => oldState.concat(res.assets))
+      }
+    })
+  }
+
+  const handleDeleteImage = (image: UploadImageInterface) => {
+    setPickerResponse((oldState: UploadImageInterface[]) => oldState.filter(imageState => imageState !== image))
   }
 
   const leftButton = <Icon name='close-icon' size={16.5} />
@@ -155,7 +197,6 @@ const NewPost = () => {
               />
             </View>
           </View>
-
           <TextInput
             ref={inputRef}
             value={inputValue}
@@ -168,11 +209,23 @@ const NewPost = () => {
             multiline
             style={styles.inputText}
           />
+          <ImagePickerPreview images={pickerResponse} handleDelete={handleDeleteImage} />
         </View>
-
         <View style={styles.footer}>
-          <Icon name='gallery-icon' size={24} color={theme.post.green} />
-          <Icon name='camera-icon' size={24} color={theme.post.green} />
+          <TouchableOpacity
+            onPress={handleAttachImage}
+            disabled={pickerResponse.length >= 15}
+            style={pickerResponse.length >= 15 && styles.iconDisabled}
+          >
+            <Icon name='gallery-icon' size={24} color={theme.post.green} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={handleTakePicture}
+            disabled={pickerResponse.length >= 15}
+            style={pickerResponse.length >= 15 && styles.iconDisabled}
+          >
+            <Icon name='camera-icon' size={24} color={theme.post.green} />
+          </TouchableOpacity>
           <Icon name='people-icon' size={24} color={theme.post.green} />
           <Icon name='location-icon' size={24} color={theme.post.green} />
         </View>

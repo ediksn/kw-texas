@@ -3,6 +3,7 @@ export const TEST_IDS = {
     VIDEO_CARD_ID: 'videoCardId',
     VIDEO_LIST_ID: 'videoListId',
     EVENT_CARD_ID: 'eventCardId',
+    IMAGE_PICKER_PREVIEW_ID: 'imagePickerPreviewId',
     TOAST_ID: 'toastId'
   },
   EVENTS: {
@@ -17,11 +18,15 @@ export const TEST_IDS = {
     INTERESTED_BUTTON_ID: 'eventCardInterestedButtonId',
     SHARE_BUTTON_ID: 'eventCardShareButtonId'
   },
+  IMAGE_PICKER_PREVIEW: {
+    IMAGE_ID: 'imageId'
+  },
   TOAST: {
     ICON_ID: 'toastIconId',
     TITLE_ID: 'toastTitleId'
   }
 }
+
 export const usernameInput = 'username-input'
 export const passwordInput = 'password-input'
 export const signinButton = 'signin-button'

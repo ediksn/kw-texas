@@ -11,6 +11,7 @@ import { FormPostInterface, PostInterface } from '~/interfaces/postInterface'
 import { useUnRichContent, useRichContent } from '~/hooks'
 import { homeActions, toastActions } from '~/store/actions'
 import { GroupInterface, OptionInterface } from '~/interfaces/groupInterface'
+import { MAX_CHARACTERS_NEW_POST } from '~/utils/constants'
 import Avatar from '~/components/Avatar'
 
 const NewPost = () => {
@@ -157,6 +158,7 @@ const NewPost = () => {
             ref={inputRef}
             value={inputValue}
             onChangeText={text => setInputValue(text)}
+            maxLength={MAX_CHARACTERS_NEW_POST}
             placeholder={t('components_NewPost_Share_today')}
             placeholderTextColor={theme.post.inputTitle}
             textAlignVertical='top'

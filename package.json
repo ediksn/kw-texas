@@ -54,6 +54,7 @@
     "react": "17.0.1",
     "react-i18next": "^11.11.1",
     "react-native": "0.64.2",
+    "react-native-android-keyboard-adjust": "^1.2.0",
     "react-native-biometrics": "^2.1.4",
     "react-native-camera": "^4.0.1",
     "react-native-camera-hooks": "^0.5.1",
@@ -119,7 +120,9 @@
     "@types/react": "^17"
   },
   "jest": {
-    "setupFilesAfterEnv": ["<rootDir>/jest/setup.ts"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest/setup.ts"
+    ],
     "preset": "react-native",
     "transformIgnorePatterns": [
       "node_modules/(?!@react-native|react-native|rn-fetch-blob)",

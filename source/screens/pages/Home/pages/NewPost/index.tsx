@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native'
+import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, Platform } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
+import AndroidKeyboardAdjust from 'react-native-android-keyboard-adjust'
 import { Icon, Header, Dropdown, Spinner } from '~/components'
 import { styles } from './styles'
 import { IS_IOS, NAVIGATION, theme } from '~/constants'
@@ -42,6 +43,7 @@ const NewPost = () => {
   const inputRef = useRef<any>()
 
   useEffect(() => {
+    if (Platform.OS === 'android') AndroidKeyboardAdjust.setAdjustResize()
     dispatch(homeActions.getGroups(limitDefault))
     if (editMode && groupId) {
       setTimeout(async () => {

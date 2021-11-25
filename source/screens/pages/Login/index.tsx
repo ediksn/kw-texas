@@ -1,9 +1,19 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Image, ImageBackground, KeyboardAvoidingView, Text, View } from 'react-native'
+import {
+  Image,
+  ImageBackground,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+  TouchableWithoutFeedback,
+  View
+} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNetInfo } from '@react-native-community/netinfo'
+import AndroidKeyboardAdjust from 'react-native-android-keyboard-adjust'
 import ReactNativeBiometrics from 'react-native-biometrics'
 import kw from 'assets/images/kw-logo.png'
 import illustration from 'assets/images/login-illustration.png'
@@ -69,6 +79,10 @@ export const Login = () => {
       setErrorMessage(loginErrors('invalid_request'))
     }
   }
+
+  useEffect(() => {
+    if (Platform.OS === 'android') AndroidKeyboardAdjust.setAdjustPan()
+  }, [])
 
   useEffect(() => {
     if (biometricPosition !== -1) {
@@ -170,56 +184,58 @@ export const Login = () => {
         <NoConnection />
       </Modal>
       <SafeAreaView style={styles.containerView}>
-        <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={IS_IOS ? 50 : 0}>
-          <View style={styles.topContainer}>
-            <View style={styles.logo}>
-              <Image testID={kwLogo} source={kw} resizeMode='contain' resizeMethod='resize' style={styles.kw} />
-              <Text style={styles.connect}>{t('components_Login_connect')}</Text>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={IS_IOS ? 50 : 0}>
+            <View style={styles.topContainer}>
+              <View style={styles.logo}>
+                <Image testID={kwLogo} source={kw} resizeMode='contain' resizeMethod='resize' style={styles.kw} />
+                <Text style={styles.connect}>{t('components_Login_connect')}</Text>
+              </View>
+              <View style={styles.inputsView}>
+                <Input
+                  testID={usernameInput}
+                  title={t('components_Login_Username')}
+                  placeholder={t('components_Login_Enter_username')}
+                  disabled={!netInfo.isConnected || false}
+                  empty={usernameEmptyFlag}
+                  error={errorFlag}
+                  value={username}
+                  onChangeText={setUsername}
+                  style={styles.input}
+                />
+                <Input
+                  testID={passwordInput}
+                  title={t('components_Login_Password')}
+                  type={FORM.FIELDS_TYPES.PASSWORD}
+                  placeholder={t('components_Login_Enter_password')}
+                  disabled={!netInfo.isConnected || false}
+                  empty={passwordEmptyFlag}
+                  error={errorFlag}
+                  value={password}
+                  onChangeText={setPassword}
+                  style={styles.input}
+                />
+                {errorFlag && errorMessage && <Text style={styles.textMessage}>{t(errorMessage)}</Text>}
+                <Button
+                  testID={signinButton}
+                  viewStyle={styles.button}
+                  textStyle={styles.textBold}
+                  message={t('Log In')}
+                  onPress={handleLogin}
+                  disabled={!netInfo.isConnected || loginDisabled}
+                  loading={loading}
+                />
+              </View>
             </View>
-            <View style={styles.inputsView}>
-              <Input
-                testID={usernameInput}
-                title={t('components_Login_Username')}
-                placeholder={t('components_Login_Enter_username')}
-                disabled={!netInfo.isConnected || false}
-                empty={usernameEmptyFlag}
-                error={errorFlag}
-                value={username}
-                onChangeText={setUsername}
-                style={styles.input}
+            {!!biometryTypeState && biometryAllowed && (
+              <BiometricModal
+                onAuth={handleLoginFromBiometry}
+                biometryType={biometryTypeState}
+                setBiometricPosition={setBiometricPosition}
               />
-              <Input
-                testID={passwordInput}
-                title={t('components_Login_Password')}
-                type={FORM.FIELDS_TYPES.PASSWORD}
-                placeholder={t('components_Login_Enter_password')}
-                disabled={!netInfo.isConnected || false}
-                empty={passwordEmptyFlag}
-                error={errorFlag}
-                value={password}
-                onChangeText={setPassword}
-                style={styles.input}
-              />
-              {errorFlag && errorMessage && <Text style={styles.textMessage}>{t(errorMessage)}</Text>}
-              <Button
-                testID={signinButton}
-                viewStyle={styles.button}
-                textStyle={styles.textBold}
-                message={t('Log In')}
-                onPress={handleLogin}
-                disabled={!netInfo.isConnected || loginDisabled}
-                loading={loading}
-              />
-            </View>
-          </View>
-          {!!biometryTypeState && biometryAllowed && (
-            <BiometricModal
-              onAuth={handleLoginFromBiometry}
-              biometryType={biometryTypeState}
-              setBiometricPosition={setBiometricPosition}
-            />
-          )}
-        </KeyboardAvoidingView>
+            )}
+          </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
         <BiometricPermission
           biometryType={biometryTypeState}
           isVisible={allowModal}

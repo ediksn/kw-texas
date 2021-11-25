@@ -36,6 +36,11 @@ export const styles = StyleSheet.create({
     width: moderateScale(40),
     borderRadius: moderateScale(20)
   },
+  avatarDefault: {
+    width: scale(30),
+    height: scale(30),
+    opacity: 0.5
+  },
   info: {
     marginLeft: moderateScale(12)
   },

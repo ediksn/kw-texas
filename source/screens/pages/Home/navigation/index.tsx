@@ -1,8 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { useSelector } from 'react-redux'
-import DefaultAvatar from 'assets/images/default-avatar.png'
 import { useNavigation } from '@react-navigation/native'
 import { Header, Icon } from '~/components'
 import { NAVIGATION } from '~/constants'
@@ -10,6 +9,7 @@ import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
 import { RootState } from '~/store'
 import { Home } from '..'
 import { styles } from './styles'
+import Avatar from '~/components/Avatar'
 
 const HomeHeader = () => {
   const { t } = useTranslation()
@@ -19,9 +19,14 @@ const HomeHeader = () => {
 
   const leftButton = (
     <View style={styles.leftButtonContainer}>
-      <Image
-        style={usrData?.photo !== undefined ? styles.photo : styles.defaultAvatar}
-        source={usrData?.photo ? { uri: usrData?.photo } : DefaultAvatar}
+      <Avatar
+        uri={
+          usrData?.photo || typeof usrData?.photo !== 'undefined'
+            ? `https://avatar.kwconnect.com/${usrData?.assigneeId}.jpeg`
+            : ''
+        }
+        avatarStyle={styles.avatar}
+        avatarDefaultStyle={styles.avatarDefault}
       />
       <TouchableOpacity onPress={() => navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { edit: false })}>
         <Text style={styles.text}>{t('components_NewPost_Share_today')} </Text>

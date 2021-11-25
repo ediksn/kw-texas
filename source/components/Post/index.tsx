@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
 import moment from 'moment'
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from 'react-native-size-matters'
 import { useNavigation } from '@react-navigation/native'
@@ -14,6 +14,7 @@ import { useUnRichContent } from '~/hooks'
 import { OptionInterface } from '../../interfaces/groupInterface'
 import { authorPost, datePost, dotsOptionsPost, contentPost, buttonPost } from '../../constants/testIds'
 import { homeActions, toastActions } from '~/store/actions'
+import Avatar from '../Avatar'
 
 const Post = ({ post }: { post: PostInterface }) => {
   const {
@@ -193,7 +194,7 @@ const Post = ({ post }: { post: PostInterface }) => {
       <View>
         <View style={styles.header}>
           <View style={styles.avatarBox}>
-            <Image testID={avatarPost} style={styles.avatar} resizeMode='cover' source={{ uri: creatorPhoto }} />
+            <Avatar testID={avatarPost} uri={creatorPhoto} />
             <View style={styles.info}>
               <Text testID={authorPost} style={styles.name}>
                 {author}

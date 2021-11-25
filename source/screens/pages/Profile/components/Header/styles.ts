@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     aspectRatio: 1,
     backgroundColor: theme.backgrounds.whiteBackground,
-    borderRadius: 30,
+    borderRadius: moderateScale(60),
     height: moderateScale(60),
     justifyContent: 'center',
     overflow: 'hidden'
@@ -29,12 +29,6 @@ export const styles = StyleSheet.create({
   photo: {
     aspectRatio: 1,
     width: moderateScale(60)
-  },
-  initials: {
-    color: '#ffffff',
-    fontFamily: 'Mulish-Bold',
-    fontSize: 14,
-    position: 'absolute'
   },
   name: {
     color: '#282B33',

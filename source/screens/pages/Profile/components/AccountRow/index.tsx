@@ -4,6 +4,7 @@ import { Image, Text, TouchableOpacity, View, ImageStyle } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { styles } from './styles'
 import { getUsrProfileActions } from '~/store/actions'
+import Avatar from '~/components/Avatar'
 
 interface Props {
   index: number
@@ -26,7 +27,13 @@ const AccountRow = ({ index, image, name, rol, isDefault, setChangingAccount, co
     <TouchableOpacity style={styles.container} onPress={handleOnChangeAccount}>
       <View style={styles.leftSubcontainer}>
         <View style={containerImage}>
-          <Image source={image} style={styleImage} />
+          <Avatar
+            uri={image}
+            avatarStyle={styleImage}
+            avatarDefaultStyle={styleImage}
+            initialsViewStyle={styles.initials}
+            forceInitials
+          />
         </View>
         <View>
           <Text style={styles.name}>{name}</Text>

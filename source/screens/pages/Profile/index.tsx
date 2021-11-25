@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import DefaultAvatar from 'assets/images/default-avatar.png'
 import { RootState } from '~/store'
 import { theme } from '~/constants'
 
@@ -29,36 +28,34 @@ const Profile = () => {
 
   const handleLogOut = () => dispatch(loginActions.logOut())
 
-  const AccountList = () => {
-    return (
-      <>
-        {profiles.map((account: ProfileInterface, index: number) => {
-          if (account !== profiles[activeAccount])
-            return (
-              <AccountRow
-                key={account.id}
-                index={index}
-                image={account.photo ? { uri: account.photo } : DefaultAvatar}
-                name={account.name}
-                rol={account.role}
-                isDefault={account.isDefault}
-                setChangingAccount={setChangingAccount}
-                containerImage={!account.photo && styles.containerAvatarDefault}
-                styleImage={account.photo ? styles.avatarPhoto : styles.avatarDefault}
-              />
-            )
-          return null
-        })}
-      </>
-    )
-  }
+  const AccountList = () => (
+    <>
+      {profiles.map((account: ProfileInterface, index: number) => {
+        if (account !== profiles[activeAccount])
+          return (
+            <AccountRow
+              key={account.id}
+              index={index}
+              image={account.photo}
+              name={account.name}
+              rol={account.role}
+              isDefault={account.isDefault}
+              setChangingAccount={setChangingAccount}
+              containerImage={!account.photo && styles.containerAvatarDefault}
+              styleImage={account.photo ? styles.avatarPhoto : styles.avatarDefault}
+            />
+          )
+        return null
+      })}
+    </>
+  )
 
   return (
     <>
       <Spinner isLoading={loading || changingAccount}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Header userData={profiles[activeAccount]} />
-          {profiles.length && (
+          {profiles.length > 1 && (
             <>
               <View style={styles.separator} />
               <Text style={styles.title}>Other accounts</Text>

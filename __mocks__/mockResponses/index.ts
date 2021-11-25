@@ -107,7 +107,10 @@ export const postResponse = {
   pinned: false,
   userHasAlreadyLiked: false,
   userHasAlreadyBookmarked: false,
-  groupId: '60f5dc9b71551e6b786910a0'
+  groupInfo: {
+    id: '60f603104d8d7a001ac9ec79',
+    name: 'Aanother Best Test Group 2021-08-30T07:11.000Z'
+  }
 }
 
 export const postsResponse = {

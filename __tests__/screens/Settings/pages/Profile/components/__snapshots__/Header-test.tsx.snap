@@ -12,35 +12,33 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <View
-    style={
+  <Image
+    onError={[Function]}
+    resizeMode="cover"
+    source={
       Object {
-        "alignItems": "center",
-        "aspectRatio": 1,
-        "backgroundColor": "white",
-        "borderRadius": 30,
-        "height": 94.28571428571428,
-        "justifyContent": "center",
-        "overflow": "hidden",
+        "uri": "https://storage.googleapis.com/attachment-qa-eeac/556398/c5dd00kacb05iv34efp0.jpg",
       }
     }
-  >
-    <Image
-      resizeMethod="resize"
-      resizeMode="cover"
-      source={
+    style={
+      Array [
         Object {
-          "uri": "https://storage.googleapis.com/attachment-qa-eeac/556398/c5dd00kacb05iv34efp0.jpg",
-        }
-      }
-      style={
+          "borderRadius": 31.428571428571427,
+          "height": 62.857142857142854,
+          "width": 62.857142857142854,
+        },
         Object {
+          "alignItems": "center",
           "aspectRatio": 1,
-          "width": 94.28571428571428,
-        }
-      }
-    />
-  </View>
+          "backgroundColor": "white",
+          "borderRadius": 94.28571428571428,
+          "height": 94.28571428571428,
+          "justifyContent": "center",
+          "overflow": "hidden",
+        },
+      ]
+    }
+  />
   <Text
     numberOfLines={2}
     style={

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Image, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native'
+import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,6 +11,7 @@ import { FormPostInterface, PostInterface } from '~/interfaces/postInterface'
 import { useUnRichContent, useRichContent } from '~/hooks'
 import { homeActions, toastActions } from '~/store/actions'
 import { GroupInterface, OptionInterface } from '~/interfaces/groupInterface'
+import Avatar from '~/components/Avatar'
 
 const NewPost = () => {
   const { t } = useTranslation()
@@ -20,6 +21,7 @@ const NewPost = () => {
   const { editMode, idPost, groupId }: any = params
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
   const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
+  const user: any = useSelector((state: RootState) => state.login.user)
   const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)
   const groups: GroupInterface[] = useSelector((state: RootState) => state.home.groups.data)
@@ -129,9 +131,9 @@ const NewPost = () => {
       >
         <View style={styles.body}>
           <View style={styles.avatarBox}>
-            <Image style={styles.avatar} resizeMode='cover' source={{ uri: usrData?.userProfile.photo }} />
+            <Avatar uri={usrData?.userProfile.photo} />
             <View style={styles.info}>
-              <Text style={styles.name}>{usrData?.name.toUpperCase()}</Text>
+              <Text style={styles.name}>{user?.name.toUpperCase()}</Text>
               <TouchableOpacity ref={buttonRef} style={styles.dropTouch} onPress={() => setShowDropDown(!showDropDown)}>
                 <Text style={styles.group} ellipsizeMode='tail' numberOfLines={1}>
                   {groupSelected?.title}

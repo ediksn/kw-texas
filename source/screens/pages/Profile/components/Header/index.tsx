@@ -1,9 +1,9 @@
 import React from 'react'
 import { Image, Text, View } from 'react-native'
 import GroupsUnfilled from 'assets/images/groups-unfilled.png'
-import DefaultAvatar from 'assets/images/default-avatar.png'
 import { ProfileInterface } from '~/interfaces/usrInterface'
 import { styles } from './styles'
+import Avatar from '~/components/Avatar'
 
 interface Props {
   userData: ProfileInterface
@@ -12,13 +12,7 @@ interface Props {
 const Header = ({ userData }: Props) => {
   return (
     <View style={styles.container}>
-      <View style={styles.avatar}>
-        {userData?.photo ? (
-          <Image style={styles.photo} resizeMode='cover' resizeMethod='resize' source={{ uri: userData?.photo }} />
-        ) : (
-          <Image style={styles.defaultAvatar} resizeMode='contain' resizeMethod='resize' source={DefaultAvatar} />
-        )}
-      </View>
+      <Avatar uri={userData?.photo} avatarStyle={styles.avatar} avatarDefaultStyle={styles.avatar} forceInitials />
       <Text style={styles.name} numberOfLines={2}>
         {userData.name}
       </Text>

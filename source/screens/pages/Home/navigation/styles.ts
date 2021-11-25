@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end'
   },
-  photo: {
+  avatar: {
     aspectRatio: 1,
     width: scale(32),
     height: scale(32),
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
   chat: {
     marginLeft: scale(9)
   },
-  defaultAvatar: {
+  avatarDefault: {
     width: scale(30),
     height: scale(30),
     opacity: 0.5

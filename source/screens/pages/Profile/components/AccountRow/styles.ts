@@ -48,5 +48,14 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 12,
     lineHeight: 16
+  },
+  initials: {
+    alignItems: 'center',
+    aspectRatio: 1,
+    borderRadius: 30,
+    height: moderateScale(40),
+    justifyContent: 'center',
+    overflow: 'hidden',
+    marginRight: moderateScale(8)
   }
 })

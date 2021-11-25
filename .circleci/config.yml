@@ -3,7 +3,7 @@ version: 2.1
 executors:
   macos_exec:
     macos:
-      xcode: 13.0.0
+      xcode: 12.3.0
 
 jobs:
   build:

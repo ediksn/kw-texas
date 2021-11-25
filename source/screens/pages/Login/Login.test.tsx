@@ -20,6 +20,9 @@ jest.mock('@react-native-community/netinfo', () => ({
   useNetInfo: () => ({ t: (key: any) => key })
 }))
 
+// eslint-disable-next-line global-require
+jest.mock('react-native-permissions', () => require('react-native-permissions/mock'))
+
 describe('Login test', () => {
   let store
 

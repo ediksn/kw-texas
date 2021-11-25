@@ -4,6 +4,8 @@ import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    marginBottom: 2,
     shadowColor: theme.darkGrey,
     shadowOffset: {
       width: 0,
@@ -33,8 +35,7 @@ export const styles = StyleSheet.create({
   },
   date: {
     fontFamily: 'Mulish-Regular',
-    fontSize: 12,
-    fontWeight: '400',
+    fontSize: theme.fonts.SMALL_SIZE,
     lineHeight: 16,
     color: theme.texts.secondary
   },
@@ -51,9 +52,8 @@ export const styles = StyleSheet.create({
     marginRight: scale(16)
   },
   title: {
-    fontFamily: 'Mulish-Regular',
-    fontSize: 16,
-    fontWeight: '700',
+    fontFamily: 'Mulish-Bold',
+    fontSize: theme.fonts.MEDIUM_SIZE,
     lineHeight: 20,
     color: '#282B33'
   },
@@ -64,15 +64,18 @@ export const styles = StyleSheet.create({
     marginRight: scale(16)
   },
   buttonsContainer: {
+    flex: 1,
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: verticalScale(5),
-    marginTop: verticalScale(5)
+    marginBottom: verticalScale(16),
+    marginTop: verticalScale(13)
   },
-  buttons: {
-    width: 'auto',
-    paddingRight: scale(16),
-    paddingLeft: scale(16),
+  button: {
+    width: '44%',
+    alignSelf: 'center',
+    paddingHorizontal: scale(16),
+    paddingVertical: verticalScale(8),
     height: scale(40)
   },
   shareIcon: {

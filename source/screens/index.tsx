@@ -8,8 +8,9 @@ import GroupsUnfilled from 'assets/images/groups-unfilled.png'
 import GroupsFilled from 'assets/images/groups-filled.png'
 import CalendarUnfilled from 'assets/images/calendar-unfilled.png'
 import CalendarFilled from 'assets/images/calendar-filled.png'
-import NotificationsUnfilled from 'assets/images/notifications-unfilled.png'
-import NotificationsFilled from 'assets/images/notifications-filled.png'
+import EventsUnfilled from 'assets/images/events-unfilled.png'
+import EventsFilled from 'assets/images/events-filled.png'
+import DefaultAvatar from 'assets/images/default-avatar.png'
 import { NAVIGATION } from '~/constants/navigation'
 import { TabNavigator, TabScreen, StackNavigator, StackScreen } from './components/Navigators'
 import { Login, Groups } from './pages'
@@ -24,7 +25,7 @@ import HomeStackScreen from './pages/Home/navigation'
 import { styles } from './styles'
 import ProfileStackScreen from './pages/Profile/navigation'
 import NewPost from './pages/Home/pages/NewPost'
-import NotificationsStackScreen from './pages/Notifications/navigation'
+import EventsStackScreen from './pages/Events/navigation'
 import { ToastProps } from '~/interfaces/toastInterface'
 
 const TabNavigation = () => {
@@ -68,17 +69,13 @@ const TabNavigation = () => {
             <CustomTabBar focused={focused} PNG={focused ? CalendarFilled : CalendarUnfilled} imageStyle={styles.png} />
           )
         }}
-        name={NAVIGATION.SCREEN.NOTIFICATIONS}
-        component={NotificationsStackScreen}
+        name={NAVIGATION.SCREEN.EVENTS}
+        component={EventsStackScreen}
       />
       <TabScreen
         options={{
           tabBarIcon: ({ focused }) => (
-            <CustomTabBar
-              focused={focused}
-              PNG={focused ? NotificationsFilled : NotificationsUnfilled}
-              imageStyle={styles.notifications}
-            />
+            <CustomTabBar focused={focused} PNG={focused ? EventsFilled : EventsUnfilled} imageStyle={styles.events} />
           )
         }}
         name={NAVIGATION.SCREEN.SETTINGS}

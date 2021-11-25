@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     width: moderateScale(28),
     height: moderateScale(28)
   },
-  notifications: {
+  events: {
     width: moderateScale(22),
     height: moderateScale(24),
     marginTop: verticalScale(1)

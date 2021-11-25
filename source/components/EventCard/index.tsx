@@ -1,22 +1,23 @@
 import React from 'react'
 import { Image, ImageSourcePropType, Text, View, ViewStyle } from 'react-native'
 import { useTranslation } from 'react-i18next'
-
+import moment from 'moment'
 import NoImage from 'assets/images/no-image.png'
 import { moderateScale } from 'react-native-size-matters'
 import { styles } from './styles'
 import Button from '../Button'
 import { TEST_IDS, theme } from '~/constants'
-import { EventsInterface } from '~/interfaces/eventsInterface'
+import { EventInterface } from '~/interfaces'
 
 interface Props {
-  event: EventsInterface
+  event: EventInterface
   img?: ImageSourcePropType
   style?: ViewStyle
 }
 
 const EventCard = ({ event, style, img = NoImage }: Props) => {
   const { t } = useTranslation()
+
   return (
     <View style={[styles.container, style]}>
       <View style={styles.imageContainer}>
@@ -29,13 +30,13 @@ const EventCard = ({ event, style, img = NoImage }: Props) => {
         />
       </View>
       <View testID={TEST_IDS.EVENT_CARD.IMAGE_ID} style={styles.dateContainer}>
-        <Text style={styles.date}>{t(event.starts.format('dddd'))}</Text>
+        <Text style={styles.date}>{t(moment(event.starts).format('dddd'))}</Text>
         <View style={styles.separator} />
         <Text style={styles.date}>
-          {event.starts.date()} {t(event.starts.format('MMMM'))}
+          {moment(event.starts).day()} {t(moment(event.starts).format('MMMM'))}
         </Text>
         <View style={styles.separator} />
-        <Text style={styles.date}>At {event.starts.format('HH:mm A')}</Text>
+        <Text style={styles.date}>At {moment(event.starts).format('HH:mm A')}</Text>
         <View style={styles.separator} />
         <Text style={styles.date}>{event.location}</Text>
       </View>
@@ -43,14 +44,14 @@ const EventCard = ({ event, style, img = NoImage }: Props) => {
         <Text style={styles.title}>{event.name}</Text>
       </View>
       <View testID={TEST_IDS.EVENT_CARD.ASSISTANCE_ID} style={styles.footerContainer}>
-        <Text style={styles.date}>Interested:</Text>
+        <Text style={styles.date}>Interested: 0</Text>
         <View style={styles.separator} />
-        <Text style={styles.date}>Will go: {event.slug}</Text>
+        <Text style={styles.date}>Will go: {event.slug || 0}</Text>
       </View>
       <View style={styles.buttonsContainer}>
         <Button
           testID={TEST_IDS.EVENT_CARD.INTERESTED_BUTTON_ID}
-          viewStyle={styles.buttons}
+          viewStyle={styles.button}
           icon={{
             name: 'star-empty-icon',
             size: moderateScale(20),
@@ -60,10 +61,10 @@ const EventCard = ({ event, style, img = NoImage }: Props) => {
         />
         <Button
           testID={TEST_IDS.EVENT_CARD.SHARE_BUTTON_ID}
-          viewStyle={styles.buttons}
+          viewStyle={styles.button}
           icon={{
             name: 'share-icon',
-            size: moderateScale(22),
+            size: moderateScale(20),
             color: theme.activeColor,
             iconStyle: styles.shareIcon
           }}

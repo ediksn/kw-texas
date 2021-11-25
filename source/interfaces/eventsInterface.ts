@@ -5,15 +5,28 @@ interface InstructorsInterface {
   lastName: string
 }
 
-export interface EventsInterface {
-  id: number
+export interface EventInterface {
+  id: string
   name: string
-  price: string
   location: string
-  ends: moment.Moment
   starts: moment.Moment
-  published: boolean
+  ends: moment.Moment
+  slug: any
+  price: string
   instructors: InstructorsInterface[]
   bookmarked: boolean
-  slug: any
+  published: boolean
+}
+
+export interface EventsProduceProps {
+  type: string
+  payload?: {
+    data: EventInterface[]
+    limit: number
+  }
+}
+
+export interface EventsReducerProps {
+  draftState: any
+  payload?: any
 }

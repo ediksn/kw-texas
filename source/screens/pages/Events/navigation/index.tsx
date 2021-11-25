@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Header } from '~/components'
 import { NAVIGATION } from '~/constants'
 import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
-import { Notifications } from '..'
+import { Events } from '..'
 import { styles } from './styles'
 
 const NoitificationsHeader = () => {
@@ -18,10 +18,10 @@ const NoitificationsHeader = () => {
   }
 }
 
-const NotificationsStackScreen = () => (
+const EventsStackScreen = () => (
   <StackNavigator>
-    <StackScreen options={NoitificationsHeader} name={NAVIGATION.SCREEN.NOTIFICATIONS} component={Notifications} />
+    <StackScreen options={NoitificationsHeader} name={NAVIGATION.SCREEN.EVENTS} component={Events} />
   </StackNavigator>
 )
 
-export default NotificationsStackScreen
+export default EventsStackScreen

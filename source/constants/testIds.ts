@@ -5,6 +5,10 @@ export const TEST_IDS = {
     EVENT_CARD_ID: 'eventCardId',
     TOAST_ID: 'toastId'
   },
+  EVENTS: {
+    TODAY_ID: 'eventsTodayId',
+    TOMORROW_ID: 'eventsTomorrowId'
+  },
   EVENT_CARD: {
     IMAGE_ID: 'eventCardImageId',
     DATE_ID: 'eventCardImageId',

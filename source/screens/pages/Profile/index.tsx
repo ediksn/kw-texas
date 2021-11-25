@@ -64,7 +64,7 @@ const Profile = () => {
             </>
           )}
           <ListButton
-            title='components_Login_Log_In'
+            title='components_Login_Log_Out'
             onPress={handleLogOut}
             arrow={false}
             svg

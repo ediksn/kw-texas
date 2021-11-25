@@ -3,9 +3,6 @@ import { moderateScale, scale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
-  containerBoxStyle: {
-    flex: 1
-  },
   containerEmpty: {
     padding: moderateScale(10),
     flex: 1
@@ -36,6 +33,7 @@ export const styles = StyleSheet.create({
     width: scale(14)
   },
   cardStyle: {
-    width: '100%'
+    flex: 1,
+    marginRight: scale(8)
   }
 })

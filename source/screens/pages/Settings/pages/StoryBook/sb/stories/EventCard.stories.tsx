@@ -3,10 +3,10 @@ import React from 'react'
 import { View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 import EventCard from '~/components/EventCard'
-import { EventsInterface } from '~/interfaces/eventsInterface'
+import { EventInterface } from '~/interfaces'
 
 const EventCardStories = () => {
-  const event: EventsInterface = {
+  const event: EventInterface = {
     bookmarked: true,
     ends: moment('2021-10-11 19:00:00'),
     id: 857429,

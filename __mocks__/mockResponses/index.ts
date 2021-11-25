@@ -356,6 +356,182 @@ export const eventResponse = {
   starts: moment('2021-10-10 11:00:00')
 }
 
+export const eventsResponse = {
+  data: {
+    searchOnlineEvents: [
+      {
+        id: 857784,
+        name: 'AT By API_2021-11-01T07:08:31.613',
+        location: 'Online',
+        starts: '2021-11-01 08:08:31',
+        ends: '2021-11-03 11:18:31',
+        slug: null,
+        price: '123.12',
+        instructors: [
+          {
+            firstName: 'Chris',
+            lastName: 'Mondoux'
+          }
+        ],
+        bookmarked: false,
+        published: true
+      },
+      {
+        id: 857788,
+        name: 'AT By API_2021-11-01T07:08:36.352',
+        location: 'Online',
+        starts: '2021-11-01 08:08:36',
+        ends: '2021-11-03 11:18:36',
+        slug: null,
+        price: '123.12',
+        instructors: [
+          {
+            firstName: 'Chris',
+            lastName: 'Mondoux'
+          }
+        ],
+        bookmarked: true,
+        published: true
+      },
+      {
+        id: 857789,
+        name: 'AT By API_2021-11-01T07:08:36.734',
+        location: 'Online',
+        starts: '2021-11-01 08:08:36',
+        ends: '2021-11-03 11:18:36',
+        slug: null,
+        price: '123.12',
+        instructors: [
+          {
+            firstName: 'Chris',
+            lastName: 'Mondoux'
+          }
+        ],
+        bookmarked: false,
+        published: true
+      },
+      {
+        id: 857790,
+        name: 'AT By API_2021-11-01T07:08:38.294',
+        location: 'Online',
+        starts: '2021-11-01 08:08:38',
+        ends: '2021-11-03 11:18:38',
+        slug: null,
+        price: '123.12',
+        instructors: [
+          {
+            firstName: 'Chris',
+            lastName: 'Mondoux'
+          }
+        ],
+        bookmarked: true,
+        published: true
+      },
+      {
+        id: 857791,
+        name: 'AT By API_2021-11-01T07:08:40.191',
+        location: 'Online',
+        starts: '2021-11-01 08:08:40',
+        ends: '2021-11-03 11:18:40',
+        slug: null,
+        price: '123.12',
+        instructors: [
+          {
+            firstName: 'Chris',
+            lastName: 'Mondoux'
+          }
+        ],
+        bookmarked: false,
+        published: true
+      },
+      {
+        id: 857792,
+        name: 'AT By API_2021-11-01T07:08:41.628',
+        location: 'Online',
+        starts: '2021-11-01 08:08:41',
+        ends: '2021-11-03 11:18:41',
+        slug: null,
+        price: '123.12',
+        instructors: [
+          {
+            firstName: 'Chris',
+            lastName: 'Mondoux'
+          }
+        ],
+        bookmarked: false,
+        published: true
+      },
+      {
+        id: 857488,
+        name: 'THAT IS Test5555',
+        location: 'Online',
+        starts: '2021-11-01 11:00:00',
+        ends: '2021-11-01 18:00:00',
+        slug: null,
+        price: '90',
+        instructors: [
+          {
+            firstName: 'Chris',
+            lastName: 'Mondoux'
+          }
+        ],
+        bookmarked: false,
+        published: true
+      },
+      {
+        id: 857277,
+        name: 'Recurring event for daily',
+        location: 'Online',
+        starts: '2021-11-01 23:00:00',
+        ends: '2021-11-02 00:00:00',
+        slug: null,
+        price: '0',
+        instructors: [
+          {
+            firstName: 'Chris',
+            lastName: 'Mondoux'
+          }
+        ],
+        bookmarked: false,
+        published: true
+      },
+      {
+        id: 857793,
+        name: 'AT By API_2021-11-02T07:08:33.065',
+        location: 'Online',
+        starts: '2021-11-02 08:08:33',
+        ends: '2021-11-04 11:18:33',
+        slug: null,
+        price: '123.12',
+        instructors: [
+          {
+            firstName: 'Chris',
+            lastName: 'Mondoux'
+          }
+        ],
+        bookmarked: false,
+        published: true
+      },
+      {
+        id: 857796,
+        name: 'AT By API_2021-11-02T07:08:38.056',
+        location: 'Online',
+        starts: '2021-11-02 08:08:38',
+        ends: '2021-11-04 11:18:38',
+        slug: null,
+        price: '123.12',
+        instructors: [
+          {
+            firstName: 'Chris',
+            lastName: 'Mondoux'
+          }
+        ],
+        bookmarked: true,
+        published: true
+      }
+    ]
+  }
+}
 export const deletePostResponse = {
   data: { deletePost: true }
 }

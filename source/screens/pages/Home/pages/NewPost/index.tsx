@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, Platform } from 'react-native'
+import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, Platform, Keyboard } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
@@ -68,6 +68,7 @@ const NewPost = () => {
 
   const handleSubmit = async () => {
     setShowDropDown(false)
+    Keyboard.dismiss()
     const form: FormPostInterface = {
       group: groupSelected.key,
       text: useRichContent(inputValue),

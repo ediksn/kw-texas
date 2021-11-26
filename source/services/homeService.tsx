@@ -91,6 +91,22 @@ export default {
     })
   },
   createPost: async (form: FormPostInterface) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query:
+        '\n    mutation createPost($post: createPostInput!, $file: [Upload]) {\n  createPost(post: $post, file: $file)\n}\n    ',
+      variables: {
+        post: {
+          group: form.group,
+          content: form.text,
+          type: 'STANDARD',
+          source: 'GROUPS',
+          plainTextContent: useUnRichContent(form.text)
+        }
+      }
+    })
+  },
+  createPostWithMedia: async (form: FormPostInterface) => {
     const axiosInstance = await axiosInstanceFormTokens()
     if (form.hasImages && form.images) {
       const formData = new FormData()
@@ -131,6 +147,10 @@ export default {
       })
       return axiosInstance.post('/connect-groups-api/graphql', formData)
     }
+    return { data: { data: null } }
+  },
+  editPost: async (form: FormPostInterface) => {
+    const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {
       query:
         '\n    mutation createPost($post: createPostInput!, $file: [Upload]) {\n  createPost(post: $post, file: $file)\n}\n    ',
@@ -141,21 +161,6 @@ export default {
           type: 'STANDARD',
           source: 'GROUPS',
           plainTextContent: useUnRichContent(form.text)
-        }
-      }
-    })
-  },
-  editPost: async (form: FormPostInterface) => {
-    const axiosInstance = await axiosInstanceTokens()
-    return axiosInstance.post('/connect-groups-api/graphql', {
-      query:
-        '\n    mutation createPost($post: createPostInput!, $file: [Upload]) {\n  createPost(post: $post, file: $file)\n}\n    ',
-      variables: {
-        post: {
-          group: form.group,
-          content: `{"blocks":[{"key":"34ove","text":"${form.text}","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}`,
-          type: 'STANDARD',
-          source: 'GROUPS'
         }
       }
     })

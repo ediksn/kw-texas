@@ -78,7 +78,8 @@ const actionCreators = {
         data: {
           data: { createPost }
         }
-      } = await homeService.createPost(form)
+      } =
+        form.hasImages && form.images ? await homeService.createPostWithMedia(form) : await homeService.createPost(form)
 
       if (createPost) {
         dispatch({
@@ -93,8 +94,9 @@ const actionCreators = {
     }
     return false
   },
-  editPost: (form: FormPostInterface) => async (dispatch: any) => {
+  editPost: (form: FormPostInterface) => async (dispatch: any, getState: any) => {
     const { EDIT_POST, EDIT_POST_SUCCESS, EDIT_POST_FAILURE } = HOME_TYPES
+    const { limitDefault }: any = getState().home.posts
     dispatch({ type: EDIT_POST })
 
     try {
@@ -107,6 +109,7 @@ const actionCreators = {
             data: form
           }
         })
+        await dispatch(actionCreators.getPosts(limitDefault))
         return true
       }
       dispatch({ type: EDIT_POST_FAILURE, payload: 'Error on Edit Post' })

@@ -14,9 +14,10 @@ interface Props {
   onAuth: any
   biometryType: string
   setBiometricPosition: React.Dispatch<React.SetStateAction<number>>
+  setBiometricHeight: React.Dispatch<React.SetStateAction<number>>
 }
 
-const BiometricModal = ({ onAuth, biometryType, setBiometricPosition }: Props) => {
+const BiometricModal = ({ onAuth, biometryType, setBiometricPosition, setBiometricHeight }: Props) => {
   const { t } = useTranslation()
 
   const texts: { [index: string]: string } = {
@@ -35,6 +36,7 @@ const BiometricModal = ({ onAuth, biometryType, setBiometricPosition }: Props) =
       style={styles.container}
       onLayout={event => {
         setBiometricPosition(event.nativeEvent.layout.y)
+        setBiometricHeight(event.nativeEvent.layout.height)
       }}
     >
       <Text style={styles.text}>{texts[biometryType]}</Text>

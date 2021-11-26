@@ -52,6 +52,7 @@ export const Login = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const [biometricPosition, setBiometricPosition] = useState(-1)
+  const [biometricHeight, setBiometricHeight] = useState(-1)
   const [showIllustration, setShowIllustration] = useState(false)
   const screenHeight = useDeviceHeight()
   const statusBarHeight = useStatusBarHeight()
@@ -86,7 +87,8 @@ export const Login = () => {
 
   useEffect(() => {
     if (biometricPosition !== -1) {
-      if (screenHeight - illustrationHeight - statusBarHeight < biometricPosition) setShowIllustration(false)
+      if (screenHeight - illustrationHeight - statusBarHeight < biometricPosition + biometricHeight)
+        setShowIllustration(false)
       else if (biometricPosition > 0) setShowIllustration(true)
     } else setShowIllustration(true)
   }, [biometricPosition, biometryTypeState])
@@ -232,6 +234,7 @@ export const Login = () => {
                 onAuth={handleLoginFromBiometry}
                 biometryType={biometryTypeState}
                 setBiometricPosition={setBiometricPosition}
+                setBiometricHeight={setBiometricHeight}
               />
             )}
           </KeyboardAvoidingView>

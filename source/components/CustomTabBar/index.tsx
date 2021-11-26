@@ -27,6 +27,7 @@ const CustomTabBar = ({ focused, PNG, imageURL, imageStyle }: Props) => {
           avatarDefaultStyle={imageStyle}
           initialsViewStyle={styles(focused).initialsView}
           initialsStyle={styles(focused).initialsStyle}
+          forceInitials
         />
       )}
     </View>

@@ -61,6 +61,7 @@ export const Home = () => {
         onEndReachedThreshold={1}
         ListEmptyComponent={(!loading && NoPost) || <></>}
         style={styles.list}
+        showsVerticalScrollIndicator={posts.length > 0}
         contentContainerStyle={styles.contentListStyle}
         ListFooterComponent={<Spinner isLoading={hasMoreLoading} size={30} color='#3D424D' />}
       />

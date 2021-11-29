@@ -1,5 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, Platform, Keyboard } from 'react-native'
+import {
+  Text,
+  View,
+  KeyboardAvoidingView,
+  TextInput,
+  TouchableOpacity,
+  Platform,
+  Keyboard,
+  TouchableWithoutFeedback
+} from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
@@ -170,67 +179,73 @@ const NewPost = () => {
         rightButton={rightButton}
         onClickRight={hasValidForm ? () => handleSubmit() : null}
       />
-      <KeyboardAvoidingView
-        behavior={IS_IOS ? 'padding' : undefined}
-        keyboardVerticalOffset={IS_IOS ? 40 : 0}
-        style={styles.content}
-      >
-        <View style={styles.body}>
-          <View style={styles.avatarBox}>
-            <Avatar uri={usrData?.userProfile.photo} />
-            <View style={styles.info}>
-              <Text style={styles.name}>{user?.name.toUpperCase()}</Text>
-              <TouchableOpacity ref={buttonRef} style={styles.dropTouch} onPress={() => setShowDropDown(!showDropDown)}>
-                <Text style={styles.group} ellipsizeMode='tail' numberOfLines={1}>
-                  {groupSelected?.title}
-                </Text>
-                <Icon name={`drop${showDropDown ? 'up' : 'down'}-icon`} size={6} color={theme.post.green} />
-              </TouchableOpacity>
-              <Dropdown
-                buttonRef={buttonRef}
-                isVisible={showDropDown}
-                onRequestClose={() => setShowDropDown(false)}
-                onSelectOption={setGroupSelected}
-                options={getMyGroupsFormatted()}
-                selectedOption={groupSelected}
-                width={239}
-                center
-              />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <KeyboardAvoidingView
+          behavior={IS_IOS ? 'padding' : undefined}
+          keyboardVerticalOffset={IS_IOS ? 40 : 0}
+          style={styles.content}
+        >
+          <View style={styles.body}>
+            <View style={styles.avatarBox}>
+              <Avatar uri={usrData?.userProfile.photo} />
+              <View style={styles.info}>
+                <Text style={styles.name}>{user?.name.toUpperCase()}</Text>
+                <TouchableOpacity
+                  ref={buttonRef}
+                  style={styles.dropTouch}
+                  onPress={() => setShowDropDown(!showDropDown)}
+                >
+                  <Text style={styles.group} ellipsizeMode='tail' numberOfLines={1}>
+                    {groupSelected?.title}
+                  </Text>
+                  <Icon name={`drop${showDropDown ? 'up' : 'down'}-icon`} size={6} color={theme.post.green} />
+                </TouchableOpacity>
+                <Dropdown
+                  buttonRef={buttonRef}
+                  isVisible={showDropDown}
+                  onRequestClose={() => setShowDropDown(false)}
+                  onSelectOption={setGroupSelected}
+                  options={getMyGroupsFormatted()}
+                  selectedOption={groupSelected}
+                  width={239}
+                  center
+                />
+              </View>
             </View>
+            <TextInput
+              ref={inputRef}
+              value={inputValue}
+              onChangeText={text => setInputValue(text)}
+              maxLength={MAX_CHARACTERS_NEW_POST}
+              placeholder={t('components_NewPost_Share_today')}
+              placeholderTextColor={theme.post.inputTitle}
+              textAlignVertical='top'
+              autoFocus={!showDropDown}
+              multiline
+              style={styles.inputText}
+            />
+            <ImagePickerPreview images={pickerResponse} handleDelete={handleDeleteImage} />
           </View>
-          <TextInput
-            ref={inputRef}
-            value={inputValue}
-            onChangeText={text => setInputValue(text)}
-            maxLength={MAX_CHARACTERS_NEW_POST}
-            placeholder={t('components_NewPost_Share_today')}
-            placeholderTextColor={theme.post.inputTitle}
-            textAlignVertical='top'
-            autoFocus={!showDropDown}
-            multiline
-            style={styles.inputText}
-          />
-          <ImagePickerPreview images={pickerResponse} handleDelete={handleDeleteImage} />
-        </View>
-        <View style={styles.footer}>
-          <TouchableOpacity
-            onPress={handleAttachImage}
-            disabled={pickerResponse.length >= 15}
-            style={pickerResponse.length >= 15 && styles.iconDisabled}
-          >
-            <Icon name='gallery-icon' size={24} color={theme.post.green} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={handleTakePicture}
-            disabled={pickerResponse.length >= 15}
-            style={pickerResponse.length >= 15 && styles.iconDisabled}
-          >
-            <Icon name='camera-icon' size={24} color={theme.post.green} />
-          </TouchableOpacity>
-          <Icon name='people-icon' size={24} color={theme.post.green} />
-          <Icon name='location-icon' size={24} color={theme.post.green} />
-        </View>
-      </KeyboardAvoidingView>
+          <View style={styles.footer}>
+            <TouchableOpacity
+              onPress={handleAttachImage}
+              disabled={pickerResponse.length >= 15}
+              style={pickerResponse.length >= 15 && styles.iconDisabled}
+            >
+              <Icon name='gallery-icon' size={24} color={theme.post.green} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={handleTakePicture}
+              disabled={pickerResponse.length >= 15}
+              style={pickerResponse.length >= 15 && styles.iconDisabled}
+            >
+              <Icon name='camera-icon' size={24} color={theme.post.green} />
+            </TouchableOpacity>
+            <Icon name='people-icon' size={24} color={theme.post.green} />
+            <Icon name='location-icon' size={24} color={theme.post.green} />
+          </View>
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     </>
   )
 }

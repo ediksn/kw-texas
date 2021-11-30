@@ -4,7 +4,7 @@ import getAccessoryMenuPopUpPosition from './utils'
 import BaseButton from './components/BaseButton'
 import { Icon } from '~/components'
 import { styles } from './styles'
-import { useDeviceHeight } from '../../hooks/settings'
+import { useDeviceHeight, useIsIosPlatform } from '../../hooks/settings'
 import { OptionInterface } from '~/interfaces/groupInterface'
 import { theme } from '~/constants'
 
@@ -43,7 +43,6 @@ const Dropdown = memo(
     const INITIAL_OPACITY = 0
     const INITIAL_SCALE = 0.75
     const SCREEN_HEIGHT = useDeviceHeight()
-
     const [currentIsVisible, setCurrentIsVisible] = useState(isVisible)
     const [dropdownPosXY, setDropdownPosXY] = useState([0, -SCREEN_HEIGHT])
     const contextRef = useRef<any>()
@@ -124,10 +123,9 @@ const Dropdown = memo(
           >
             <>
               <Text
-                numberOfLines={1}
                 allowFontScaling={false}
                 style={[
-                  styles.title,
+                  useIsIosPlatform() ? styles.titleIos : styles.title,
                   item.color && { color: item.color, fontFamily: item.isTitle ? 'Mulish-Bold' : 'Mulish-Regular' }
                 ]}
               >

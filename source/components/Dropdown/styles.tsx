@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   modal: {
@@ -35,9 +36,15 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   title: {
-    color: '#282B33',
+    color: theme.darkGrey,
     fontFamily: 'Mulish-Regular',
     fontSize: 14
+  },
+  titleIos: {
+    color: theme.darkGrey,
+    fontFamily: 'Mulish-Regular',
+    fontSize: 14,
+    width: '80%'
   },
   checkmark: {
     alignItems: 'center',

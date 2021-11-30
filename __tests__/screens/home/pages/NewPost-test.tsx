@@ -101,6 +101,14 @@ describe('New Post Action', () => {
     expectedStore.home.posts.isLoading = false
     expect(homeReducer(oldStore.home, newPost)).toEqual(expectedStore.home)
   })
+
+  it('should retrieve all groups', async () => {
+    storeModels.dispatch(homeActions.getAllGroups()).then(() => {
+      const storeState = storeModels.getState()
+      const { groups } = storeState.home
+      expect(groups.data.length).toBeGreaterThan(10)
+    })
+  })
 })
 
 describe('Render New Post Test', () => {

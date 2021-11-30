@@ -17,19 +17,20 @@ import AndroidKeyboardAdjust from 'react-native-android-keyboard-adjust'
 import { Icon, Header, Dropdown, Spinner } from '~/components'
 import { styles } from './styles'
 import { IS_IOS, NAVIGATION, theme } from '~/constants'
-import { RootState } from '~/store'
-import { FormPostInterface, PostInterface } from '~/interfaces/postInterface'
 import { useUnRichContent, useRichContent } from '~/hooks'
-import { homeActions, toastActions } from '~/store/actions'
 import { GroupInterface, OptionInterface } from '~/interfaces/groupInterface'
 import ImagePickerPreview from '~/components/ImagePickerPreview'
 import { UploadImageInterface } from '~/interfaces/uploadImageInterface'
 import { MAX_CHARACTERS_NEW_POST } from '~/utils/constants'
 import Avatar from '~/components/Avatar'
+import { PostInterface, FormPostInterface } from '~/interfaces/postInterface'
+import { RootState } from '~/store'
+import { homeActions, toastActions } from '~/store/actions'
 
 const NewPost = () => {
   const { t } = useTranslation()
   const navigation = useNavigation()
+  const { navigate } = navigation
   const dispatch = useDispatch()
   const { params } = useRoute()
   const { editMode, idPost, groupId }: any = params
@@ -39,7 +40,6 @@ const NewPost = () => {
   const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)
   const groups: GroupInterface[] = useSelector((state: RootState) => state.home.groups.data)
-  const limitDefault: number = useSelector((state: RootState) => state.home.groups.limitDefault)
   const currentPost = posts.find(p => p.id === idPost)
   const content = currentPost?.content || ''
   const contentText = useUnRichContent(content)
@@ -55,18 +55,20 @@ const NewPost = () => {
   const buttonRef = useRef<any>()
   const inputRef = useRef<any>()
 
-  useEffect(() => {
+  const init = async () => {
     if (Platform.OS === 'android') AndroidKeyboardAdjust.setAdjustResize()
-    dispatch(homeActions.getGroups(limitDefault))
+    dispatch(homeActions.getAllGroups())
     if (editMode && groupId) {
-      setTimeout(async () => {
-        const res: any = await dispatch(homeActions.getGroupInfo(groupId))
-        res.name = res.name.trim()
-        if (res) {
-          setGroupSelected({ key: res.id, title: res.name })
-        }
-      }, 0)
+      const res: any = await dispatch(homeActions.getGroupInfo(groupId))
+      res.name = res.name.trim()
+      if (res) {
+        setGroupSelected({ key: res.id, title: res.name })
+      }
     }
+  }
+
+  useEffect(() => {
+    init()
   }, [])
 
   useEffect(() => {
@@ -96,10 +98,11 @@ const NewPost = () => {
     }
   }
 
-  const handleGroup = ({ id, name }: GroupInterface) => {
+  const handleGroup = (option: OptionInterface) => {
+    const { key, title } = option
     const groupSelectedFromDrop = {
-      key: id,
-      title: name.trim().length > 1 ? name : 'NO NAME'
+      key,
+      title: title && title.trim().length > 1 ? title : 'NO NAME'
     }
     setGroupSelected(groupSelectedFromDrop)
     setShowDropDown(false)
@@ -121,7 +124,6 @@ const NewPost = () => {
         ...myGroups,
         {
           key: group.id,
-          handleOption: () => handleGroup(group),
           title: group.name.trim().length > 1 ? group.name : 'NO NAME'
         }
       ]
@@ -175,7 +177,7 @@ const NewPost = () => {
         title={t(`${editMode ? 'Edit ' : 'Create '} Post`)}
         style={styles.header}
         leftButton={leftButton}
-        onClickLeft={() => navigation.navigate(NAVIGATION.SCREEN.HOME)}
+        onClickLeft={() => navigate(NAVIGATION.SCREEN.HOME)}
         rightButton={rightButton}
         onClickRight={hasValidForm ? () => handleSubmit() : null}
       />
@@ -204,7 +206,7 @@ const NewPost = () => {
                   buttonRef={buttonRef}
                   isVisible={showDropDown}
                   onRequestClose={() => setShowDropDown(false)}
-                  onSelectOption={setGroupSelected}
+                  onSelectOption={handleGroup}
                   options={getMyGroupsFormatted()}
                   selectedOption={groupSelected}
                   width={239}

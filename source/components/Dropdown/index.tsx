@@ -120,7 +120,7 @@ const Dropdown = memo(
         return (
           <BaseButton
             style={[styles.item, { height: itemHeight }, item.separated && styles.itemSeparated]}
-            onPress={item.handleOption}
+            onPress={handleSelect(item)}
           >
             <>
               <Text
@@ -134,7 +134,7 @@ const Dropdown = memo(
                 {item.title}
               </Text>
 
-              {!selectedOption?.handleOption && selectedOption?.key === item.key && (
+              {selectedOption?.key === item.key && item.key !== '0' && (
                 <Icon name='check-icon' size={20} color={theme.darkGreenColor} />
               )}
             </>

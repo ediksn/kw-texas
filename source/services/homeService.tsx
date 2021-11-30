@@ -80,6 +80,17 @@ export default {
       }
     })
   },
+  getAllGroups: async () => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query:
+        '\n    query getListOfGroups($limit: Int!, $offset: Int!) {\n  getListOfJoinedGroups(limit: $limit, offset: $offset) {\n    id\n    name\n    description\n    postCount\n    membersCount\n    status\n    icon {\n      url\n      id\n    }\n  }\n}\n    ',
+      variables: {
+        offset: 0,
+        limit: 10000
+      }
+    })
+  },
   getGroupInfo: async (id: string) => {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {

@@ -53,6 +53,21 @@ const actionCreators = {
       dispatch({ type: GET_GROUPS_FAILURE, payload: error })
     }
   },
+  getAllGroups: () => async (dispatch: AppDispatch) => {
+    const { GET_GROUPS, GET_GROUPS_SUCCESS, GET_GROUPS_FAILURE } = HOME_TYPES
+    dispatch({ type: GET_GROUPS })
+    try {
+      const response = await homeService.getAllGroups()
+      dispatch({
+        type: GET_GROUPS_SUCCESS,
+        payload: {
+          data: response?.data.data.getListOfJoinedGroups
+        }
+      })
+    } catch (error) {
+      dispatch({ type: GET_GROUPS_FAILURE, payload: error })
+    }
+  },
   getGroupInfo: (id: string) => async (dispatch: AppDispatch) => {
     const { GET_GROUP_INFO, GET_GROUP_INFO_SUCCESS, GET_GROUP_INFO_FAILURE } = HOME_TYPES
     dispatch({ type: GET_GROUP_INFO })

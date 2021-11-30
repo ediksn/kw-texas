@@ -33,7 +33,7 @@ const EventCard = ({ event, style, img = NoImage }: Props) => {
         <Text style={styles.date}>{t(moment(event.starts).format('dddd'))}</Text>
         <View style={styles.separator} />
         <Text style={styles.date}>
-          {moment(event.starts).day()} {t(moment(event.starts).format('MMMM'))}
+          {moment(event.starts).format('DD')} {t(moment(event.starts).format('MMMM'))}
         </Text>
         <View style={styles.separator} />
         <Text style={styles.date}>At {moment(event.starts).format('HH:mm A')}</Text>

@@ -4,6 +4,9 @@ executors:
   macos_exec:
     macos:
       xcode: 12.3.0
+  macos_exec_ios:
+    macos:
+      xcode: 13.0.0    
 
 jobs:
   build:
@@ -136,7 +139,7 @@ workflows:
     jobs:
       - build:
           name: build-ios
-          executor: macos_exec
+          executor: macos_exec_ios
           platform: ios
           filters: &build-filters
             branches:
@@ -149,7 +152,7 @@ workflows:
                 - /^release\/v\d+\.\d+\.\d+$/
       - build:
           name: build-ios-dev
-          executor: macos_exec
+          executor: macos_exec_ios
           platform: ios
           dev: true
           filters: *build-filters

@@ -18,11 +18,12 @@ const Toast = ({ open, title, type, menuHeight }: ToastProps) => {
   const { t } = useTranslation()
   const softNavBarHeight = (!IS_IOS && ExtraDimensions.getSoftMenuBarHeight()) || 0
   const animatedTranslation = useRef(new Animated.Value(60)).current
-  const androidOffset = softNavBarHeight > 0 ? softNavBarHeight / 2 : verticalScale(30)
-  const iOSOffset = verticalScale(30)
+  const androidOffset = softNavBarHeight > 0 ? softNavBarHeight / 2 : 0
+  const iOSOffset = 30
   const bottomOffset = !IS_IOS ? androidOffset : iOSOffset
-  const translationValue = menuHeight + bottomOffset - 5
+  const translationValue = verticalScale(menuHeight + bottomOffset)
   const [transitioning, setTransitioning] = useState(false)
+
   const TOAST_ICONS = {
     [TOAST_TYPE.SUCCESS]: (
       <Image testID={TEST_IDS.TOAST.ICON_ID} style={styles.icon} resizeMode='contain' source={toastSuccess} />

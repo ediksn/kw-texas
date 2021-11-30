@@ -4,6 +4,12 @@ export interface FormPostInterface {
   hasImages?: boolean
   images?: any[]
 }
+
+export interface PostImagesInterface {
+  id: string
+  url: string
+}
+
 export interface PostInterface {
   id: string
   content: string
@@ -19,6 +25,9 @@ export interface PostInterface {
   creatorPhoto: string
   createdAt: string
   deleted: boolean
+  detail: {
+    images: PostImagesInterface[]
+  }
   pinned: boolean
   userHasAlreadyLiked: boolean
   userHasAlreadyBookmarked: boolean

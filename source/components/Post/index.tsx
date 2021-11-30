@@ -15,6 +15,7 @@ import { OptionInterface } from '../../interfaces/groupInterface'
 import { authorPost, datePost, dotsOptionsPost, contentPost, buttonPost } from '../../constants/testIds'
 import { homeActions, toastActions } from '~/store/actions'
 import Avatar from '../Avatar'
+import PostMedia from '~/components/PostMedia'
 
 const Post = ({ post }: { post: PostInterface }) => {
   const {
@@ -236,6 +237,7 @@ const Post = ({ post }: { post: PostInterface }) => {
               </TouchableOpacity>
             )}
           </View>
+          <PostMedia post={post} />
           <View style={styles.infoNumbers}>
             <Text style={styles.infoNumber}>{getLikesCommentsSharesText(likesCount, t('components_Post_likes'))}</Text>
             <View style={styles.commentsSharesBox}>

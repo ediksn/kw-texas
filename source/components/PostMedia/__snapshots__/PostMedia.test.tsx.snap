@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "marginVertical": 19.61764705882353,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "some url",
+      }
+    }
+    style={
+      Object {
+        "height": 250,
+        "marginBottom": 7.847058823529411,
+        "width": "100%",
+      }
+    }
+  />
+</View>
+`;

@@ -215,7 +215,7 @@ const actionCreators = {
     }
     return false
   },
-  addLike: (postId: string) => async (dispatch: AppDispatch, getState: any) => {
+  addLike: (postId: string) => async (dispatch: AppDispatch) => {
     const { ADD_LIKE_POST, ADD_LIKE_POST_SUCCESS, ADD_LIKE_POST_FAILURE } = HOME_TYPES
     dispatch({ type: ADD_LIKE_POST })
 
@@ -224,14 +224,8 @@ const actionCreators = {
         data: { data: toggleLikePost }
       } = await homeService.toggleLikePost(postId)
       if (toggleLikePost) {
-        const posts: PostInterface[] = getState().home.posts.data
-        const newPosts = posts.map((post: PostInterface) =>
-          post.id === postId ? { ...post, userHasAlreadyLiked: true } : post
-        )
-
         dispatch({
-          type: ADD_LIKE_POST_SUCCESS,
-          payload: newPosts
+          type: ADD_LIKE_POST_SUCCESS
         })
       } else {
         dispatch({ type: ADD_LIKE_POST_FAILURE, payload: `Error on Like Post ${postId}` })
@@ -241,7 +235,7 @@ const actionCreators = {
     }
     return false
   },
-  removeLike: (postId: string) => async (dispatch: AppDispatch, getState: any) => {
+  removeLike: (postId: string) => async (dispatch: AppDispatch) => {
     const { REMOVE_LIKE_POST, REMOVE_LIKE_POST_SUCCESS, REMOVE_LIKE_POST_FAILURE } = HOME_TYPES
     dispatch({ type: REMOVE_LIKE_POST })
 
@@ -250,13 +244,8 @@ const actionCreators = {
         data: { data: toggleLikePost }
       } = await homeService.toggleLikePost(postId)
       if (toggleLikePost) {
-        const posts: PostInterface[] = getState().home.posts.data
-        const newPosts = posts.map((post: PostInterface) =>
-          post.id === postId ? { ...post, userHasAlreadyLiked: false } : post
-        )
         dispatch({
-          type: REMOVE_LIKE_POST_SUCCESS,
-          payload: newPosts
+          type: REMOVE_LIKE_POST_SUCCESS
         })
       } else {
         dispatch({ type: REMOVE_LIKE_POST_FAILURE, payload: `Error on Remove Like Post ${postId}` })

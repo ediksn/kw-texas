@@ -41,6 +41,7 @@ const Post = ({ post }: { post: PostInterface }) => {
   const [showDropDown, setShowDropDown] = useState(false)
   const [numberOfLines, setNumberOfLines] = useState<number | undefined>()
   const [hasShowLessMore, setHasShowLessMore] = useState(false)
+  const [likes, setLikes] = useState(likesCount)
   const { t } = useTranslation()
   const navigation = useNavigation()
   const dispatch = useDispatch()
@@ -104,12 +105,16 @@ const Post = ({ post }: { post: PostInterface }) => {
   }
 
   const handleLikePost = () => {
-    if (liked) {
+    let likesUpdated
+    if (!liked) {
       dispatch(homeActions.addLike(id))
+      likesUpdated = likes + 1
     } else {
       dispatch(homeActions.removeLike(id))
+      likesUpdated = likes - 1
     }
     setLiked(!liked)
+    setLikes(likesUpdated)
   }
 
   const optionsPost = () => {
@@ -239,7 +244,7 @@ const Post = ({ post }: { post: PostInterface }) => {
           </View>
           <PostMedia post={post} />
           <View style={styles.infoNumbers}>
-            <Text style={styles.infoNumber}>{getLikesCommentsSharesText(likesCount, t('components_Post_likes'))}</Text>
+            <Text style={styles.infoNumber}>{getLikesCommentsSharesText(likes, t('components_Post_likes'))}</Text>
             <View style={styles.commentsSharesBox}>
               <Text style={[styles.infoNumber, shares > 0 ? styles.comments : null]}>
                 {getLikesCommentsSharesText(repliesCount, t('components_Post_comments'))}

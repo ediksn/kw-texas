@@ -27,13 +27,7 @@ const {
   ADD_BOOKMARK_POST_FAILURE,
   REMOVE_BOOKMARK_POST,
   REMOVE_BOOKMARK_POST_SUCCESS,
-  REMOVE_BOOKMARK_POST_FAILURE,
-  ADD_LIKE_POST,
-  ADD_LIKE_POST_SUCCESS,
-  ADD_LIKE_POST_FAILURE,
-  REMOVE_LIKE_POST,
-  REMOVE_LIKE_POST_SUCCESS,
-  REMOVE_LIKE_POST_FAILURE
+  REMOVE_BOOKMARK_POST_FAILURE
 } = HOME_TYPES
 const HOME_INITIAL_STATE = homeModel
 
@@ -106,26 +100,6 @@ const REDUCERS = {
     draftState.posts.isLoading = false
   },
   [REMOVE_BOOKMARK_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = false
-  },
-  [ADD_LIKE_POST]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = true
-  },
-  [ADD_LIKE_POST_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
-    draftState.posts.data = payload
-    draftState.posts.isLoading = false
-  },
-  [ADD_LIKE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = false
-  },
-  [REMOVE_LIKE_POST]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = true
-  },
-  [REMOVE_LIKE_POST_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
-    draftState.posts.data = payload
-    draftState.posts.isLoading = false
-  },
-  [REMOVE_LIKE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = false
   }
 }

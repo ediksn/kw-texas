@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
   containerView: {
     height: verticalScale(30),
     width: scale(150),
-    elevation: 1,
     borderWidth: 0,
     borderRadius: moderateScale(5),
     justifyContent: 'center',

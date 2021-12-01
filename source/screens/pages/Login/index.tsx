@@ -1,14 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import {
-  Image,
-  ImageBackground,
-  Keyboard,
-  KeyboardAvoidingView,
-  Platform,
-  Text,
-  TouchableWithoutFeedback,
-  View
-} from 'react-native'
+import { Image, Keyboard, KeyboardAvoidingView, Platform, Text, TouchableWithoutFeedback, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -16,11 +7,10 @@ import { useNetInfo } from '@react-native-community/netinfo'
 import AndroidKeyboardAdjust from 'react-native-android-keyboard-adjust'
 import ReactNativeBiometrics from 'react-native-biometrics'
 import kw from 'assets/images/kw-logo.png'
-import illustration from 'assets/images/login-illustration.png'
 import Modal from 'react-native-modal'
 import { Button, Input } from '~/components'
-import { illustrationLogo, IS_IOS, kwLogo, passwordInput, signinButton, usernameInput } from '~/constants'
-import { illustrationHeight, styles } from './styles'
+import { IS_IOS, kwLogo, passwordInput, signinButton, usernameInput } from '~/constants'
+import { styles } from './styles'
 import { FORM } from '~/constants/form'
 import { loginActions } from '~/store/actions'
 import { ErrorInterface } from '~/interfaces/errorInterface'
@@ -29,8 +19,6 @@ import { loginErrors } from '~/functions'
 import BiometricModal from '~/components/BiometricModal'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
 import BiometricPermission from '~/components/BiometricPermission'
-import { useDeviceHeight } from '~/hooks'
-import { useStatusBarHeight } from '../../../hooks/settings'
 
 export const Login = () => {
   const { t } = useTranslation()
@@ -50,12 +38,6 @@ export const Login = () => {
   const [allowModal, setAllowModal] = useState(false)
   const [loginDisabled, setLoginDisabled] = useState(true)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-
-  const [biometricPosition, setBiometricPosition] = useState(-1)
-  const [biometricHeight, setBiometricHeight] = useState(-1)
-  const [showIllustration, setShowIllustration] = useState(false)
-  const screenHeight = useDeviceHeight()
-  const statusBarHeight = useStatusBarHeight()
 
   const error: ErrorInterface = useSelector((state: RootState) => state.login.error)
   const user = useSelector((state: RootState) => state.login.user)
@@ -84,14 +66,6 @@ export const Login = () => {
   useEffect(() => {
     if (Platform.OS === 'android') AndroidKeyboardAdjust.setAdjustPan()
   }, [])
-
-  useEffect(() => {
-    if (biometricPosition !== -1) {
-      if (screenHeight - illustrationHeight - statusBarHeight < biometricPosition + biometricHeight)
-        setShowIllustration(false)
-      else if (biometricPosition > 0) setShowIllustration(true)
-    } else setShowIllustration(true)
-  }, [biometricPosition, biometryTypeState])
 
   useEffect(() => {
     if (user !== null) {
@@ -230,12 +204,7 @@ export const Login = () => {
               </View>
             </View>
             {!!biometryTypeState && biometryAllowed && (
-              <BiometricModal
-                onAuth={handleLoginFromBiometry}
-                biometryType={biometryTypeState}
-                setBiometricPosition={setBiometricPosition}
-                setBiometricHeight={setBiometricHeight}
-              />
+              <BiometricModal onAuth={handleLoginFromBiometry} biometryType={biometryTypeState} />
             )}
           </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
@@ -246,15 +215,6 @@ export const Login = () => {
           onRequestClose={handleCloseModal}
           onYes={handleAllowBiometry}
         />
-        {showIllustration && (
-          <ImageBackground
-            testID={illustrationLogo}
-            resizeMode='contain'
-            resizeMethod='resize'
-            source={illustration}
-            style={styles.illustration}
-          />
-        )}
       </SafeAreaView>
     </>
   )

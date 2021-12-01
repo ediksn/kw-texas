@@ -122,15 +122,20 @@ export const Login = () => {
 
   const handleLoginFromBiometry = useCallback(async () => {
     const permission = await Storage.get({ key: BIOMETRIC.PERMISSION })
-    if (permission.ALLOWED === true) {
-      const options = { promptMessage: t('components_Login_Sign_in') }
-      const result = await ReactNativeBiometrics.simplePrompt(options)
-      if (result.success) {
-        const credentials = await Storage.getCredentials()
-        if (credentials) {
-          setLoading(true)
-          await dispatch(loginActions.logIn({ username: credentials.username, password: credentials.password }))
+    if (permission && permission.ALLOWED === true) {
+      try {
+        const options = { promptMessage: t('components_Login_Sign_in') }
+        const result = await ReactNativeBiometrics.simplePrompt(options)
+        if (result.success) {
+          const credentials = await Storage.getCredentials()
+          if (credentials) {
+            setLoading(true)
+            await dispatch(loginActions.logIn({ username: credentials.username, password: credentials.password }))
+          }
         }
+      } catch (e) {
+        setBiometryAllowed(false)
+        Storage.save({ key: BIOMETRIC.PERMISSION, value: { ALLOWED: false } })
       }
     }
   }, [t, dispatch])

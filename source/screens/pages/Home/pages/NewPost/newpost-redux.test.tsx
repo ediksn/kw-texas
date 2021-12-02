@@ -31,7 +31,7 @@ describe('New Post Action', () => {
     {
       type: GET_POSTS_SUCCESS,
       payload: {
-        data: undefined,
+        data: [],
         limit: 10,
         limitDefault: 10
       }

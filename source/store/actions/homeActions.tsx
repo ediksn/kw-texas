@@ -24,10 +24,12 @@ const actionCreators = {
       dispatch({ type: GET_POSTS, payload: hasMoreLoading })
       try {
         const response = await homeService.getPosts(limit)
+        const posts = response?.data.data.getPosts || []
+
         dispatch({
           type: GET_POSTS_SUCCESS,
           payload: {
-            data: response?.data.data.getPosts,
+            data: posts,
             limitDefault: 10,
             limit
           }

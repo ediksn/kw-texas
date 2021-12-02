@@ -13,7 +13,7 @@ const NoitificationsHeader = () => {
 
   return {
     header: () => {
-      return <Header style={styles.container} title={titleText} titleStyle={styles.titleStyle} />
+      return <Header style={styles.container} title={titleText} />
     }
   }
 }

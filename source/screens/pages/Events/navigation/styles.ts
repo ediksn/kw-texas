@@ -6,9 +6,5 @@ export const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.backgroundWhite,
     height: scale(60)
-  },
-  titleStyle: {
-    fontWeight: 'bold',
-    fontSize: theme.fonts.LARGE_SIZE
   }
 })

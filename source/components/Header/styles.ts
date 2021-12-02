@@ -29,7 +29,8 @@ export const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Mulish-Bold',
-    fontSize: 16,
-    lineHeight: 24
+    fontSize: theme.fonts.LARGE_SIZE,
+    lineHeight: 24,
+    fontWeight: '700'
   }
 })

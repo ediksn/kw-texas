@@ -41,7 +41,8 @@ exports[`renders correctly 1`] = `
       style={
         Object {
           "fontFamily": "Mulish-Bold",
-          "fontSize": 16,
+          "fontSize": 25.142857142857142,
+          "fontWeight": "700",
           "lineHeight": 24,
         }
       }

@@ -63,7 +63,7 @@ export const Home = () => {
         onRefresh={onRefresh}
         onEndReached={onEndReached}
         onEndReachedThreshold={1}
-        ListEmptyComponent={(!loading && NoPost) || <></>}
+        ListEmptyComponent={NoPost}
         style={styles.list}
         showsVerticalScrollIndicator={posts?.length > 0}
         contentContainerStyle={styles.contentListStyle}

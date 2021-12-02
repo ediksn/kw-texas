@@ -164,8 +164,8 @@ export const Login = () => {
       <Modal isVisible={netInfo.isConnected === false} style={styles.noConnectionModal}>
         <NoConnection />
       </Modal>
-      <SafeAreaView style={styles.containerView}>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <SafeAreaView style={styles.containerView}>
           <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={IS_IOS ? 50 : 0}>
             <View style={styles.topContainer}>
               <View style={styles.logo}>
@@ -212,15 +212,15 @@ export const Login = () => {
               <BiometricModal onAuth={handleLoginFromBiometry} biometryType={biometryTypeState} />
             )}
           </KeyboardAvoidingView>
-        </TouchableWithoutFeedback>
-        <BiometricPermission
-          biometryType={biometryTypeState}
-          isVisible={allowModal}
-          onNo={handleDenyBiometry}
-          onRequestClose={handleCloseModal}
-          onYes={handleAllowBiometry}
-        />
-      </SafeAreaView>
+          <BiometricPermission
+            biometryType={biometryTypeState}
+            isVisible={allowModal}
+            onNo={handleDenyBiometry}
+            onRequestClose={handleCloseModal}
+            onYes={handleAllowBiometry}
+          />
+        </SafeAreaView>
+      </TouchableWithoutFeedback>
     </>
   )
 }

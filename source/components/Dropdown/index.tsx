@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useRef, useEffect, useState } from 'react'
 import { Animated, FlatList, Keyboard, Modal, Text, TouchableWithoutFeedback, View } from 'react-native'
+import { useTranslation } from 'react-i18next'
 import getAccessoryMenuPopUpPosition from './utils'
 import BaseButton from './components/BaseButton'
 import { Icon } from '~/components'
@@ -48,6 +49,7 @@ const Dropdown = memo(
     const contextRef = useRef<any>()
     const animationOpacity = useRef(new Animated.Value(INITIAL_OPACITY))
     const animationScale = useRef(new Animated.Value(INITIAL_SCALE))
+    const { t } = useTranslation()
 
     const containerPaddingVertical = 4
     const itemHeight = 40
@@ -114,6 +116,16 @@ const Dropdown = memo(
       [handleRunAnimationHide, onSelectOption]
     )
 
+    const dropdonwHeader = useCallback(() => {
+      return (
+        <BaseButton style={[styles.item, { height: itemHeight }]}>
+          <Text allowFontScaling={false} style={styles.dropdownHeader}>
+            {t('components_NewPost_Select_Community')}
+          </Text>
+        </BaseButton>
+      )
+    }, [])
+
     const handleRenderItem = useCallback(
       ({ item }) => {
         return (
@@ -132,7 +144,7 @@ const Dropdown = memo(
                 {item.title}
               </Text>
 
-              {selectedOption?.key === item.key && item.key !== '0' && (
+              {!selectedOption?.handleOption && selectedOption?.key === item.key && (
                 <Icon name='check-icon' size={20} color={theme.darkGreenColor} />
               )}
             </>
@@ -163,7 +175,13 @@ const Dropdown = memo(
               !center && { right: dropdownPosXY[0] }
             ]}
           >
-            <FlatList data={options} keyExtractor={keyExtractor} renderItem={handleRenderItem} persistentScrollbar />
+            <FlatList
+              data={options}
+              ListHeaderComponent={dropdonwHeader}
+              keyExtractor={keyExtractor}
+              renderItem={handleRenderItem}
+              persistentScrollbar
+            />
           </Animated.View>
         </View>
       </Modal>

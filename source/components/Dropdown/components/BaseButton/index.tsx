@@ -3,7 +3,7 @@ import { TouchableOpacity, ViewStyle } from 'react-native'
 import { useButtonPressDecorator } from '~/hooks'
 
 interface Props {
-  onPress: () => void
+  onPress?: () => void
   disabled?: boolean
   children?: any
   isLoading?: boolean

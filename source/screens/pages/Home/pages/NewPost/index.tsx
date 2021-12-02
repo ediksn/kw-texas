@@ -51,7 +51,7 @@ const NewPost = () => {
     color: theme.post.inputText
   })
   const [pickerResponse, setPickerResponse] = useState<UploadImageInterface[]>([])
-  const hasValidForm = !editMode && inputValue !== '' && groupSelected.key !== '0'
+  const hasValidForm = !editMode && inputValue !== '' && groupSelected?.key !== '0'
   const buttonRef = useRef<any>()
   const inputRef = useRef<any>()
 
@@ -81,7 +81,7 @@ const NewPost = () => {
     setShowDropDown(false)
     Keyboard.dismiss()
     const form: FormPostInterface = {
-      group: groupSelected.key,
+      group: groupSelected?.key,
       text: useRichContent(inputValue),
       hasImages: pickerResponse.length > 0,
       images: pickerResponse.length > 0 ? pickerResponse : undefined
@@ -110,14 +110,7 @@ const NewPost = () => {
   }
 
   const getMyGroupsFormatted = () => {
-    let myGroups: OptionInterface[] = [
-      {
-        key: '0',
-        isTitle: true,
-        title: t('components_NewPost_Select_Community'),
-        color: theme.post.inputText
-      }
-    ]
+    let myGroups: OptionInterface[] = []
 
     groups.forEach((group: GroupInterface) => {
       myGroups = [

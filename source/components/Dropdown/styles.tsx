@@ -50,5 +50,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 8
+  },
+  dropdownHeader: {
+    color: theme.post.inputText,
+    fontFamily: 'Mulish-Regular',
+    fontSize: 14,
+    lineHeight: 16,
+    fontWeight: '700'
   }
 })

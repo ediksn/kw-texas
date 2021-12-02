@@ -3,6 +3,7 @@ import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 const deviceWidth = Dimensions.get('window').width
+export const illustrationHeight = moderateScale(290)
 
 export const styles = StyleSheet.create({
   containerView: {
@@ -85,5 +86,21 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.darkBackground,
     zIndex: -1,
     elevation: -1
+  },
+  illustration: {
+    position: 'absolute',
+    bottom: 0,
+    marginTop: verticalScale(7.32),
+    marginRight: scale(48),
+    marginLeft: scale(50),
+    width: moderateScale(250),
+    height: illustrationHeight,
+    zIndex: -1
+  },
+  textInput: {
+    width: scale(320)
+  },
+  textPasswordInput: {
+    width: scale(270)
   }
 })

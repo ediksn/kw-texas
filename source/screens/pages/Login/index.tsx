@@ -183,6 +183,7 @@ export const Login = () => {
                   value={username}
                   onChangeText={setUsername}
                   style={styles.input}
+                  styleText={styles.textInput}
                 />
                 <Input
                   testID={passwordInput}
@@ -195,6 +196,7 @@ export const Login = () => {
                   value={password}
                   onChangeText={setPassword}
                   style={styles.input}
+                  styleText={styles.textPasswordInput}
                 />
                 {errorFlag && errorMessage && <Text style={styles.textMessage}>{t(errorMessage)}</Text>}
                 <Button

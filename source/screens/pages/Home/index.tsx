@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { View, FlatList, Text } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { theme } from '~/constants'
+import { useNavigation } from '@react-navigation/native'
+import { NAVIGATION, theme } from '~/constants'
 import { styles } from './styles'
 import { PostInterface } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
@@ -21,6 +22,7 @@ export const Home = () => {
   const kwuId: number = usr?.kwuid
   useBackButtonMinimize()
   const { t } = useTranslation()
+  const navigation = useNavigation()
 
   useEffect(() => {
     dispatch(getUsrProfileActions.getUsrProfile(kwuId))
@@ -30,6 +32,7 @@ export const Home = () => {
   const keyExtractor = (post: PostInterface) => post.id.toString()
   const onRefresh = () => dispatch(homeActions.getPosts(limit))
   const onEndReached = () => dispatch(homeActions.getPosts(limit + 10, true))
+  const onCreatePost = () => navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { edit: false })
 
   const NoPost = () => (
     <View style={styles.noPostWrapper}>
@@ -44,6 +47,7 @@ export const Home = () => {
         message={t('components_Home_Create_new_post')}
         viewStyle={styles.button}
         textStyle={styles.buttonText}
+        onPress={onCreatePost}
         testID='create_new_post_button'
       />
     </View>

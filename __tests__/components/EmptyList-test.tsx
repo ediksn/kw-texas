@@ -9,7 +9,6 @@ jest.mock('react-i18next', () => ({
 test('renders correctly', () => {
   const title = 'Title'
   const icon = null
-  const iconStyle = {}
-  const emtpyList = renderer.create(<EmptyList title={title} icon={icon} iconStyle={iconStyle} />).toJSON()
+  const emtpyList = renderer.create(<EmptyList title={title} icon={icon} />).toJSON()
   expect(emtpyList).toMatchSnapshot()
 })

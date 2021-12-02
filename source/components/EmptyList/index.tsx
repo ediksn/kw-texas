@@ -1,21 +1,27 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Image, Text, View, ImageStyle } from 'react-native'
+import { Image, Text, View } from 'react-native'
 import { styles } from './styles'
 
 interface Props {
-  title: string
   icon: any
-  iconStyle: ImageStyle
+  title: string
+  subTitle?: string
+  children?: any
 }
 
-const EmptyList = ({ title, icon, iconStyle }: Props) => {
+const EmptyList = ({ icon, title, subTitle, children }: Props) => {
   const { t } = useTranslation()
 
   return (
     <View style={styles.container}>
-      <Image source={icon} style={iconStyle} />
-      <Text style={styles.text}>{t(title)}</Text>
+      <View style={styles.containerTitles}>
+        <Image source={icon} style={styles.icon} />
+        <Text style={styles.title}>{t(title)}</Text>
+        {subTitle && <Text style={styles.subTitle}>{t(subTitle)}</Text>}
+      </View>
+
+      {children}
     </View>
   )
 }

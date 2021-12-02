@@ -10,18 +10,35 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Image
-    source={null}
-    style={Object {}}
-  />
-  <Text
+  <View
     style={
       Object {
-        "fontSize": 27.857142857142858,
+        "alignItems": "center",
+        "width": 654,
       }
     }
   >
-    Title
-  </Text>
+    <Image
+      source={null}
+      style={
+        Object {
+          "height": 94.28571428571428,
+          "marginBottom": 78.47058823529412,
+          "width": 94.28571428571428,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "#3D424D",
+          "fontFamily": "Mulish-Bold",
+          "fontSize": 25.142857142857142,
+        }
+      }
+    >
+      Title
+    </Text>
+  </View>
 </View>
 `;

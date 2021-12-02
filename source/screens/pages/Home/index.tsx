@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { View, FlatList, Text } from 'react-native'
+import { View, FlatList } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
-import { NAVIGATION, theme } from '~/constants'
+import Message from 'assets/images/message.png'
+import { NAVIGATION } from '~/constants'
 import { styles } from './styles'
 import { PostInterface } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
 import { getUsrProfileActions, homeActions } from '~/store/actions'
 import { useBackButtonMinimize } from '~/hooks'
-import { Spinner, Button, Icon, Post } from '~/components'
+import { Spinner, Button, Post, EmptyList } from '~/components'
 
 export const Home = () => {
   const dispatch = useDispatch()
@@ -33,16 +34,8 @@ export const Home = () => {
   const onRefresh = () => dispatch(homeActions.getPosts(limit))
   const onEndReached = () => dispatch(homeActions.getPosts(limit + 10, true))
   const onCreatePost = () => navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { edit: false })
-
-  const NoPost = () => (
-    <View style={styles.noPostWrapper}>
-      <Icon name='message-icon' size={55} color={theme.backgroundDark} />
-      <Text style={styles.noPostMessage} testID='no_post_message'>
-        {t('components_Home_No_post_message')}
-      </Text>
-      <Text style={styles.noPostMessage2} testID='no_post_message2'>
-        {t('components_Home_No_post_message2')}
-      </Text>
+  const EmptyPosts = () => (
+    <EmptyList icon={Message} title='components_Home_No_post_message' subTitle='components_Home_No_post_message2'>
       <Button
         message={t('components_Home_Create_new_post')}
         viewStyle={styles.button}
@@ -50,7 +43,7 @@ export const Home = () => {
         onPress={onCreatePost}
         testID='create_new_post_button'
       />
-    </View>
+    </EmptyList>
   )
 
   return (
@@ -63,7 +56,7 @@ export const Home = () => {
         onRefresh={onRefresh}
         onEndReached={onEndReached}
         onEndReachedThreshold={1}
-        ListEmptyComponent={NoPost}
+        ListEmptyComponent={EmptyPosts}
         style={styles.list}
         showsVerticalScrollIndicator={posts?.length > 0}
         contentContainerStyle={styles.contentListStyle}

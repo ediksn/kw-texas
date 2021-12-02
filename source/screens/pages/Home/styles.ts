@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native'
 import { scale, verticalScale, moderateScale } from 'react-native-size-matters'
+import { useDeviceWidth } from '../../../hooks/settings'
 
+const DEVICE_WIDTH = useDeviceWidth()
 export const styles = StyleSheet.create({
   container: {
     paddingHorizontal: moderateScale(10),
@@ -37,11 +39,11 @@ export const styles = StyleSheet.create({
     fontFamily: 'Mulish-Bold'
   },
   button: {
-    marginTop: verticalScale(100),
+    marginBottom: verticalScale(24),
     position: 'absolute',
     bottom: 0,
-    height: 48,
-    width: '100%'
+    height: verticalScale(48),
+    width: DEVICE_WIDTH - scale(17)
   },
   buttonText: {
     fontSize: 14,

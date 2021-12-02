@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { ListRenderItem, RefreshControl, SafeAreaView, ScrollView, View } from 'react-native'
+import { ListRenderItem, RefreshControl, ScrollView, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
 import CalendarFilled from 'assets/images/calendar-filled.png'
@@ -46,54 +46,51 @@ export const Events = () => {
   }
   const onEndReached = (when: string) =>
     when === 'TODAY' ? dispatch(eventActions.getTodayEvents(true)) : dispatch(eventActions.getTomorrowEvents(true))
-  const emptyEvents = () => {
-    const title = 'components_Events_Empty'
-    return <EmptyList title={title} icon={CalendarFilled} iconStyle={styles.iconStyle} />
-  }
+  const EmptyEvents = () => <EmptyList icon={CalendarFilled} title='components_Events_Empty' />
 
   return (
-    <SafeAreaView>
-      <ScrollView
-        contentContainerStyle={styles.container}
-        refreshControl={
-          <RefreshControl
-            refreshing={!today?.hasMoreLoading && !tomorrow?.hasMoreLoading && isLoading}
-            onRefresh={onRefresh}
-          />
-        }
-      >
-        {!!todayEvents?.length && (
-          <EventsCarrousel
-            testID={TODAY_ID}
-            title={t('components_Events_today')}
-            titleIcon={CalendarUnFilled}
-            renderItem={renderEvents}
-            data={todayEvents}
-            keyExtractor={keyExtractor}
-            onMomentumScrollEnd={() => onEndReached('TODAY')}
-            onEndReachedThreshold={1}
-            ListFooterComponent={<Spinner isLoading={today?.hasMoreLoading} size={30} color='#3D424D' />}
-            horizontal
-          />
-        )}
-        {!!tomorrowEvents?.length && (
-          <EventsCarrousel
-            testID={TOMORROW_ID}
-            title={t('components_Events_tomorrow')}
-            titleIcon={CalendarUnFilled}
-            renderItem={renderEvents}
-            data={tomorrowEvents}
-            keyExtractor={keyExtractor}
-            onMomentumScrollEnd={() => onEndReached('TOMORROW')}
-            onEndReachedThreshold={1}
-            ListFooterComponent={<Spinner isLoading={tomorrow?.hasMoreLoading} size={30} color='#3D424D' />}
-            horizontal
-          />
-        )}
-      </ScrollView>
-      {!isLoading && !todayEvents?.length && !tomorrowEvents?.length && (
-        <View style={styles.containerEmpty}>{emptyEvents}</View>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      refreshControl={
+        <RefreshControl
+          refreshing={!today?.hasMoreLoading && !tomorrow?.hasMoreLoading && isLoading}
+          onRefresh={onRefresh}
+        />
+      }
+    >
+      {!!todayEvents?.length && (
+        <EventsCarrousel
+          testID={TODAY_ID}
+          title={t('components_Events_today')}
+          titleIcon={CalendarUnFilled}
+          renderItem={renderEvents}
+          data={todayEvents}
+          keyExtractor={keyExtractor}
+          onMomentumScrollEnd={() => onEndReached('TODAY')}
+          onEndReachedThreshold={1}
+          ListFooterComponent={<Spinner isLoading={today?.hasMoreLoading} size={30} color='#3D424D' />}
+          horizontal
+        />
       )}
-    </SafeAreaView>
+      {!!tomorrowEvents?.length && (
+        <EventsCarrousel
+          testID={TOMORROW_ID}
+          title={t('components_Events_tomorrow')}
+          titleIcon={CalendarUnFilled}
+          renderItem={renderEvents}
+          data={tomorrowEvents}
+          keyExtractor={keyExtractor}
+          onMomentumScrollEnd={() => onEndReached('TOMORROW')}
+          onEndReachedThreshold={1}
+          ListFooterComponent={<Spinner isLoading={tomorrow?.hasMoreLoading} size={30} color='#3D424D' />}
+          horizontal
+        />
+      )}
+      {!isLoading && !todayEvents?.length && !tomorrowEvents?.length && (
+        <View style={styles.containerEmpty}>
+          <EmptyEvents />
+        </View>
+      )}
+    </ScrollView>
   )
 }

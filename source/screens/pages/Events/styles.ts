@@ -9,11 +9,6 @@ export const styles = StyleSheet.create({
   container: {
     flexGrow: 1
   },
-  iconStyle: {
-    width: scale(60),
-    height: scale(60),
-    marginBottom: scale(25)
-  },
   cardStyle: {
     flex: 1,
     marginRight: scale(8)

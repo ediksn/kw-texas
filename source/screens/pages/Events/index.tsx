@@ -57,7 +57,7 @@ export const Events = () => {
           onRefresh={onRefresh}
         />
       }
-      showsVerticalScrollIndicator={todayEvents?.length || tomorrowEvents?.length}
+      showsVerticalScrollIndicator={!!todayEvents?.length || !!tomorrowEvents?.length}
     >
       {!!todayEvents?.length && (
         <EventsCarrousel

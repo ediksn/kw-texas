@@ -34,6 +34,7 @@ exports[`renders correctly 1`] = `
           "color": "#3D424D",
           "fontFamily": "Mulish-Bold",
           "fontSize": 25.142857142857142,
+          "textAlign": "center",
         }
       }
     >

@@ -81,5 +81,20 @@ export const styles = StyleSheet.create({
   },
   iconDisabled: {
     opacity: 0.5
+  },
+  item: {
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 12,
+    borderBottomColor: 'rgba(174, 178, 186, 0.2)'
+  },
+  dropdownHeader: {
+    color: theme.lightColor,
+    fontFamily: 'Mulish-Regular',
+    fontSize: theme.fonts.SMALL_SIZE,
+    lineHeight: 16,
+    fontWeight: '700'
   }
 })

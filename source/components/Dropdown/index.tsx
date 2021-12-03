@@ -1,6 +1,5 @@
 import React, { memo, useCallback, useRef, useEffect, useState } from 'react'
 import { Animated, FlatList, Keyboard, Modal, Text, TouchableWithoutFeedback, View } from 'react-native'
-import { useTranslation } from 'react-i18next'
 import getAccessoryMenuPopUpPosition from './utils'
 import BaseButton from './components/BaseButton'
 import { Icon } from '~/components'
@@ -24,6 +23,7 @@ interface Props {
   center?: boolean
   right?: number
   top?: number
+  dropdonwHeader?: any
 }
 
 const Dropdown = memo(
@@ -37,7 +37,8 @@ const Dropdown = memo(
     width,
     center = false,
     right,
-    top
+    top,
+    dropdonwHeader = null
   }: Props) => {
     const ANIMATION_IN_DURATION = 150
     const ANIMATION_OUT_DURATION = 100
@@ -49,7 +50,6 @@ const Dropdown = memo(
     const contextRef = useRef<any>()
     const animationOpacity = useRef(new Animated.Value(INITIAL_OPACITY))
     const animationScale = useRef(new Animated.Value(INITIAL_SCALE))
-    const { t } = useTranslation()
 
     const containerPaddingVertical = 4
     const itemHeight = 40
@@ -116,16 +116,6 @@ const Dropdown = memo(
       [handleRunAnimationHide, onSelectOption]
     )
 
-    const dropdonwHeader = useCallback(() => {
-      return (
-        <BaseButton style={[styles.item, { height: itemHeight }]}>
-          <Text allowFontScaling={false} style={styles.dropdownHeader}>
-            {t('components_NewPost_Select_Community')}
-          </Text>
-        </BaseButton>
-      )
-    }, [])
-
     const handleRenderItem = useCallback(
       ({ item }) => {
         return (
@@ -177,8 +167,8 @@ const Dropdown = memo(
           >
             <FlatList
               data={options}
-              ListHeaderComponent={dropdonwHeader}
               keyExtractor={keyExtractor}
+              ListHeaderComponent={dropdonwHeader}
               renderItem={handleRenderItem}
               persistentScrollbar
             />

@@ -26,6 +26,7 @@ import Avatar from '~/components/Avatar'
 import { PostInterface, FormPostInterface } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
 import { homeActions, toastActions } from '~/store/actions'
+import BaseButton from '../../../../../components/Dropdown/components/BaseButton/index'
 
 const NewPost = () => {
   const { t } = useTranslation()
@@ -198,6 +199,13 @@ const NewPost = () => {
                 <Dropdown
                   buttonRef={buttonRef}
                   isVisible={showDropDown}
+                  dropdonwHeader={
+                    <BaseButton style={[styles.item, { height: 40 }]}>
+                      <Text allowFontScaling={false} style={styles.dropdownHeader}>
+                        {t('components_NewPost_Select_Community')}
+                      </Text>
+                    </BaseButton>
+                  }
                   onRequestClose={() => setShowDropDown(false)}
                   onSelectOption={handleGroup}
                   options={getMyGroupsFormatted()}

@@ -23,7 +23,8 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: theme.fonts.LARGE_SIZE,
     fontFamily: 'Mulish-Bold',
-    color: theme.lightColor
+    color: theme.lightColor,
+    textAlign: 'center'
   },
   subTitle: {
     marginTop: verticalScale(16),

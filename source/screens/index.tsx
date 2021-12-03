@@ -13,7 +13,7 @@ import EventsFilled from 'assets/images/events-filled.png'
 import { NAVIGATION } from '~/constants/navigation'
 import { TabNavigator, TabScreen, StackNavigator, StackScreen } from './components/Navigators'
 import { Login, Groups } from './pages'
-import SettingsStackScreen from './pages/Settings/navigation'
+import NotificationsStackScreen from './pages/Notifications/navigation'
 import { RootState } from '~/store'
 import { Spinner, Toast } from '~/components'
 import { loginActions } from '~/store/actions'
@@ -77,8 +77,8 @@ const TabNavigation = () => {
             <CustomTabBar focused={focused} PNG={focused ? EventsFilled : EventsUnfilled} imageStyle={styles.events} />
           )
         }}
-        name={NAVIGATION.SCREEN.SETTINGS}
-        component={SettingsStackScreen}
+        name={NAVIGATION.SCREEN.NOTIFICATIONS}
+        component={NotificationsStackScreen}
       />
       <TabScreen
         options={{

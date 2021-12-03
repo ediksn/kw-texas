@@ -7,7 +7,14 @@ export const styles = StyleSheet.create({
     elevation: 4,
     backgroundColor: '#FFFFFF',
     borderRadius: 4,
-    marginBottom: verticalScale(10)
+    margin: verticalScale(10),
+    shadowColor: theme.post.shadowColor,
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 3
   },
   header: {
     minHeight: verticalScale(55),
@@ -69,13 +76,17 @@ export const styles = StyleSheet.create({
     marginVertical: verticalScale(10),
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    height: moderateScale(16)
   },
   commentsSharesBox: {
     flexDirection: 'row'
   },
   infoNumber: {
-    color: theme.post.contentBottom
+    color: theme.post.contentBottom,
+    fontFamily: 'Mulish-Regular',
+    lineHeight: moderateScale(16),
+    fontSize: theme.fonts.SMALL_SIZE
   },
   comments: {
     marginRight: scale(10)

@@ -58,7 +58,7 @@ const Button = ({
       style={[styles.containerView, viewStyle, backgroundTypeStyle]}
       onPress={onPress}
     >
-      <Spinner isLoading={loading} styleView={styles.spinner} size={30} color={theme.backgroundWhite}>
+      <Spinner isLoading={loading} styleView={styles.spinner} size='small' color={theme.backgroundWhite}>
         <Message />
       </Spinner>
     </TouchableOpacity>

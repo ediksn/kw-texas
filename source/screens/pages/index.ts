@@ -1,7 +1,7 @@
 /** @format */
 
 export * from './Login'
-export * from './Settings'
+export * from './Notifications'
 export * from './Conversations'
 export * from './Home'
 export * from './Events'

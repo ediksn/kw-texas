@@ -1,12 +1,10 @@
 import { StyleSheet } from 'react-native'
-import { scale, verticalScale, moderateScale } from 'react-native-size-matters'
+import { scale, verticalScale } from 'react-native-size-matters'
 import { useDeviceWidth } from '../../../hooks/settings'
 
 const DEVICE_WIDTH = useDeviceWidth()
 export const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: moderateScale(10),
-    paddingTop: moderateScale(10),
     flex: 1
   },
   list: {
@@ -42,7 +40,7 @@ export const styles = StyleSheet.create({
     marginBottom: verticalScale(24),
     position: 'absolute',
     bottom: 0,
-    height: verticalScale(48),
+    height: scale(48),
     width: DEVICE_WIDTH - scale(17)
   },
   buttonText: {

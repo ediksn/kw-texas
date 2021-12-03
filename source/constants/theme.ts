@@ -58,7 +58,8 @@ const POST_CARD = {
   contentBottom: '#6C727E',
   green: '#006C84',
   horizontalLine: '#2b2b33',
-  dotsColor: '#3D424D'
+  dotsColor: '#3D424D',
+  shadowColor: '#000000'
 }
 
 export const theme = {

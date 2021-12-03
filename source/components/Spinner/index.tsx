@@ -7,12 +7,12 @@ interface Props {
   isLoading?: boolean
   message?: string
   color?: string
-  size?: number
+  size?: 'large' | 'small'
   styleView?: ViewStyle
   children?: object
 }
 
-const Spinner = ({ isLoading = false, message, color = '#ce011f', size = 70, styleView, children }: Props) => {
+const Spinner = ({ isLoading = false, message, color = '#ce011f', size = 'large', styleView, children }: Props) => {
   const Message = () => {
     const { t } = useTranslation()
     return (

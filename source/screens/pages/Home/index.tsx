@@ -34,6 +34,7 @@ export const Home = () => {
   const onRefresh = () => dispatch(homeActions.getPosts(limit))
   const onEndReached = () => dispatch(homeActions.getPosts(limit + 10, true))
   const onCreatePost = () => navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { edit: false })
+
   const EmptyPosts = () => (
     <EmptyList icon={Message} title='components_Home_No_post_message' subTitle='components_Home_No_post_message2'>
       <Button
@@ -60,7 +61,7 @@ export const Home = () => {
         style={styles.list}
         showsVerticalScrollIndicator={posts?.length > 0}
         contentContainerStyle={styles.contentListStyle}
-        ListFooterComponent={<Spinner isLoading={hasMoreLoading} size={30} color='#3D424D' />}
+        ListFooterComponent={<Spinner isLoading={hasMoreLoading} size='small' color='#3D424D' />}
       />
     </View>
   )

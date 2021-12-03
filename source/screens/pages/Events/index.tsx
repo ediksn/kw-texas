@@ -57,6 +57,7 @@ export const Events = () => {
           onRefresh={onRefresh}
         />
       }
+      showsVerticalScrollIndicator={todayEvents?.length || tomorrowEvents?.length}
     >
       {!!todayEvents?.length && (
         <EventsCarrousel
@@ -68,7 +69,7 @@ export const Events = () => {
           keyExtractor={keyExtractor}
           onMomentumScrollEnd={() => onEndReached('TODAY')}
           onEndReachedThreshold={1}
-          ListFooterComponent={<Spinner isLoading={today?.hasMoreLoading} size={30} color='#3D424D' />}
+          ListFooterComponent={<Spinner isLoading={today?.hasMoreLoading} size='small' color='#3D424D' />}
           horizontal
         />
       )}
@@ -82,11 +83,11 @@ export const Events = () => {
           keyExtractor={keyExtractor}
           onMomentumScrollEnd={() => onEndReached('TOMORROW')}
           onEndReachedThreshold={1}
-          ListFooterComponent={<Spinner isLoading={tomorrow?.hasMoreLoading} size={30} color='#3D424D' />}
+          ListFooterComponent={<Spinner isLoading={tomorrow?.hasMoreLoading} size='small' color='#3D424D' />}
           horizontal
         />
       )}
-      {!isLoading && !todayEvents?.length && !tomorrowEvents?.length && (
+      {!todayEvents?.length && !tomorrowEvents?.length && (
         <View style={styles.containerEmpty}>
           <EmptyEvents />
         </View>

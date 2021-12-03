@@ -157,7 +157,7 @@ const NewPost = () => {
 
   const leftButton = <Icon name='close-icon' size={16.5} />
   const rightButton = (
-    <Spinner isLoading={loading} size={25} color={theme.post.green}>
+    <Spinner isLoading={loading} size='small' color={theme.post.green}>
       <Text style={[styles.rightText, !hasValidForm && styles.rightTextDisabled]}>
         {t(`${editMode ? 'Edit' : 'Post'}`)}
       </Text>

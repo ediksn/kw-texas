@@ -242,7 +242,9 @@ const Post = ({ post }: { post: PostInterface }) => {
               </TouchableOpacity>
             )}
           </View>
-          <PostMedia post={post} />
+        </View>
+        <PostMedia post={post} />
+        <View style={styles.body}>
           <View style={styles.infoNumbers}>
             <Text style={styles.infoNumber}>{getLikesCommentsSharesText(likes, t('components_Post_likes'))}</Text>
             <View style={styles.commentsSharesBox}>

@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(12)
   },
   content: {
-    marginVertical: verticalScale(12)
+    marginVertical: verticalScale(4)
   },
   contentText: {
     fontSize: theme.fonts.SMALL_SIZE,

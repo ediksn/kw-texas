@@ -4,7 +4,7 @@ import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   mediaContainer: {
-    marginVertical: verticalScale(10),
+    marginVertical: verticalScale(4),
     flex: 1
   },
   smallMediaRow: {
@@ -13,6 +13,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   bigMedia: {
+    width: '100%',
+    height: 250
+  },
+  bigMediaBottomMargin: {
     width: '100%',
     height: 250,
     marginBottom: verticalScale(4)

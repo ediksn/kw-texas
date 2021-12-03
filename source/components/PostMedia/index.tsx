@@ -27,7 +27,9 @@ const Index = ({ post }: PostMediaProps) => {
 
   return (
     <View style={styles.mediaContainer}>
-      {showBigMedia ? <Image source={{ uri: firstImage?.url }} style={styles.bigMedia} /> : null}
+      {showBigMedia ? (
+        <Image source={{ uri: firstImage?.url }} style={thirdImage ? styles.bigMediaBottomMargin : styles.bigMedia} />
+      ) : null}
       {secondImage && (
         <View style={styles.smallMediaRow}>
           {!thirdImage ? (

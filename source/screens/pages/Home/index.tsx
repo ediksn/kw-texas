@@ -15,7 +15,7 @@ import { Spinner, Button, Post, EmptyList } from '~/components'
 export const Home = () => {
   const dispatch = useDispatch()
   const usr: any = useSelector((state: RootState) => state.login.user)
-  const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
+  const posts: PostInterface[] = []
   const limitDefault: number = useSelector((state: RootState) => state.home.posts.limitDefault)
   const limit: number = useSelector((state: RootState) => state.home.posts.limit)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* connectmobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* connectmobileTests.m */; };
 		05DB7BE60B294887AFDE1912 /* Mulish-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FE8A37677EB41C781F7BF7E /* Mulish-Black.ttf */; };
+		0869B785276270D300AF336F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0869B784276270D300AF336F /* Settings.bundle */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -51,6 +52,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* connectmobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = connectmobileTests.m; sourceTree = "<group>"; };
 		0221EDF289524CD4A621F1CF /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		0869B784276270D300AF336F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		12F8A11B2DD34A79889DE9E8 /* Mulish-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Mulish-ExtraLight.ttf"; path = "../assets/fonts/Mulish-ExtraLight.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* connectmobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = connectmobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = connectmobile/AppDelegate.h; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				0869B784276270D300AF336F /* Settings.bundle */,
 				13B07FAE1A68108700A75B9A /* connectmobile */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* connectmobileTests */,
@@ -349,6 +352,7 @@
 				5997D162F1C94DF1A3E03109 /* Mulish-ExtraLightItalic.ttf in Resources */,
 				5874074EF8274B8A903E09D1 /* Mulish-Italic.ttf in Resources */,
 				5A4DEC495FAC4514AFB73870 /* Mulish-Light.ttf in Resources */,
+				0869B785276270D300AF336F /* Settings.bundle in Resources */,
 				73ED5E53654641278060E6DD /* Mulish-LightItalic.ttf in Resources */,
 				E7B746DA396947B9AB6F53E5 /* Mulish-Medium.ttf in Resources */,
 				CC0C1ABEA1744FE1BDD2A771 /* Mulish-MediumItalic.ttf in Resources */,

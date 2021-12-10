@@ -1,11 +1,10 @@
 import { StyleSheet } from 'react-native'
-import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
+import { moderateScale, scale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   listContainer: {
-    padding: moderateScale(10),
-    height: verticalScale(300)
+    padding: moderateScale(10)
   },
   iconStyle: {
     width: scale(60),

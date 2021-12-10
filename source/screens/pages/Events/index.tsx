@@ -50,7 +50,7 @@ export const Events = () => {
 
   return (
     <ScrollView
-      contentContainerStyle={styles.container}
+      contentContainerStyle={!todayEvents?.length && !tomorrowEvents?.length && styles.container}
       refreshControl={
         <RefreshControl
           refreshing={!today?.hasMoreLoading && !tomorrow?.hasMoreLoading && isLoading}

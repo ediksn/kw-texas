@@ -64,7 +64,6 @@ export const styles = StyleSheet.create({
     marginRight: scale(16)
   },
   buttonsContainer: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

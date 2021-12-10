@@ -11,20 +11,20 @@ export const getToken = async () => {
 
 export const axiosInstance = axios.create({
   baseURL: Config.BASE_URL,
-  timeout: 5000,
+  timeout: 10000,
   headers: { 'Content-Type': 'application/json' }
 })
 
 export const axiosInstanceFormTokens = async () =>
   axios.create({
     baseURL: Config.BASE_URL,
-    timeout: 5000,
+    timeout: 10000,
     headers: { 'Content-Type': 'multipart/form-data', 'Authorization': await getToken() }
   })
 
 export const axiosInstanceTokens = async () =>
   axios.create({
     baseURL: Config.BASE_URL,
-    timeout: 5000,
+    timeout: 10000,
     headers: { 'Content-Type': 'application/json', 'Authorization': await getToken() }
   })

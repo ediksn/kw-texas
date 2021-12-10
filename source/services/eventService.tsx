@@ -1,8 +1,10 @@
+import moment from 'moment-timezone'
 import { axiosInstanceTokens } from './config'
 
 export default {
   getEvents: async (limit: number, startDate: string, endDate: string) => {
     const axiosInstance = await axiosInstanceTokens()
+    const zone_name = moment.tz.guess()
 
     return axiosInstance.post('/kw-connect-next-api/graphql', {
       query:
@@ -11,7 +13,7 @@ export default {
         input: {
           page: 0,
           size: limit,
-          timeZone: 'America/Buenos_Aires',
+          timeZone: zone_name,
           startDate,
           endDate,
           isOnline: true,

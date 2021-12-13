@@ -8,25 +8,40 @@ export default {
 
     return axiosInstance.post('/kw-connect-next-api/graphql', {
       query:
-        '\n    query getEvents($input: EventFilter) {\n  searchOnlineEvents(input: $input) {\n    id\n    name\n    location\n    starts\n    ends\n    slug\n    price\n    instructors {\n      firstName\n      lastName\n    }\n    bookmarked\n    published\n  }\n}',
+        '\n    query getEvents($input: EventFilter) {\n  searchOnlineEvents(input: $input) {\n    id\n    name\n    location\n    starts\n    ends\n    slug\n    price\n    instructors {\n      firstName\n      lastName\n    }\n    bookmarked\n    published\n  }\n}\n',
       variables: {
+        endDate,
+        filterByConnectLive: true,
+        filterByEventsICreated: false,
+        filterByEventsKWUCreated: false,
+        filterByMyCommunities: true,
+        filterByMyMarketCenter: true,
+        filterByMyMemberships: true,
+        filterByMyRegion: true,
         input: {
-          page: 0,
-          size: limit,
-          timeZone: zone_name,
-          startDate,
           endDate,
-          isOnline: true,
           filterByConnectLive: true,
-          filterByMyRegion: true,
-          filterByMyMarketCenter: true,
-          filterByMyCommunities: true,
-          filterByMyMemberships: true,
           filterByEventsICreated: false,
           filterByEventsKWUCreated: false,
+          filterByMyCommunities: true,
+          filterByMyMarketCenter: true,
+          filterByMyMemberships: true,
+          filterByMyRegion: true,
           isBookmarked: false,
-          isPublished: true
-        }
+          isOnline: true,
+          isPublished: true,
+          page: 0,
+          size: limit,
+          startDate,
+          timeZone: zone_name
+        },
+        isBookmarked: false,
+        isOnline: true,
+        isPublished: true,
+        page: 0,
+        size: limit,
+        startDate,
+        timeZone: zone_name
       }
     })
   }

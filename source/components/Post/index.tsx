@@ -64,6 +64,12 @@ const Post = ({ post }: { post: PostInterface }) => {
     }
   }, [hasShowLessMore, showMore])
 
+  useEffect(() => {
+    const { likesCount: likesNumber, userHasAlreadyLiked: hasLiked } = post
+    setLikes(likesNumber)
+    setLiked(hasLiked)
+  }, [post])
+
   const getLikesCommentsSharesText = (count: number, text: string) => {
     if (count > 0) {
       return `${count} ${count === 1 ? text.slice(0, text.length - 1) : text}`

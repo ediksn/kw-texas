@@ -44,7 +44,7 @@ const NewPost = () => {
   const currentPost = posts.find(p => p.id === idPost)
   const content = currentPost?.content || ''
   const contentText = useUnRichContent(content)
-  const images = currentPost?.detail?.images || []
+  const images = currentPost?.detail?.attachments || []
   const [inputValue, setInputValue] = useState(editMode ? contentText : '')
   const [showDropDown, setShowDropDown] = useState(false)
   const [groupSelected, setGroupSelected] = useState<OptionInterface>({

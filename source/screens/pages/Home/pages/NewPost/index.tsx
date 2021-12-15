@@ -180,7 +180,7 @@ const NewPost = () => {
   return (
     <>
       <Header
-        title={t(`${editMode ? t('components_NewPost_Edit') : t('components_NewPost_Create')} Post`)}
+        title={t(`${editMode ? t('components_NewPost_Edit') : t('components_NewPost_Create')}`)}
         style={styles.header}
         leftButton={leftButton}
         onClickLeft={() => navigate(NAVIGATION.SCREEN.HOME)}

@@ -36,17 +36,21 @@ const EventCard = ({ event, style, img = NoImage }: Props) => {
           {moment(event.starts).format('DD')} {t(moment(event.starts).format('MMMM'))}
         </Text>
         <View style={styles.separator} />
-        <Text style={styles.date}>At {moment(event.starts).format('HH:mm A')}</Text>
+        <Text style={styles.date}>
+          {t('At')} {moment(event.starts).format('HH:mm A')}
+        </Text>
         <View style={styles.separator} />
-        <Text style={styles.date}>{event.location}</Text>
+        <Text style={styles.date}>{t(event.location)}</Text>
       </View>
       <View testID={TEST_IDS.EVENT_CARD.TITLE_ID} style={styles.titleContainer}>
         <Text style={styles.title}>{event.name}</Text>
       </View>
       <View testID={TEST_IDS.EVENT_CARD.ASSISTANCE_ID} style={styles.footerContainer}>
-        <Text style={styles.date}>Interested: 0</Text>
+        <Text style={styles.date}>{t('components_EventCard_Interested')} : 0</Text>
         <View style={styles.separator} />
-        <Text style={styles.date}>Will go: {event.slug || 0}</Text>
+        <Text style={styles.date}>
+          {t('components_EventCard_Will_Go')}: {event.slug || 0}
+        </Text>
       </View>
       <View style={styles.buttonsContainer}>
         <Button
@@ -57,7 +61,7 @@ const EventCard = ({ event, style, img = NoImage }: Props) => {
             size: moderateScale(20),
             color: theme.texts.white
           }}
-          message={t('components_EventCard_Interested')}
+          message={t('components_EventCard_Interested_In')}
         />
         <Button
           testID={TEST_IDS.EVENT_CARD.SHARE_BUTTON_ID}

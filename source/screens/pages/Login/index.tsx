@@ -203,7 +203,7 @@ export const Login = () => {
                   testID={signinButton}
                   viewStyle={styles.button}
                   textStyle={styles.textBold}
-                  message={t('Log In')}
+                  message={t('components_Login_Log_In')}
                   onPress={handleLogin}
                   disabled={!netInfo.isConnected || loginDisabled}
                   loading={loading}

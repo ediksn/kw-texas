@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import { RootState } from '~/store'
 import { theme } from '~/constants'
-
 import Header from './components/Header'
 
 import { styles } from './styles'
@@ -16,6 +16,7 @@ import { Spinner } from '~/components'
 
 const Profile = () => {
   const dispatch = useDispatch()
+  const { t } = useTranslation()
   const [changingAccount, setChangingAccount] = useState(false)
   const profiles: ProfileInterface[] = useSelector((state: RootState) => state.usrProfile.profiles)
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
@@ -58,7 +59,7 @@ const Profile = () => {
           {profiles.length > 1 && (
             <>
               <View style={styles.separator} />
-              <Text style={styles.title}>Other accounts</Text>
+              <Text style={styles.title}>{t('components_Account_Other_Accounts')}</Text>
               <AccountList />
               <View style={styles.separator} />
             </>

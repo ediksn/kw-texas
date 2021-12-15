@@ -36,6 +36,7 @@ const Post = ({ post, onPostPress }: PostProps) => {
     groupInfo,
     userHasAlreadyLiked
   } = post
+  const [userHasAlreadyBookmarkedLocal, setUserHasAlreadyBookmarkedLocal] = useState(userHasAlreadyBookmarked)
   const author = `${creatorfirstName.toUpperCase()} ${creatorLastName.toUpperCase()}`
   const date = moment(createdAt).format('MM/DD/YY')
   const shares = 0
@@ -97,6 +98,8 @@ const Post = ({ post, onPostPress }: PostProps) => {
   }
 
   const handleBookmark = async () => {
+    setShowDropDown(false)
+    setUserHasAlreadyBookmarkedLocal(true)
     const res: any = await dispatch(homeActions.addBookmark(id))
     if (res) {
       dispatch(toastActions.showSuccessToast('home_post_toast_message_added_bookmark'))
@@ -106,6 +109,8 @@ const Post = ({ post, onPostPress }: PostProps) => {
   }
 
   const handleRemoveBookmark = async () => {
+    setShowDropDown(false)
+    setUserHasAlreadyBookmarkedLocal(false)
     const res: any = await dispatch(homeActions.removeBookmark(id))
     if (res) {
       dispatch(toastActions.showSuccessToast('home_post_toast_message_removed_bookmark'))
@@ -148,8 +153,8 @@ const Post = ({ post, onPostPress }: PostProps) => {
     const options = [
       {
         key: '1',
-        handleOption: () => (userHasAlreadyBookmarked ? handleRemoveBookmark() : handleBookmark()),
-        title: userHasAlreadyBookmarked ? t('components_Home_Remove_Bookmark') : t('components_Home_Bookmark_Post')
+        handleOption: () => (userHasAlreadyBookmarkedLocal ? handleRemoveBookmark() : handleBookmark()),
+        title: userHasAlreadyBookmarkedLocal ? t('components_Home_Remove_Bookmark') : t('components_Home_Bookmark_Post')
       },
       {
         key: '2',

@@ -193,7 +193,7 @@ const actionCreators = {
       } = await homeService.deletePost(postId)
       if (deletePost) {
         const posts: PostInterface[] = getState().home.posts.data
-        const newPosts = posts.filter((post: PostInterface) => post.id !== postId)
+        const newPosts = posts?.filter((post: PostInterface) => post.id !== postId)
 
         dispatch({
           type: DELETE_POST_SUCCESS,
@@ -207,7 +207,7 @@ const actionCreators = {
     }
     return false
   },
-  addBookmark: (postId: string) => async (dispatch: any, getState: any) => {
+  addBookmark: (postId: string) => async (dispatch: any) => {
     const { ADD_BOOKMARK_POST, ADD_BOOKMARK_POST_SUCCESS, ADD_BOOKMARK_POST_FAILURE } = HOME_TYPES
     dispatch({ type: ADD_BOOKMARK_POST })
 
@@ -218,14 +218,8 @@ const actionCreators = {
         }
       } = await homeService.addBookmarkPost(postId)
       if (toggleBookmarkPost) {
-        const posts: PostInterface[] = getState().home.posts.data
-        const newPosts = posts.map((post: PostInterface) =>
-          post.id === postId ? { ...post, userHasAlreadyBookmarked: true } : post
-        )
-
         dispatch({
-          type: ADD_BOOKMARK_POST_SUCCESS,
-          payload: newPosts
+          type: ADD_BOOKMARK_POST_SUCCESS
         })
         return true
       }
@@ -235,7 +229,7 @@ const actionCreators = {
     }
     return false
   },
-  removeBookmark: (postId: string) => async (dispatch: any, getState: any) => {
+  removeBookmark: (postId: string) => async (dispatch: any) => {
     const { REMOVE_BOOKMARK_POST, REMOVE_BOOKMARK_POST_SUCCESS, REMOVE_BOOKMARK_POST_FAILURE } = HOME_TYPES
     dispatch({ type: REMOVE_BOOKMARK_POST })
 
@@ -246,14 +240,8 @@ const actionCreators = {
         }
       } = await homeService.removeBookmarkPost(postId)
       if (toggleBookmarkPost) {
-        const posts: PostInterface[] = getState().home.posts.data
-        const newPosts = posts.map((post: PostInterface) =>
-          post.id === postId ? { ...post, userHasAlreadyBookmarked: false } : post
-        )
-
         dispatch({
-          type: REMOVE_BOOKMARK_POST_SUCCESS,
-          payload: newPosts
+          type: REMOVE_BOOKMARK_POST_SUCCESS
         })
         return true
       }

@@ -19,18 +19,9 @@ const {
   CREATE_POST,
   CREATE_POST_SUCCESS,
   CREATE_POST_FAILURE,
-  EDIT_POST,
-  EDIT_POST_SUCCESS,
-  EDIT_POST_FAILURE,
   DELETE_POST,
   DELETE_POST_SUCCESS,
   DELETE_POST_FAILURE,
-  ADD_BOOKMARK_POST,
-  ADD_BOOKMARK_POST_SUCCESS,
-  ADD_BOOKMARK_POST_FAILURE,
-  REMOVE_BOOKMARK_POST,
-  REMOVE_BOOKMARK_POST_SUCCESS,
-  REMOVE_BOOKMARK_POST_FAILURE,
   SELECT_POST,
   GET_POST_COMMENTS,
   GET_POST_COMMENTS_SUCCESS,
@@ -80,15 +71,6 @@ const REDUCERS = {
   [CREATE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = false
   },
-  [EDIT_POST]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = true
-  },
-  [EDIT_POST_SUCCESS]: ({ draftState }: any) => {
-    draftState.posts.isLoading = false
-  },
-  [EDIT_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = false
-  },
   [DELETE_POST]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = true
   },
@@ -97,26 +79,6 @@ const REDUCERS = {
     draftState.posts.isLoading = false
   },
   [DELETE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = false
-  },
-  [ADD_BOOKMARK_POST]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = true
-  },
-  [ADD_BOOKMARK_POST_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
-    draftState.posts.data = payload
-    draftState.posts.isLoading = false
-  },
-  [ADD_BOOKMARK_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = false
-  },
-  [REMOVE_BOOKMARK_POST]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = true
-  },
-  [REMOVE_BOOKMARK_POST_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
-    draftState.posts.data = payload
-    draftState.posts.isLoading = false
-  },
-  [REMOVE_BOOKMARK_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = false
   },
   [SELECT_POST]: ({ draftState, payload }: PostReducerProps) => {

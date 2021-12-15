@@ -11,7 +11,6 @@ import {
   addBookmarkPostResponse,
   addLikePostResponse
 } from '../../../__mocks__/mockResponses/index'
-import { PostInterface } from '../../../source/interfaces/postInterface'
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
@@ -96,16 +95,12 @@ describe('Home', () => {
 
   const postId = createPostResponse.data.createPost
 
-  const newPostsAfterAddBookmark: PostInterface[] = postsResponse.data.data.getPosts.map((post: PostInterface) =>
-    post.id === postId ? { ...post, userHasAlreadyBookmarked: true } : post
-  )
   const expectedAddBookmarkPostActions: ProduceProps[] = [
     {
       type: ADD_BOOKMARK_POST
     },
     {
-      type: ADD_BOOKMARK_POST_SUCCESS,
-      payload: newPostsAfterAddBookmark
+      type: ADD_BOOKMARK_POST_SUCCESS
     }
   ]
   it('Action ADD_BOOKMARK_POST_SUCCESS', async () => {
@@ -127,16 +122,12 @@ describe('Home', () => {
     expect(homeReducer(oldStore.home, mockAction)).toEqual(expectedStore.home)
   })
 
-  const newPostsAfterDeleted: PostInterface[] = postsResponse.data.data.getPosts.filter(
-    (post: PostInterface) => post.id !== postId
-  )
   const expectedDeletePostActions: ProduceProps[] = [
     {
       type: DELETE_POST
     },
     {
-      type: DELETE_POST_SUCCESS,
-      payload: newPostsAfterDeleted
+      type: DELETE_POST_SUCCESS
     }
   ]
   it('Action DELETE_POST_SUCCESS', async () => {
@@ -158,16 +149,12 @@ describe('Home', () => {
     // expect(homeReducer(oldStore.home, mockAction)).toEqual(expectedStore.home)
   })
 
-  const newPostsAfterLike: PostInterface[] = postsResponse.data.data.getPosts.map((post: PostInterface) =>
-    post.id === postId ? { ...post, userHasAlreadyLiked: true } : post
-  )
   const expectedLikePostActions: ProduceProps[] = [
     {
       type: ADD_LIKE_POST
     },
     {
-      type: ADD_LIKE_POST_SUCCESS,
-      payload: newPostsAfterLike
+      type: ADD_LIKE_POST_SUCCESS
     }
   ]
 

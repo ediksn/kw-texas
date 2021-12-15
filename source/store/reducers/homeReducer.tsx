@@ -19,6 +19,9 @@ const {
   CREATE_POST,
   CREATE_POST_SUCCESS,
   CREATE_POST_FAILURE,
+  EDIT_POST,
+  EDIT_POST_SUCCESS,
+  EDIT_POST_FAILURE,
   DELETE_POST,
   DELETE_POST_SUCCESS,
   DELETE_POST_FAILURE,
@@ -70,6 +73,15 @@ const REDUCERS = {
     draftState.posts.isLoading = false
   },
   [CREATE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = false
+  },
+  [EDIT_POST]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = true
+  },
+  [EDIT_POST_SUCCESS]: ({ draftState }: any) => {
+    draftState.posts.isLoading = false
+  },
+  [EDIT_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = false
   },
   [DELETE_POST]: ({ draftState }: PostReducerProps) => {

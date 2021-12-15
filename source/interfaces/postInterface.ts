@@ -1,13 +1,10 @@
+import { UploadImageInterface } from './uploadImageInterface'
+
 export interface FormPostInterface {
   group?: string
   text: string
   hasImages?: boolean
   images?: any[]
-}
-
-export interface PostImagesInterface {
-  id: string
-  url: string
 }
 
 export interface PostInterface {
@@ -26,7 +23,7 @@ export interface PostInterface {
   createdAt: string
   deleted: boolean
   detail: {
-    images: PostImagesInterface[]
+    images: UploadImageInterface[]
   }
   pinned: boolean
   userHasAlreadyLiked: boolean

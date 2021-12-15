@@ -111,30 +111,33 @@ const actionCreators = {
     }
     return false
   },
-  editPost: (form: FormPostInterface) => async (dispatch: any, getState: any) => {
-    const { EDIT_POST, EDIT_POST_SUCCESS, EDIT_POST_FAILURE } = HOME_TYPES
-    const { limitDefault }: any = getState().home.posts
-    dispatch({ type: EDIT_POST })
+  editPost:
+    (form: FormPostInterface, postId: string, originalFiles?: any[]) => async (dispatch: any, getState: any) => {
+      const { EDIT_POST, EDIT_POST_SUCCESS, EDIT_POST_FAILURE } = HOME_TYPES
+      const { limitDefault }: any = getState().home.posts
+      dispatch({ type: EDIT_POST })
 
-    try {
-      const response = await homeService.editPost(form)
-
-      if (response) {
-        dispatch({
-          type: EDIT_POST_SUCCESS,
-          payload: {
-            data: form
-          }
-        })
-        await dispatch(actionCreators.getPosts(limitDefault))
-        return true
+      try {
+        const response =
+          (form.hasImages && form.images) || originalFiles
+            ? await homeService.editPostWithMedia(form, postId, originalFiles)
+            : await homeService.editPost(form, postId)
+        if (response) {
+          dispatch({
+            type: EDIT_POST_SUCCESS,
+            payload: {
+              data: form
+            }
+          })
+          await dispatch(actionCreators.getPosts(limitDefault))
+          return true
+        }
+        dispatch({ type: EDIT_POST_FAILURE, payload: 'Error on Edit Post' })
+      } catch (error) {
+        dispatch({ type: EDIT_POST_FAILURE, payload: error })
       }
-      dispatch({ type: EDIT_POST_FAILURE, payload: 'Error on Edit Post' })
-    } catch (error) {
-      dispatch({ type: EDIT_POST_FAILURE, payload: error })
-    }
-    return false
-  },
+      return false
+    },
   deletePost: (postId: string) => async (dispatch: any, getState: any) => {
     const { DELETE_POST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE } = HOME_TYPES
     dispatch({ type: DELETE_POST })

@@ -160,21 +160,83 @@ export default {
     }
     return { data: { data: null } }
   },
-  editPost: async (form: FormPostInterface) => {
+  editPost: async (form: FormPostInterface, postId: string) => {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {
       query:
-        '\n    mutation createPost($post: createPostInput!, $file: [Upload]) {\n  createPost(post: $post, file: $file)\n}\n    ',
+        'mutation editPost($postId: String!, $post: editPostInput!, $file: [Upload]) { editPost(postId: $postId, post: $post, file: $file)}',
       variables: {
         post: {
-          group: form.group,
           content: form.text,
-          type: 'STANDARD',
-          source: 'GROUPS',
           plainTextContent: useUnRichContent(form.text)
-        }
+        },
+        postId
       }
     })
+  },
+  editPostWithMedia: async (form: FormPostInterface, postId?: string, originalFiles?: any[]) => {
+    const axiosInstance = await axiosInstanceFormTokens()
+    const formData = new FormData()
+    const fileMap: any = {}
+    const fileList: any = []
+    const urls: string[] = []
+    const newFiles: any[] = form.images ? [...form.images] : []
+    const filesRemoved: string[] = []
+    originalFiles?.map(originalFile => {
+      if (!newFiles.find(newFile => originalFile.id === newFile.id)) {
+        filesRemoved.push(originalFile.id || '')
+      }
+      return true
+    })
+
+    const query =
+      'mutation editPost($postId: String!, $post: editPostInput!, $file: [Upload]) { editPost(postId: $postId, post: $post, file: $file)}'
+
+    newFiles?.map((newFile, index) => {
+      if (originalFiles && originalFiles.find(originalFile => newFile.id === originalFile.id)) {
+        newFiles.splice(index, 1)
+      }
+      return true
+    })
+    newFiles?.map((file, index) => {
+      if (file.uri) {
+        let aux = file.uri
+        aux = Platform.OS === 'ios' ? aux.replace('file://', '') : aux
+        urls.push(aux)
+      } else if (file.url) {
+        let aux = file.url
+        aux = Platform.OS === 'ios' ? aux.replace('file://', '') : aux
+        urls.push(aux)
+      }
+      fileMap[index] = [`variables.file.${index}`]
+      fileList.push(null)
+      return true
+    })
+
+    const operations = JSON.stringify({
+      query,
+      variables: {
+        post: {
+          content: form.text,
+          filesRemoved,
+          plainTextContent: useUnRichContent(form.text)
+        },
+        postId,
+        file: fileList
+      },
+      operationName: 'editPost'
+    })
+    formData.append('operations', operations)
+    formData.append('map', JSON.stringify(fileMap))
+    newFiles.map((file, index) => {
+      formData.append(String(index), {
+        name: file.fileName,
+        type: file.type,
+        uri: urls[index]
+      })
+      return true
+    })
+    return axiosInstance.post('/connect-groups-api/graphql', formData)
   },
   deletePost: async (postId: string) => {
     const axiosInstance = await axiosInstanceTokens()

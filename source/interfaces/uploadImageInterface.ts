@@ -5,4 +5,6 @@ export interface UploadImageInterface {
   height: number
   uri: string
   fileSize: number
+  id: string
+  url: string
 }

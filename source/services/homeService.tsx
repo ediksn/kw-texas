@@ -62,7 +62,7 @@ export default {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {
       query:
-        '\n    query getGlobalPosts($offset: Int!, $limit: Int!) {\n  getPosts(offset: $offset, limit: $limit) {\n    id\n    content\n    type\n    likedBy\n    likesCount\n    repliesCount\n    bookmarksCount\n    creatorId\n    isUserCreatorOfThePost\n    creatorfirstName\n    creatorLastName\n    creatorPhoto\n    createdAt\n    deleted\n   detail {\n    ... on imagesList {\n      images {\n        id\n       url\n      }\n    }\n    }\n   pinned\n    userHasAlreadyLiked\n    userHasAlreadyBookmarked\n    groupInfo\n    {\n    id\n    name\n    }\n    }\n}\n    ',
+        '\n    query getGlobalPosts($offset: Int!, $limit: Int!) {\n  getPosts(offset: $offset, limit: $limit) {\n    id\n    content\n    type\n    likedBy\n    likesCount\n    repliesCount\n    bookmarksCount\n    creatorId\n    isUserCreatorOfThePost\n    creatorfirstName\n    creatorLastName\n    creatorPhoto\n    createdAt\n    deleted\n   detail {\n    ... on attachmentList {\n      attachments {\n        id\n       url\n      }\n    }\n    }\n   pinned\n    userHasAlreadyLiked\n    userHasAlreadyBookmarked\n    groupInfo\n    {\n    id\n    name\n    }\n    }\n}\n    ',
       variables: {
         offset: 0,
         limit
@@ -73,7 +73,7 @@ export default {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {
       query:
-        '\n    query getListOfGroups($limit: Int!, $offset: Int!) {\n  getListOfJoinedGroups(limit: $limit, offset: $offset) {\n    id\n    name\n    description\n    postCount\n    membersCount\n    status\n    icon {\n      url\n      id\n    }\n  }\n}\n    ',
+        '\n    query getListOfGroups($limit: Int!, $offset: Int!) {\n  getListOfJoinedGroups(limit: $limit, offset: $offset) {\n    id\n    name\n    description\n    postCount\n    membersCount\n    status\n    icon {\n      url\n      id\n     filename\n    }\n  }\n}\n    ',
       variables: {
         offset: 0,
         limit
@@ -84,7 +84,7 @@ export default {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {
       query:
-        '\n    query getListOfGroups($limit: Int!, $offset: Int!) {\n  getListOfJoinedGroups(limit: $limit, offset: $offset) {\n    id\n    name\n    description\n    postCount\n    membersCount\n    status\n    icon {\n      url\n      id\n    }\n  }\n}\n    ',
+        '\n    query getListOfGroups($limit: Int!, $offset: Int!) {\n  getListOfJoinedGroups(limit: $limit, offset: $offset) {\n    id\n    name\n    description\n    postCount\n    membersCount\n    status\n    icon {\n      url\n      id\n   filename\n    }\n  }\n}\n    ',
       variables: {
         offset: 0,
         limit: 10000
@@ -95,7 +95,7 @@ export default {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {
       query:
-        '\n    query getGroupInfo($groupId: String!) {\n  getGroupInfo(groupId: $groupId) {\n    id\n    name\n    description\n    postCount\n    membersCount\n    status\n    icon {\n      url\n      id\n    }\n  }\n  }\n    ',
+        '\n    query getGroupInfo($groupId: String!) {\n  getGroupInfo(groupId: $groupId) {\n    id\n    name\n    description\n    postCount\n    membersCount\n    status\n    icon {\n      url\n      id\n    filename\n   }\n  }\n  }\n    ',
       variables: {
         groupId: id
       }

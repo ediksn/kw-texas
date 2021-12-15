@@ -23,7 +23,7 @@ export interface PostInterface {
   createdAt: string
   deleted: boolean
   detail: {
-    images: UploadImageInterface[]
+    attachments: UploadImageInterface[]
   }
   pinned: boolean
   userHasAlreadyLiked: boolean

@@ -21,6 +21,7 @@ export interface GroupOptionInterface {
 interface Icon {
   url: string
   id: string
+  filename: string
 }
 
 export interface GroupInterface {

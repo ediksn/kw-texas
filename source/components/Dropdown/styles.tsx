@@ -40,12 +40,6 @@ export const styles = StyleSheet.create({
     fontFamily: 'Mulish-Regular',
     fontSize: 14
   },
-  titleIos: {
-    color: theme.darkGrey,
-    fontFamily: 'Mulish-Regular',
-    fontSize: 14,
-    width: '80%'
-  },
   checkmark: {
     alignItems: 'center',
     justifyContent: 'center',

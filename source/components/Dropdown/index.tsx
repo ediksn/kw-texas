@@ -4,7 +4,7 @@ import getAccessoryMenuPopUpPosition from './utils'
 import BaseButton from './components/BaseButton'
 import { Icon } from '~/components'
 import { styles } from './styles'
-import { useDeviceHeight, useIsIosPlatform } from '../../hooks/settings'
+import { useDeviceHeight } from '../../hooks/settings'
 import { OptionInterface } from '~/interfaces/groupInterface'
 import { theme } from '~/constants'
 
@@ -127,7 +127,7 @@ const Dropdown = memo(
               <Text
                 allowFontScaling={false}
                 style={[
-                  useIsIosPlatform() ? styles.titleIos : styles.title,
+                  styles.title,
                   item.color && { color: item.color, fontFamily: item.isTitle ? 'Mulish-Bold' : 'Mulish-Regular' }
                 ]}
               >

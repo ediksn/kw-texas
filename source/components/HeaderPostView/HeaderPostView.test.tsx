@@ -1,7 +1,6 @@
 import React from 'react'
 import { render, RenderAPI } from '@testing-library/react-native'
-import PostMedia from '~/components/PostMedia/index'
-import { postMockObject } from '../../../__mocks__/mockObjects'
+import HeaderPostView from '~/components/HeaderPostView/index'
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
@@ -30,11 +29,15 @@ jest.mock(
   { virtual: true }
 )
 
-describe('Render Post Media Test', () => {
+describe('Render Header Post View Test', () => {
   let component: RenderAPI
 
   beforeEach(() => {
-    component = render(<PostMedia post={postMockObject} />)
+    component = render(
+      <HeaderPostView>
+        <></>
+      </HeaderPostView>
+    )
   })
 
   it('Match with the snapshot', () => {

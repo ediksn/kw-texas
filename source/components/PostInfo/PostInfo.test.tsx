@@ -1,10 +1,14 @@
 import React from 'react'
 import { render, RenderAPI } from '@testing-library/react-native'
-import PostMedia from '~/components/PostMedia/index'
 import { postMockObject } from '../../../__mocks__/mockObjects'
+import { PostInfo } from '~/components'
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
+}))
+
+jest.mock('react-redux', () => ({
+  useDispatch: () => ({})
 }))
 
 jest.mock(
@@ -30,11 +34,11 @@ jest.mock(
   { virtual: true }
 )
 
-describe('Render Post Media Test', () => {
+describe('Render Post Info Test', () => {
   let component: RenderAPI
 
   beforeEach(() => {
-    component = render(<PostMedia post={postMockObject} />)
+    component = render(<PostInfo post={postMockObject} commentsCount={1} customContainerStyle={{}} />)
   })
 
   it('Match with the snapshot', () => {

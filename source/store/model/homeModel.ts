@@ -15,5 +15,13 @@ export default {
     limitDefault: 10,
     limit: 10,
     isLoading: false
+  },
+  comments: {
+    selectedPost: undefined,
+    selectedPostComments: [],
+    loadingComments: false,
+    limitDefault: 10,
+    limit: 10,
+    hasMoreLoading: false
   }
 }

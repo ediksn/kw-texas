@@ -38,6 +38,45 @@ const actionCreators = {
         dispatch({ type: GET_POSTS_FAILURE, payload: error })
       }
     },
+  getCommentsOfPost:
+    (postId: string, limit: number, hasMoreLoading: boolean = false) =>
+    async (dispatch: AppDispatch) => {
+      const { GET_POST_COMMENTS, GET_POST_COMMENTS_SUCCESS, GET_POST_COMMENTS_FAILURE } = HOME_TYPES
+      dispatch({ type: GET_POST_COMMENTS, payload: hasMoreLoading })
+      try {
+        const response = await homeService.getCommentsOfPost(postId, limit)
+        const comments = response?.data.data.getPostReplies || []
+
+        dispatch({
+          type: GET_POST_COMMENTS_SUCCESS,
+          payload: {
+            data: comments,
+            limitDefault: 10,
+            limit
+          }
+        })
+      } catch (error) {
+        dispatch({ type: GET_POST_COMMENTS_FAILURE, payload: error })
+      }
+    },
+  addCommentPost: (comment: string, postId: string) => async (dispatch: any, getState: any) => {
+    const { ADD_COMMENT_POST, ADD_COMMENT_POST_SUCCESS, ADD_COMMENT_POST_FAILURE } = HOME_TYPES
+    dispatch({ type: ADD_COMMENT_POST, payload: { comment, postId } })
+    try {
+      const { limit } = getState().home.comments
+      await homeService.addCommentToPost(postId, comment)
+      const posts: PostInterface[] = getState().home.posts.data
+      const newPosts = posts.map((post: PostInterface) =>
+        post.id === postId ? { ...post, repliesCount: post.repliesCount + 1 } : post
+      )
+      dispatch({ type: ADD_COMMENT_POST_SUCCESS, payload: newPosts })
+      await dispatch(actionCreators.getCommentsOfPost(postId, limit))
+      return true
+    } catch (error) {
+      dispatch({ type: ADD_COMMENT_POST_FAILURE, payload: error })
+    }
+    return false
+  },
   getGroups: (limit: number) => async (dispatch: AppDispatch) => {
     const { GET_GROUPS, GET_GROUPS_SUCCESS, GET_GROUPS_FAILURE } = HOME_TYPES
     dispatch({ type: GET_GROUPS })
@@ -84,6 +123,10 @@ const actionCreators = {
       dispatch({ type: GET_GROUP_INFO_FAILURE, payload: error })
     }
     return null
+  },
+  selectPost: (post: PostInterface) => (dispatch: any) => {
+    const { SELECT_POST } = HOME_TYPES
+    dispatch({ type: SELECT_POST, payload: post })
   },
   createPost: (form: FormPostInterface) => async (dispatch: any, getState: any) => {
     const { CREATE_POST, CREATE_POST_SUCCESS, CREATE_POST_FAILURE } = HOME_TYPES

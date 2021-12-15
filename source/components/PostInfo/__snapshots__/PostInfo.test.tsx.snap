@@ -1,0 +1,423 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Post Info Test Match with the snapshot 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": 7.847058823529411,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Array [
+          Object {
+            "paddingHorizontal": 18.857142857142858,
+          },
+          Object {},
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "marginVertical": 7.847058823529411,
+          }
+        }
+      >
+        <Text
+          ellipsizeMode="clip"
+          onTextLayout={[Function]}
+          style={
+            Object {
+              "color": "#3D424D",
+              "flexWrap": "wrap",
+              "fontFamily": "Mulish-Regular",
+              "fontSize": 18.857142857142858,
+            }
+          }
+          testID="content-post"
+        >
+          Post with images
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "paddingHorizontal": 18.857142857142858,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "height": 25.142857142857142,
+            "justifyContent": "space-between",
+            "marginVertical": 19.61764705882353,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6C727E",
+              "fontFamily": "Mulish-Regular",
+              "fontSize": 18.857142857142858,
+              "lineHeight": 25.142857142857142,
+            }
+          }
+        >
+          
+        </Text>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6C727E",
+                  "fontFamily": "Mulish-Regular",
+                  "fontSize": 18.857142857142858,
+                  "lineHeight": 25.142857142857142,
+                },
+                null,
+              ]
+            }
+          >
+            1 components_Post_comment
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "#6C727E",
+                "fontFamily": "Mulish-Regular",
+                "fontSize": 18.857142857142858,
+                "lineHeight": 25.142857142857142,
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#2b2b33",
+        "height": 1.9617647058823529,
+        "opacity": 0.1,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 120,
+        "justifyContent": "space-around",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 7.857142857142857,
+          "borderWidth": 0,
+          "elevation": 0,
+          "height": 58.85294117647059,
+          "justifyContent": "center",
+          "margin": 7.857142857142857,
+          "marginHorizontal": 8.571428571428571,
+          "opacity": 1,
+          "width": "auto",
+        }
+      }
+      testID="button-post"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "marginRight": 20.357142857142858,
+              "textAlign": "center",
+            }
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": undefined,
+                  "fontSize": 31.428571428571427,
+                },
+                Object {
+                  "color": "#006C84",
+                },
+                Object {
+                  "fontFamily": "icomoon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#006C84",
+                "fontFamily": "Mulish-Regular",
+              },
+              Object {
+                "fontFamily": "Mulish-Bold",
+              },
+              undefined,
+              Object {
+                "fontSize": 18.857142857142858,
+              },
+            ]
+          }
+        >
+          components_Post_Like
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 7.857142857142857,
+          "borderWidth": 0,
+          "elevation": 0,
+          "height": 58.85294117647059,
+          "justifyContent": "center",
+          "margin": 7.857142857142857,
+          "marginHorizontal": 8.571428571428571,
+          "opacity": 1,
+          "width": "auto",
+        }
+      }
+      testID="button-post"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "marginRight": 20.357142857142858,
+              "textAlign": "center",
+            }
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": undefined,
+                  "fontSize": 31.428571428571427,
+                },
+                Object {
+                  "color": "#006C84",
+                },
+                Object {
+                  "fontFamily": "icomoon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#006C84",
+                "fontFamily": "Mulish-Regular",
+              },
+              Object {
+                "fontFamily": "Mulish-Bold",
+              },
+              undefined,
+              Object {
+                "fontSize": 18.857142857142858,
+              },
+            ]
+          }
+        >
+          components_Post_Comment
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 7.857142857142857,
+          "borderWidth": 0,
+          "elevation": 0,
+          "height": 58.85294117647059,
+          "justifyContent": "center",
+          "margin": 7.857142857142857,
+          "marginHorizontal": 8.571428571428571,
+          "opacity": 1,
+          "width": "auto",
+        }
+      }
+      testID="button-post"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "marginRight": 20.357142857142858,
+              "textAlign": "center",
+            }
+          }
+        >
+          <Text
+            allowFontScaling={false}
+            style={
+              Array [
+                Object {
+                  "color": undefined,
+                  "fontSize": 31.428571428571427,
+                },
+                Object {
+                  "color": "#006C84",
+                },
+                Object {
+                  "fontFamily": "icomoon",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#006C84",
+                "fontFamily": "Mulish-Regular",
+              },
+              Object {
+                "fontFamily": "Mulish-Bold",
+              },
+              undefined,
+              Object {
+                "fontSize": 18.857142857142858,
+              },
+            ]
+          }
+        >
+          components_Post_Share
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#2b2b33",
+        "height": 1.9617647058823529,
+        "opacity": 0.1,
+      }
+    }
+  />
+</View>
+`;

@@ -6,27 +6,28 @@ import { POST_PREVIEW_MEDIA_LENGTH } from '~/utils/constants'
 
 interface PostMediaProps {
   post: PostInterface
+  withTopMargin?: boolean
 }
 
-const Index = ({ post }: PostMediaProps) => {
+const Index = ({ post, withTopMargin = true }: PostMediaProps) => {
   const { detail } = post
-  if (!detail || !detail?.images) {
+  if (!detail || !detail?.attachments) {
     return null
   }
 
-  const { images } = detail
-  if (images.length === 0) {
+  const { attachments } = detail
+  if (attachments.length === 0) {
     return null
   }
 
-  const moreImages = images.length > POST_PREVIEW_MEDIA_LENGTH
-  const onlyOneImage = images.length === 1
-  const moreImagesCount = images.length - POST_PREVIEW_MEDIA_LENGTH
-  const [firstImage, secondImage, thirdImage] = images
+  const moreImages = attachments.length > POST_PREVIEW_MEDIA_LENGTH
+  const onlyOneImage = attachments.length === 1
+  const moreImagesCount = attachments.length - POST_PREVIEW_MEDIA_LENGTH
+  const [firstImage, secondImage, thirdImage] = attachments
   const showBigMedia = thirdImage || onlyOneImage
 
   return (
-    <View style={styles.mediaContainer}>
+    <View style={withTopMargin ? styles.mediaContainer : styles.mediaContainerWithOutTopMargin}>
       {showBigMedia ? (
         <Image source={{ uri: firstImage?.url }} style={thirdImage ? styles.bigMediaBottomMargin : styles.bigMedia} />
       ) : null}

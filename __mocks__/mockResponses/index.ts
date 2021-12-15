@@ -338,6 +338,12 @@ export const createPostResponse = {
   }
 }
 
+export const addCommentToPostResponse = {
+  data: {
+    replyPost: '61b899362f3ef4001a768d59'
+  }
+}
+
 export const eventResponse = {
   bookmarked: true,
   ends: moment('2021-10-11 19:00:00'),

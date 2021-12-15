@@ -69,6 +69,33 @@ export default {
       }
     })
   },
+  getCommentsOfPost: async (postId: string, limit: number) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query:
+        '\n    query getPostReplies($postId: String!, $offset: Int!, $limit: Int!) {\n  getPostReplies(postId: $postId, offset: $offset, limit: $limit) {\n    id\n    creatorId\n    createdAt\n    type\n    creatorPhoto\n    creatorFirstName\n    creatorLastName\n    deleted\n    postId\n    updatedAt\n    detail {\n      ... on pollAnswers {\n        answers\n      }\n      ... on standardReplyType {\n        content\n        edited\n        likesCount\n        userHasAlreadyLiked\n        attachment {\n          id\n          url\n        }\n      }\n    }\n  }\n}\n    ',
+      variables: {
+        postId,
+        offset: 0,
+        limit
+      }
+    })
+  },
+  addCommentToPost: async (postId: string, comment: string) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query:
+        'mutation replyPost($reply: createReplyInput!, $file: Upload) {\n  replyPost(reply: $reply, file: $file)\n}',
+      variables: {
+        reply: {
+          postId,
+          type: 'STANDARD',
+          standardDetail: comment,
+          plainTextContent: useUnRichContent(comment)
+        }
+      }
+    })
+  },
   getGroups: async (limit: number) => {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {

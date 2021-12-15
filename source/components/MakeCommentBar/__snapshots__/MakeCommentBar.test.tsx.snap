@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Make Comment Bar Test Match with the snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "white",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingHorizontal": 21.428571428571427,
+        "paddingVertical": 19.61764705882353,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "paddingRight": 21.428571428571427,
+        }
+      }
+    >
+      <Image
+        resizeMode="cover"
+        source={
+          Object {
+            "process": [Function],
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 62.857142857142854,
+              "opacity": 0.5,
+              "width": 62.857142857142854,
+            },
+            Object {
+              "height": 64.28571428571428,
+              "opacity": 0.5,
+              "width": 64.28571428571428,
+            },
+          ]
+        }
+      />
+    </View>
+    <TextInput
+      allowFontScaling={true}
+      maxLength={500}
+      multiline={true}
+      onChangeText={[Function]}
+      placeholder="components_MakeCommentBar_Your_comment"
+      placeholderTextColor="#6C727E"
+      rejectResponderTermination={true}
+      style={
+        Object {
+          "backgroundColor": "#F7F7F8",
+          "borderRadius": 8.571428571428571,
+          "flex": 1,
+          "paddingHorizontal": 10.714285714285714,
+          "paddingVertical": 15.694117647058823,
+          "width": "100%",
+        }
+      }
+      textAlignVertical="top"
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "paddingLeft": 21.428571428571427,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 28,
+              },
+              Object {
+                "color": "#006C84",
+              },
+              Object {
+                "fontFamily": "icomoon",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

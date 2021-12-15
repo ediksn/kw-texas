@@ -29,7 +29,11 @@ export const Home = () => {
     dispatch(getUsrProfileActions.getUsrProfile(kwuId))
     dispatch(homeActions.getPosts(limitDefault))
   }, [dispatch])
-  const renderPost = ({ item }: { item: PostInterface }) => <Post post={item} />
+  const onPostView = (post: PostInterface) => {
+    dispatch(homeActions.selectPost(post))
+    navigation.navigate(NAVIGATION.SCREEN.POSTVIEW)
+  }
+  const renderPost = ({ item }: { item: PostInterface }) => <Post post={item} onPostPress={onPostView} />
   const keyExtractor = (post: PostInterface) => post.id.toString()
   const onRefresh = () => dispatch(homeActions.getPosts(limit))
   const onEndReached = () => dispatch(homeActions.getPosts(limit + 10, true))

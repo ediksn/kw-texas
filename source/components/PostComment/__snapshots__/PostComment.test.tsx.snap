@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "justifyContent": "flex-start",
+      "paddingHorizontal": 25.714285714285715,
+      "paddingVertical": 7.847058823529411,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "paddingRight": 21.428571428571427,
+      }
+    }
+  >
+    <Image
+      onError={[Function]}
+      resizeMode="cover"
+      source={
+        Object {
+          "uri": "https://avatar.kwconnect.com/556397.jpeg",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "borderRadius": 31.428571428571427,
+            "height": 62.857142857142854,
+            "width": 62.857142857142854,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#E4E5E7",
+          "borderRadius": 8.571428571428571,
+          "paddingHorizontal": 21.428571428571427,
+          "paddingVertical": 19.61764705882353,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#282B33",
+            "fontFamily": "Mulish-Bold",
+            "fontSize": 18.857142857142858,
+            "paddingBottom": 21.428571428571427,
+            "textTransform": "uppercase",
+          }
+        }
+      >
+        Irene Murphy
+      </Text>
+      <Text
+        ellipsizeMode="clip"
+        onTextLayout={[Function]}
+        style={
+          Object {
+            "color": "#3D424D",
+          }
+        }
+      >
+        test comment
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingTop": 9.808823529411764,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#6C727E",
+            "fontSize": 18.857142857142858,
+          }
+        }
+      >
+        11/26/21
+      </Text>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6C727E",
+              "fontSize": 18.857142857142858,
+              "paddingHorizontal": 8.571428571428571,
+            }
+          }
+        >
+          Like
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#6C727E",
+              "fontSize": 18.857142857142858,
+              "paddingHorizontal": 8.571428571428571,
+            }
+          }
+        >
+          Comment
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

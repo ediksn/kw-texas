@@ -44,6 +44,7 @@ export const BACKGROUNDS = {
   whiteBackground: 'white',
   darkWhiteBackground: '#D8D8D8',
   greyBackground: '#E4E5E7',
+  darkGreyBackground: '#F6F6F7',
   greyInitials: '#3D424D',
   ligthGreyBackground: '#DDDDDD'
 }
@@ -71,6 +72,7 @@ export const theme = {
   backgroundColor: '#FFFFFF',
   greenColor: '#6C727E',
   darkGreenColor: '#006C84',
+  greenLightColor: '#F7F7F8',
   red: '#C5050B',
   lighRed: '#DE2121',
   darkGrey: '#282B33',

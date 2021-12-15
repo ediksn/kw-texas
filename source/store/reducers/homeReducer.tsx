@@ -30,7 +30,12 @@ const {
   ADD_BOOKMARK_POST_FAILURE,
   REMOVE_BOOKMARK_POST,
   REMOVE_BOOKMARK_POST_SUCCESS,
-  REMOVE_BOOKMARK_POST_FAILURE
+  REMOVE_BOOKMARK_POST_FAILURE,
+  SELECT_POST,
+  GET_POST_COMMENTS,
+  GET_POST_COMMENTS_SUCCESS,
+  GET_POST_COMMENTS_FAILURE,
+  ADD_COMMENT_POST_SUCCESS
 } = HOME_TYPES
 const HOME_INITIAL_STATE = homeModel
 
@@ -113,6 +118,24 @@ const REDUCERS = {
   },
   [REMOVE_BOOKMARK_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = false
+  },
+  [SELECT_POST]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.comments.selectedPost = payload
+    draftState.comments.selectedPostComments = []
+  },
+  [GET_POST_COMMENTS]: ({ draftState }: PostReducerProps) => {
+    draftState.comments.loadingComments = true
+  },
+  [GET_POST_COMMENTS_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.comments.selectedPostComments = payload.data
+    draftState.comments.limit = payload.limit
+    draftState.comments.loadingComments = false
+  },
+  [GET_POST_COMMENTS_FAILURE]: ({ draftState }: PostReducerProps) => {
+    draftState.comments.loadingComments = false
+  },
+  [ADD_COMMENT_POST_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.posts.data = payload
   }
 }
 

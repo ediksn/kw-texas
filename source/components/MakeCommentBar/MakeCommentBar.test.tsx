@@ -1,10 +1,13 @@
 import React from 'react'
 import { render, RenderAPI } from '@testing-library/react-native'
-import PostMedia from '~/components/PostMedia/index'
-import { postMockObject } from '../../../__mocks__/mockObjects'
+import MakeCommentBar from '~/components/MakeCommentBar/index'
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
+}))
+
+jest.mock('react-redux', () => ({
+  useSelector: () => ({})
 }))
 
 jest.mock(
@@ -30,11 +33,11 @@ jest.mock(
   { virtual: true }
 )
 
-describe('Render Post Media Test', () => {
+describe('Render Make Comment Bar Test', () => {
   let component: RenderAPI
 
   beforeEach(() => {
-    component = render(<PostMedia post={postMockObject} />)
+    component = render(<MakeCommentBar onSubmitComment={() => ({})} keyboardOpen={false} usrData={null} />)
   })
 
   it('Match with the snapshot', () => {

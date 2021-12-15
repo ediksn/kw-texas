@@ -7,6 +7,10 @@ export const styles = StyleSheet.create({
     marginVertical: verticalScale(4),
     flex: 1
   },
+  mediaContainerWithOutTopMargin: {
+    marginBottom: verticalScale(4),
+    flex: 1
+  },
   smallMediaRow: {
     flex: 1,
     flexDirection: 'row',

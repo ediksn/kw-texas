@@ -1,12 +1,12 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
 import moment from 'moment'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from 'react-native-size-matters'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
 import { styles } from './styles'
-import { Button, Dropdown } from '~/components'
+import { Button, Dropdown, PostMedia } from '~/components'
 import { avatarPost, NAVIGATION, theme } from '~/constants'
 import { PostInterface } from '~/interfaces/postInterface'
 import Icon from '../Icon'
@@ -15,9 +15,13 @@ import { OptionInterface } from '../../interfaces/groupInterface'
 import { authorPost, datePost, dotsOptionsPost, contentPost, buttonPost } from '../../constants/testIds'
 import { homeActions, toastActions } from '~/store/actions'
 import Avatar from '../Avatar'
-import PostMedia from '~/components/PostMedia'
 
-const Post = ({ post }: { post: PostInterface }) => {
+interface PostProps {
+  post: PostInterface
+  onPostPress: (post: PostInterface) => void
+}
+
+const Post = ({ post, onPostPress }: PostProps) => {
   const {
     id,
     isUserCreatorOfThePost,
@@ -178,6 +182,7 @@ const Post = ({ post }: { post: PostInterface }) => {
         testID={buttonPost}
         message={t('components_Post_Comment')}
         type={theme.buttons.types.TEXT}
+        onPress={() => onPostPress(post)}
         icon={{
           name: 'comment-icon',
           size: moderateScale(20),
@@ -253,12 +258,14 @@ const Post = ({ post }: { post: PostInterface }) => {
         <View style={styles.body}>
           <View style={styles.infoNumbers}>
             <Text style={styles.infoNumber}>{getLikesCommentsSharesText(likes, t('components_Post_likes'))}</Text>
-            <View style={styles.commentsSharesBox}>
-              <Text style={[styles.infoNumber, shares > 0 ? styles.comments : null]}>
-                {getLikesCommentsSharesText(repliesCount, t('components_Post_comments'))}
-              </Text>
-              <Text style={styles.infoNumber}>{getLikesCommentsSharesText(shares, t('components_Post_shares'))}</Text>
-            </View>
+            <TouchableWithoutFeedback onPress={() => onPostPress(post)}>
+              <View style={styles.commentsSharesBox}>
+                <Text style={[styles.infoNumber, shares > 0 ? styles.comments : null]}>
+                  {getLikesCommentsSharesText(repliesCount, t('components_Post_comments'))}
+                </Text>
+                <Text style={styles.infoNumber}>{getLikesCommentsSharesText(shares, t('components_Post_shares'))}</Text>
+              </View>
+            </TouchableWithoutFeedback>
           </View>
         </View>
       </View>

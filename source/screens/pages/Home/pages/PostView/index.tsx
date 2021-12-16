@@ -83,7 +83,7 @@ const PostView = () => {
     return <ActivityIndicator color={theme.post.green} size={20} />
   }
 
-  const { creatorfirstName, createdAt, creatorLastName, creatorPhoto } = selectedPost
+  const { creatorfirstName, createdAt, creatorLastName, creatorPhoto, groupInfo } = selectedPost
   const author = `${creatorfirstName} ${creatorLastName}`
   const date = moment(createdAt).format('MM/DD/YY')
   const ANDROID_PADDING = keyboardOpen ? 0 : 40
@@ -97,7 +97,9 @@ const PostView = () => {
             <Text testID={authorPost} style={styles.name}>
               {author}
             </Text>
-            <Text testID={datePost} style={styles.date}>{`${t('components_Post_Posted')} ${date}`}</Text>
+            <Text numberOfLines={1} ellipsizeMode='tail' testID={datePost} style={styles.date}>{`${t(
+              'components_Post_Posted'
+            )} ${date} | ${groupInfo?.name}`}</Text>
           </View>
         </View>
       </HeaderPostView>

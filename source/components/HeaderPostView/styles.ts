@@ -15,7 +15,8 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
     elevation: 8,
-    backgroundColor: theme.backgrounds.whiteBackground
+    backgroundColor: theme.backgrounds.whiteBackground,
+    paddingHorizontal: '3%'
   },
   textContainer: {
     marginLeft: 'auto',
@@ -24,7 +25,6 @@ export const styles = StyleSheet.create({
   touchableHighlight: {
     paddingVertical: '3%',
     paddingHorizontal: '3%',
-    marginHorizontal: '3%',
     borderRadius: 50
   },
   text: {

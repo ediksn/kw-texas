@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { LogBox, StatusBar } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 import { Provider } from 'react-redux'
+import 'react-native-gesture-handler'
 
 import setI18nConfig from '~/i18n'
 import { Screens } from './screens'

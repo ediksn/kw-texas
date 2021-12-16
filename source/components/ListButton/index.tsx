@@ -30,8 +30,8 @@ const ListButton = ({ title, icon, onPress, arrow, svg, svgTitle, svgSize, svgCo
               <Icon name={svgTitle ?? ''} size={svgSize} color={svgColor} />
             </View>
           )}
-          <Image style={styles.logoutBtn} resizeMode='contain' source={icon} />
-          <Text style={[icon ? styles.textWithBtn : styles.textWithNoBtn]}>{t(title)}</Text>
+          {icon && <Image style={styles.logoutBtn} resizeMode='contain' source={icon} />}
+          <Text style={styles.textWithBtn}>{t(title)}</Text>
         </View>
         {arrow && (
           <View>

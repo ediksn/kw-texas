@@ -290,7 +290,9 @@ const actionCreators = {
       dispatch({ type: REMOVE_LIKE_POST_FAILURE, payload: error })
     }
     return false
-  }
+  },
+  showDropDown: () => (dispatch: AppDispatch) => dispatch({ type: HOME_TYPES.SHOW_DROP_DOWN_HOME }),
+  hideDropDown: () => (dispatch: AppDispatch) => dispatch({ type: HOME_TYPES.HIDE_DROP_DOWN_HOME })
 }
 
 export default actionCreators

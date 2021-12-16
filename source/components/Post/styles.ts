@@ -39,7 +39,8 @@ export const styles = StyleSheet.create({
     opacity: 0.5
   },
   info: {
-    marginLeft: moderateScale(12)
+    marginLeft: moderateScale(12),
+    width: '80%'
   },
   name: {
     fontSize: theme.fonts.SMALL_SIZE,

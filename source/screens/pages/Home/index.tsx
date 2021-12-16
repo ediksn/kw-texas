@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { View, FlatList } from 'react-native'
+import { View, FlatList, Text, StatusBar } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import Message from 'assets/images/message.png'
-import { NAVIGATION } from '~/constants'
+import { IS_IOS, NAVIGATION } from '~/constants'
 import { styles } from './styles'
 import { PostInterface } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
 import { getUsrProfileActions, homeActions } from '~/store/actions'
 import { useBackButtonMinimize } from '~/hooks'
-import { Spinner, Button, Post, EmptyList } from '~/components'
+import { Spinner, Button, Post, EmptyList, Dropdown } from '~/components'
+import { OptionInterface, GroupInterface } from '../../../interfaces/groupInterface'
+import { theme } from '../../../constants/theme'
+import { useDeviceWidth } from '../../../hooks/settings'
 
 export const Home = () => {
   const dispatch = useDispatch()
@@ -20,14 +23,18 @@ export const Home = () => {
   const limit: number = useSelector((state: RootState) => state.home.posts.limit)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)
   const hasMoreLoading: boolean = useSelector((state: RootState) => state.home.posts.hasMoreLoading)
+  const isVisibleDropDown: boolean = useSelector((state: RootState) => state.home.isVisibleDropDown)
   const kwuId: number = usr?.kwuid
   useBackButtonMinimize()
   const { t } = useTranslation()
   const navigation = useNavigation()
+  const groups: GroupInterface[] = useSelector((state: RootState) => state.home.groups.data)
+  const DEVICE_WIDTH = useDeviceWidth()
 
   useEffect(() => {
     dispatch(getUsrProfileActions.getUsrProfile(kwuId))
     dispatch(homeActions.getPosts(limitDefault))
+    dispatch(homeActions.getAllGroups())
   }, [dispatch])
   const onPostView = (post: PostInterface) => {
     dispatch(homeActions.selectPost(post))
@@ -37,7 +44,47 @@ export const Home = () => {
   const keyExtractor = (post: PostInterface) => post.id.toString()
   const onRefresh = () => dispatch(homeActions.getPosts(limit))
   const onEndReached = () => dispatch(homeActions.getPosts(limit + 10, true))
-  const onCreatePost = () => navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { edit: false })
+
+  const getGroup = (option: OptionInterface) => {
+    const { key, title } = option
+    const groupSelectedFromDrop = {
+      key,
+      title: title && title.trim().length > 1 ? title : 'NO NAME'
+    }
+    return groupSelectedFromDrop
+  }
+
+  const startDropDown = () => {
+    dispatch(homeActions.showDropDown())
+    if (!IS_IOS) {
+      StatusBar.setBackgroundColor('#2B2B33FF')
+      StatusBar.setBarStyle('light-content')
+    }
+  }
+
+  const stopDropDown = () => {
+    dispatch(homeActions.hideDropDown())
+    if (!IS_IOS) {
+      StatusBar.setBackgroundColor(theme.backgrounds.whiteBackground)
+      StatusBar.setBarStyle('dark-content')
+    }
+  }
+
+  const getMyGroupsFormatted = () => {
+    let myGroups: OptionInterface[] = []
+
+    groups.forEach((group: GroupInterface) => {
+      myGroups = [
+        ...myGroups,
+        {
+          key: group.id,
+          title: group.name.trim().length > 1 ? group.name : 'NO NAME'
+        }
+      ]
+    })
+
+    return myGroups
+  }
 
   const EmptyPosts = () => (
     <EmptyList icon={Message} title='components_Home_No_post_message' subTitle='components_Home_No_post_message2'>
@@ -45,7 +92,7 @@ export const Home = () => {
         message={t('components_Home_Create_new_post')}
         viewStyle={styles.button}
         textStyle={styles.buttonText}
-        onPress={onCreatePost}
+        onPress={startDropDown}
         testID='create_new_post_button'
       />
     </EmptyList>
@@ -66,6 +113,26 @@ export const Home = () => {
         showsVerticalScrollIndicator={posts?.length > 0}
         contentContainerStyle={styles.contentListStyle}
         ListFooterComponent={<Spinner isLoading={hasMoreLoading} size='small' color='#3D424D' />}
+      />
+      <Dropdown
+        buttonRef={null}
+        isVisible={isVisibleDropDown}
+        onRequestClose={stopDropDown}
+        dropdonwHeader={
+          <View style={[styles.item, { height: 40 }]}>
+            <Text allowFontScaling={false} style={styles.dropdownHeader}>
+              {t('components_NewPost_Select_Community')}
+            </Text>
+          </View>
+        }
+        onSelectOption={option => {
+          const groupSelected = getGroup(option)
+          navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { currentGroupSelected: groupSelected })
+        }}
+        options={getMyGroupsFormatted()}
+        width={DEVICE_WIDTH - 136}
+        fix
+        center
       />
     </View>
   )

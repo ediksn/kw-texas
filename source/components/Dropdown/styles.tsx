@@ -6,6 +6,13 @@ export const styles = StyleSheet.create({
     flex: 1
   },
   backdrop: {
+    backgroundColor: '#2B2B33',
+    opacity: 0.6,
+    height: '100%',
+    position: 'absolute',
+    width: '100%'
+  },
+  noBackdrop: {
     height: '100%',
     position: 'absolute',
     width: '100%'

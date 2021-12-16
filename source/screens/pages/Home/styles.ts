@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
 import { scale, verticalScale } from 'react-native-size-matters'
+import { theme } from '~/constants'
 import { useDeviceWidth } from '../../../hooks/settings'
 
 const DEVICE_WIDTH = useDeviceWidth()
@@ -47,5 +48,20 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     color: '#fff',
     fontFamily: 'Mulish-Bold'
+  },
+  item: {
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 12,
+    borderBottomColor: 'rgba(174, 178, 186, 0.2)'
+  },
+  dropdownHeader: {
+    color: theme.lightColor,
+    fontFamily: 'Mulish-Regular',
+    fontSize: theme.fonts.SMALL_SIZE,
+    lineHeight: 16,
+    fontWeight: '700'
   }
 })

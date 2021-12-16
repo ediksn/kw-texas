@@ -22,6 +22,8 @@ const {
   DELETE_POST,
   DELETE_POST_SUCCESS,
   DELETE_POST_FAILURE,
+  SHOW_DROP_DOWN_HOME,
+  HIDE_DROP_DOWN_HOME,
   SELECT_POST,
   GET_POST_COMMENTS,
   GET_POST_COMMENTS_SUCCESS,
@@ -80,6 +82,12 @@ const REDUCERS = {
   },
   [DELETE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = false
+  },
+  [SHOW_DROP_DOWN_HOME]: ({ draftState }: PostReducerProps) => {
+    draftState.isVisibleDropDown = true
+  },
+  [HIDE_DROP_DOWN_HOME]: ({ draftState }: PostReducerProps) => {
+    draftState.isVisibleDropDown = false
   },
   [SELECT_POST]: ({ draftState, payload }: PostReducerProps) => {
     draftState.comments.selectedPost = payload

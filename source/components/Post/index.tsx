@@ -221,7 +221,9 @@ const Post = ({ post, onPostPress }: PostProps) => {
               <Text testID={authorPost} style={styles.name}>
                 {author}
               </Text>
-              <Text testID={datePost} style={styles.date}>{`${t('components_Post_Posted')} ${date}`}</Text>
+              <Text numberOfLines={1} ellipsizeMode='tail' testID={datePost} style={styles.date}>{`${t(
+                'components_Post_Posted'
+              )} ${date} | ${groupInfo.name}`}</Text>
             </View>
           </View>
           <TouchableOpacity

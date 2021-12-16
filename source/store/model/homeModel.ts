@@ -16,6 +16,7 @@ export default {
     limit: 10,
     isLoading: false
   },
+  isVisibleDropDown: false,
   comments: {
     selectedPost: undefined,
     selectedPostComments: [],

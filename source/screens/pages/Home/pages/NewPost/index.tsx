@@ -26,7 +26,6 @@ import Avatar from '~/components/Avatar'
 import { PostInterface, FormPostInterface } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
 import { homeActions, toastActions } from '~/store/actions'
-import BaseButton from '../../../../../components/Dropdown/components/BaseButton/index'
 
 const NewPost = () => {
   const { t } = useTranslation()
@@ -34,7 +33,7 @@ const NewPost = () => {
   const { navigate } = navigation
   const dispatch = useDispatch()
   const { params } = useRoute()
-  const { editMode, idPost, groupId }: any = params
+  const { editMode, idPost, groupId, currentGroupSelected }: any = params
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
   const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
   const user: any = useSelector((state: RootState) => state.login.user)
@@ -47,11 +46,7 @@ const NewPost = () => {
   const images = currentPost?.detail?.attachments || []
   const [inputValue, setInputValue] = useState(editMode ? contentText : '')
   const [showDropDown, setShowDropDown] = useState(false)
-  const [groupSelected, setGroupSelected] = useState<OptionInterface>({
-    key: '0',
-    title: t('components_NewPost_Select_Community'),
-    color: theme.post.inputText
-  })
+  const [groupSelected, setGroupSelected] = useState<OptionInterface>()
   const [pickerResponse, setPickerResponse] = useState<UploadImageInterface[]>(editMode ? images : [])
   const [edited, setEdited] = useState(false)
   const hasValidForm = edited && inputValue !== '' && groupSelected?.key !== '0'
@@ -67,7 +62,7 @@ const NewPost = () => {
       if (res) {
         setGroupSelected({ key: res.id, title: res.name })
       }
-    }
+    } else if (currentGroupSelected) setGroupSelected(currentGroupSelected)
   }
 
   useEffect(() => {
@@ -215,11 +210,11 @@ const NewPost = () => {
                   buttonRef={buttonRef}
                   isVisible={showDropDown && !editMode}
                   dropdonwHeader={
-                    <BaseButton style={[styles.item, { height: 40 }]}>
+                    <View style={[styles.item, { height: 40 }]}>
                       <Text allowFontScaling={false} style={styles.dropdownHeader}>
                         {t('components_NewPost_Select_Community')}
                       </Text>
-                    </BaseButton>
+                    </View>
                   }
                   onRequestClose={() => setShowDropDown(false)}
                   onSelectOption={handleGroup}

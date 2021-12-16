@@ -4,7 +4,7 @@ import getAccessoryMenuPopUpPosition from './utils'
 import BaseButton from './components/BaseButton'
 import { Icon } from '~/components'
 import { styles } from './styles'
-import { useDeviceHeight } from '../../hooks/settings'
+import { useDeviceHeight, useStatusBarHeight } from '../../hooks/settings'
 import { OptionInterface } from '~/interfaces/groupInterface'
 import { theme } from '~/constants'
 
@@ -18,11 +18,12 @@ interface Props {
   onRequestClose: () => void
   onSelectOption: (item: OptionInterface) => void
   options: OptionInterface[]
-  selectedOption: any
+  selectedOption?: any
   width?: number
   center?: boolean
   right?: number
   top?: number
+  fix?: boolean
   dropdonwHeader?: any
 }
 
@@ -38,6 +39,7 @@ const Dropdown = memo(
     center = false,
     right,
     top,
+    fix = false,
     dropdonwHeader = null
   }: Props) => {
     const ANIMATION_IN_DURATION = 150
@@ -50,7 +52,6 @@ const Dropdown = memo(
     const contextRef = useRef<any>()
     const animationOpacity = useRef(new Animated.Value(INITIAL_OPACITY))
     const animationScale = useRef(new Animated.Value(INITIAL_SCALE))
-
     const containerPaddingVertical = 4
     const itemHeight = 40
     const getContainerMaxHeight = (optionsNumber: number) => {
@@ -59,6 +60,9 @@ const Dropdown = memo(
         ? containerMaxHeight + (itemHeight + containerPaddingVertical) / 2
         : containerMaxHeight
     }
+    const DROPDOWN_HEIGHT = getContainerMaxHeight(options.length || 0)
+    const DEVICE_HEIGHT = useDeviceHeight()
+    const STATUSBAR_HEIGHT = useStatusBarHeight()
 
     const handleRunAnimationShow = useCallback(() => {
       animationOpacity.current.setValue(INITIAL_OPACITY)
@@ -89,6 +93,12 @@ const Dropdown = memo(
     useEffect(() => {
       Keyboard.dismiss()
       setCurrentIsVisible(isVisible)
+
+      if (fix) {
+        setDropdownPosXY([68, (DEVICE_HEIGHT + STATUSBAR_HEIGHT - DROPDOWN_HEIGHT) / 2])
+        handleRunAnimationShow()
+        return
+      }
 
       if (!isVisible) {
         setDropdownPosXY([0, -SCREEN_HEIGHT])
@@ -148,7 +158,7 @@ const Dropdown = memo(
       <Modal visible={isVisible} transparent animationType='none' onRequestClose={onRequestClose}>
         <View style={styles.modal}>
           <TouchableWithoutFeedback onPress={onRequestClose}>
-            <View style={styles.backdrop} />
+            <View style={fix ? styles.backdrop : styles.noBackdrop} />
           </TouchableWithoutFeedback>
           <Animated.View
             ref={contextRef}
@@ -160,7 +170,7 @@ const Dropdown = memo(
                 paddingVertical: containerPaddingVertical,
                 opacity: animationOpacity.current,
                 transform: [{ scale: animationScale.current }],
-                maxHeight: getContainerMaxHeight(options.length || 0)
+                maxHeight: DROPDOWN_HEIGHT
               },
               !center && { right: dropdownPosXY[0] }
             ]}

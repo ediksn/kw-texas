@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
   },
   info: {
     marginLeft: moderateScale(12),
-    width: '80%'
+    width: '75%'
   },
   name: {
     fontSize: theme.fonts.SMALL_SIZE,

@@ -175,7 +175,7 @@ const NewPost = () => {
   return (
     <>
       <Header
-        title={t(`${editMode ? t('components_NewPost_Edit') : t('components_NewPost_Create')}`)}
+        title={t(`${editMode ? t('components_NewPost_Header_Edit_Post') : t('components_NewPost_Header_Create_Post')}`)}
         style={styles.header}
         leftButton={leftButton}
         onClickLeft={() => navigate(NAVIGATION.SCREEN.HOME)}

@@ -2,22 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { useNavigation } from '@react-navigation/native'
 import { RootState } from '~/store'
-import { NAVIGATION, theme } from '~/constants'
-
+import { theme } from '~/constants'
 import Header from './components/Header'
 
+import { styles } from './styles'
 import { useBackButtonMinimize } from '~/hooks'
 import AccountRow from './components/AccountRow'
 import ListButton from '~/components/ListButton'
 import { loginActions } from '~/store/actions'
 import { ProfileInterface } from '~/interfaces/usrInterface'
 import { Spinner } from '~/components'
-import { styles } from './styles'
 
 const Profile = () => {
-  const { navigate } = useNavigation()
   const dispatch = useDispatch()
   const { t } = useTranslation()
   const [changingAccount, setChangingAccount] = useState(false)
@@ -31,10 +28,6 @@ const Profile = () => {
   }, [activeAccount])
 
   const handleLogOut = () => dispatch(loginActions.logOut())
-
-  const handleGoToProfile = () => {
-    navigate(NAVIGATION.SCREEN.PROFILEDETAIL)
-  }
 
   const AccountList = () => (
     <>
@@ -71,16 +64,6 @@ const Profile = () => {
               <View style={styles.separator} />
             </>
           )}
-          <ListButton
-            title='components_Profile'
-            arrow
-            icon={false}
-            svg
-            svgSize={20}
-            svgTitle='profile'
-            onPress={handleGoToProfile}
-            svgColor={theme.darkGrey}
-          />
           <ListButton
             title='components_Login_Log_Out'
             onPress={handleLogOut}

@@ -13,7 +13,6 @@ const actionCreators = {
       const accounts: AccountInterface[] = await usrProfileService.getAccounts(kwuId)
       const user = await usrProfileService.getUser(kwuId)
       const profile = await usrProfileService.getProfile()
-      const profileDetail = await usrProfileService.getProfileDetails(kwuId)
 
       const result = accounts
         .filter(account => account?.end_dt === null)
@@ -38,8 +37,7 @@ const actionCreators = {
             members,
             isPersonal,
             isDefault,
-            userProfile: user || {},
-            profileDetail
+            userProfile: user || {}
           }
         })
       dispatch({

@@ -199,12 +199,15 @@ const NewPost = () => {
                   onPress={() => setShowDropDown(!showDropDown)}
                   disabled={editMode}
                 >
-                  <Text style={styles.group} ellipsizeMode='tail' numberOfLines={1}>
+                  <Text style={[styles.group, editMode && styles.iconDisabled]} ellipsizeMode='tail' numberOfLines={1}>
                     {groupSelected?.title}
                   </Text>
-                  {!editMode && (
-                    <Icon name={`drop${showDropDown ? 'up' : 'down'}-icon`} size={6} color={theme.post.green} />
-                  )}
+                  <Icon
+                    name={`drop${showDropDown ? 'up' : 'down'}-icon`}
+                    size={6}
+                    viewStyle={editMode && styles.iconDisabled}
+                    color={theme.post.green}
+                  />
                 </TouchableOpacity>
                 <Dropdown
                   buttonRef={buttonRef}

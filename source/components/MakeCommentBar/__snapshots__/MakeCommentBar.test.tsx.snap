@@ -105,9 +105,12 @@ exports[`Render Make Comment Bar Test Match with the snapshot 1`] = `
                 "color": undefined,
                 "fontSize": 28,
               },
-              Object {
-                "color": "#006C84",
-              },
+              Array [
+                undefined,
+                Object {
+                  "color": "#006C84",
+                },
+              ],
               Object {
                 "fontFamily": "icomoon",
                 "fontStyle": "normal",

@@ -187,9 +187,12 @@ exports[`Render Post Info Test Match with the snapshot 1`] = `
                   "color": undefined,
                   "fontSize": 31.428571428571427,
                 },
-                Object {
-                  "color": "#006C84",
-                },
+                Array [
+                  undefined,
+                  Object {
+                    "color": "#006C84",
+                  },
+                ],
                 Object {
                   "fontFamily": "icomoon",
                   "fontStyle": "normal",
@@ -280,9 +283,12 @@ exports[`Render Post Info Test Match with the snapshot 1`] = `
                   "color": undefined,
                   "fontSize": 31.428571428571427,
                 },
-                Object {
-                  "color": "#006C84",
-                },
+                Array [
+                  undefined,
+                  Object {
+                    "color": "#006C84",
+                  },
+                ],
                 Object {
                   "fontFamily": "icomoon",
                   "fontStyle": "normal",
@@ -373,9 +379,12 @@ exports[`Render Post Info Test Match with the snapshot 1`] = `
                   "color": undefined,
                   "fontSize": 31.428571428571427,
                 },
-                Object {
-                  "color": "#006C84",
-                },
+                Array [
+                  undefined,
+                  Object {
+                    "color": "#006C84",
+                  },
+                ],
                 Object {
                   "fontFamily": "icomoon",
                   "fontStyle": "normal",

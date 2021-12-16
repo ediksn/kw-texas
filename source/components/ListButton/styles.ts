@@ -20,12 +20,7 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     fontFamily: 'Mulish-Bold',
     color: theme.darkBackground,
-    marginTop: 1
-  },
-  textWithNoBtn: {
-    fontSize: 17,
-    fontFamily: 'Mulish-Bold',
-    color: theme.darkBackground,
+    marginTop: 1,
     marginLeft: 17
   },
   logoutBtn: {

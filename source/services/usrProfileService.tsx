@@ -15,5 +15,10 @@ export default {
     const axiosInstance = await axiosInstanceTokens()
     const response = await axiosInstance.get('mkt-profile-mgr/api/v1/profile')
     return response.data.marketing_profile
+  },
+  getProfileDetails: async (kwuId: number) => {
+    const axiosInstance = await axiosInstanceTokens()
+    const response = await axiosInstance.get(`connect/profile/${kwuId}`)
+    return response.data
   }
 }

@@ -26,6 +26,7 @@ import ProfileStackScreen from './pages/Profile/navigation'
 import NewPost from './pages/Home/pages/NewPost'
 import EventsStackScreen from './pages/Events/navigation'
 import { ToastProps } from '~/interfaces/toastInterface'
+import ProfileDetail from './pages/Profile/pages/ProfileDetail/navigation'
 import PostView from '~/screens/pages/Home/pages/PostView'
 
 const TabNavigation = () => {
@@ -126,6 +127,14 @@ const RootNavigation = () => {
               }}
               name={NAVIGATION.SCREEN.NEWPOST}
               component={NewPost}
+            />
+            <StackScreen
+              options={{
+                cardStyle: { backgroundColor: '#F7F7F8' },
+                header: () => null
+              }}
+              name={NAVIGATION.SCREEN.PROFILEDETAIL}
+              component={ProfileDetail}
             />
             <StackScreen
               options={{

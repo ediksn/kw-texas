@@ -28,7 +28,10 @@ const {
   GET_POST_COMMENTS,
   GET_POST_COMMENTS_SUCCESS,
   GET_POST_COMMENTS_FAILURE,
-  ADD_COMMENT_POST_SUCCESS
+  ADD_COMMENT_POST_SUCCESS,
+  EDIT_POST,
+  EDIT_POST_SUCCESS,
+  EDIT_POST_FAILURE
 } = HOME_TYPES
 const HOME_INITIAL_STATE = homeModel
 
@@ -68,6 +71,15 @@ const REDUCERS = {
     draftState.posts.isLoading = true
   },
   [CREATE_POST_SUCCESS]: ({ draftState }: any) => {
+    draftState.posts.isLoading = false
+  },
+  [EDIT_POST]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = true
+  },
+  [EDIT_POST_SUCCESS]: ({ draftState }: any) => {
+    draftState.posts.isLoading = false
+  },
+  [EDIT_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = false
   },
   [CREATE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {

@@ -14,9 +14,6 @@ export const styles = StyleSheet.create({
     fontFamily: 'Mulish-Bold',
     fontSize: theme.fonts.MEDIUM_SIZE
   },
-  rightTextDisabled: {
-    opacity: 0.6
-  },
   content: {
     flex: 1
   },
@@ -79,7 +76,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center'
   },
-  iconDisabled: {
+  disabled: {
     opacity: 0.5
   },
   item: {

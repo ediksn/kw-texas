@@ -201,16 +201,16 @@ export default {
       }
     })
   },
-  editPostWithMedia: async (form: FormPostInterface, postId?: string, originalFiles?: any[]) => {
+  editPostWithMedia: async (form: FormPostInterface, postId?: string, originalFiles?: any[], newFiles: any[] = []) => {
     const axiosInstance = await axiosInstanceFormTokens()
     const formData = new FormData()
     const fileMap: any = {}
     const fileList: any = []
     const urls: string[] = []
-    const newFiles: any[] = form.images ? [...form.images] : []
+    const allFiles: any[] = form.images ? form.images : []
     const filesRemoved: string[] = []
     originalFiles?.map(originalFile => {
-      if (!newFiles.find(newFile => originalFile.id === newFile.id)) {
+      if (!allFiles.find(newFile => originalFile.id === newFile.id)) {
         filesRemoved.push(originalFile.id || '')
       }
       return true
@@ -219,12 +219,6 @@ export default {
     const query =
       'mutation editPost($postId: String!, $post: editPostInput!, $file: [Upload]) { editPost(postId: $postId, post: $post, file: $file)}'
 
-    newFiles?.map((newFile, index) => {
-      if (originalFiles && originalFiles.find(originalFile => newFile.id === originalFile.id)) {
-        newFiles.splice(index, 1)
-      }
-      return true
-    })
     newFiles?.map((file, index) => {
       if (file.uri) {
         let aux = file.uri

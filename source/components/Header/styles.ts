@@ -32,5 +32,8 @@ export const styles = StyleSheet.create({
     fontSize: theme.fonts.LARGE_SIZE,
     lineHeight: 24,
     fontWeight: '700'
+  },
+  disabled: {
+    opacity: 0.5
   }
 })

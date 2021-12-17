@@ -48,6 +48,7 @@ const NewPost = () => {
   const [showDropDown, setShowDropDown] = useState(false)
   const [groupSelected, setGroupSelected] = useState<OptionInterface>()
   const [pickerResponse, setPickerResponse] = useState<UploadImageInterface[]>(editMode ? images : [])
+  const [newFiles, setNewFiles] = useState<UploadImageInterface[]>([])
   const [edited, setEdited] = useState(false)
   const hasValidForm = edited && inputValue !== '' && groupSelected?.key !== '0'
   const buttonRef = useRef<any>()
@@ -84,9 +85,10 @@ const NewPost = () => {
       hasImages: pickerResponse.length > 0,
       images: pickerResponse.length > 0 ? pickerResponse : undefined
     }
-
     const res: any = await dispatch(
-      editMode && currentPost?.id ? homeActions.editPost(form, currentPost?.id, images) : homeActions.createPost(form)
+      editMode && currentPost?.id
+        ? homeActions.editPost(form, currentPost?.id, images, newFiles)
+        : homeActions.createPost(form)
     )
     if (res) {
       dispatch(
@@ -134,6 +136,7 @@ const NewPost = () => {
     launchImageLibrary(options, (res: any) => {
       if (!res.didCancel && !res.error) {
         setPickerResponse((oldState: UploadImageInterface[]) => oldState.concat(res.assets))
+        setNewFiles((oldState: UploadImageInterface[]) => oldState.concat(res.assets))
         if (!edited) setEdited(true)
       }
     })
@@ -148,6 +151,7 @@ const NewPost = () => {
     launchCamera(options, (res: any) => {
       if (!res.didCancel && !res.error) {
         setPickerResponse((oldState: UploadImageInterface[]) => oldState.concat(res.assets))
+        setNewFiles((oldState: UploadImageInterface[]) => oldState.concat(res.assets))
         setEdited(true)
       }
     })
@@ -166,7 +170,7 @@ const NewPost = () => {
   const leftButton = <Icon name='close-icon' size={16.5} />
   const rightButton = (
     <Spinner isLoading={loading} size='small' color={theme.post.green}>
-      <Text style={[styles.rightText, !hasValidForm && !editMode && styles.rightTextDisabled]}>
+      <Text style={[styles.rightText, !hasValidForm && !editMode && styles.disabled]}>
         {t(`${editMode ? t('components_NewPost_EditMode') : t('components_NewPost_PostMode')}`)}
       </Text>
     </Spinner>
@@ -180,7 +184,8 @@ const NewPost = () => {
         leftButton={leftButton}
         onClickLeft={() => navigate(NAVIGATION.SCREEN.HOME)}
         rightButton={rightButton}
-        onClickRight={hasValidForm || editMode ? () => handleSubmit() : null}
+        onClickRight={hasValidForm || edited ? () => handleSubmit() : null}
+        rigthStyle={!edited ? styles.disabled : {}}
       />
       <KeyboardAvoidingView
         behavior={IS_IOS ? 'padding' : undefined}
@@ -197,15 +202,15 @@ const NewPost = () => {
                   ref={buttonRef}
                   style={styles.dropTouch}
                   onPress={() => setShowDropDown(!showDropDown)}
-                  disabled={editMode}
+                  disabled={edited}
                 >
-                  <Text style={[styles.group, editMode && styles.iconDisabled]} ellipsizeMode='tail' numberOfLines={1}>
+                  <Text style={[styles.group, editMode && styles.disabled]} ellipsizeMode='tail' numberOfLines={1}>
                     {groupSelected?.title}
                   </Text>
                   <Icon
                     name={`drop${showDropDown ? 'up' : 'down'}-icon`}
                     size={6}
-                    viewStyle={editMode && styles.iconDisabled}
+                    viewStyle={editMode && styles.disabled}
                     color={theme.post.green}
                   />
                 </TouchableOpacity>
@@ -247,14 +252,14 @@ const NewPost = () => {
           <TouchableOpacity
             onPress={handleAttachImage}
             disabled={pickerResponse.length >= 15}
-            style={pickerResponse.length >= 15 && styles.iconDisabled}
+            style={pickerResponse.length >= 15 && styles.disabled}
           >
             <Icon name='gallery-icon' size={24} color={theme.post.green} />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={handleTakePicture}
             disabled={pickerResponse.length >= 15}
-            style={pickerResponse.length >= 15 && styles.iconDisabled}
+            style={pickerResponse.length >= 15 && styles.disabled}
           >
             <Icon name='camera-icon' size={24} color={theme.post.green} />
           </TouchableOpacity>

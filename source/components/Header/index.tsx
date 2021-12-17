@@ -7,6 +7,7 @@ interface Props {
   statusBarHeight?: number
   leftButton?: ReactNode
   rightButton?: ReactNode
+  rigthStyle?: ViewStyle
   onClickLeft?: () => void
   onClickRight?: any
   style?: ViewStyle
@@ -18,6 +19,7 @@ const Header = ({
   statusBarHeight,
   leftButton,
   rightButton,
+  rigthStyle,
   onClickLeft,
   onClickRight,
   style,
@@ -51,7 +53,7 @@ const Header = ({
     <>
       {rightButton && (
         <TouchableHighlight
-          style={styles.touchableHighlight}
+          style={[styles.touchableHighlight, rigthStyle]}
           activeOpacity={0.6}
           underlayColor='transparent'
           onPress={onClickRight}

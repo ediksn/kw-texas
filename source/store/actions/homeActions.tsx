@@ -155,7 +155,8 @@ const actionCreators = {
     return false
   },
   editPost:
-    (form: FormPostInterface, postId: string, originalFiles?: any[]) => async (dispatch: any, getState: any) => {
+    (form: FormPostInterface, postId: string, originalFiles?: any[], newFiles?: any[]) =>
+    async (dispatch: any, getState: any) => {
       const { EDIT_POST, EDIT_POST_SUCCESS, EDIT_POST_FAILURE } = HOME_TYPES
       const { limitDefault }: any = getState().home.posts
       dispatch({ type: EDIT_POST })
@@ -163,7 +164,7 @@ const actionCreators = {
       try {
         const response =
           (form.hasImages && form.images) || originalFiles
-            ? await homeService.editPostWithMedia(form, postId, originalFiles)
+            ? await homeService.editPostWithMedia(form, postId, originalFiles, newFiles)
             : await homeService.editPost(form, postId)
         if (response) {
           dispatch({

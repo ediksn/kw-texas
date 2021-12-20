@@ -22,14 +22,16 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     color: theme.greenColor,
     paddingHorizontal: scale(10),
-    paddingVertical: verticalScale(2),
-    marginBottom: verticalScale(5),
-    textAlignVertical: 'top',
-    minWidth: verticalScale(230)
+    paddingTop: verticalScale(20),
+    textAlignVertical: 'bottom',
+    minWidth: verticalScale(230),
+    minHeight: verticalScale(40)
   },
   title: {
     flexDirection: 'row',
-    marginLeft: scale(10)
+    marginLeft: scale(10),
+    position: 'absolute',
+    zIndex: 1
   },
   titleText: {
     color: theme.darkGrey,

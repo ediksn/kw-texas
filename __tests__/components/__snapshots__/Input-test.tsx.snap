@@ -39,6 +39,8 @@ exports[`renders correctly 1`] = `
           Object {
             "flexDirection": "row",
             "marginLeft": 21.428571428571427,
+            "position": "absolute",
+            "zIndex": 1,
           }
         }
       >
@@ -73,11 +75,11 @@ exports[`renders correctly 1`] = `
               "color": "#6C727E",
               "fontFamily": "Mulish-Regular",
               "fontSize": 14,
-              "marginBottom": 9.808823529411764,
+              "minHeight": 78.47058823529412,
               "minWidth": 451.20588235294116,
               "paddingHorizontal": 21.428571428571427,
-              "paddingVertical": 3.9235294117647057,
-              "textAlignVertical": "top",
+              "paddingTop": 39.23529411764706,
+              "textAlignVertical": "bottom",
             },
             undefined,
             undefined,

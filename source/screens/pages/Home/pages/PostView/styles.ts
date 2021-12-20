@@ -10,7 +10,9 @@ export const styles = StyleSheet.create({
   header: {
     backgroundColor: theme.backgrounds.whiteBackground,
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: verticalScale(4),
+    paddingRight: scale(16)
   },
   content: {
     flex: 1,
@@ -33,7 +35,7 @@ export const styles = StyleSheet.create({
   },
   avatarBox: {
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     flexDirection: 'row',
     alignSelf: 'flex-start'
   },
@@ -48,7 +50,8 @@ export const styles = StyleSheet.create({
     opacity: 0.5
   },
   info: {
-    marginLeft: moderateScale(12)
+    marginLeft: moderateScale(12),
+    width: '75%'
   },
   name: {
     fontSize: theme.fonts.SMALL_SIZE,

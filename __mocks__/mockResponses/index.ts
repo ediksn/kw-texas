@@ -1,4 +1,5 @@
 import moment from 'moment'
+import { PostInterface } from '~/interfaces/postInterface'
 
 export const videoResponse = {
   id: 2230,
@@ -89,7 +90,7 @@ export const profileResponse = {
   }
 }
 
-export const postResponse = {
+export const postResponse: PostInterface = {
   id: '6172c50ac8a0fb001c4ddf0a',
   content: 'Great2',
   type: 'FILE',
@@ -110,6 +111,13 @@ export const postResponse = {
   groupInfo: {
     id: '60f603104d8d7a001ac9ec79',
     name: 'Aanother Best Test Group 2021-08-30T07:11.000Z'
+  },
+  detail: {
+    links: [
+      {
+        url: 'https://www.youtube.com/channel/UCDlujZcssCwV4P9XItrhC0A'
+      }
+    ]
   }
 }
 

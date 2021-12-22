@@ -62,10 +62,23 @@ export const styles = StyleSheet.create({
   content: {
     marginVertical: verticalScale(4)
   },
+  links: {
+    marginTop: verticalScale(10)
+  },
   contentText: {
     fontSize: theme.fonts.SMALL_SIZE,
     fontFamily: 'Mulish-Regular',
     color: theme.post.content,
+    flexWrap: 'wrap'
+  },
+  linkWrapper: {
+    alignSelf: 'flex-start',
+    maxHeight: verticalScale(30)
+  },
+  linkText: {
+    fontSize: theme.fonts.SMALL_SIZE,
+    fontFamily: 'Mulish-Bold',
+    color: theme.darkGreenColor,
     flexWrap: 'wrap'
   },
   showMore: {

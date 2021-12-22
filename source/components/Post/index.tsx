@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
 import moment from 'moment'
-import { View, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
+import { View, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight, Linking } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from 'react-native-size-matters'
 import { useNavigation } from '@react-navigation/native'
@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 import { styles } from './styles'
 import { Button, Dropdown, PostMedia } from '~/components'
 import { avatarPost, NAVIGATION, theme } from '~/constants'
-import { PostInterface } from '~/interfaces/postInterface'
+import { Link, PostInterface } from '~/interfaces/postInterface'
 import Icon from '../Icon'
 import { useUnRichContent } from '~/hooks'
 import { OptionInterface } from '../../interfaces/groupInterface'
@@ -34,7 +34,8 @@ const Post = ({ post, onPostPress }: PostProps) => {
     repliesCount,
     userHasAlreadyBookmarked,
     groupInfo,
-    userHasAlreadyLiked
+    userHasAlreadyLiked,
+    detail
   } = post
   const [userHasAlreadyBookmarkedLocal, setUserHasAlreadyBookmarkedLocal] = useState(userHasAlreadyBookmarked)
   const author = `${creatorfirstName.toUpperCase()} ${creatorLastName.toUpperCase()}`
@@ -130,6 +131,13 @@ const Post = ({ post, onPostPress }: PostProps) => {
     }
     setLiked(!liked)
     setLikes(likesUpdated)
+  }
+
+  const handleOpenLink = async (url: string) => {
+    const canOpen = await Linking.canOpenURL(url)
+    if (canOpen) {
+      await Linking.openURL(url)
+    }
   }
 
   const optionsPost = () => {
@@ -260,6 +268,20 @@ const Post = ({ post, onPostPress }: PostProps) => {
               </TouchableOpacity>
             )}
           </View>
+          {detail?.links?.length && detail?.links?.length > 0 && (
+            <View testID='links' style={styles.links}>
+              {detail?.links?.map((link: Link, i: number) => (
+                <TouchableHighlight
+                  key={`key${0 + i}`}
+                  onPress={() => handleOpenLink(link.url)}
+                  underlayColor='transparent'
+                  style={styles.linkWrapper}
+                >
+                  <Text style={styles.linkText}>{link.url}</Text>
+                </TouchableHighlight>
+              ))}
+            </View>
+          )}
         </View>
         <PostMedia post={post} />
         <View style={styles.body}>

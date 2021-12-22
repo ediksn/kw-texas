@@ -9,7 +9,8 @@ import {
   datePost,
   dotsOptionsPost,
   contentPost,
-  buttonPost
+  buttonPost,
+  linksPost
 } from '../../../../source/constants/testIds'
 
 let component: RenderAPI
@@ -51,9 +52,10 @@ jest.mock('react-redux', () => ({
 
 describe('Login test', () => {
   const item: PostInterface = postResponse
+  const mockPostReponse = jest.fn()
 
   beforeEach(() => {
-    component = render(<Post post={item} />)
+    component = render(<Post post={item} onPostPress={mockPostReponse} />)
   })
 
   it('Renders correctly', () => {
@@ -64,5 +66,6 @@ describe('Login test', () => {
     expect(component.queryAllByTestId(dotsOptionsPost).length).toEqual(1)
     expect(component.queryAllByTestId(contentPost).length).toEqual(1)
     expect(component.queryAllByTestId(buttonPost).length).toEqual(3)
+    expect(component.queryAllByTestId(linksPost).length).toEqual(1)
   })
 })

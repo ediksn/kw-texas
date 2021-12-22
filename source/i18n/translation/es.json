@@ -124,5 +124,12 @@
   "components_Profile_instagram": "Instagram URL",
   "components_Profile_google": "Google+ URL",
   "components_Account_Account": "Cuenta",
-  "components_Account_Other_Accounts": "Otras cuentas"
+  "components_Account_Other_Accounts": "Otras cuentas",
+  "components_AfterPermissionModal_TurnOnTouchID": "Enceniende el Touch ID",
+  "components_AfterPermissionModal_TurnOnFaceID": "Enceniende el Face ID",
+  "components_AfterPermissionModal_TurnOnBiometrics": "Enciende la huella digital",
+  "components_AfterPermissionModal_OpportunityTouchID": "Tienes la oportunidad de permitir el uso de Touch ID. Si quieres habilitarlo, puedes ir a la configuración del sistema y activarlo.",
+  "components_AfterPermissionModal_OpportunityFaceID": "Tienes la oportunidad de permitir el uso de Face ID. Si quieres habilitarlo, puedes ir a la configuración del sistema y activarlo.",
+  "components_AfterPermissionModal_OpportunityBiometrics": "Tienes la oportunidad de permitir el uso de la huella digital. Si quieres habilitarla, puedes ir a la configuración del sistema y activarla.",
+  "components_AfterPermissionModal_GoToSettings": "Ir a Configuración"
 }

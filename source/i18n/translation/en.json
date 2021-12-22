@@ -21,7 +21,7 @@
   "At": "At",
   "general_text_No": "No",
   "general_text_Yes": "Yes",
-  "general_text_Ok": "Ok",
+  "general_text_Ok": "OK",
   "general_text_Loading": "Loading",
   "input_is_required": "is required",
   "components_Login_Username": "Username",
@@ -124,5 +124,12 @@
   "components_Profile_instagram": "Instagram URL",
   "components_Profile_google": "Google+ URL",
   "components_Account_Account": "Account",
-  "components_Account_Other_Accounts": "Other accounts"
+  "components_Account_Other_Accounts": "Other accounts",
+  "components_AfterPermissionModal_TurnOnTouchID": "Turn on Touch ID",
+  "components_AfterPermissionModal_TurnOnFaceID": "Turn on Face ID",
+  "components_AfterPermissionModal_TurnOnBiometrics": "Turn on FingerPrint",
+  "components_AfterPermissionModal_OpportunityTouchID": "You have opportunity to allow app to use Touch ID. If you want to give access, yo can go to the system settings and turn on it.",
+  "components_AfterPermissionModal_OpportunityFaceID": "You have opportunity to allow app to use Face ID. If you want to give access, yo can go to the system settings and turn on it.",
+  "components_AfterPermissionModal_OpportunityBiometrics": "You have opportunity to allow app to use Fingerprint. If you want to give access, yo can go to the system settings and turn on it.",
+  "components_AfterPermissionModal_GoToSettings": "Go to Settings"
 }

@@ -19,6 +19,7 @@ import { loginErrors } from '~/functions'
 import BiometricModal from '~/components/BiometricModal'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
 import BiometricPermission from '~/components/BiometricPermission'
+import AfterPermissionModal from '~/components/AfterPermissionModal'
 
 export const Login = () => {
   const { t } = useTranslation()
@@ -37,6 +38,7 @@ export const Login = () => {
   const [biometryTypeState, setBiometryTypeState] = useState('')
   const [allowModal, setAllowModal] = useState(false)
   const [loginDisabled, setLoginDisabled] = useState(true)
+  const [openAfterPermissionModal, setOpenAfterPermissionModal] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const error: ErrorInterface = useSelector((state: RootState) => state.login.error)
@@ -147,7 +149,8 @@ export const Login = () => {
 
   const handleDenyBiometry = () => {
     Storage.save({ key: BIOMETRIC.PERMISSION, value: { ALLOWED: false } })
-    handleCloseModal()
+    setAllowModal(false)
+    setOpenAfterPermissionModal(true)
   }
 
   const handleAllowBiometry = async () => {
@@ -220,6 +223,11 @@ export const Login = () => {
             onNo={handleDenyBiometry}
             onRequestClose={handleCloseModal}
             onYes={handleAllowBiometry}
+          />
+          <AfterPermissionModal
+            isVisible={openAfterPermissionModal}
+            biometryType={biometryTypeState}
+            handleCloseModal={handleCloseModal}
           />
         </SafeAreaView>
       </TouchableWithoutFeedback>

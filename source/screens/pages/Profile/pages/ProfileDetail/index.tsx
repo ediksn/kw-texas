@@ -96,7 +96,7 @@ export const ProfileDetail = () => {
         <View style={styles.imageContainer}>
           {usrData?.profileDetail.banner.length > 0 ? (
             <Image
-              resizeMode='contain'
+              resizeMode='cover'
               style={styles.banner}
               source={{ uri: handleBannerUrl(usrData?.profileDetail.banner) }}
             />

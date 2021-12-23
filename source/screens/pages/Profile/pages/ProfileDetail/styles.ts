@@ -90,6 +90,7 @@ export const styles = StyleSheet.create({
   },
   areasContainer: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     paddingVertical: scale(2)
   },
   area: {
@@ -105,6 +106,6 @@ export const styles = StyleSheet.create({
   banner: {
     width: '100%',
     height: '100%',
-    resizeMode: 'contain'
+    resizeMode: 'cover'
   }
 })

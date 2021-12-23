@@ -73,7 +73,7 @@ export const Login = () => {
     if (user !== null) {
       if (biometryTypeState !== '') {
         Storage.get({ key: BIOMETRIC.PERMISSION }).then((result: any) => {
-          if (result == null) {
+          if (result == null && biometryTypeState !== 'none') {
             setAllowModal(true)
             setLoading(false)
           } else {

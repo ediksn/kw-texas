@@ -19,9 +19,7 @@ const {
   CREATE_POST,
   CREATE_POST_SUCCESS,
   CREATE_POST_FAILURE,
-  DELETE_POST,
   DELETE_POST_SUCCESS,
-  DELETE_POST_FAILURE,
   SHOW_DROP_DOWN_HOME,
   HIDE_DROP_DOWN_HOME,
   SELECT_POST,
@@ -88,15 +86,8 @@ const REDUCERS = {
   [CREATE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = false
   },
-  [DELETE_POST]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = true
-  },
   [DELETE_POST_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
     draftState.posts.data = payload
-    draftState.posts.isLoading = false
-  },
-  [DELETE_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
-    draftState.posts.isLoading = false
   },
   [SHOW_DROP_DOWN_HOME]: ({ draftState }: PostReducerProps) => {
     draftState.isVisibleDropDown = true

@@ -91,6 +91,7 @@ const Post = ({ post, onPostPress }: PostProps) => {
   }
 
   const handleDelete = async () => {
+    setShowDropDown(false)
     const res: any = await dispatch(homeActions.deletePost(id))
     if (res) {
       dispatch(toastActions.showSuccessToast('home_post_toast_message_deleted'))

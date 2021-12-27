@@ -31,7 +31,10 @@ const {
   ADD_COMMENT_POST_SUCCESS,
   EDIT_POST,
   EDIT_POST_SUCCESS,
-  EDIT_POST_FAILURE
+  EDIT_POST_FAILURE,
+  GET_BOOKMARKED_POSTS,
+  GET_BOOKMARKED_POSTS_SUCCESS,
+  GET_BOOKMARKED_POSTS_FAILURE
 } = HOME_TYPES
 const HOME_INITIAL_STATE = homeModel
 
@@ -118,6 +121,21 @@ const REDUCERS = {
   },
   [ADD_COMMENT_POST_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
     draftState.posts.data = payload
+  },
+  [GET_BOOKMARKED_POSTS]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.bookmarkedPosts.isLoading = payload.isLoading
+    draftState.bookmarkedPosts.hasMoreLoading = payload.hasMoreLoading
+  },
+  [GET_BOOKMARKED_POSTS_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
+    const { data, limit } = payload
+
+    draftState.bookmarkedPosts = { ...draftState.bookmarkedPosts, limit, data }
+    draftState.bookmarkedPosts.isLoading = false
+    draftState.bookmarkedPosts.hasMoreLoading = false
+  },
+  [GET_BOOKMARKED_POSTS_FAILURE]: ({ draftState }: PostReducerProps) => {
+    draftState.bookmarkedPosts.isLoading = false
+    draftState.bookmarkedPosts.hasMoreLoading = false
   }
 }
 

@@ -125,6 +125,8 @@
   "components_Profile_google": "Google+ URL",
   "components_Account_Account": "Account",
   "components_Account_Other_Accounts": "Other accounts",
+  "components_Bookmarks_No_post_message": "It looks like you don’t have any\nsaved posts",
+  "components_Bookmarks_No_post_sub_message": "To save a post, press the button “More”\nat the Global Feed tab.",
   "components_AfterPermissionModal_TurnOnTouchID": "Turn on Touch ID",
   "components_AfterPermissionModal_TurnOnFaceID": "Turn on Face ID",
   "components_AfterPermissionModal_TurnOnBiometrics": "Turn on FingerPrint",

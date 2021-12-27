@@ -286,6 +286,20 @@ export default {
       }
     })
   },
+  getBookmarkedPosts: async (limit: number) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query:
+        '\n    query getGlobalPosts($offset: Int!, $limit: Int!, $filters: PostFiltersInput) {\n  getPosts(offset: $offset, limit: $limit, filters: $filters) {\n    id\n    content\n    type\n    likedBy\n    likesCount\n    repliesCount\n    bookmarksCount\n    creatorId\n    isUserCreatorOfThePost\n    creatorfirstName\n    creatorLastName\n    creatorPhoto\n    createdAt\n    deleted\n   detail {\n    ... on attachmentList {\n      attachments {\n        id\n       url\n      }\n    }\n    }\n   pinned\n    userHasAlreadyLiked\n    userHasAlreadyBookmarked\n    groupInfo\n    {\n    id\n    name\n    }\n    }\n}\n    ',
+      variables: {
+        offset: 0,
+        limit,
+        filters: {
+          bookmarked: true
+        }
+      }
+    })
+  },
   toggleLikePost: async (postId: string) => {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {

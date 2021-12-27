@@ -71,9 +71,10 @@ const Post = ({ post, onPostPress }: PostProps) => {
   }, [hasShowLessMore, showMore])
 
   useEffect(() => {
-    const { likesCount: likesNumber, userHasAlreadyLiked: hasLiked } = post
+    const { likesCount: likesNumber, userHasAlreadyLiked: hasLiked, userHasAlreadyBookmarked: hasBookmarked } = post
     setLikes(likesNumber)
     setLiked(hasLiked)
+    setUserHasAlreadyBookmarkedLocal(hasBookmarked)
   }, [post])
 
   const getLikesCommentsSharesText = (count: number, text: string) => {

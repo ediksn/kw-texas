@@ -6,7 +6,7 @@ import { ActivityIndicator, FlatList, Keyboard, KeyboardAvoidingView, SafeAreaVi
 import moment from 'moment'
 import { Icon, PostInfo } from '~/components'
 import { styles } from './styles'
-import { authorPost, avatarPost, datePost, IS_IOS, NAVIGATION, theme } from '~/constants'
+import { authorPost, avatarPost, datePost, IS_IOS, theme } from '~/constants'
 import { PostInterface } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
 import Avatar from '~/components/Avatar'
@@ -20,7 +20,7 @@ const PostView = () => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const navigation = useNavigation()
-  const { navigate } = navigation
+  const { goBack } = navigation
   const selectedPost: PostInterface | undefined = useSelector((state: RootState) => state.home.comments.selectedPost)
   const selectedPostComments: CommentInterface[] = useSelector(
     (state: RootState) => state.home.comments.selectedPostComments
@@ -34,7 +34,6 @@ const PostView = () => {
   const [callOnScrollEnd, setCallOnScrollEnd] = useState(false)
   const [keyboardOpen, setKeyboardOpen] = useState(false)
 
-  const goToHome = () => navigate(NAVIGATION.SCREEN.HOME)
   const leftButton = <Icon name='arrow-left-icon' size={16.5} />
   const renderItemComment = ({ item }: { item: CommentInterface }) => {
     return <PostComment key={item.id} item={item} />
@@ -51,7 +50,7 @@ const PostView = () => {
   const onEndReached = () => dispatch(homeActions.getCommentsOfPost(selectedPost.id, limit + 10, true))
 
   if (!selectedPost) {
-    goToHome()
+    goBack()
     return null
   }
 
@@ -90,7 +89,7 @@ const PostView = () => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <HeaderPostView style={styles.header} leftButton={leftButton} onClickLeft={goToHome}>
+      <HeaderPostView style={styles.header} leftButton={leftButton} onClickLeft={goBack}>
         <View style={styles.avatarBox}>
           <Avatar testID={avatarPost} uri={creatorPhoto} />
           <View style={styles.info}>

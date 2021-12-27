@@ -1,10 +1,12 @@
 import { StyleSheet } from 'react-native'
-import { scale } from 'react-native-size-matters'
+import { scale, verticalScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: theme.backgroundWhite
+    backgroundColor: theme.backgroundWhite,
+    height: scale(60),
+    marginBottom: verticalScale(16)
   },
   leftButtonContainer: {
     display: 'flex',
@@ -36,7 +38,7 @@ export const styles = StyleSheet.create({
   search: {
     marginRight: scale(9)
   },
-  chat: {
+  bookmarkIcon: {
     marginLeft: scale(9)
   },
   avatarDefault: {

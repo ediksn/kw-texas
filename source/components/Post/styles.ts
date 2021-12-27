@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
     elevation: 4,
     backgroundColor: '#FFFFFF',
     borderRadius: 4,
-    margin: verticalScale(10),
+    marginBottom: moderateScale(9),
+    marginHorizontal: moderateScale(16),
     shadowColor: theme.post.shadowColor,
     shadowOffset: {
       width: 0,
@@ -40,7 +41,7 @@ export const styles = StyleSheet.create({
   },
   info: {
     marginLeft: moderateScale(12),
-    width: '75%'
+    width: '78%'
   },
   name: {
     fontSize: theme.fonts.SMALL_SIZE,
@@ -166,7 +167,6 @@ export const styles = StyleSheet.create({
     fontSize: theme.fonts.BIG_SIZE
   },
   touchableArea: {
-    marginRight: moderateScale(-5),
     padding: moderateScale(5)
   }
 })

@@ -230,9 +230,10 @@ const actionCreators = {
     }
     return false
   },
-  removeBookmark: (postId: string) => async (dispatch: any) => {
+  removeBookmark: (postId: string) => async (dispatch: any, getState: any) => {
     const { REMOVE_BOOKMARK_POST, REMOVE_BOOKMARK_POST_SUCCESS, REMOVE_BOOKMARK_POST_FAILURE } = HOME_TYPES
-    dispatch({ type: REMOVE_BOOKMARK_POST })
+    dispatch({ type: REMOVE_BOOKMARK_POST, payload: postId })
+    const { limit } = getState().home.bookmarkedPosts
 
     try {
       const {
@@ -241,6 +242,7 @@ const actionCreators = {
         }
       } = await homeService.removeBookmarkPost(postId)
       if (toggleBookmarkPost) {
+        dispatch(actionCreators.getBookmarkedPosts({ limit }))
         dispatch({
           type: REMOVE_BOOKMARK_POST_SUCCESS
         })
@@ -252,6 +254,24 @@ const actionCreators = {
     }
     return false
   },
+  getBookmarkedPosts:
+    ({ limit, isLoading = false, hasMoreLoading = false }: any) =>
+    async (dispatch: AppDispatch) => {
+      const { GET_BOOKMARKED_POSTS, GET_BOOKMARKED_POSTS_SUCCESS, GET_BOOKMARKED_POSTS_FAILURE } = HOME_TYPES
+      dispatch({ type: GET_BOOKMARKED_POSTS, payload: { isLoading, hasMoreLoading } })
+      try {
+        const response = await homeService.getBookmarkedPosts(limit)
+        dispatch({
+          type: GET_BOOKMARKED_POSTS_SUCCESS,
+          payload: {
+            data: response?.data.data.getPosts,
+            limit
+          }
+        })
+      } catch (error) {
+        dispatch({ type: GET_BOOKMARKED_POSTS_FAILURE, payload: error })
+      }
+    },
   addLike: (postId: string) => async (dispatch: AppDispatch) => {
     const { ADD_LIKE_POST, ADD_LIKE_POST_SUCCESS, ADD_LIKE_POST_FAILURE } = HOME_TYPES
     dispatch({ type: ADD_LIKE_POST })

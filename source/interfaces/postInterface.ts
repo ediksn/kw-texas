@@ -3,11 +3,21 @@ import { UploadImageInterface } from './uploadImageInterface'
 export interface Link {
   url: string
 }
+
+export type PostType = 'LINK' | 'STANDARD' | 'FILE'
+
+export const POST_TYPES: Record<string, PostType> = {
+  LINK: 'LINK',
+  FILE: 'FILE',
+  STANDARD: 'STANDARD'
+}
 export interface FormPostInterface {
   group?: string
   text: string
   hasImages?: boolean
   images?: any[]
+  links?: string[]
+  hasLinks?: boolean
 }
 
 export interface PostInterface {

@@ -1,6 +1,6 @@
 import { Platform } from 'react-native'
 import { useUnRichContent } from '~/hooks'
-import { FormPostInterface } from '~/interfaces/postInterface'
+import { FormPostInterface, POST_TYPES } from '~/interfaces/postInterface'
 import { axiosInstanceFormTokens, axiosInstanceTokens } from './config'
 
 export default {
@@ -89,7 +89,7 @@ export default {
       variables: {
         reply: {
           postId,
-          type: 'STANDARD',
+          type: POST_TYPES.STANDARD,
           standardDetail: comment,
           plainTextContent: useUnRichContent(comment)
         }
@@ -137,7 +137,8 @@ export default {
         post: {
           group: form.group,
           content: form.text,
-          type: 'STANDARD',
+          links: form.links,
+          type: form.hasLinks ? POST_TYPES.LINK : POST_TYPES.STANDARD,
           source: 'GROUPS',
           plainTextContent: useUnRichContent(form.text)
         }
@@ -165,7 +166,7 @@ export default {
           post: {
             group: form.group,
             content: form.text,
-            type: 'FILE',
+            type: POST_TYPES.FILE,
             source: 'GROUPS',
             plainTextContent: useUnRichContent(form.text)
           },
@@ -195,6 +196,7 @@ export default {
       variables: {
         post: {
           content: form.text,
+          links: form.links,
           plainTextContent: useUnRichContent(form.text)
         },
         postId

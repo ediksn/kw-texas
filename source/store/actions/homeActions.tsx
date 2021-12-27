@@ -163,7 +163,7 @@ const actionCreators = {
 
       try {
         const response =
-          (form.hasImages && form.images) || originalFiles
+          (form.hasImages && form.images) || (originalFiles && originalFiles.length > 0)
             ? await homeService.editPostWithMedia(form, postId, originalFiles, newFiles)
             : await homeService.editPost(form, postId)
         if (response) {

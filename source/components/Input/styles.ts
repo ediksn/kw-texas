@@ -17,6 +17,11 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column'
   },
+  insideContainerFullWidth: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%'
+  },
   textContainer: {
     fontFamily: 'Mulish-Regular',
     fontSize: 14,

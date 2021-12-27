@@ -13,7 +13,7 @@ exports[`renders correctly 1`] = `
         "borderWidth": 1,
       },
       undefined,
-      undefined,
+      false,
     ]
   }
 >
@@ -31,6 +31,7 @@ exports[`renders correctly 1`] = `
         Object {
           "display": "flex",
           "flexDirection": "column",
+          "width": "100%",
         }
       }
     >
@@ -63,6 +64,7 @@ exports[`renders correctly 1`] = `
       </View>
       <TextInput
         allowFontScaling={true}
+        autoCapitalize="sentences"
         autoFocus={false}
         editable={true}
         placeholderTextColor="#6C727E"
@@ -85,6 +87,7 @@ exports[`renders correctly 1`] = `
             undefined,
           ]
         }
+        title="Input"
         underlineColorAndroid="transparent"
       />
     </View>

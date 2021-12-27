@@ -19,12 +19,12 @@ export const styles = StyleSheet.create({
   },
   body: {
     flex: 1,
-    paddingHorizontal: scale(16),
     paddingVertical: verticalScale(7)
   },
   avatarBox: {
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingHorizontal: scale(16),
     flexDirection: 'row',
     alignSelf: 'flex-start'
   },
@@ -58,19 +58,26 @@ export const styles = StyleSheet.create({
     color: theme.post.green,
     marginRight: scale(7)
   },
-  inputText: {
-    flex: 1,
+  inputAddPost: {
+    minHeight: 150,
+    justifyContent: 'flex-start',
     marginTop: verticalScale(32),
-    paddingTop: 0,
-    marginBottom: verticalScale(10),
     fontSize: theme.fonts.LARGE_SIZE,
+    width: '100%',
     fontFamily: 'Mulish-Regular',
     color: theme.post.inputText
+  },
+  scrollInputs: {
+    paddingHorizontal: scale(16)
+  },
+  scrollInputsContainer: {
+    flexGrow: 1
   },
   footer: {
     borderTopColor: 'rgba(43, 43, 51, 0.1)',
     borderTopWidth: 1,
     paddingHorizontal: scale(20),
+    backgroundColor: theme.backgrounds.whiteBackground,
     height: verticalScale(65),
     justifyContent: 'space-between',
     flexDirection: 'row',

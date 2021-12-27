@@ -3,18 +3,19 @@ import {
   Text,
   View,
   KeyboardAvoidingView,
-  TextInput,
   TouchableOpacity,
   Platform,
   Keyboard,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  ScrollView,
+  TextInput
 } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 import { launchImageLibrary, launchCamera, MediaType } from 'react-native-image-picker'
 import AndroidKeyboardAdjust from 'react-native-android-keyboard-adjust'
-import { Icon, Header, Dropdown, Spinner } from '~/components'
+import { Icon, Header, Dropdown, Spinner, Input, PostLinksForm } from '~/components'
 import { styles } from './styles'
 import { IS_IOS, NAVIGATION, theme } from '~/constants'
 import { useUnRichContent, useRichContent } from '~/hooks'
@@ -23,9 +24,10 @@ import ImagePickerPreview from '~/components/ImagePickerPreview'
 import { UploadImageInterface } from '~/interfaces/uploadImageInterface'
 import { MAX_CHARACTERS_NEW_POST } from '~/utils/constants'
 import Avatar from '~/components/Avatar'
-import { PostInterface, FormPostInterface } from '~/interfaces/postInterface'
+import { PostInterface, FormPostInterface, POST_TYPES } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
 import { homeActions, toastActions } from '~/store/actions'
+import { regexLink } from '~/components/PostLinksForm'
 
 const NewPost = () => {
   const { t } = useTranslation()
@@ -42,17 +44,43 @@ const NewPost = () => {
   const groups: GroupInterface[] = useSelector((state: RootState) => state.home.groups.data)
   const currentPost = posts.find(p => p.id === idPost)
   const content = currentPost?.content || ''
+  const isLinkType = currentPost?.type === POST_TYPES.LINK
   const contentText = useUnRichContent(content)
   const images = currentPost?.detail?.attachments || []
+  const defaultLinks = editMode && !isLinkType ? [] : ['']
+  const linksEdit = currentPost?.detail?.links?.map(link => link.url) || defaultLinks
   const [inputValue, setInputValue] = useState(editMode ? contentText : '')
   const [showDropDown, setShowDropDown] = useState(false)
   const [groupSelected, setGroupSelected] = useState<OptionInterface>()
   const [pickerResponse, setPickerResponse] = useState<UploadImageInterface[]>(editMode ? images : [])
   const [newFiles, setNewFiles] = useState<UploadImageInterface[]>([])
   const [edited, setEdited] = useState(false)
-  const hasValidForm = edited && inputValue !== '' && groupSelected?.key !== '0'
+  const [links, setLinks] = useState(linksEdit)
+  const disabledLinks = pickerResponse.length > 0 || (editMode && images.length > 0)
+
+  const checkLinks = () => {
+    let error = false
+    links.forEach((link: string) => {
+      const linkRegex = new RegExp(regexLink)
+      if (link !== '' && !linkRegex.test(link)) error = true
+    })
+    return !error
+  }
+
+  const linksFilled = () => {
+    let exists = false
+    links.forEach(link => {
+      if (link !== '') {
+        exists = true
+      }
+    })
+    return exists
+  }
+  const hasValidForm = groupSelected?.key !== '0' && checkLinks() && ((edited && inputValue !== '') || linksFilled())
   const buttonRef = useRef<any>()
-  const inputRef = useRef<any>()
+  const inputRef = useRef<TextInput | null>(null)
+  const hasLinks = checkLinks() && linksFilled()
+  const addMediaDisabled = pickerResponse.length >= 15 || (editMode && isLinkType) || linksFilled()
 
   const init = async () => {
     if (Platform.OS === 'android') AndroidKeyboardAdjust.setAdjustResize()
@@ -79,11 +107,17 @@ const NewPost = () => {
   const handleSubmit = async () => {
     setShowDropDown(false)
     Keyboard.dismiss()
+    const linksWithHttps = links.map(link =>
+      link.includes('http') || link.includes('https') ? link : `https://${link}`
+    )
+
     const form: FormPostInterface = {
       group: groupSelected?.key,
       text: useRichContent(inputValue),
       hasImages: pickerResponse.length > 0,
-      images: pickerResponse.length > 0 ? pickerResponse : undefined
+      images: pickerResponse.length > 0 ? pickerResponse : undefined,
+      links: linksWithHttps,
+      hasLinks
     }
     const res: any = await dispatch(
       editMode && currentPost?.id
@@ -108,7 +142,9 @@ const NewPost = () => {
     }
     setGroupSelected(groupSelectedFromDrop)
     setShowDropDown(false)
-    inputRef?.current?.focus()
+    setTimeout(() => {
+      inputRef?.current?.focus()
+    }, 200)
   }
 
   const getMyGroupsFormatted = () => {
@@ -184,8 +220,8 @@ const NewPost = () => {
         leftButton={leftButton}
         onClickLeft={() => navigate(NAVIGATION.SCREEN.HOME)}
         rightButton={rightButton}
-        onClickRight={hasValidForm || edited ? () => handleSubmit() : null}
-        rigthStyle={!edited ? styles.disabled : {}}
+        onClickRight={hasValidForm ? () => handleSubmit() : null}
+        rigthStyle={editMode && !edited ? styles.disabled : {}}
       />
       <KeyboardAvoidingView
         behavior={IS_IOS ? 'padding' : undefined}
@@ -234,32 +270,37 @@ const NewPost = () => {
               </View>
             </View>
           </TouchableWithoutFeedback>
-          <TextInput
-            ref={inputRef}
-            value={inputValue}
-            onChangeText={handleOnChangeText}
-            maxLength={MAX_CHARACTERS_NEW_POST}
-            placeholder={t('components_NewPost_Share_today')}
-            placeholderTextColor={theme.post.inputTitle}
-            textAlignVertical='top'
-            autoFocus={!showDropDown}
-            multiline
-            style={styles.inputText}
-          />
+          <ScrollView style={styles.scrollInputs} contentContainerStyle={styles.scrollInputsContainer}>
+            <Input
+              ref={inputRef}
+              value={inputValue}
+              title='Add post'
+              onChangeText={handleOnChangeText}
+              maxLength={MAX_CHARACTERS_NEW_POST}
+              placeholder={t('components_NewPost_Share_today')}
+              placeholderTextColor={theme.post.inputTitle}
+              textAlignVertical='top'
+              allowGrow
+              autoFocus={!showDropDown}
+              multiline
+              style={styles.inputAddPost}
+            />
+            <PostLinksForm links={links} setLinks={setLinks} disabledLinks={disabledLinks} />
+          </ScrollView>
         </View>
         <ImagePickerPreview images={pickerResponse} handleDelete={handleDeleteImage} />
         <View style={styles.footer}>
           <TouchableOpacity
             onPress={handleAttachImage}
-            disabled={pickerResponse.length >= 15}
-            style={pickerResponse.length >= 15 && styles.disabled}
+            disabled={addMediaDisabled}
+            style={addMediaDisabled && styles.disabled}
           >
             <Icon name='gallery-icon' size={24} color={theme.post.green} />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={handleTakePicture}
-            disabled={pickerResponse.length >= 15}
-            style={pickerResponse.length >= 15 && styles.disabled}
+            disabled={addMediaDisabled}
+            style={addMediaDisabled && styles.disabled}
           >
             <Icon name='camera-icon' size={24} color={theme.post.green} />
           </TouchableOpacity>

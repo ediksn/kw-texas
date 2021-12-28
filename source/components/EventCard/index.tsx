@@ -43,7 +43,9 @@ const EventCard = ({ event, style, img = NoImage }: Props) => {
         <Text style={styles.date}>{t(event.location)}</Text>
       </View>
       <View testID={TEST_IDS.EVENT_CARD.TITLE_ID} style={styles.titleContainer}>
-        <Text style={styles.title}>{event.name}</Text>
+        <Text numberOfLines={1} ellipsizeMode='tail' style={styles.title}>
+          {event.name}
+        </Text>
       </View>
       <View testID={TEST_IDS.EVENT_CARD.ASSISTANCE_ID} style={styles.footerContainer}>
         <Text style={styles.date}>{t('components_EventCard_Interested')} : 0</Text>

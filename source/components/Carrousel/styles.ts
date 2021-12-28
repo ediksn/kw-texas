@@ -4,7 +4,8 @@ import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   listContainer: {
-    padding: moderateScale(10)
+    padding: moderateScale(10),
+    paddingRight: moderateScale(20)
   },
   iconStyle: {
     width: scale(60),

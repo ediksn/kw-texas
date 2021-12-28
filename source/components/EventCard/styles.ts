@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native'
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
+import { useDeviceWidth } from '~/hooks/settings'
+
+const DEVICE_WIDTH = useDeviceWidth()
 
 export const styles = StyleSheet.create({
   container: {
@@ -15,7 +18,8 @@ export const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     borderRadius: 4,
-    backgroundColor: theme.backgroundWhite
+    backgroundColor: theme.backgroundWhite,
+    width: DEVICE_WIDTH - scale(32)
   },
   imageContainer: {
     backgroundColor: theme.backgrounds.greyBackground,

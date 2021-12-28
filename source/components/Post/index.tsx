@@ -166,8 +166,8 @@ const Post = ({ post, onPostPress }: PostProps) => {
       },
       {
         key: '3',
-        handleOption: () => {},
-        title: t('components_NewPost_Save_Post')
+        handleOption: () => (userHasAlreadyBookmarkedLocal ? handleRemoveBookmark() : handleBookmark()),
+        title: userHasAlreadyBookmarkedLocal ? t('components_NewPost_Unsave_Post') : t('components_NewPost_Save_Post')
       }
     ]
     const options = [

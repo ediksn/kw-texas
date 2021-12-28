@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { View, FlatList, Text, StatusBar } from 'react-native'
+import { View, FlatList, Text, StatusBar, RefreshControl } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import Message from 'assets/images/message.png'
@@ -14,6 +14,7 @@ import { Spinner, Button, Post, EmptyList, Dropdown } from '~/components'
 import { OptionInterface, GroupInterface } from '../../../interfaces/groupInterface'
 import { theme } from '../../../constants/theme'
 import { useDeviceWidth } from '../../../hooks/settings'
+import Loading from '~/components/Loading'
 
 export const Home = () => {
   const dispatch = useDispatch()
@@ -31,7 +32,7 @@ export const Home = () => {
   const navigation = useNavigation()
   const groups: GroupInterface[] = useSelector((state: RootState) => state.home.groups.data)
   const DEVICE_WIDTH = useDeviceWidth()
-
+  const [pullRefresh, setPullRefresh] = useState(false)
   useEffect(() => {
     dispatch(getUsrProfileActions.getUsrProfile(kwuId))
     dispatch(homeActions.getPosts(limitDefault, false, filterFlagged))
@@ -43,8 +44,11 @@ export const Home = () => {
   }
   const renderPost = ({ item }: { item: PostInterface }) => <Post post={item} onPostPress={onPostView} />
   const keyExtractor = (post: PostInterface) => post.id.toString()
-  const onRefresh = () => dispatch(homeActions.getPosts(limit, false, filterFlagged))
-  const onEndReached = () => dispatch(homeActions.getPosts(limit + 10, true, filterFlagged))
+  const onRefresh = () => {
+    dispatch(homeActions.getPosts(limit, false, filterFlagged))
+    setPullRefresh(true)
+  }
+  const onEndReached = () => dispatch(homeActions.getPosts(limit + 10, true))
 
   const getGroup = (option: OptionInterface) => {
     const { key, title } = option
@@ -101,20 +105,28 @@ export const Home = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        renderItem={renderPost}
-        data={posts}
-        keyExtractor={keyExtractor}
-        refreshing={loading}
-        onRefresh={onRefresh}
-        onEndReached={onEndReached}
-        onEndReachedThreshold={1}
-        ListEmptyComponent={EmptyPosts}
-        style={styles.list}
-        showsVerticalScrollIndicator={posts?.length > 0}
-        contentContainerStyle={styles.contentListStyle}
-        ListFooterComponent={<Spinner isLoading={hasMoreLoading} size='small' color='#3D424D' />}
-      />
+      <Loading isLoading={loading && !pullRefresh}>
+        <FlatList
+          renderItem={renderPost}
+          data={posts}
+          keyExtractor={keyExtractor}
+          refreshControl={
+            <RefreshControl
+              refreshing={loading}
+              onRefresh={onRefresh}
+              colors={[theme.spinner]}
+              tintColor={theme.spinner}
+            />
+          }
+          onEndReached={onEndReached}
+          onEndReachedThreshold={1}
+          ListEmptyComponent={EmptyPosts}
+          style={styles.list}
+          showsVerticalScrollIndicator={posts?.length > 0}
+          contentContainerStyle={styles.contentListStyle}
+          ListFooterComponent={<Spinner isLoading={hasMoreLoading} size='small' color='#3D424D' />}
+        />
+      </Loading>
       <Dropdown
         buttonRef={null}
         isVisible={isVisibleDropDown}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ListRenderItem, RefreshControl, ScrollView, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
@@ -12,11 +12,13 @@ import { RootState } from '~/store'
 import { EventInterface } from '~/interfaces/eventsInterface'
 import { EmptyList, EventCard, EventsCarrousel, Spinner } from '~/components'
 import { TEST_IDS } from '~/constants'
+import Loading from '~/components/Loading'
 
 export const Events = () => {
   const dispatch = useDispatch()
   const { t } = useTranslation()
   const events: any = useSelector((state: RootState) => state.events)
+  const [pullRefresh, setPullRefresh] = useState(false)
   const { today, tomorrow } = events
   const isLoading = today?.isLoading || tomorrow?.isLoading
   const todayEvents = today?.data?.filter(
@@ -43,55 +45,58 @@ export const Events = () => {
   const onRefresh = () => {
     dispatch(eventActions.getTodayEvents())
     dispatch(eventActions.getTomorrowEvents())
+    setPullRefresh(true)
   }
   const onEndReached = (when: string) =>
     when === 'TODAY' ? dispatch(eventActions.getTodayEvents(true)) : dispatch(eventActions.getTomorrowEvents(true))
   const EmptyEvents = () => <EmptyList icon={CalendarFilled} title='components_Events_Empty' />
 
   return (
-    <ScrollView
-      contentContainerStyle={!todayEvents?.length && !tomorrowEvents?.length && styles.container}
-      refreshControl={
-        <RefreshControl
-          refreshing={!today?.hasMoreLoading && !tomorrow?.hasMoreLoading && isLoading}
-          onRefresh={onRefresh}
-        />
-      }
-      showsVerticalScrollIndicator={!!todayEvents?.length || !!tomorrowEvents?.length}
-    >
-      {!!todayEvents?.length && (
-        <EventsCarrousel
-          testID={TODAY_ID}
-          title={t('components_Events_today')}
-          titleIcon={CalendarUnFilled}
-          renderItem={renderEvents}
-          data={todayEvents}
-          keyExtractor={keyExtractor}
-          onMomentumScrollEnd={() => onEndReached('TODAY')}
-          onEndReachedThreshold={1}
-          ListFooterComponent={<Spinner isLoading={today?.hasMoreLoading} size='small' color='#3D424D' />}
-          horizontal
-        />
-      )}
-      {!!tomorrowEvents?.length && (
-        <EventsCarrousel
-          testID={TOMORROW_ID}
-          title={t('components_Events_tomorrow')}
-          titleIcon={CalendarUnFilled}
-          renderItem={renderEvents}
-          data={tomorrowEvents}
-          keyExtractor={keyExtractor}
-          onMomentumScrollEnd={() => onEndReached('TOMORROW')}
-          onEndReachedThreshold={1}
-          ListFooterComponent={<Spinner isLoading={tomorrow?.hasMoreLoading} size='small' color='#3D424D' />}
-          horizontal
-        />
-      )}
-      {!todayEvents?.length && !tomorrowEvents?.length && (
-        <View style={styles.containerEmpty}>
-          <EmptyEvents />
-        </View>
-      )}
-    </ScrollView>
+    <Loading isLoading={isLoading && !pullRefresh}>
+      <ScrollView
+        contentContainerStyle={!todayEvents?.length && !tomorrowEvents?.length && styles.container}
+        refreshControl={
+          <RefreshControl
+            refreshing={!today?.hasMoreLoading && !tomorrow?.hasMoreLoading && isLoading}
+            onRefresh={onRefresh}
+          />
+        }
+        showsVerticalScrollIndicator={!!todayEvents?.length || !!tomorrowEvents?.length}
+      >
+        {!!todayEvents?.length && (
+          <EventsCarrousel
+            testID={TODAY_ID}
+            title={t('components_Events_today')}
+            titleIcon={CalendarUnFilled}
+            renderItem={renderEvents}
+            data={todayEvents}
+            keyExtractor={keyExtractor}
+            onMomentumScrollEnd={() => onEndReached('TODAY')}
+            onEndReachedThreshold={1}
+            ListFooterComponent={<Spinner isLoading={today?.hasMoreLoading} size='small' color='#3D424D' />}
+            horizontal
+          />
+        )}
+        {!!tomorrowEvents?.length && (
+          <EventsCarrousel
+            testID={TOMORROW_ID}
+            title={t('components_Events_tomorrow')}
+            titleIcon={CalendarUnFilled}
+            renderItem={renderEvents}
+            data={tomorrowEvents}
+            keyExtractor={keyExtractor}
+            onMomentumScrollEnd={() => onEndReached('TOMORROW')}
+            onEndReachedThreshold={1}
+            ListFooterComponent={<Spinner isLoading={tomorrow?.hasMoreLoading} size='small' color='#3D424D' />}
+            horizontal
+          />
+        )}
+        {!todayEvents?.length && !tomorrowEvents?.length && (
+          <View style={styles.containerEmpty}>
+            <EmptyEvents />
+          </View>
+        )}
+      </ScrollView>
+    </Loading>
   )
 }

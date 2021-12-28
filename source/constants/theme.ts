@@ -83,5 +83,6 @@ export const theme = {
   fonts: FONTS,
   buttons: BUTTONS_THEME,
   texts: TEXTS,
-  post: POST_CARD
+  post: POST_CARD,
+  spinner: '#3D424D'
 }

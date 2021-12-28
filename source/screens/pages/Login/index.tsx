@@ -6,10 +6,11 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNetInfo } from '@react-native-community/netinfo'
 import AndroidKeyboardAdjust from 'react-native-android-keyboard-adjust'
 import ReactNativeBiometrics from 'react-native-biometrics'
-import kw from 'assets/images/kw-logo.png'
+import kw from 'assets/images/login-kw-logo.png'
+import bottomLogo from 'assets/images/login-bottom-logo.png'
 import Modal from 'react-native-modal'
 import { Button, Input } from '~/components'
-import { IS_IOS, kwLogo, passwordInput, signinButton, usernameInput } from '~/constants'
+import { IS_IOS, LoginKWLogo, LoginBottomLogo, passwordInput, signinButton, usernameInput } from '~/constants'
 import { styles } from './styles'
 import { FORM } from '~/constants/form'
 import { loginActions } from '~/store/actions'
@@ -172,8 +173,7 @@ export const Login = () => {
           <KeyboardAvoidingView behavior='padding' keyboardVerticalOffset={IS_IOS ? 50 : 0}>
             <View style={styles.topContainer}>
               <View style={styles.logo}>
-                <Image testID={kwLogo} source={kw} resizeMode='contain' resizeMethod='resize' style={styles.kw} />
-                <Text style={styles.connect}>{t('components_Login_connect')}</Text>
+                <Image testID={LoginKWLogo} source={kw} resizeMode='contain' style={styles.kw} />
               </View>
               <View style={styles.inputsView}>
                 <Input
@@ -217,6 +217,7 @@ export const Login = () => {
               <BiometricModal onAuth={handleLoginFromBiometry} biometryType={biometryTypeState} />
             )}
           </KeyboardAvoidingView>
+
           <BiometricPermission
             biometryType={biometryTypeState}
             isVisible={allowModal}
@@ -224,6 +225,13 @@ export const Login = () => {
             onRequestClose={handleCloseModal}
             onYes={handleAllowBiometry}
           />
+
+          {!allowModal && (
+            <View style={styles.bottomLogoView}>
+              <Image testID={LoginBottomLogo} source={bottomLogo} resizeMode='contain' style={styles.bottomLogo} />
+            </View>
+          )}
+
           <AfterPermissionModal
             isVisible={openAfterPermissionModal}
             biometryType={biometryTypeState}

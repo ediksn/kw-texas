@@ -34,7 +34,6 @@
   "components_Login_Username_password_invalid": "Incorrect username or password",
   "components_Login_Enter_username": "Enter your username...",
   "components_Login_Enter_password": "Enter password...",
-  "components_Login_connect": "CONNECT",
   "components_Home_title_Home": "Home",
   "components_Home_screen": "Home Screen",
   "components_Home_No_post_message": "It looks like you don’t have any posts",

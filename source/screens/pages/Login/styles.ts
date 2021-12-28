@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.backgrounds.whiteBackground
   },
   topContainer: {
-    marginTop: verticalScale(40)
+    marginTop: verticalScale(10)
   },
   buttonView: {
     flexDirection: 'row',
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
   input: {
     backgroundColor: '#FFFFFF',
     marginHorizontal: scale(27),
-    marginVertical: verticalScale(8),
+    marginBottom: verticalScale(16),
     width: scale(320)
   },
   textMessage: {
@@ -54,8 +54,7 @@ export const styles = StyleSheet.create({
   },
   button: {
     width: scale(320),
-    height: scale(40),
-    marginTop: verticalScale(10)
+    height: scale(40)
   },
   textBold: {
     fontFamily: 'Mulish-Bold',
@@ -69,17 +68,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   kw: {
-    width: moderateScale(72),
-    height: moderateScale(48)
-  },
-  connect: {
-    fontFamily: 'Mulish-Regular',
-    fontSize: 24,
-    fontWeight: '800',
-    color: theme.greenColor,
-    lineHeight: 32,
-    opacity: 0.5,
-    marginBottom: verticalScale(20)
+    width: moderateScale(243),
+    height: moderateScale(160)
   },
   illustrationContainer: {
     alignItems: 'center',
@@ -102,5 +92,13 @@ export const styles = StyleSheet.create({
   },
   textPasswordInput: {
     width: scale(270)
+  },
+  bottomLogoView: {
+    flex: 1,
+    justifyContent: 'flex-end'
+  },
+  bottomLogo: {
+    width: moderateScale(375),
+    height: moderateScale(103)
   }
 })

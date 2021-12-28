@@ -100,6 +100,16 @@ const Post = ({ post, onPostPress }: PostProps) => {
     }
   }
 
+  const handleFlag = async () => {
+    setShowDropDown(false)
+    const res: any = await dispatch(homeActions.flag(id))
+    if (res) {
+      dispatch(toastActions.showSuccessToast('home_post_toast_message_flagged'))
+    } else {
+      dispatch(toastActions.showErrorToast('Something went wrong'))
+    }
+  }
+
   const handleBookmark = async () => {
     setShowDropDown(false)
     setUserHasAlreadyBookmarkedLocal(true)
@@ -168,7 +178,7 @@ const Post = ({ post, onPostPress }: PostProps) => {
       },
       {
         key: '2',
-        handleOption: () => {},
+        handleOption: () => handleFlag(),
         title: t('components_Home_Flag_Post')
       }
     ]

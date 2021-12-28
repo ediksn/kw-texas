@@ -18,13 +18,17 @@ const actionCreators = {
     }
   },
   getPosts:
-    (limit: number, hasMoreLoading: boolean = false) =>
+    (limit: number, hasMoreLoading: boolean = false, filterFlagged: boolean = false) =>
     async (dispatch: AppDispatch) => {
       const { GET_POSTS, GET_POSTS_SUCCESS, GET_POSTS_FAILURE } = HOME_TYPES
       dispatch({ type: GET_POSTS, payload: hasMoreLoading })
       try {
         const response = await homeService.getPosts(limit)
-        const posts = response?.data.data.getPosts || []
+        let posts: PostInterface[] = response?.data.data.getPosts || []
+
+        if (filterFlagged) {
+          posts = posts.filter(post => !post.userHasAlreadyFlagged)
+        }
 
         dispatch({
           type: GET_POSTS_SUCCESS,
@@ -205,6 +209,32 @@ const actionCreators = {
       dispatch({ type: DELETE_POST_FAILURE, payload: `Error on Delete Post ${postId}` })
     } catch (error) {
       dispatch({ type: DELETE_POST_FAILURE, payload: error })
+    }
+    return false
+  },
+  flag: (postId: string) => async (dispatch: any, getState: any) => {
+    const { FLAG_POST, FLAG_POST_SUCCESS, FLAG_POST_FAILURE } = HOME_TYPES
+    dispatch({ type: FLAG_POST })
+
+    try {
+      const {
+        data: {
+          data: { toggleFlagPost }
+        }
+      } = await homeService.flagPost(postId)
+      if (toggleFlagPost) {
+        const posts: PostInterface[] = getState().home.posts.data
+        const newPosts = posts?.filter((post: PostInterface) => post.id !== postId)
+
+        dispatch({
+          type: FLAG_POST_SUCCESS,
+          payload: newPosts
+        })
+        return true
+      }
+      dispatch({ type: FLAG_POST_FAILURE, payload: `Error on Flag Post ${postId}` })
+    } catch (error) {
+      dispatch({ type: FLAG_POST_FAILURE, payload: error })
     }
     return false
   },

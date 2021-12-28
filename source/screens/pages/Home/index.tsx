@@ -17,6 +17,7 @@ import { useDeviceWidth } from '../../../hooks/settings'
 
 export const Home = () => {
   const dispatch = useDispatch()
+  const filterFlagged = true
   const usr: any = useSelector((state: RootState) => state.login.user)
   const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
   const limitDefault: number = useSelector((state: RootState) => state.home.posts.limitDefault)
@@ -33,7 +34,7 @@ export const Home = () => {
 
   useEffect(() => {
     dispatch(getUsrProfileActions.getUsrProfile(kwuId))
-    dispatch(homeActions.getPosts(limitDefault))
+    dispatch(homeActions.getPosts(limitDefault, false, filterFlagged))
     dispatch(homeActions.getAllGroups())
   }, [dispatch])
   const onPostView = (post: PostInterface) => {
@@ -42,8 +43,8 @@ export const Home = () => {
   }
   const renderPost = ({ item }: { item: PostInterface }) => <Post post={item} onPostPress={onPostView} />
   const keyExtractor = (post: PostInterface) => post.id.toString()
-  const onRefresh = () => dispatch(homeActions.getPosts(limit))
-  const onEndReached = () => dispatch(homeActions.getPosts(limit + 10, true))
+  const onRefresh = () => dispatch(homeActions.getPosts(limit, false, filterFlagged))
+  const onEndReached = () => dispatch(homeActions.getPosts(limit + 10, true, filterFlagged))
 
   const getGroup = (option: OptionInterface) => {
     const { key, title } = option

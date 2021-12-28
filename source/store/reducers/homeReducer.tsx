@@ -30,6 +30,9 @@ const {
   EDIT_POST,
   EDIT_POST_SUCCESS,
   EDIT_POST_FAILURE,
+  FLAG_POST,
+  FLAG_POST_SUCCESS,
+  FLAG_POST_FAILURE,
   GET_BOOKMARKED_POSTS,
   GET_BOOKMARKED_POSTS_SUCCESS,
   GET_BOOKMARKED_POSTS_FAILURE
@@ -88,6 +91,16 @@ const REDUCERS = {
   },
   [DELETE_POST_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
     draftState.posts.data = payload
+  },
+  [FLAG_POST]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = true
+  },
+  [FLAG_POST_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.posts.data = payload
+    draftState.posts.isLoading = false
+  },
+  [FLAG_POST_FAILURE]: ({ draftState }: PostReducerProps) => {
+    draftState.posts.isLoading = false
   },
   [SHOW_DROP_DOWN_HOME]: ({ draftState }: PostReducerProps) => {
     draftState.isVisibleDropDown = true

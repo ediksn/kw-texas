@@ -98,6 +98,7 @@
   "home_post_toast_message_removed_bookmark": "Publicación eliminada de favorita",
   "home_post_toast_message_deleted": "Publicación eliminada",
   "home_post_toast_message_image_limit": "No se pueden subir mas de 15 archivos",
+  "home_post_toast_message_flagged": "Publicaión ocultada",
   "components_BiometricPermission_FaceID": "Reconocimiento Facial",
   "components_BiometricPermission_Fingerprint": "Huella Digital",
   "components_BiometricPermission_AllowFaceID": "¿Quiere permitirle a la aplicación utilizar el reconocimiento facial para iniciar sesión?",

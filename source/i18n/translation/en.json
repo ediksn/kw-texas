@@ -98,6 +98,7 @@
   "home_post_toast_message_removed_bookmark": "Post removed from bookmark",
   "home_post_toast_message_deleted": "Post deleted",
   "home_post_toast_message_image_limit": "Can not upload more than 15 files",
+  "home_post_toast_message_flagged": "Post was hidden",
   "components_BiometricPermission_FaceID": "FaceID",
   "components_BiometricPermission_Fingerprint": "Fingerprint",
   "components_BiometricPermission_AllowFaceID": "Do you want to allow app to use Face ID to authenticate?",

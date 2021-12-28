@@ -42,6 +42,7 @@ export interface PostInterface {
   pinned: boolean
   userHasAlreadyLiked: boolean
   userHasAlreadyBookmarked: boolean
+  userHasAlreadyFlagged: boolean
   groupInfo: {
     id: string
     name: string

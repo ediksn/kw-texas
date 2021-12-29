@@ -107,9 +107,13 @@ const NewPost = () => {
   const handleSubmit = async () => {
     setShowDropDown(false)
     Keyboard.dismiss()
-    const linksWithHttps = links.map(link =>
-      link.includes('http') || link.includes('https') ? link : `https://${link}`
-    )
+    const linksWithHttps: string[] = []
+
+    links.forEach(link => {
+      if (link === '') return
+      const linkFormatted = link.includes('http') || link.includes('https') ? link : `https://${link}`
+      linksWithHttps.push(linkFormatted)
+    })
 
     const form: FormPostInterface = {
       group: groupSelected?.key,

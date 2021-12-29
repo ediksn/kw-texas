@@ -28,7 +28,8 @@ export const styles = StyleSheet.create({
     color: theme.lightColor
   },
   list: {
-    flex: 1
+    flex: 1,
+    paddingTop: verticalScale(16)
   },
   contentListStyle: {
     flexGrow: 1

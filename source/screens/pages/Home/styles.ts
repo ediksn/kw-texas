@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
     flex: 1
   },
   list: {
-    flex: 1
+    flex: 1,
+    paddingTop: verticalScale(16)
   },
   contentListStyle: {
     flexGrow: 1

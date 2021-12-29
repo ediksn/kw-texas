@@ -17,13 +17,15 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: theme.fonts.LARGE_SIZE,
-    fontFamily: 'Mulish-Bold'
+    fontFamily: 'Mulish-Bold',
+    color: theme.lightColor
   },
   noPostMessage2: {
     marginTop: verticalScale(16),
     textAlign: 'center',
     fontSize: theme.fonts.SMALL_SIZE,
-    fontFamily: 'Mulish-Bold'
+    fontFamily: 'Mulish-Regular',
+    color: theme.lightColor
   },
   list: {
     flex: 1

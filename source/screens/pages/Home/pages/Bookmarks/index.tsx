@@ -15,10 +15,10 @@ const EmptyPostsBookmarked = (t: any) => (
   <View style={styles.noPostWrapper}>
     <Icon name='bookmark-icon' size={56} color={theme.backgroundDark} />
     <Text style={styles.noPostMessage} testID='no_post_message_bookmark'>
-      {t('No post message bookmark')}
+      {t('components_Bookmarks_No_post_message')}
     </Text>
     <Text style={styles.noPostMessage2} testID='no_post_sub_message_bookmark'>
-      {t('No post sub message bookmark')}
+      {t('components_Bookmarks_No_post_sub_message')}
     </Text>
   </View>
 )

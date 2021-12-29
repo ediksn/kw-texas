@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: scale(16),
+    paddingHorizontal: moderateScale(16),
     paddingVertical: verticalScale(7)
   },
   avatarBox: {
@@ -40,8 +40,7 @@ export const styles = StyleSheet.create({
     opacity: 0.5
   },
   info: {
-    marginLeft: moderateScale(12),
-    width: '78%'
+    marginLeft: moderateScale(12)
   },
   name: {
     fontSize: theme.fonts.SMALL_SIZE,
@@ -165,8 +164,5 @@ export const styles = StyleSheet.create({
     color: theme.texts.white,
     fontWeight: 'bold',
     fontSize: theme.fonts.BIG_SIZE
-  },
-  touchableArea: {
-    padding: moderateScale(5)
   }
 })

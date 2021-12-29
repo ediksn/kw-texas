@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback, useEffect } from 'react'
 import moment from 'moment'
 import { View, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight, Linking } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { moderateScale } from 'react-native-size-matters'
+import { moderateScale, scale } from 'react-native-size-matters'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
 import { styles } from './styles'
@@ -246,13 +246,8 @@ const Post = ({ post, onPostPress }: PostProps) => {
               )} ${date} | ${groupInfo.name}`}</Text>
             </View>
           </View>
-          <TouchableOpacity
-            style={styles.touchableArea}
-            testID={dotsOptionsPost}
-            ref={buttonRef}
-            onPress={() => setShowDropDown(!showDropDown)}
-          >
-            <Icon name='threedots-icon' size={5} color={theme.post.dotsColor} />
+          <TouchableOpacity testID={dotsOptionsPost} ref={buttonRef} onPress={() => setShowDropDown(!showDropDown)}>
+            <Icon name='threedots-icon' size={6} color={theme.post.dotsColor} />
           </TouchableOpacity>
           <Dropdown
             buttonRef={buttonRef}
@@ -260,6 +255,8 @@ const Post = ({ post, onPostPress }: PostProps) => {
             onRequestClose={() => setShowDropDown(false)}
             onSelectOption={setSelectedOption}
             options={optionsPost()}
+            top={4}
+            right={scale(8)}
             selectedOption={selectedOption}
           />
         </View>

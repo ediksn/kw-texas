@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Image, Keyboard, KeyboardAvoidingView, Platform, Text, TouchableWithoutFeedback, View } from 'react-native'
+import { Image, Keyboard, KeyboardAvoidingView, StatusBar, Text, TouchableWithoutFeedback, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -21,6 +21,7 @@ import BiometricModal from '~/components/BiometricModal'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
 import BiometricPermission from '~/components/BiometricPermission'
 import AfterPermissionModal from '~/components/AfterPermissionModal'
+import { theme } from '../../../constants/theme'
 
 export const Login = () => {
   const { t } = useTranslation()
@@ -67,7 +68,11 @@ export const Login = () => {
   }
 
   useEffect(() => {
-    if (Platform.OS === 'android') AndroidKeyboardAdjust.setAdjustPan()
+    if (!IS_IOS) {
+      StatusBar.setBackgroundColor(theme.backgrounds.backgroundLogin)
+      StatusBar.setBarStyle('dark-content')
+      AndroidKeyboardAdjust.setAdjustPan()
+    }
   }, [])
 
   useEffect(() => {

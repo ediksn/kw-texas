@@ -46,6 +46,7 @@ export const BACKGROUNDS = {
   greyBackground: '#E4E5E7',
   darkGreyBackground: '#F6F6F7',
   greyInitials: '#3D424D',
+  backgroundLogin: '#F7F7F7',
   ligthGreyBackground: '#DDDDDD'
 }
 

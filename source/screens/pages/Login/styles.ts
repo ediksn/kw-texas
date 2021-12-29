@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: theme.backgrounds.whiteBackground
+    backgroundColor: theme.backgrounds.backgroundLogin
   },
   topContainer: {
     marginTop: verticalScale(10)

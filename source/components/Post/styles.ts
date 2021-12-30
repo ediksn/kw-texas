@@ -27,7 +27,8 @@ export const styles = StyleSheet.create({
   },
   avatarBox: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    flex: 1
   },
   avatar: {
     height: moderateScale(40),
@@ -40,7 +41,8 @@ export const styles = StyleSheet.create({
     opacity: 0.5
   },
   info: {
-    marginLeft: moderateScale(12)
+    marginLeft: moderateScale(12),
+    flex: 1
   },
   name: {
     fontSize: theme.fonts.SMALL_SIZE,

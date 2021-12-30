@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { loginService } from '~/services'
 import { LOGIN_TYPES } from '~/store/types'
 import { Storage, STORAGE_CONSTANTS } from '~/utils/storage'
@@ -20,7 +21,12 @@ const actionCreators = {
           key: LOGIN.SESSION,
           value: storageResponse
         })
+
+        if (axios.defaults?.headers?.common?.Authorization) {
+          axios.defaults.headers.common.Authorization = `${storageResponse?.token_type} ${storageResponse?.access_token}`
+        }
         dispatch({ type: LOG_IN_SUCCESS, payload: signInResponse?.data })
+
         return true
       } catch (error) {
         if (error?.response?.data) dispatch({ type: LOG_IN_FAILURE, payload: error.response?.data })

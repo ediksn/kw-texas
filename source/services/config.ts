@@ -15,16 +15,15 @@ export const axiosInstance = axios.create({
   headers: { 'Content-Type': 'application/json' }
 })
 
-export const axiosInstanceFormTokens = async () =>
-  axios.create({
-    baseURL: Config.BASE_URL,
-    timeout: 10000,
-    headers: { 'Content-Type': 'multipart/form-data', 'Authorization': await getToken() }
-  })
+export const axiosInstanceFormTokens = async () => {
+  axios.defaults.baseURL = Config.BASE_URL
+  axios.defaults.headers = { 'Content-Type': 'multipart/form-data', 'Authorization': await getToken() }
+  axios.defaults.timeout = 10000
+  return axios
+}
 
-export const axiosInstanceTokens = async () =>
-  axios.create({
-    baseURL: Config.BASE_URL,
-    timeout: 10000,
-    headers: { 'Content-Type': 'application/json', 'Authorization': await getToken() }
-  })
+export const axiosInstanceTokens = async () => {
+  axios.defaults.baseURL = Config.BASE_URL
+  axios.defaults.headers = { 'Content-Type': 'application/json', 'Authorization': await getToken() }
+  return axios
+}

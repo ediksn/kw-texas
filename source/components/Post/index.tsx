@@ -277,6 +277,9 @@ const Post = ({ post, onPostPress }: PostProps) => {
               </TouchableOpacity>
             )}
           </View>
+        </View>
+        <PostMedia post={post} />
+        <View style={styles.body}>
           {detail?.links?.length && detail?.links?.length > 0 && (
             <View testID='links' style={styles.links}>
               {detail?.links?.map((link: Link, i: number) => (
@@ -291,9 +294,6 @@ const Post = ({ post, onPostPress }: PostProps) => {
               ))}
             </View>
           )}
-        </View>
-        <PostMedia post={post} />
-        <View style={styles.body}>
           <View style={styles.infoNumbers}>
             <Text style={styles.infoNumber}>{getLikesCommentsSharesText(likes, t('components_Post_likes'))}</Text>
             <TouchableWithoutFeedback onPress={() => onPostPress(post)}>

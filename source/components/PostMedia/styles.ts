@@ -55,5 +55,12 @@ export const styles = StyleSheet.create({
     color: theme.texts.white,
     fontWeight: 'bold',
     fontSize: theme.fonts.BIG_SIZE
+  },
+  emptyBigMedia: {
+    width: '100%',
+    height: 250,
+    alignSelf: 'center',
+    resizeMode: 'stretch',
+    marginBottom: verticalScale(4)
   }
 })

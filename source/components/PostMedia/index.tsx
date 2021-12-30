@@ -1,5 +1,6 @@
 import { Image, ImageBackground, Text, View } from 'react-native'
 import React from 'react'
+import EmptyImage from 'assets/images/no-image.png'
 import { styles } from './styles'
 import { PostInterface } from '~/interfaces/postInterface'
 import { POST_PREVIEW_MEDIA_LENGTH } from '~/utils/constants'
@@ -29,29 +30,64 @@ const Index = ({ post, withTopMargin = true }: PostMediaProps) => {
   return (
     <View style={withTopMargin ? styles.mediaContainer : styles.mediaContainerWithOutTopMargin}>
       {showBigMedia ? (
-        <Image source={{ uri: firstImage?.url }} style={thirdImage ? styles.bigMediaBottomMargin : styles.bigMedia} />
+        <ImageBackground
+          source={EmptyImage}
+          imageStyle={{ opacity: 0.5 }}
+          style={styles.emptyBigMedia}
+          resizeMode='center'
+        >
+          <Image source={{ uri: firstImage?.url }} style={thirdImage ? styles.bigMediaBottomMargin : styles.bigMedia} />
+        </ImageBackground>
       ) : null}
       {secondImage && (
         <View style={styles.smallMediaRow}>
           {!thirdImage ? (
-            <Image source={{ uri: firstImage?.url }} style={[styles.smallMedia, styles.leftMedia]} />
+            <ImageBackground
+              imageStyle={{ opacity: 0.5 }}
+              source={EmptyImage}
+              style={[styles.smallMedia, styles.leftMedia]}
+              resizeMode='center'
+            >
+              <Image source={{ uri: firstImage?.url }} style={[styles.smallMedia, styles.leftMedia]} />
+            </ImageBackground>
           ) : null}
-          <Image
-            source={{ uri: secondImage?.url }}
+          <ImageBackground
+            source={EmptyImage}
+            resizeMode='center'
+            imageStyle={{ opacity: 0.5 }}
             style={[styles.smallMedia, thirdImage ? styles.leftMedia : styles.rightMedia]}
-          />
+          >
+            <Image
+              source={{ uri: secondImage?.url }}
+              style={[styles.smallMedia, thirdImage ? styles.leftMedia : styles.rightMedia]}
+            />
+          </ImageBackground>
           {moreImages ? (
             <ImageBackground
-              style={[styles.smallMedia, styles.opacityImage]}
+              style={[styles.smallMedia]}
               imageStyle={{ opacity: 0.5 }}
-              source={{ uri: thirdImage?.url }}
+              source={EmptyImage}
+              resizeMode='center'
             >
-              <View style={styles.coverTextContainer}>
-                <Text style={styles.coverText}>+ {moreImagesCount}</Text>
-              </View>
+              <ImageBackground
+                style={[styles.smallMedia, styles.opacityImage]}
+                imageStyle={{ opacity: 0.5 }}
+                source={{ uri: thirdImage?.url }}
+              >
+                <View style={styles.coverTextContainer}>
+                  <Text style={styles.coverText}>+ {moreImagesCount}</Text>
+                </View>
+              </ImageBackground>
             </ImageBackground>
           ) : thirdImage ? (
-            <Image source={{ uri: thirdImage?.url }} style={[styles.smallMedia, styles.rightMedia]} />
+            <ImageBackground
+              imageStyle={{ opacity: 0.5 }}
+              source={EmptyImage}
+              style={[styles.smallMedia, styles.rightMedia]}
+              resizeMode='center'
+            >
+              <Image source={{ uri: thirdImage?.url }} style={[styles.smallMedia, styles.rightMedia]} />
+            </ImageBackground>
           ) : null}
         </View>
       )}

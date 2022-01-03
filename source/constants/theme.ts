@@ -85,5 +85,11 @@ export const theme = {
   buttons: BUTTONS_THEME,
   texts: TEXTS,
   post: POST_CARD,
-  spinner: '#3D424D'
+  spinner: '#3D424D',
+  facebook: '#1877F2',
+  google: '#DC5044',
+  instagram: 'white',
+  linkedin: '#0077B7',
+  twitter: '#2AA9E0',
+  youtube: '#EE3030'
 }

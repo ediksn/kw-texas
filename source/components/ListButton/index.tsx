@@ -3,7 +3,6 @@
 import React from 'react'
 import { GestureResponderEvent, Image, Text, TouchableOpacity, View } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import arrow_btn from 'assets/images/arrow_btn.png'
 import { Icon } from '~/components'
 import { styles } from './styles'
 
@@ -35,7 +34,7 @@ const ListButton = ({ title, icon, onPress, arrow, svg, svgTitle, svgSize, svgCo
         </View>
         {arrow && (
           <View>
-            <Image style={styles.arrowBtn} resizeMode='center' source={arrow_btn} />
+            <Icon name='arrow-right' size={18} />
           </View>
         )}
       </View>

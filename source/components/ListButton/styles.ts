@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 17,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   textContainer: {
     flexDirection: 'row',

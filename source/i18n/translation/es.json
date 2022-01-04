@@ -134,5 +134,6 @@
   "components_AfterPermissionModal_OpportunityTouchID": "Tienes la oportunidad de permitir el uso de Touch ID. Si quieres habilitarlo, puedes ir a la configuración del sistema y activarlo.",
   "components_AfterPermissionModal_OpportunityFaceID": "Tienes la oportunidad de permitir el uso de Face ID. Si quieres habilitarlo, puedes ir a la configuración del sistema y activarlo.",
   "components_AfterPermissionModal_OpportunityBiometrics": "Tienes la oportunidad de permitir el uso de la huella digital. Si quieres habilitarla, puedes ir a la configuración del sistema y activarla.",
-  "components_AfterPermissionModal_GoToSettings": "Ir a Configuración"
+  "components_AfterPermissionModal_GoToSettings": "Ir a Configuración",
+  "components_General_NoName": "SIN NOMBRE"
 }

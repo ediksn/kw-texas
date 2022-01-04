@@ -241,9 +241,10 @@ const Post = ({ post, onPostPress }: PostProps) => {
               <Text testID={authorPost} style={styles.name}>
                 {author}
               </Text>
-              <Text numberOfLines={1} ellipsizeMode='tail' testID={datePost} style={styles.date}>{`${t(
-                'components_Post_Posted'
-              )} ${date} | ${groupInfo.name}`}</Text>
+              <Text numberOfLines={1} ellipsizeMode='tail' testID={datePost} style={styles.date}>
+                {`${t('components_Post_Posted')} ${date} | `}
+                {groupInfo.name && groupInfo.name.trim().length > 1 ? groupInfo.name : t('components_General_NoName')}
+              </Text>
             </View>
           </View>
           <TouchableOpacity testID={dotsOptionsPost} ref={buttonRef} onPress={() => setShowDropDown(!showDropDown)}>

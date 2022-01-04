@@ -142,7 +142,7 @@ const NewPost = () => {
     const { key, title } = option
     const groupSelectedFromDrop = {
       key,
-      title: title && title.trim().length > 1 ? title : 'NO NAME'
+      title: title && title.trim().length > 1 ? title : t('components_General_NoName')
     }
     setGroupSelected(groupSelectedFromDrop)
     setShowDropDown(false)
@@ -159,7 +159,7 @@ const NewPost = () => {
         ...myGroups,
         {
           key: group.id,
-          title: group.name.trim().length > 1 ? group.name : 'NO NAME'
+          title: group.name.trim().length > 1 ? group.name : t('components_General_NoName')
         }
       ]
     })

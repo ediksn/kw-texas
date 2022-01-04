@@ -134,5 +134,6 @@
   "components_AfterPermissionModal_OpportunityTouchID": "You have opportunity to allow app to use Touch ID. If you want to give access, yo can go to the system settings and turn on it.",
   "components_AfterPermissionModal_OpportunityFaceID": "You have opportunity to allow app to use Face ID. If you want to give access, yo can go to the system settings and turn on it.",
   "components_AfterPermissionModal_OpportunityBiometrics": "You have opportunity to allow app to use Fingerprint. If you want to give access, yo can go to the system settings and turn on it.",
-  "components_AfterPermissionModal_GoToSettings": "Go to Settings"
+  "components_AfterPermissionModal_GoToSettings": "Go to Settings",
+  "components_General_NoName": "NO NAME"
 }

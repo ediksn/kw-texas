@@ -6,7 +6,7 @@ import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
 import { Events } from '..'
 import { styles } from './styles'
 
-const NoitificationsHeader = () => {
+const EventsHeader = () => {
   const { t } = useTranslation()
 
   const titleText = t('components_Events_Your_Events')
@@ -20,7 +20,7 @@ const NoitificationsHeader = () => {
 
 const EventsStackScreen = () => (
   <StackNavigator>
-    <StackScreen options={NoitificationsHeader} name={NAVIGATION.SCREEN.EVENTS} component={Events} />
+    <StackScreen options={EventsHeader} name={NAVIGATION.SCREEN.EVENTS} component={Events} />
   </StackNavigator>
 )
 

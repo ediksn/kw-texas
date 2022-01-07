@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Group Test Match with the snapshot 1`] = `
+<View
+  style={
+    Object {
+      "borderRadius": 4,
+      "flex": 1,
+    }
+  }
+  testID="groupId"
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "borderRadius": 4,
+        "flex": 1,
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        Object {
+          "backgroundColor": "#282B33",
+          "borderRadius": 4,
+          "flex": 1,
+          "flexDirection": "column",
+          "marginRight": 8,
+          "width": 96,
+        }
+      }
+    >
+      <Image
+        resizeMode="cover"
+        source={
+          Object {
+            "uri": "https://avatar.kwconnect.com/556397.jpeg",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            Object {
+              "height": undefined,
+              "width": 96,
+            },
+            Object {
+              "borderRadius": 4,
+              "height": 96,
+              "width": 96,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "rgba(43, 43, 51, 0.6)",
+            "borderRadius": 4,
+            "flex": 1,
+          }
+        }
+      >
+        <Text
+          ellipsizeMode="tail"
+          numberOfLines={4}
+          style={
+            Object {
+              "color": "white",
+              "fontFamily": "Mulish-Bold",
+              "fontStyle": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 25.142857142857142,
+              "marginHorizontal": 17.142857142857142,
+              "marginVertical": 17.142857142857142,
+              "textAlign": "left",
+            }
+          }
+        >
+          Test
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

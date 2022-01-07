@@ -1,0 +1,467 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Group Slider Test Match with the snapshot 1`] = `
+Array [
+  <View
+    style={
+      Object {
+        "marginHorizontal": 34.285714285714285,
+        "marginVertical": 19.285714285714285,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#3D424D",
+          "fontFamily": "Mulish-Regular",
+          "fontSize": 22,
+          "fontStyle": "normal",
+          "fontWeight": "700",
+          "letterSpacing": 0,
+          "textAlign": "left",
+        }
+      }
+    >
+      components_Home_Header_Groups
+    </Text>
+  </View>,
+  <View
+    style={
+      Object {
+        "backgroundColor": "#2b2b33",
+        "height": 1.9617647058823529,
+        "opacity": 0.1,
+      }
+    }
+  />,
+  <RCTScrollView
+    ListFooterComponent={null}
+    ListFooterComponentStyle={
+      Object {
+        "borderRadius": 4,
+        "flex": 1,
+      }
+    }
+    data={
+      Array [
+        Object {
+          "description": "description",
+          "icon": Object {
+            "filename": "hello.jpg",
+            "id": "1",
+            "url": "https://avatar.kwconnect.com/556397.jpeg",
+          },
+          "id": "1",
+          "membersCount": 1,
+          "name": "Test",
+          "postCount": 1,
+          "status": 1,
+        },
+        Object {
+          "description": "description",
+          "icon": Object {
+            "filename": "hello.jpg",
+            "id": "2",
+            "url": "https://avatar.kwconnect.com/556397.jpeg",
+          },
+          "id": "2",
+          "membersCount": 2,
+          "name": "Test",
+          "postCount": 2,
+          "status": 2,
+        },
+        Object {
+          "description": "description",
+          "icon": Object {
+            "filename": "hello.jpg",
+            "id": "3",
+            "url": "https://avatar.kwconnect.com/556397.jpeg",
+          },
+          "id": "3",
+          "membersCount": 3,
+          "name": "Test",
+          "postCount": 3,
+          "status": 3,
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={true}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsHorizontalScrollIndicator={false}
+    stickyHeaderIndices={Array []}
+    style={
+      Object {
+        "flex": 1,
+        "flexGrow": 0.21,
+        "marginLeft": 34.285714285714285,
+        "marginVertical": 34.285714285714285,
+      }
+    }
+    testID="groupSliderId"
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "borderRadius": 4,
+              "flex": 1,
+            }
+          }
+          testID="groupId"
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "borderRadius": 4,
+                "flex": 1,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              accessibilityIgnoresInvertColors={true}
+              style={
+                Object {
+                  "backgroundColor": "#282B33",
+                  "borderRadius": 4,
+                  "flex": 1,
+                  "flexDirection": "column",
+                  "marginRight": 8,
+                  "width": 96,
+                }
+              }
+            >
+              <Image
+                resizeMode="cover"
+                source={
+                  Object {
+                    "uri": "https://avatar.kwconnect.com/556397.jpeg",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    },
+                    Object {
+                      "height": undefined,
+                      "width": 96,
+                    },
+                    Object {
+                      "borderRadius": 4,
+                      "height": 96,
+                      "width": 96,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Object {
+                    "backgroundColor": "rgba(43, 43, 51, 0.6)",
+                    "borderRadius": 4,
+                    "flex": 1,
+                  }
+                }
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={4}
+                  style={
+                    Object {
+                      "color": "white",
+                      "fontFamily": "Mulish-Bold",
+                      "fontStyle": "normal",
+                      "letterSpacing": 0,
+                      "lineHeight": 25.142857142857142,
+                      "marginHorizontal": 17.142857142857142,
+                      "marginVertical": 17.142857142857142,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  Test
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "borderRadius": 4,
+              "flex": 1,
+            }
+          }
+          testID="groupId"
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "borderRadius": 4,
+                "flex": 1,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              accessibilityIgnoresInvertColors={true}
+              style={
+                Object {
+                  "backgroundColor": "#282B33",
+                  "borderRadius": 4,
+                  "flex": 1,
+                  "flexDirection": "column",
+                  "marginRight": 8,
+                  "width": 96,
+                }
+              }
+            >
+              <Image
+                resizeMode="cover"
+                source={
+                  Object {
+                    "uri": "https://avatar.kwconnect.com/556397.jpeg",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    },
+                    Object {
+                      "height": undefined,
+                      "width": 96,
+                    },
+                    Object {
+                      "borderRadius": 4,
+                      "height": 96,
+                      "width": 96,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Object {
+                    "backgroundColor": "rgba(43, 43, 51, 0.6)",
+                    "borderRadius": 4,
+                    "flex": 1,
+                  }
+                }
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={4}
+                  style={
+                    Object {
+                      "color": "white",
+                      "fontFamily": "Mulish-Bold",
+                      "fontStyle": "normal",
+                      "letterSpacing": 0,
+                      "lineHeight": 25.142857142857142,
+                      "marginHorizontal": 17.142857142857142,
+                      "marginVertical": 17.142857142857142,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  Test
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+            },
+            null,
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "borderRadius": 4,
+              "flex": 1,
+            }
+          }
+          testID="groupId"
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "borderRadius": 4,
+                "flex": 1,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              accessibilityIgnoresInvertColors={true}
+              style={
+                Object {
+                  "backgroundColor": "#282B33",
+                  "borderRadius": 4,
+                  "flex": 1,
+                  "flexDirection": "column",
+                  "marginRight": 8,
+                  "width": 96,
+                }
+              }
+            >
+              <Image
+                resizeMode="cover"
+                source={
+                  Object {
+                    "uri": "https://avatar.kwconnect.com/556397.jpeg",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    },
+                    Object {
+                      "height": undefined,
+                      "width": 96,
+                    },
+                    Object {
+                      "borderRadius": 4,
+                      "height": 96,
+                      "width": 96,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  Object {
+                    "backgroundColor": "rgba(43, 43, 51, 0.6)",
+                    "borderRadius": 4,
+                    "flex": 1,
+                  }
+                }
+              >
+                <Text
+                  ellipsizeMode="tail"
+                  numberOfLines={4}
+                  style={
+                    Object {
+                      "color": "white",
+                      "fontFamily": "Mulish-Bold",
+                      "fontStyle": "normal",
+                      "letterSpacing": 0,
+                      "lineHeight": 25.142857142857142,
+                      "marginHorizontal": 17.142857142857142,
+                      "marginVertical": 17.142857142857142,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  Test
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>,
+  <View
+    style={
+      Object {
+        "backgroundColor": "#2b2b33",
+        "height": 1.9617647058823529,
+        "opacity": 0.1,
+      }
+    }
+  />,
+]
+`;

@@ -10,7 +10,6 @@ import { styles } from '~/screens/styles'
 import HomeStackScreen from '~/screens/pages/Home/navigation'
 import GroupsFilled from '../../../assets/images/groups-filled.png'
 import GroupsUnfilled from '../../../assets/images/groups-unfilled.png'
-import { Groups } from '~/screens/pages'
 import CalendarFilled from '../../../assets/images/calendar-filled.png'
 import CalendarUnfilled from '../../../assets/images/calendar-unfilled.png'
 import EventsStackScreen from '~/screens/pages/Events/navigation'
@@ -18,6 +17,7 @@ import EventsFilled from '../../../assets/images/events-filled.png'
 import EventsUnfilled from '../../../assets/images/events-unfilled.png'
 import NotificationsStackScreen from '~/screens/pages/Notifications/navigation'
 import ProfileStackScreen from '~/screens/pages/Profile/navigation'
+import GroupsStackScreen from '../pages/Groups/navigation'
 
 const TabNavigation = memo(() => {
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
@@ -52,7 +52,7 @@ const TabNavigation = memo(() => {
           )
         }}
         name={NAVIGATION.SCREEN.GROUPS}
-        component={Groups}
+        component={GroupsStackScreen}
       />
       <TabScreen
         options={{

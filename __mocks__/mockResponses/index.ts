@@ -602,3 +602,45 @@ export const pickerResponse = [
     fileSize: 6581432
   }
 ]
+
+export const groupsResponse = [
+  {
+    id: '1',
+    description: 'description',
+    icon: {
+      filename: 'hello.jpg',
+      id: '1',
+      url: 'https://avatar.kwconnect.com/556397.jpeg'
+    },
+    membersCount: 1,
+    name: 'Test',
+    postCount: 1,
+    status: 1
+  },
+  {
+    id: '2',
+    description: 'description',
+    icon: {
+      filename: 'hello.jpg',
+      id: '2',
+      url: 'https://avatar.kwconnect.com/556397.jpeg'
+    },
+    membersCount: 2,
+    name: 'Test',
+    postCount: 2,
+    status: 2
+  },
+  {
+    id: '3',
+    description: 'description',
+    icon: {
+      filename: 'hello.jpg',
+      id: '3',
+      url: 'https://avatar.kwconnect.com/556397.jpeg'
+    },
+    membersCount: 3,
+    name: 'Test',
+    postCount: 3,
+    status: 3
+  }
+]

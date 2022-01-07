@@ -21,6 +21,10 @@ export const TEST_IDS = {
   IMAGE_PICKER_PREVIEW: {
     IMAGE_ID: 'imageId'
   },
+  GROUPS: {
+    GROUP_ID: 'groupId',
+    GROUP_SLIDER_ID: 'groupSliderId'
+  },
   TOAST: {
     ICON_ID: 'toastIconId',
     TITLE_ID: 'toastTitleId'

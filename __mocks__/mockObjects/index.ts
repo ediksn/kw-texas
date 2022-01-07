@@ -1,6 +1,7 @@
 import { PostInterface } from '~/interfaces/postInterface'
 import { ProfileDetail } from '~/interfaces/usrInterface'
 import { CommentInterface } from '~/interfaces/commentInterface'
+import { GroupInterface } from '~/interfaces/groupInterface'
 
 export const postMockObject: PostInterface = {
   bookmarksCount: 0,
@@ -109,4 +110,18 @@ export const commentMockObject: CommentInterface = {
     userHasAlreadyLiked: false,
     media: null
   }
+}
+
+export const groupMockObject: GroupInterface = {
+  id: '1',
+  description: 'description',
+  icon: {
+    filename: 'hello.jpg',
+    id: '1',
+    url: 'https://avatar.kwconnect.com/556397.jpeg'
+  },
+  membersCount: 1,
+  name: 'Test',
+  postCount: 1,
+  status: 1
 }

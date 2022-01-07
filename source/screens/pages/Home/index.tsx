@@ -42,8 +42,11 @@ export const Home = () => {
     dispatch(homeActions.selectPost(post))
     navigation.navigate(NAVIGATION.SCREEN.POSTVIEW)
   }
+
   const renderPost = ({ item }: { item: PostInterface }) => <Post post={item} onPostPress={onPostView} />
+
   const keyExtractor = (post: PostInterface) => post.id.toString()
+
   const onRefresh = () => {
     dispatch(homeActions.getPosts(limit, false, filterFlagged))
     setPullRefresh(true)

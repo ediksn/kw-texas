@@ -2,7 +2,6 @@ import React, { useCallback } from 'react'
 import { Image, Linking, ScrollView, Text, TouchableHighlight, View } from 'react-native'
 import emptyImage from 'assets/images/emptyImage.png'
 import { useSelector } from 'react-redux'
-import GroupsUnfilled from 'assets/images/groups-unfilled.png'
 import { useTranslation } from 'react-i18next'
 import { scale } from 'react-native-size-matters'
 import LinearGradient from 'react-native-linear-gradient'
@@ -23,7 +22,7 @@ export const ProfileDetail = () => {
       usrData?.profileDetail.roles.map((rol: string, i: number) => {
         return (
           <View style={styles.role} key={`rol${0 + i}`}>
-            <Image source={GroupsUnfilled} resizeMode='contain' resizeMethod='resize' style={styles.icon} />
+            <Icon name='role' size={18} viewStyle={styles.icon} />
             <Text style={styles.subTitleRol}>{rol}</Text>
           </View>
         )

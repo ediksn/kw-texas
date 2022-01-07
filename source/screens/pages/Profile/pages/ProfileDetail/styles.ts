@@ -68,8 +68,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: scale(10)
   },
   icon: {
-    width: 20,
-    height: 20,
     marginRight: moderateScale(5),
     alignSelf: 'flex-end'
   },

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { ListRenderItem, RefreshControl, ScrollView, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
@@ -18,9 +18,8 @@ export const Events = () => {
   const dispatch = useDispatch()
   const { t } = useTranslation()
   const events: any = useSelector((state: RootState) => state.events)
-  const [pullRefresh, setPullRefresh] = useState(false)
   const { today, tomorrow } = events
-  const isLoading = today?.isLoading || tomorrow?.isLoading
+  const isLoading = today?.isLoading && tomorrow?.isLoading
   const todayEvents = today?.data?.filter(
     (event: EventInterface) => moment(event.starts).format('YYYY-MM-DD') === moment().format('YYYY-MM-DD')
   )
@@ -45,14 +44,13 @@ export const Events = () => {
   const onRefresh = () => {
     dispatch(eventActions.getTodayEvents())
     dispatch(eventActions.getTomorrowEvents())
-    setPullRefresh(true)
   }
   const onEndReached = (when: string) =>
     when === 'TODAY' ? dispatch(eventActions.getTodayEvents(true)) : dispatch(eventActions.getTomorrowEvents(true))
   const EmptyEvents = () => <EmptyList icon={CalendarFilled} title='components_Events_Empty' />
 
   return (
-    <Loading isLoading={isLoading && !pullRefresh}>
+    <Loading isLoading={isLoading}>
       <ScrollView
         contentContainerStyle={!todayEvents?.length && !tomorrowEvents?.length && styles.container}
         refreshControl={

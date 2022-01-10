@@ -12,7 +12,7 @@ interface PostLinksFormProps {
 }
 
 const MAX_LINKS_ALLOWED = 3
-export const regexLink = /((?:(?:http?)[s]*:\/\/)?[a-z0-9-%/&=?.]+\.[a-z]{2,4}\/?([^\s<>#%",{}\\|\\^[\]`]+)?)/gi
+export const regexLink = /^((?:https?:\/\/)?[^./]+(?:\.[^./]+)+(?:\/.*)?)$/g
 
 const PostLinksForm = ({ links, setLinks, disabledLinks }: PostLinksFormProps) => {
   const handleChange = (text: string, index: number) => {
@@ -32,6 +32,8 @@ const PostLinksForm = ({ links, setLinks, disabledLinks }: PostLinksFormProps) =
 
   const checkRegex = (i: number) => {
     if (links[i] === '') return false
+    const split = links[i].split('.')
+    if (split.length === 2 && split[0] === 'www') return true
     const linkRegex = new RegExp(regexLink)
     const test = linkRegex.test(links[i])
     return !test

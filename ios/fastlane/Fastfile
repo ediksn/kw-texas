@@ -242,6 +242,7 @@ platform :android do
     version = inc(new:new, old:old["version"])
 
     sh("npm", "version", version, "--no-git-tag-version", "--allow-same-version")
+    old["build_number"].to_i + 1
   end
 
   desc "Android build"
@@ -249,7 +250,7 @@ platform :android do
     if ENV["ENVIRONMENT"] == "PROD"
       sh "sed -i '' 's/applicationId \"com.agent.connect\"/applicationId \"com.kw.agent.connect\"/' #{Dir.pwd}/../../android/app/build.gradle"
     end
-    increment
+    build_number = increment
     gradle(
       task: "clean",
       project_dir: "../android",
@@ -259,6 +260,7 @@ platform :android do
       build_type: ENV["ENVIRONMENT"] == "PROD" ? "ProductionRelease" : "StagingRelease",
       project_dir: "../android",
       properties: {
+        "buildNumber" => build_number,
         "android.injected.signing.store.file" => "keystore.jks",
         "android.injected.signing.store.password" => ENV["KEYSTORE_PASSWORD"],
         "android.injected.signing.key.alias" => ENV["KEY_ALIAS"],

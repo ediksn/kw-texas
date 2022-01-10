@@ -1,4 +1,16 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+import groovy.json.JsonSlurper
+
+def getNpmVersion() {
+    def inputFile = new File(projectDir.getPath() + "/../package.json")
+    def packageJson = new JsonSlurper().parseText(inputFile.text)
+    return packageJson["version"]
+}
+
+def getNpmVersionArray() {
+    def (major, minor, patch) = getNpmVersion().tokenize('.')
+    return [Integer.parseInt(major), Integer.parseInt(minor), Integer.parseInt(patch)] as int[]
+}
 
 buildscript {
     ext {
@@ -35,5 +47,30 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://www.jitpack.io' }
+    }
+}
+
+subprojects {
+    ext {
+        def npmVersion = getNpmVersionArray()
+        versionMajor = npmVersion[0]
+        versionMinor = npmVersion[1]
+        versionPatch = npmVersion[2]
+        buildNumber = buildNumber
+        compileSdk = rootProject.ext.compileSdkVersion
+        minSdk = rootProject.ext.minSdkVersion
+        targetSdk = rootProject.ext.targetSdkVersion
+    }
+    afterEvaluate { subproject ->
+        if((subproject.plugins.hasPlugin('android') || subproject.plugins.hasPlugin('android-library'))) {
+            android {
+                compileSdkVersion rootProject.ext.compileSdkVersion
+                buildToolsVersion rootProject.ext.buildToolsVersion
+                defaultConfig {
+                    minSdkVersion rootProject.ext.minSdkVersion
+                    targetSdkVersion rootProject.ext.targetSdkVersion
+                }
+            }
+        }
     }
 }

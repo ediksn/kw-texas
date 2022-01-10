@@ -170,8 +170,8 @@ android {
         applicationId "com.kw.agent.connect"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 9
-        versionName "1.3.2"
+        versionCode buildNumber as Integer
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         missingDimensionStrategy 'react-native-camera', 'general'
         multiDexEnabled true
     }

@@ -49,6 +49,9 @@ export const Events = () => {
     when === 'TODAY' ? dispatch(eventActions.getTodayEvents(true)) : dispatch(eventActions.getTomorrowEvents(true))
   const EmptyEvents = () => <EmptyList icon={CalendarFilled} title='components_Events_Empty' />
 
+  const enabledScrollTodayEvents = todayEvents.length > 1
+  const enabledScrollTomorrowEvents = tomorrowEvents.length > 1
+
   return (
     <Loading isLoading={isLoading}>
       <ScrollView
@@ -73,6 +76,8 @@ export const Events = () => {
             onEndReachedThreshold={1}
             ListFooterComponent={<Spinner isLoading={today?.hasMoreLoading} size='small' color='#3D424D' />}
             horizontal
+            showsHorizontalScrollIndicator={enabledScrollTodayEvents}
+            scrollEnabled={enabledScrollTodayEvents}
           />
         )}
         {!!tomorrowEvents?.length && (
@@ -87,6 +92,8 @@ export const Events = () => {
             onEndReachedThreshold={1}
             ListFooterComponent={<Spinner isLoading={tomorrow?.hasMoreLoading} size='small' color='#3D424D' />}
             horizontal
+            showsHorizontalScrollIndicator={enabledScrollTomorrowEvents}
+            scrollEnabled={enabledScrollTomorrowEvents}
           />
         )}
         {!todayEvents?.length && !tomorrowEvents?.length && (

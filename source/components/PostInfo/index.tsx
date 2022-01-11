@@ -1,12 +1,12 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { View, Text, TouchableOpacity, ViewStyle } from 'react-native'
+import { View, Text, TouchableOpacity, ViewStyle, TouchableHighlight, Linking } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale } from 'react-native-size-matters'
 import { useDispatch } from 'react-redux'
 import { styles } from './styles'
 import { Button, PostMedia } from '~/components'
 import { theme } from '~/constants'
-import { PostInterface } from '~/interfaces/postInterface'
+import { Link, PostInterface } from '~/interfaces/postInterface'
 import { useUnRichContent } from '~/hooks'
 import { contentPost, buttonPost } from '../../constants/testIds'
 import { homeActions } from '~/store/actions'
@@ -68,7 +68,7 @@ const Buttons = ({ liked, handleLikePost }: ButtonsProps) => {
 }
 
 const PostInfo = ({ post, commentsCount, customContainerStyle }: PostInfoProps) => {
-  const { id, content, likesCount, userHasAlreadyLiked } = post
+  const { id, content, likesCount, userHasAlreadyLiked, detail } = post
   const shares = 0
   const MAX_LINES = 5
   const contentText = useUnRichContent(content)
@@ -88,6 +88,13 @@ const PostInfo = ({ post, commentsCount, customContainerStyle }: PostInfoProps) 
     },
     [showMore]
   )
+
+  const handleOpenLink = async (url: string) => {
+    const canOpen = await Linking.canOpenURL(url)
+    if (canOpen) {
+      await Linking.openURL(url)
+    }
+  }
 
   useEffect(() => {
     if (hasShowLessMore) {
@@ -143,6 +150,20 @@ const PostInfo = ({ post, commentsCount, customContainerStyle }: PostInfoProps) 
         </View>
         <PostMedia post={post} withTopMargin={false} />
         <View style={styles.body}>
+          {detail?.links?.length && detail?.links?.length > 0 && (
+            <View testID='links' style={styles.links}>
+              {detail?.links?.map((link: Link, i: number) => (
+                <TouchableHighlight
+                  key={`key${0 + i}`}
+                  onPress={() => handleOpenLink(link.url)}
+                  underlayColor='transparent'
+                  style={styles.linkWrapper}
+                >
+                  <Text style={styles.linkText}>{link.url}</Text>
+                </TouchableHighlight>
+              ))}
+            </View>
+          )}
           <View style={styles.infoNumbers}>
             <Text style={styles.infoNumber}>{getLikesCommentsSharesText(likes, t('components_Post_likes'))}</Text>
             <View style={styles.commentsSharesBox}>

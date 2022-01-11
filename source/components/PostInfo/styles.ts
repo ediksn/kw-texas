@@ -144,5 +144,18 @@ export const styles = StyleSheet.create({
   touchableArea: {
     marginRight: moderateScale(-5),
     padding: moderateScale(5)
+  },
+  linkWrapper: {
+    alignSelf: 'flex-start',
+    maxHeight: verticalScale(30)
+  },
+  linkText: {
+    fontSize: theme.fonts.SMALL_SIZE,
+    fontFamily: 'Mulish-Bold',
+    color: theme.darkGreenColor,
+    flexWrap: 'wrap'
+  },
+  links: {
+    marginTop: verticalScale(10)
   }
 })

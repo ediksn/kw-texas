@@ -241,7 +241,6 @@ const NewPost = () => {
                   ref={buttonRef}
                   style={styles.dropTouch}
                   onPress={() => setShowDropDown(!showDropDown)}
-                  disabled={edited}
                 >
                   <Text style={[styles.group, editMode && styles.disabled]} ellipsizeMode='tail' numberOfLines={1}>
                     {groupSelected?.title}

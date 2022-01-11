@@ -38,7 +38,6 @@ const NewPost = () => {
   const { editMode, idPost, groupId, currentGroupSelected }: any = params
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
   const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
-  const user: any = useSelector((state: RootState) => state.login.user)
   const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)
   const groups: GroupInterface[] = useSelector((state: RootState) => state.home.groups.data)
@@ -237,7 +236,7 @@ const NewPost = () => {
             <View style={styles.avatarBox}>
               <Avatar uri={usrData?.userProfile.photo} />
               <View style={styles.info}>
-                <Text style={styles.name}>{user?.name.toUpperCase()}</Text>
+                <Text style={styles.name}>{usrData?.name?.toUpperCase()}</Text>
                 <TouchableOpacity
                   ref={buttonRef}
                   style={styles.dropTouch}

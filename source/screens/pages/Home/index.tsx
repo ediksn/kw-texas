@@ -19,14 +19,12 @@ import Loading from '~/components/Loading'
 export const Home = () => {
   const dispatch = useDispatch()
   const filterFlagged = true
-  const usr: any = useSelector((state: RootState) => state.login.user)
   const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
   const limitDefault: number = useSelector((state: RootState) => state.home.posts.limitDefault)
   const limit: number = useSelector((state: RootState) => state.home.posts.limit)
   const loading: boolean = useSelector((state: RootState) => state.home.posts.isLoading)
   const hasMoreLoading: boolean = useSelector((state: RootState) => state.home.posts.hasMoreLoading)
   const isVisibleDropDown: boolean = useSelector((state: RootState) => state.home.isVisibleDropDown)
-  const kwuId: number = usr?.kwuid
   useBackButtonMinimize()
   const { t } = useTranslation()
   const navigation = useNavigation()
@@ -34,7 +32,7 @@ export const Home = () => {
   const DEVICE_WIDTH = useDeviceWidth()
   const [pullRefresh, setPullRefresh] = useState(false)
   useEffect(() => {
-    dispatch(getUsrProfileActions.getUsrProfile(kwuId))
+    dispatch(getUsrProfileActions.getUsrProfile())
     dispatch(homeActions.getPosts(limitDefault, false, filterFlagged))
     dispatch(homeActions.getAllGroups())
   }, [dispatch])

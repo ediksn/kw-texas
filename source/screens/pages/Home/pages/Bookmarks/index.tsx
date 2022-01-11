@@ -26,13 +26,11 @@ const EmptyPostsBookmarked = (t: any) => (
 const Bookmarks = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
-  const usr: any = useSelector((state: RootState) => state.login.user)
   const bookmarkedPosts: PostInterface[] = useSelector((state: RootState) => state.home.bookmarkedPosts.data)
   const limitDefault: number = useSelector((state: RootState) => state.home.bookmarkedPosts.limitDefault)
   const limit: number = useSelector((state: RootState) => state.home.bookmarkedPosts.limit)
   const isLoading: boolean = useSelector((state: RootState) => state.home.bookmarkedPosts.isLoading)
   const hasMoreLoading: boolean = useSelector((state: RootState) => state.home.bookmarkedPosts.hasMoreLoading)
-  const usrId: number = usr?.kwuid
   useBackButtonMinimize()
   const { t } = useTranslation()
   const onPostView = (post: PostInterface) => {
@@ -42,7 +40,7 @@ const Bookmarks = () => {
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-      dispatch(getUsrProfileActions.getUsrProfile(usrId))
+      dispatch(getUsrProfileActions.getUsrProfile())
       dispatch(homeActions.getBookmarkedPosts({ limit: limitDefault, isLoading: !bookmarkedPosts.length }))
     })
 

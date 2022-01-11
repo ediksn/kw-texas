@@ -47,7 +47,7 @@ jest.mock('react-redux', () => ({
   useDispatch: jest.fn()
 }))
 
-describe('Home', () => {
+describe('Home test', () => {
   const mockedAxios = axios as jest.Mocked<typeof axios>
   const LIMIT = 10
   const {

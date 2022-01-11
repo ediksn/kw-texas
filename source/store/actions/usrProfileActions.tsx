@@ -6,10 +6,11 @@ import { AppDispatch } from '..'
 import { AccountInterface } from '~/interfaces/usrInterface'
 
 const actionCreators = {
-  getUsrProfile: (kwuId: number) => async (dispatch: AppDispatch) => {
+  getUsrProfile: () => async (dispatch: AppDispatch) => {
     const { GET_USRPROFILE, GET_USRPROFILE_SUCCESS, GET_USRPROFILE_FAILURE } = USR_TYPES
     dispatch({ type: GET_USRPROFILE })
     try {
+      const kwuId = await usrProfileService.getKwuId()
       const accounts: AccountInterface[] = await usrProfileService.getAccounts(kwuId)
       const user = await usrProfileService.getUser(kwuId)
       const profile = await usrProfileService.getProfile()

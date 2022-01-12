@@ -71,6 +71,8 @@
   "components_Post_Comment": "Comentar",
   "components_Post_Share": "Compartir",
   "components_Post_Posted": "Publicado",
+  "components_Post_LinksForm_Title": "Agregar link",
+  "components_Post_LinksForm_Placeholder": "Ingresa el link...",
   "components_EventCard_Interested": "Interesados",
   "components_EventCard_Share": "Compartir",
   "components_EventCard_Will_Go": "Asistentes",

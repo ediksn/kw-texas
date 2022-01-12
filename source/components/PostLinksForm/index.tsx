@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
+import { useTranslation } from 'react-i18next'
 import { styles } from './styles'
 import { Icon, Input } from '~/components'
 import { theme } from '~/constants'
@@ -15,6 +16,7 @@ const MAX_LINKS_ALLOWED = 3
 export const regexLink = /^((?:https?:\/\/)?[^./]+(?:\.[^./]+)+(?:\/.*)?)$/g
 
 const PostLinksForm = ({ links, setLinks, disabledLinks }: PostLinksFormProps) => {
+  const { t } = useTranslation()
   const handleChange = (text: string, index: number) => {
     const valueNew = replaceValueFromIndex(links, index, text)
     setLinks(valueNew)
@@ -45,9 +47,9 @@ const PostLinksForm = ({ links, setLinks, disabledLinks }: PostLinksFormProps) =
         <View key={`link_${i + 1}`}>
           <Input
             value={links[i]}
-            title='Add link'
+            title={t('components_Post_LinksForm_Title')}
             onChangeText={text => handleChange(text, i)}
-            placeholder='Enter link'
+            placeholder={t('components_Post_LinksForm_Placeholder')}
             autoCapitalize='none'
             disabled={disabledLinks}
             error={checkRegex(i)}

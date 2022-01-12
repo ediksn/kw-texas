@@ -71,6 +71,8 @@
   "components_Post_Comment": "Comment",
   "components_Post_Share": "Share",
   "components_Post_Posted": "Posted",
+  "components_Post_LinksForm_Title": "Add link",
+  "components_Post_LinksForm_Placeholder": "Enter link...",
   "components_EventCard_Interested": "Interested",
   "components_EventCard_Share": "Share event",
   "components_MakeCommentBar_Your_comment": "Your comment",

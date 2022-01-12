@@ -10,6 +10,7 @@ import { homeActions } from '~/store/actions'
 import { styles } from './styles'
 import { Icon, Header } from '~/components'
 import { NAVIGATION } from '../../../../../../constants/navigation'
+import { useIsIosPlatform } from '~/hooks'
 
 const HomeHeader = () => {
   const { t } = useTranslation()
@@ -38,7 +39,7 @@ const HomeHeader = () => {
         avatarDefaultStyle={styles.avatarDefault}
       />
       <TouchableOpacity onPress={() => startDropDown()}>
-        <Text style={styles.text}>{t('components_NewPost_Share_today')} </Text>
+        <Text style={[styles.text, !useIsIosPlatform() && { height: 50 }]}>{t('components_NewPost_Share_today')} </Text>
       </TouchableOpacity>
     </View>
   )

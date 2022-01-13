@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
     lineHeight: theme.fonts.MEDIUM_SIZE
   },
   subText: {
-    fontFamily: 'Mulish',
+    fontFamily: 'Mulish-Regular',
     fontWeight: '400',
     fontSize: theme.fonts.SMALL_SIZE,
     color: theme.darkGrey,

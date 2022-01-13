@@ -35,7 +35,7 @@ export const Groups = () => {
   useEffect(() => {
     dispatch(getUsrProfileActions.getUsrProfile())
     dispatch(homeActions.getPosts(limitDefault, false, filterFlagged))
-    dispatch(homeActions.getAllGroups())
+    dispatch(homeActions.getMyGroups())
   }, [dispatch])
   const onPostView = (post: PostInterface) => {
     dispatch(homeActions.selectPost(post))

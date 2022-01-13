@@ -52,6 +52,19 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center'
   },
+  titleDropTouchTagsView: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  dropTouchTags: {
+    marginTop: -2
+  },
+  tagsTextCount: {
+    color: theme.post.green,
+    fontSize: theme.fonts.SMALL_SIZE,
+    fontFamily: 'Mulish-Bold'
+  },
   group: {
     fontSize: theme.fonts.SMALL_SIZE,
     fontFamily: 'Mulish-Bold',

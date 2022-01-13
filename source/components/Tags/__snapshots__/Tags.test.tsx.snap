@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render People Component Test Match with the snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "height": 94.16470588235293,
+      "marginLeft": 34.285714285714285,
+    }
+  }
+>
+  <RCTScrollView
+    horizontal={true}
+  >
+    <View />
+  </RCTScrollView>
+</View>
+`;

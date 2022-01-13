@@ -15,6 +15,7 @@ import PostView from '~/screens/pages/Home/pages/PostView'
 import { Login } from '~/screens/pages'
 import TabNavigation from '~/screens/Navigation/TabNavigation'
 import { triggerAxiosInterceptors } from '~/screens/Navigation/utils/triggerAxiosInterceptors'
+import TagsPeople from '~/screens/pages/Home/pages/NewPost/pages/TagsPeople'
 
 const Navigation = () => {
   const { open, title, type, menuHeight }: ToastProps = useSelector((store: RootState) => store.toast)
@@ -46,6 +47,14 @@ const Navigation = () => {
           }}
           name={NAVIGATION.SCREEN.POSTVIEW}
           component={PostView}
+        />
+        <StackScreen
+          options={{
+            cardStyle: { backgroundColor: '#F7F7F8' },
+            header: () => null
+          }}
+          name={NAVIGATION.SCREEN.TAGSPEOPLE}
+          component={TagsPeople}
         />
       </StackNavigator>
       <Toast open={open} title={title} type={type} menuHeight={menuHeight} />

@@ -53,7 +53,7 @@ describe('New Post Action', () => {
   })
 
   it('should retrieve all groups', async () => {
-    storeModels.dispatch(homeActions.getAllGroups()).then(() => {
+    storeModels.dispatch(homeActions.getMyGroups()).then(() => {
       const storeState = storeModels.getState()
       const { groups } = storeState.home
       expect(groups.data.length).toBeGreaterThan(10)

@@ -15,6 +15,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 import { launchImageLibrary, launchCamera, MediaType } from 'react-native-image-picker'
 import AndroidKeyboardAdjust from 'react-native-android-keyboard-adjust'
+import { scale } from 'react-native-size-matters'
 import { Icon, Header, Dropdown, Spinner, Input, PostLinksForm } from '~/components'
 import { styles } from './styles'
 import { IS_IOS, NAVIGATION, theme } from '~/constants'
@@ -27,6 +28,8 @@ import Avatar from '~/components/Avatar'
 import { PostInterface, FormPostInterface, POST_TYPES } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
 import { homeActions, toastActions } from '~/store/actions'
+import { useGetFullNamePeopleTags } from '~/hooks/tags'
+import { PeopleInterface } from '~/interfaces/peopleInterface'
 import { validateLink } from '~/utils/linksHelper'
 
 const NewPost = () => {
@@ -35,7 +38,7 @@ const NewPost = () => {
   const { navigate } = navigation
   const dispatch = useDispatch()
   const { params } = useRoute()
-  const { editMode, idPost, groupId, currentGroupSelected }: any = params
+  const { editMode, idPost, groupId, currentGroupSelected, tags }: any = params
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
   const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
   const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
@@ -50,12 +53,16 @@ const NewPost = () => {
   const linksEdit = currentPost?.detail?.links?.map(link => link.url) || defaultLinks
   const [inputValue, setInputValue] = useState(editMode ? contentText : '')
   const [showDropDown, setShowDropDown] = useState(false)
+  const [showDropDownTags, setShowDropDownTags] = useState(false)
   const [groupSelected, setGroupSelected] = useState<OptionInterface>()
   const [pickerResponse, setPickerResponse] = useState<UploadImageInterface[]>(editMode ? images : [])
   const [newFiles, setNewFiles] = useState<UploadImageInterface[]>([])
   const [edited, setEdited] = useState(false)
   const [links, setLinks] = useState(linksEdit)
   const disabledLinks = pickerResponse.length > 0 || (editMode && images.length > 0)
+  const peopleList: PeopleInterface[] = useSelector((state: RootState) => state.home.peopleList.data)
+  const [positionButtonTagsLeft, setPositionButtonTagsLeft] = useState(0)
+  const [tagsLocal, setTagsLocal] = useState(tags)
 
   const checkLinks = () => {
     let error = false
@@ -76,13 +83,14 @@ const NewPost = () => {
   }
   const hasValidForm = groupSelected?.key !== '0' && checkLinks() && ((edited && inputValue !== '') || linksFilled())
   const buttonRef = useRef<any>()
+  const buttonTagsRef = useRef<any>()
   const inputRef = useRef<TextInput | null>(null)
   const hasLinks = checkLinks() && linksFilled()
   const addMediaDisabled = pickerResponse.length >= 15 || (editMode && isLinkType) || linksFilled()
 
   const init = async () => {
     if (Platform.OS === 'android') AndroidKeyboardAdjust.setAdjustResize()
-    dispatch(homeActions.getAllGroups())
+    dispatch(homeActions.getMyGroups())
     if (editMode && groupId) {
       const res: any = await dispatch(homeActions.getGroupInfo(groupId))
       res.name = res.name.trim()
@@ -95,6 +103,17 @@ const NewPost = () => {
   useEffect(() => {
     init()
   }, [])
+
+  useEffect(() => {
+    setTagsLocal(tags)
+  }, [tags])
+
+  const calculatePositions = () => {
+    buttonTagsRef?.current?.measure((...buttonCoords: any[]) => {
+      const positionLeft = buttonCoords[4] + buttonCoords[2] - scale(178)
+      setPositionButtonTagsLeft(positionLeft > 0 ? positionLeft : 10)
+    })
+  }
 
   useEffect(() => {
     if (pickerResponse.length > 15) {
@@ -137,6 +156,7 @@ const NewPost = () => {
   }
 
   const handleGroup = (option: OptionInterface) => {
+    setTagsLocal({})
     const { key, title } = option
     const groupSelectedFromDrop = {
       key,
@@ -164,6 +184,13 @@ const NewPost = () => {
 
     return myGroups
   }
+
+  const getMyTagsFormatted = () =>
+    tags &&
+    Object.keys(tags).map(kwUid => ({
+      key: kwUid,
+      title: useGetFullNamePeopleTags(peopleList, parseInt(kwUid, 10))
+    }))
 
   const handleAttachImage = async () => {
     const options = {
@@ -235,7 +262,39 @@ const NewPost = () => {
             <View style={styles.avatarBox}>
               <Avatar uri={usrData?.userProfile.photo} />
               <View style={styles.info}>
-                <Text style={styles.name}>{usrData?.name?.toUpperCase()}</Text>
+                <View style={styles.titleDropTouchTagsView}>
+                  <Text style={styles.name}>{usrData?.name?.toUpperCase()}</Text>
+                  <TouchableOpacity
+                    ref={buttonTagsRef}
+                    style={styles.dropTouchTags}
+                    onPress={() => {
+                      calculatePositions()
+                      setShowDropDownTags(!showDropDownTags)
+                    }}
+                  >
+                    <Text style={styles.tagsTextCount} ellipsizeMode='tail' numberOfLines={1}>
+                      {tagsLocal &&
+                        Object.keys(tagsLocal)?.length > 0 &&
+                        `, +${Object.keys(tagsLocal)?.length} ${t('components_NewPost_Title_Tags')}`}
+                    </Text>
+                  </TouchableOpacity>
+                  <Dropdown
+                    buttonRef={buttonTagsRef}
+                    isVisible={showDropDownTags}
+                    dropdonwHeader={
+                      <View style={[styles.item, { height: 40 }]}>
+                        <Text allowFontScaling={false} style={styles.dropdownHeader}>
+                          {t('components_NewPost_Tagged_People')}
+                        </Text>
+                      </View>
+                    }
+                    onRequestClose={() => setShowDropDownTags(false)}
+                    options={getMyTagsFormatted()}
+                    width={scale(178)}
+                    top={4}
+                    left={positionButtonTagsLeft}
+                  />
+                </View>
                 <TouchableOpacity
                   ref={buttonRef}
                   style={styles.dropTouch}
@@ -305,7 +364,11 @@ const NewPost = () => {
           >
             <Icon name='camera-icon' size={24} color={theme.post.green} />
           </TouchableOpacity>
-          <Icon name='people-icon' size={24} color={theme.post.green} />
+          <TouchableOpacity
+            onPress={() => navigate(NAVIGATION.SCREEN.TAGSPEOPLE, { tags: tagsLocal, groupId: groupSelected?.key })}
+          >
+            <Icon name='people-icon' size={24} color={theme.post.green} />
+          </TouchableOpacity>
           <Icon name='location-icon' size={24} color={theme.post.green} />
         </View>
       </KeyboardAvoidingView>

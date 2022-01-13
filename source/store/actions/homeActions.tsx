@@ -1,4 +1,5 @@
 import { FormPostInterface, PostInterface } from '~/interfaces/postInterface'
+import { PeopleInterface } from '~/interfaces/peopleInterface'
 import { homeService } from '~/services'
 import { HOME_TYPES } from '~/store/types'
 import { AppDispatch } from '..'
@@ -82,28 +83,11 @@ const actionCreators = {
     }
     return false
   },
-  getGroups: (limit: number) => async (dispatch: AppDispatch) => {
+  getMyGroups: () => async (dispatch: AppDispatch) => {
     const { GET_GROUPS, GET_GROUPS_SUCCESS, GET_GROUPS_FAILURE } = HOME_TYPES
     dispatch({ type: GET_GROUPS })
     try {
-      const response = await homeService.getGroups(limit)
-      dispatch({
-        type: GET_GROUPS_SUCCESS,
-        payload: {
-          data: response?.data.data.getListOfJoinedGroups,
-          limitDefault: 10,
-          limit
-        }
-      })
-    } catch (error) {
-      dispatch({ type: GET_GROUPS_FAILURE, payload: error })
-    }
-  },
-  getAllGroups: () => async (dispatch: AppDispatch) => {
-    const { GET_GROUPS, GET_GROUPS_SUCCESS, GET_GROUPS_FAILURE } = HOME_TYPES
-    dispatch({ type: GET_GROUPS })
-    try {
-      const response = await homeService.getAllGroups()
+      const response = await homeService.getMyGroups()
       dispatch({
         type: GET_GROUPS_SUCCESS,
         payload: {
@@ -388,7 +372,29 @@ const actionCreators = {
     return false
   },
   showDropDown: () => (dispatch: AppDispatch) => dispatch({ type: HOME_TYPES.SHOW_DROP_DOWN_HOME }),
-  hideDropDown: () => (dispatch: AppDispatch) => dispatch({ type: HOME_TYPES.HIDE_DROP_DOWN_HOME })
+  hideDropDown: () => (dispatch: AppDispatch) => dispatch({ type: HOME_TYPES.HIDE_DROP_DOWN_HOME }),
+  getPeople:
+    ({ limit, isLoading = false, hasMoreLoading = false, groupId }: any) =>
+    async (dispatch: any, getState: any) => {
+      const { GET_PEOPLE, GET_PEOPLE_SUCCESS, GET_PEOPLE_FAILURE } = HOME_TYPES
+      dispatch({ type: GET_PEOPLE, payload: { isLoading, hasMoreLoading } })
+
+      try {
+        const response = getState().home.groups.data.find((g: GroupInterface) => g.id === groupId)
+        const people: PeopleInterface[] = response?.members || []
+
+        dispatch({
+          type: GET_PEOPLE_SUCCESS,
+          payload: {
+            data: people,
+            limitDefault: 10,
+            limit
+          }
+        })
+      } catch (error) {
+        dispatch({ type: GET_PEOPLE_FAILURE, payload: error })
+      }
+    }
 }
 
 export default actionCreators

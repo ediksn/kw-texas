@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render People Component Test Match with the snapshot 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "borderColor": "#E3E3E4",
+      "borderStyle": "solid",
+      "borderWidth": 1,
+      "flex": 1,
+      "flexDirection": "row",
+      "height": 82.39411764705882,
+      "opacity": 1,
+      "paddingLeft": 40.714285714285715,
+      "paddingRight": 34.285714285714285,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "process": [Function],
+      }
+    }
+    style={
+      Object {
+        "height": 28.285714285714285,
+        "width": 28.285714285714285,
+      }
+    }
+  />
+  <Image
+    onError={[Function]}
+    resizeMode="cover"
+    source={
+      Object {
+        "uri": "https://avatar.kwconnect.com/6.jpeg",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "borderRadius": 31.428571428571427,
+          "height": 62.857142857142854,
+          "width": 62.857142857142854,
+        },
+        Object {
+          "borderRadius": 31.428571428571427,
+          "height": 37.714285714285715,
+          "marginLeft": 23.57142857142857,
+          "marginRight": 17.142857142857142,
+          "width": 37.714285714285715,
+        },
+      ]
+    }
+  />
+  <Text
+    style={
+      Object {
+        "fontFamily": "Mulish-Bold",
+        "fontSize": 22,
+        "lineHeight": 20,
+      }
+    }
+  >
+    6 QA
+  </Text>
+</View>
+`;

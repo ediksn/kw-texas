@@ -16,11 +16,12 @@ interface Props {
   buttonRef: any
   isVisible: boolean
   onRequestClose: () => void
-  onSelectOption: (item: OptionInterface) => void
+  onSelectOption?: (item: OptionInterface) => void
   options: OptionInterface[]
   selectedOption?: any
   width?: number
   center?: boolean
+  left?: number
   right?: number
   top?: number
   fix?: boolean
@@ -37,6 +38,7 @@ const Dropdown = memo(
     selectedOption = null,
     width,
     center = false,
+    left,
     right,
     top,
     fix = false,
@@ -166,6 +168,7 @@ const Dropdown = memo(
               styles.context,
               {
                 width,
+                left,
                 top: dropdownPosXY[1],
                 paddingVertical: containerPaddingVertical,
                 opacity: animationOpacity.current,

@@ -24,6 +24,26 @@ interface Icon {
   filename: string
 }
 
+interface LocationInterface {
+  city: string
+  state: string
+  postalCode: string
+  country: string
+}
+
+interface MemberInterface {
+  id: string
+  kwUid: number
+  username: string
+  firstName: string
+  lastName: string
+  email: string
+  memberType: string
+  state: string
+  phone: string
+  photoUrl: string
+  location: LocationInterface
+}
 export interface GroupInterface {
   id: string
   name: string
@@ -32,6 +52,7 @@ export interface GroupInterface {
   membersCount: number
   status: number
   icon: Icon
+  members: MemberInterface[]
 }
 
 export interface GroupProduceProps {

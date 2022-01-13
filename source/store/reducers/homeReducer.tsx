@@ -36,6 +36,9 @@ const {
   GET_BOOKMARKED_POSTS,
   GET_BOOKMARKED_POSTS_SUCCESS,
   GET_BOOKMARKED_POSTS_FAILURE,
+  GET_PEOPLE,
+  GET_PEOPLE_SUCCESS,
+  GET_PEOPLE_FAILURE,
   SELECT_COMMUNITY,
   SET_SCROLLED,
   GET_COMMUNITY_POSTS,
@@ -165,6 +168,21 @@ const REDUCERS = {
   [GET_BOOKMARKED_POSTS_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.bookmarkedPosts.isLoading = false
     draftState.bookmarkedPosts.hasMoreLoading = false
+  },
+  [GET_PEOPLE]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.peopleList.isLoading = payload.isLoading
+    draftState.peopleList.hasMoreLoading = payload.hasMoreLoading
+  },
+  [GET_PEOPLE_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
+    const { data, limit } = payload
+
+    draftState.peopleList = { ...draftState.peopleList, limit, data }
+    draftState.peopleList.isLoading = false
+    draftState.peopleList.hasMoreLoading = false
+  },
+  [GET_PEOPLE_FAILURE]: ({ draftState }: PostReducerProps) => {
+    draftState.peopleList.isLoading = false
+    draftState.peopleList.hasMoreLoading = false
   }
 }
 

@@ -140,6 +140,10 @@
   "components_AfterPermissionModal_OpportunityFaceID": "You have opportunity to allow app to use Face ID. If you want to give access, yo can go to the system settings and turn on it.",
   "components_AfterPermissionModal_OpportunityBiometrics": "You have opportunity to allow app to use Fingerprint. If you want to give access, yo can go to the system settings and turn on it.",
   "components_AfterPermissionModal_GoToSettings": "Go to Settings",
-  "components_Home_Header_Groups": "Your Groups",
-  "components_General_NoName": "NO NAME"
+  "components_General_NoName": "NO NAME",
+  "Home_NewPost_Tags_Peoples_Header_Title": "Select people",
+  "Home_NewPost_Tags_Peoples_Header_Text_Right": "Done",
+  "components_NewPost_Title_Tags": "PEOPLE",
+  "components_NewPost_Tagged_People": "TAGGED PEOPLE",
+  "components_Home_Header_Groups": "Your Groups"
 }

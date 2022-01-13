@@ -107,6 +107,7 @@ export const postResponse: PostInterface = {
   deleted: false,
   pinned: false,
   userHasAlreadyLiked: false,
+  userHasAlreadyFlagged: false,
   userHasAlreadyBookmarked: false,
   groupInfo: {
     id: '60f603104d8d7a001ac9ec79',
@@ -143,6 +144,7 @@ export const postsResponse = {
           deleted: false,
           pinned: false,
           userHasAlreadyLiked: false,
+          userHasAlreadyFlagged: false,
           userHasAlreadyBookmarked: false,
           groupInfo: { id: '60f603104d8d7a001ac9ec79', name: 'Aanother Best Test Group 2021-08-30T07:11.000Z' }
         },
@@ -164,6 +166,7 @@ export const postsResponse = {
           deleted: false,
           pinned: false,
           userHasAlreadyLiked: false,
+          userHasAlreadyFlagged: false,
           userHasAlreadyBookmarked: false,
           groupInfo: { id: '610a9219d330e7001a0c8627', name: 'test_closed' }
         },
@@ -185,6 +188,7 @@ export const postsResponse = {
           deleted: false,
           pinned: false,
           userHasAlreadyLiked: false,
+          userHasAlreadyFlagged: false,
           userHasAlreadyBookmarked: false,
           groupInfo: { id: '61672a0c51c4f9001b9bec9b', name: 'Demo Market Center' }
         },
@@ -206,6 +210,7 @@ export const postsResponse = {
           deleted: false,
           pinned: false,
           userHasAlreadyLiked: false,
+          userHasAlreadyFlagged: false,
           userHasAlreadyBookmarked: false,
           groupInfo: { id: '61672a0c51c4f9001b9bec9b', name: 'Demo Market Center' }
         },
@@ -227,6 +232,7 @@ export const postsResponse = {
           deleted: false,
           pinned: false,
           userHasAlreadyLiked: false,
+          userHasAlreadyFlagged: false,
           userHasAlreadyBookmarked: false,
           groupInfo: { id: '61672a0c51c4f9001b9bec9a', name: 'Keller Williams Realty International' }
         },
@@ -248,6 +254,7 @@ export const postsResponse = {
           deleted: false,
           pinned: false,
           userHasAlreadyLiked: false,
+          userHasAlreadyFlagged: false,
           userHasAlreadyBookmarked: false,
           groupInfo: { id: '61672a0c51c4f9001b9bec9a', name: 'Keller Williams Realty International' }
         },
@@ -269,6 +276,7 @@ export const postsResponse = {
           deleted: false,
           pinned: false,
           userHasAlreadyLiked: false,
+          userHasAlreadyFlagged: false,
           userHasAlreadyBookmarked: false,
           groupInfo: { id: '60f603104d8d7a001ac9ec79', name: 'Aanother Best Test Group 2021-08-30T07:11.000Z' }
         },
@@ -290,6 +298,7 @@ export const postsResponse = {
           deleted: false,
           pinned: false,
           userHasAlreadyLiked: false,
+          userHasAlreadyFlagged: false,
           userHasAlreadyBookmarked: false,
           groupInfo: { id: '60f603104d8d7a001ac9ec79', name: 'Aanother Best Test Group 2021-08-30T07:11.000Z' }
         },
@@ -311,6 +320,7 @@ export const postsResponse = {
           deleted: false,
           pinned: false,
           userHasAlreadyLiked: false,
+          userHasAlreadyFlagged: false,
           userHasAlreadyBookmarked: false,
           groupInfo: { id: '60f603104d8d7a001ac9ec79', name: 'Aanother Best Test Group 2021-08-30T07:11.000Z' }
         },
@@ -332,6 +342,7 @@ export const postsResponse = {
           deleted: false,
           pinned: false,
           userHasAlreadyLiked: false,
+          userHasAlreadyFlagged: false,
           userHasAlreadyBookmarked: false,
           groupInfo: { id: '610a9fc5d330e7001a0c868b', name: 'test_public_with_members' }
         }
@@ -602,6 +613,210 @@ export const pickerResponse = [
     fileSize: 6581432
   }
 ]
+
+export const peopleResponse = {
+  data: {
+    data: {
+      getAllUsers: [
+        {
+          kwUid: 6,
+          firstName: '6',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'FL',
+            city: 'St. Cloud',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/6.jpeg'
+        },
+        {
+          kwUid: 19,
+          firstName: '19',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'GA',
+            city: 'Cumming',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/19.jpeg'
+        },
+        {
+          kwUid: 27,
+          firstName: '27',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'TN',
+            city: 'Hixson',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/27.jpeg'
+        },
+        {
+          kwUid: 28,
+          firstName: '28',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'ME',
+            city: 'Portland',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/28.jpeg'
+        },
+        {
+          kwUid: 30,
+          firstName: '30',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'NC',
+            city: 'Charlotte',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/30.jpeg'
+        },
+        {
+          kwUid: 36,
+          firstName: '36',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'MA',
+            city: 'Beverly',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/36.jpeg'
+        },
+        {
+          kwUid: 48,
+          firstName: '48',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'VA',
+            city: 'Falls Church',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/48.jpeg'
+        },
+        {
+          kwUid: 64,
+          firstName: '64',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'MA',
+            city: 'Beverly',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/64.jpeg'
+        },
+        {
+          kwUid: 67,
+          firstName: '67',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'MD',
+            city: 'Columbia',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/67.jpeg'
+        },
+        {
+          kwUid: 69,
+          firstName: '69',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'MA',
+            city: 'Concord',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/69.jpeg'
+        },
+        {
+          kwUid: 72,
+          firstName: '72',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'MD',
+            city: 'Columbia',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/72.jpeg'
+        },
+        {
+          kwUid: 76,
+          firstName: '76',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'NJ',
+            city: 'Cherry Hill',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/76.jpeg'
+        },
+        {
+          kwUid: 79,
+          firstName: '79',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'NJ',
+            city: 'Cherry Hill',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/79.jpeg'
+        },
+        {
+          kwUid: 82,
+          firstName: '82',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'RI',
+            city: 'Middletown',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/82.jpeg'
+        },
+        {
+          kwUid: 97,
+          firstName: '97',
+          lastName: 'QA',
+          location: {
+            country: null,
+            state: 'NJ',
+            city: 'Basking Ridge',
+            address: null,
+            postalCode: null
+          },
+          photoUrl: 'https://avatar.kwconnect.com/97.jpeg'
+        }
+      ]
+    }
+  }
+}
 
 export const groupsResponse = [
   {

@@ -37,5 +37,12 @@ export default {
     limit: 10,
     isLoading: false,
     hasMoreLoading: false
+  },
+  peopleList: {
+    data: [],
+    limitDefault: 10,
+    limit: 10,
+    isLoading: false,
+    hasMoreLoading: false
   }
 }

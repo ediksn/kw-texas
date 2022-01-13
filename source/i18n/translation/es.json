@@ -140,6 +140,10 @@
   "components_AfterPermissionModal_OpportunityFaceID": "Tienes la oportunidad de permitir el uso de Face ID. Si quieres habilitarlo, puedes ir a la configuración del sistema y activarlo.",
   "components_AfterPermissionModal_OpportunityBiometrics": "Tienes la oportunidad de permitir el uso de la huella digital. Si quieres habilitarla, puedes ir a la configuración del sistema y activarla.",
   "components_AfterPermissionModal_GoToSettings": "Ir a Configuración",
-  "components_Home_Header_Groups": "Mis grupos",
-  "components_General_NoName": "SIN NOMBRE"
+  "components_General_NoName": "SIN NOMBRE",
+  "Home_NewPost_Tags_Peoples_Header_Title": "Seleccionar personas",
+  "Home_NewPost_Tags_Peoples_Header_Text_Right": "Guardar",
+  "components_NewPost_Title_Tags": "PERSONAS",
+  "components_NewPost_Tagged_People": "PERSONAS TAGEADAS",
+  "components_Home_Header_Groups": "Mis grupos"
 }

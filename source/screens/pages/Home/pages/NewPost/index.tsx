@@ -27,7 +27,7 @@ import Avatar from '~/components/Avatar'
 import { PostInterface, FormPostInterface, POST_TYPES } from '~/interfaces/postInterface'
 import { RootState } from '~/store'
 import { homeActions, toastActions } from '~/store/actions'
-import { regexLink } from '~/components/PostLinksForm'
+import { validateLink } from '~/utils/linksHelper'
 
 const NewPost = () => {
   const { t } = useTranslation()
@@ -60,8 +60,7 @@ const NewPost = () => {
   const checkLinks = () => {
     let error = false
     links.forEach((link: string) => {
-      const linkRegex = new RegExp(regexLink)
-      if (link !== '' && !linkRegex.test(link)) error = true
+      error = validateLink(link)
     })
     return !error
   }

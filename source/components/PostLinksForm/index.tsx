@@ -5,6 +5,7 @@ import { styles } from './styles'
 import { Icon, Input } from '~/components'
 import { theme } from '~/constants'
 import { addToArray, replaceValueFromIndex, removeFromArray } from '~/utils/arrayHelper'
+import { validateLink } from '~/utils/linksHelper'
 
 interface PostLinksFormProps {
   links: string[]
@@ -13,11 +14,13 @@ interface PostLinksFormProps {
 }
 
 const MAX_LINKS_ALLOWED = 3
-export const regexLink = /^((?:https?:\/\/)?[^./]+(?:\.[^./]+)+(?:\/.*)?)$/g
 
 const PostLinksForm = ({ links, setLinks, disabledLinks }: PostLinksFormProps) => {
   const { t } = useTranslation()
   const handleChange = (text: string, index: number) => {
+    if (text.includes(' ')) {
+      return
+    }
     const valueNew = replaceValueFromIndex(links, index, text)
     setLinks(valueNew)
   }
@@ -32,15 +35,6 @@ const PostLinksForm = ({ links, setLinks, disabledLinks }: PostLinksFormProps) =
     setLinks(newValues)
   }
 
-  const checkRegex = (i: number) => {
-    if (links[i] === '') return false
-    const split = links[i].split('.')
-    if (split.length === 2 && split[0] === 'www') return true
-    const linkRegex = new RegExp(regexLink)
-    const test = linkRegex.test(links[i])
-    return !test
-  }
-
   return (
     <View>
       {links.map((val, i) => (
@@ -52,7 +46,8 @@ const PostLinksForm = ({ links, setLinks, disabledLinks }: PostLinksFormProps) =
             placeholder={t('components_Post_LinksForm_Placeholder')}
             autoCapitalize='none'
             disabled={disabledLinks}
-            error={checkRegex(i)}
+            error={validateLink(links[i])}
+            autoCorrect={false}
             style={StyleSheet.flatten([styles.inputAddLink, disabledLinks && styles.disabled])}
           />
           <View style={styles.actionsContainer}>

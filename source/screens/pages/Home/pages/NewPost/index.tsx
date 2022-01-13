@@ -153,7 +153,7 @@ const NewPost = () => {
   const getMyGroupsFormatted = () => {
     let myGroups: OptionInterface[] = []
 
-    groups.forEach((group: GroupInterface) => {
+    groups?.forEach((group: GroupInterface) => {
       myGroups = [
         ...myGroups,
         {

@@ -41,9 +41,9 @@ export const Groups = () => {
     dispatch(homeActions.selectPost(post))
     navigation.navigate(NAVIGATION.SCREEN.POSTVIEW)
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onGroupView = (group: GroupInterface) => {
-    navigation.navigate(NAVIGATION.SCREEN.GROUPS)
+    dispatch(homeActions.selectCommunity(group))
+    navigation.navigate(NAVIGATION.SCREEN.COMMUNITYDETAIL)
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onMoreGroupsView = () => {

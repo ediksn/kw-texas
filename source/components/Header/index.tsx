@@ -1,29 +1,39 @@
 import React, { ReactNode } from 'react'
 import { Text, TextStyle, TouchableHighlight, View, ViewStyle } from 'react-native'
+import emptyImage from '../../../assets/images/emptyImage.png'
 import { styles } from './styles'
+import FastImageAvatar from '~/components/FastImageAvatar'
 
 interface Props {
   title?: string
   statusBarHeight?: number
   leftButton?: ReactNode
   rightButton?: ReactNode
+  secondRightButton?: ReactNode
   rigthStyle?: ViewStyle
   onClickLeft?: () => void
   onClickRight?: any
   style?: ViewStyle
   titleStyle?: TextStyle
+  avatarUrl?: string
+  hiddenTitle?: boolean
+  renderAvatar?: boolean
 }
 
 const Header = ({
   title,
   statusBarHeight,
   leftButton,
+  secondRightButton,
   rightButton,
   rigthStyle,
   onClickLeft,
   onClickRight,
   style,
-  titleStyle
+  titleStyle,
+  avatarUrl,
+  hiddenTitle = false,
+  renderAvatar = false
 }: Props) => {
   const LeftButton = () => (
     <>
@@ -42,11 +52,18 @@ const Header = ({
 
   const Title = () => (
     <>
-      {title && (
+      {title && renderAvatar ? (
+        <View style={[styles.rowTitleContainer, hiddenTitle && { opacity: 0 }]}>
+          <FastImageAvatar uri={avatarUrl} source={emptyImage} avatarStyle={styles.avatarStyle} />
+          <Text style={titleStyle || styles.text} numberOfLines={1} ellipsizeMode='tail'>
+            {title}
+          </Text>
+        </View>
+      ) : title ? (
         <View style={styles.textContainer}>
           <Text style={titleStyle || styles.text}>{title}</Text>
         </View>
-      )}
+      ) : null}
     </>
   )
   const RightButton = () => (
@@ -63,11 +80,33 @@ const Header = ({
       )}
     </>
   )
+  const SecondRightButton = () => (
+    <>
+      {secondRightButton && (
+        <TouchableHighlight
+          style={[styles.touchableHighlight, rigthStyle]}
+          activeOpacity={0.6}
+          underlayColor='transparent'
+          onPress={onClickRight}
+        >
+          {secondRightButton}
+        </TouchableHighlight>
+      )}
+    </>
+  )
+
   return (
     <View style={[styles.container, style, { paddingTop: statusBarHeight }]}>
       <LeftButton />
       <Title />
-      <RightButton />
+      {secondRightButton ? (
+        <View style={styles.secondRightButtonStyle}>
+          <RightButton />
+          <SecondRightButton />
+        </View>
+      ) : (
+        <RightButton />
+      )}
     </View>
   )
 }

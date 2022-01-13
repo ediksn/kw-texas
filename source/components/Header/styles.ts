@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { moderateScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
@@ -21,6 +22,19 @@ export const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto'
   },
+  rowTitleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginRight: 'auto',
+    flex: 1
+  },
+  avatarStyle: {
+    marginRight: moderateScale(5),
+    borderRadius: moderateScale(6),
+    height: moderateScale(30),
+    width: moderateScale(30)
+  },
   touchableHighlight: {
     paddingVertical: '3%',
     paddingHorizontal: '3%',
@@ -31,7 +45,13 @@ export const styles = StyleSheet.create({
     fontFamily: 'Mulish-Bold',
     fontSize: theme.fonts.LARGE_SIZE,
     lineHeight: 24,
-    fontWeight: '700'
+    fontWeight: '700',
+    flex: 1
+  },
+  secondRightButtonStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    flex: 0.3
   },
   disabled: {
     opacity: 0.5

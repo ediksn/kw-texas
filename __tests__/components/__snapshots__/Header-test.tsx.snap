@@ -40,6 +40,7 @@ exports[`renders correctly 1`] = `
     <Text
       style={
         Object {
+          "flex": 1,
           "fontFamily": "Mulish-Bold",
           "fontSize": 25.142857142857142,
           "fontWeight": "700",

@@ -40,7 +40,6 @@ export const Home = () => {
     dispatch(homeActions.selectPost(post))
     navigation.navigate(NAVIGATION.SCREEN.POSTVIEW)
   }
-
   const renderPost = ({ item }: { item: PostInterface }) => <Post post={item} onPostPress={onPostView} />
 
   const keyExtractor = (post: PostInterface) => post.id.toString()
@@ -79,7 +78,7 @@ export const Home = () => {
   const getMyGroupsFormatted = () => {
     let myGroups: OptionInterface[] = []
 
-    groups.forEach((group: GroupInterface) => {
+    groups?.forEach((group: GroupInterface) => {
       myGroups = [
         ...myGroups,
         {

@@ -69,6 +69,18 @@ export default {
       }
     })
   },
+  getPostsByCommunityId: async (limit: number, communityId: string) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query:
+        '\n    query getGlobalPosts($groupId: String, $offset: Int!, $limit: Int!) {\n  getPosts(groupId: $groupId, offset: $offset, limit: $limit) {\n    id\n    content\n    type\n    likedBy\n    likesCount\n    repliesCount\n    bookmarksCount\n    creatorId\n    isUserCreatorOfThePost\n    creatorfirstName\n    creatorLastName\n    creatorPhoto\n    createdAt\n    deleted\n   detail {\n    ... on attachmentList {\n      attachments {\n        id\n       url\n      }\n    }\n ... on linkDetails {\n      links {\n      url\n      }\n    }\n    }\n   pinned\n    userHasAlreadyLiked\n    userHasAlreadyBookmarked\n   userHasAlreadyFlagged\n    groupInfo\n    {\n    id\n    name\n    }\n    }\n}\n    ',
+      variables: {
+        offset: 0,
+        limit,
+        groupId: communityId
+      }
+    })
+  },
   getCommentsOfPost: async (postId: string, limit: number) => {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {
@@ -125,6 +137,16 @@ export default {
         '\n    query getGroupInfo($groupId: String!) {\n  getGroupInfo(groupId: $groupId) {\n    id\n    name\n    description\n    postCount\n    membersCount\n    status\n    icon {\n      url\n      id\n    filename\n   }\n  }\n  }\n    ',
       variables: {
         groupId: id
+      }
+    })
+  },
+  getCommunity: async (communityId: string) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query:
+        '\n    query community($communityId: String!) {\n  community(communityId: $communityId) {\n    id\n    name\n    description\n    postCount\n    membersCount\n    status\n    location {\n    country\n      state\n     city\n     address\n     }\n    members {\n     username\n     photoUrl\n    }\n    icon {\n      url\n      id\n    filename\n   }\n  }\n  }\n    ',
+      variables: {
+        communityId
       }
     })
   },

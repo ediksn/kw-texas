@@ -43,7 +43,6 @@ export const stylesOfType: any = {
   }),
   OUTLINED: (theme: any) => ({
     backgroundTypeStyle: {
-      backgroundColor: theme.color,
       borderColor: theme.backgroundColor,
       borderWidth: moderateScale(1)
     },

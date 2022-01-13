@@ -6,7 +6,7 @@ import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#F7F7F8',
+    backgroundColor: theme.greenLightColor,
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start'

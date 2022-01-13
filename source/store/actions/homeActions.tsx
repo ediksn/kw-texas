@@ -2,6 +2,7 @@ import { FormPostInterface, PostInterface } from '~/interfaces/postInterface'
 import { homeService } from '~/services'
 import { HOME_TYPES } from '~/store/types'
 import { AppDispatch } from '..'
+import { GroupInterface } from '~/interfaces/groupInterface'
 
 const actionCreators = {
   getPickPrompts: () => async (dispatch: AppDispatch) => {
@@ -128,9 +129,53 @@ const actionCreators = {
     }
     return null
   },
+  getCommunity: (communityId: string) => async (dispatch: AppDispatch) => {
+    const { GET_COMMUNITY_INFO, GET_COMMUNITY_INFO_SUCCESS, GET_COMMUNITY_INFO_FAILURE } = HOME_TYPES
+    dispatch({ type: GET_COMMUNITY_INFO })
+    try {
+      const response = await homeService.getCommunity(communityId)
+      dispatch({
+        type: GET_COMMUNITY_INFO_SUCCESS,
+        payload: response.data?.data.community
+      })
+      return response.data?.data.community
+    } catch (error) {
+      dispatch({ type: GET_COMMUNITY_INFO_FAILURE, payload: error })
+    }
+    return null
+  },
   selectPost: (post: PostInterface) => (dispatch: any) => {
     const { SELECT_POST } = HOME_TYPES
     dispatch({ type: SELECT_POST, payload: post })
+  },
+  selectCommunity: (group: GroupInterface) => (dispatch: any) => {
+    const { SELECT_COMMUNITY } = HOME_TYPES
+    dispatch({ type: SELECT_COMMUNITY, payload: group })
+  },
+  fetchSelectedCommunityPosts:
+    (limit: number, communityId: string, hasMoreLoading: boolean = false) =>
+    async (dispatch: AppDispatch) => {
+      const { GET_COMMUNITY_POSTS, GET_COMMUNITY_POSTS_SUCCESS, GET_COMMUNITY_POSTS_FAILURE } = HOME_TYPES
+      dispatch({ type: GET_COMMUNITY_POSTS, payload: hasMoreLoading })
+      try {
+        const response = await homeService.getPostsByCommunityId(limit, communityId)
+        const posts: PostInterface[] = response?.data.data.getPosts || []
+
+        dispatch({
+          type: GET_COMMUNITY_POSTS_SUCCESS,
+          payload: {
+            data: posts,
+            limitDefault: 10,
+            limit
+          }
+        })
+      } catch (error) {
+        dispatch({ type: GET_COMMUNITY_POSTS_FAILURE, payload: error })
+      }
+    },
+  setScrolled: (scrolling: boolean) => (dispatch: any) => {
+    const { SET_SCROLLED } = HOME_TYPES
+    dispatch({ type: SET_SCROLLED, payload: scrolling })
   },
   createPost: (form: FormPostInterface) => async (dispatch: any, getState: any) => {
     const { CREATE_POST, CREATE_POST_SUCCESS, CREATE_POST_FAILURE } = HOME_TYPES

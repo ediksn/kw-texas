@@ -35,7 +35,12 @@ const {
   FLAG_POST_FAILURE,
   GET_BOOKMARKED_POSTS,
   GET_BOOKMARKED_POSTS_SUCCESS,
-  GET_BOOKMARKED_POSTS_FAILURE
+  GET_BOOKMARKED_POSTS_FAILURE,
+  SELECT_COMMUNITY,
+  SET_SCROLLED,
+  GET_COMMUNITY_POSTS,
+  GET_COMMUNITY_POSTS_SUCCESS,
+  GET_COMMUNITY_POSTS_FAILURE
 } = HOME_TYPES
 const HOME_INITIAL_STATE = homeModel
 
@@ -60,6 +65,19 @@ const REDUCERS = {
   },
   [GET_POSTS_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = false
+  },
+  [GET_COMMUNITY_POSTS]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.groups.postsLoading = !payload
+    draftState.groups.hasMoreLoading = payload
+    draftState.groups.postsLoading = true
+  },
+  [GET_COMMUNITY_POSTS_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.groups.selectedCommunityPosts = payload.data
+    draftState.groups.limitCommunityPosts = payload.limit
+    draftState.groups.postsLoading = false
+  },
+  [GET_COMMUNITY_POSTS_FAILURE]: ({ draftState }: PostReducerProps) => {
+    draftState.groups.postsLoading = false
   },
   [GET_GROUPS]: ({ draftState }: PostReducerProps) => {
     draftState.groups.isLoading = true
@@ -111,6 +129,13 @@ const REDUCERS = {
   [SELECT_POST]: ({ draftState, payload }: PostReducerProps) => {
     draftState.comments.selectedPost = payload
     draftState.comments.selectedPostComments = []
+  },
+  [SELECT_COMMUNITY]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.groups.selectedCommunity = payload
+    draftState.groups.selectedCommunityPosts = []
+  },
+  [SET_SCROLLED]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.groups.scrolled = payload
   },
   [GET_POST_COMMENTS]: ({ draftState }: PostReducerProps) => {
     draftState.comments.loadingComments = true

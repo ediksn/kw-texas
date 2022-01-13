@@ -143,7 +143,9 @@ const PostInfo = ({ post, commentsCount, customContainerStyle }: PostInfoProps) 
             ) : null}
             {hasShowLessMore && (
               <TouchableOpacity onPress={() => setShowMore(!showMore)}>
-                <Text style={styles.showMore}>Show {showMore ? 'less' : 'more'}</Text>
+                <Text style={styles.showMore}>
+                  {showMore ? t('components_Post_ShowLess') : t('components_Post_ShowMore')}
+                </Text>
               </TouchableOpacity>
             )}
           </View>

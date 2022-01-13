@@ -1,6 +1,14 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
 import moment from 'moment'
-import { View, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight, Linking } from 'react-native'
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  TouchableHighlight,
+  Linking,
+  ViewStyle
+} from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { moderateScale, scale } from 'react-native-size-matters'
 import { useNavigation } from '@react-navigation/native'
@@ -19,9 +27,10 @@ import Avatar from '../Avatar'
 interface PostProps {
   post: PostInterface
   onPostPress: (post: PostInterface) => void
+  containerStyle?: ViewStyle
 }
 
-const Post = ({ post, onPostPress }: PostProps) => {
+const Post = ({ post, onPostPress, containerStyle }: PostProps) => {
   const {
     id,
     isUserCreatorOfThePost,
@@ -232,7 +241,7 @@ const Post = ({ post, onPostPress }: PostProps) => {
   )
 
   return (
-    <View style={[styles.container]}>
+    <View style={[styles.container, containerStyle]}>
       <View>
         <View style={styles.header}>
           <View style={styles.avatarBox}>

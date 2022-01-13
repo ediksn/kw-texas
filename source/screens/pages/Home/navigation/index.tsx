@@ -1,5 +1,5 @@
 import React from 'react'
-import { NAVIGATION } from '~/constants'
+import { NAVIGATION, theme } from '~/constants'
 import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
 import { Home } from '..'
 import Bookmarks from '../pages/Bookmarks'
@@ -11,7 +11,7 @@ const HomeStackScreen = () => (
     <StackScreen options={{ header: () => <HomeHeader /> }} name={NAVIGATION.SCREEN.HOME} component={Home} />
     <StackScreen
       options={{
-        cardStyle: { backgroundColor: '#F7F7F8' },
+        cardStyle: { backgroundColor: theme.greenLightColor },
         header: () => <BookmarkedHeader />
       }}
       name={NAVIGATION.SCREEN.BOOKMARKS}

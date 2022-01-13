@@ -8,7 +8,7 @@ import { ToastProps } from '~/interfaces/toastInterface'
 import { Spinner, Toast } from '~/components'
 import { styles } from '~/screens/styles'
 import { StackNavigator, StackScreen } from '~/screens/components/Navigators'
-import { NAVIGATION } from '~/constants'
+import { NAVIGATION, theme } from '~/constants'
 import NewPost from '~/screens/pages/Home/pages/NewPost'
 import { ProfileDetail } from '~/screens/pages/Profile/pages/ProfileDetail'
 import PostView from '~/screens/pages/Home/pages/PostView'
@@ -25,7 +25,7 @@ const Navigation = () => {
         <StackScreen options={{ header: () => null }} name='tabs' component={TabNavigation} />
         <StackScreen
           options={{
-            cardStyle: { backgroundColor: '#F7F7F8' },
+            cardStyle: { backgroundColor: theme.greenLightColor },
             header: () => null
           }}
           name={NAVIGATION.SCREEN.NEWPOST}
@@ -33,7 +33,7 @@ const Navigation = () => {
         />
         <StackScreen
           options={{
-            cardStyle: { backgroundColor: '#F7F7F8' },
+            cardStyle: { backgroundColor: theme.greenLightColor },
             header: () => null
           }}
           name={NAVIGATION.SCREEN.PROFILEDETAIL}
@@ -41,7 +41,7 @@ const Navigation = () => {
         />
         <StackScreen
           options={{
-            cardStyle: { backgroundColor: '#F7F7F8' },
+            cardStyle: { backgroundColor: theme.greenLightColor },
             header: () => null
           }}
           name={NAVIGATION.SCREEN.POSTVIEW}

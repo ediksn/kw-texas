@@ -11,7 +11,9 @@ export const styles = StyleSheet.create({
   },
   containerHeaderGroup: {
     marginVertical: scale(9),
-    marginHorizontal: scale(16)
+    marginHorizontal: scale(16),
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   headerTextGroup: {
     fontFamily: 'Mulish-Regular',
@@ -30,5 +32,8 @@ export const styles = StyleSheet.create({
   imageContainer: {
     flex: 1,
     borderRadius: 4
+  },
+  headerIcon: {
+    marginRight: scale(10)
   }
 })

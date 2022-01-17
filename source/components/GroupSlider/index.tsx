@@ -9,6 +9,7 @@ import { styles as stylesGroup } from '~/components/Group/styles'
 import { GroupInterface } from '~/interfaces/groupInterface'
 import { GROUP_PREVIEW_MEDIA_LENGTH } from '~/utils/constants'
 import { TEST_IDS } from '~/constants/testIds'
+import { Icon } from '..'
 
 interface GroupSliderProps {
   groups: GroupInterface | any
@@ -25,6 +26,7 @@ const GroupSlider = ({ groups, onPressGroup, onPressMoreGroups }: GroupSliderPro
 
   const headerGroup = () => (
     <View style={styles.containerHeaderGroup}>
+      <Icon name='people-icon' size={18} viewStyle={styles.headerIcon} />
       <Text style={styles.headerTextGroup}>{t('components_Home_Header_Groups')}</Text>
     </View>
   )

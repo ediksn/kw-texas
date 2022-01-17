@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Text, TextStyle, TouchableHighlight, View, ViewStyle } from 'react-native'
-import emptyImage from '../../../assets/images/emptyImage.png'
+import FastImage from 'react-native-fast-image'
+import emptyImageWhite from '../../../assets/images/emptyImageWhite.png'
 import { styles } from './styles'
 import FastImageAvatar from '~/components/FastImageAvatar'
 
@@ -54,8 +55,13 @@ const Header = ({
     <>
       {title && renderAvatar ? (
         <View style={[styles.rowTitleContainer, hiddenTitle && { opacity: 0 }]}>
-          <FastImageAvatar uri={avatarUrl} source={emptyImage} avatarStyle={styles.avatarStyle} />
-          <Text style={titleStyle || styles.text} numberOfLines={1} ellipsizeMode='tail'>
+          <FastImageAvatar
+            uri={avatarUrl}
+            source={emptyImageWhite}
+            resizeMode={FastImage.resizeMode.stretch}
+            avatarStyle={styles.avatarStyle}
+          />
+          <Text style={titleStyle || styles.textFixed} numberOfLines={1} ellipsizeMode='tail'>
             {title}
           </Text>
         </View>

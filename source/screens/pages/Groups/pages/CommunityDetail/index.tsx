@@ -27,7 +27,7 @@ import Fade from '~/components/Fade'
 import Message from '../../../../../../assets/images/message.png'
 import { useDeviceWidth } from '~/hooks'
 import CommunityPostsListHeader from '~/components/CommunityPostsListHeader'
-import emptyImage from '../../../../../../assets/images/emptyImage.png'
+import emptyImageWhite from '../../../../../../assets/images/emptyImageWhite.png'
 
 interface ListFooterComponentProps {
   loadingPosts: boolean
@@ -144,7 +144,7 @@ const CommunityDetail = () => {
         <Text style={styles.locationText}>{[city, state, country].join(', ')}</Text>
       </View>
     )
-  }, [])
+  }, [communityInfo])
 
   const renderMembersAvatars = useCallback(() => {
     if (communityInfo?.members && communityInfo?.members.length > 0) {
@@ -162,7 +162,7 @@ const CommunityDetail = () => {
       )
     }
     return null
-  }, [])
+  }, [communityInfo])
 
   const init = async () => {
     const res: any = await dispatch(homeActions.getCommunity(id))
@@ -200,7 +200,7 @@ const CommunityDetail = () => {
                     uri: icon?.url,
                     priority: FastImage.priority.normal
                   }
-                : emptyImage
+                : emptyImageWhite
             }
             resizeMode={icon?.url ? FastImage.resizeMode.cover : FastImage.resizeMode.contain}
           />

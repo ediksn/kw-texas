@@ -45,6 +45,12 @@ export const styles = StyleSheet.create({
     fontFamily: 'Mulish-Bold',
     fontSize: theme.fonts.LARGE_SIZE,
     lineHeight: 24,
+    fontWeight: '700'
+  },
+  textFixed: {
+    fontFamily: 'Mulish-Bold',
+    fontSize: theme.fonts.LARGE_SIZE,
+    lineHeight: 24,
     fontWeight: '700',
     flex: 1
   },

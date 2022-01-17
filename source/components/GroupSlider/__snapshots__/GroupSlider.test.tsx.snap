@@ -5,11 +5,40 @@ Array [
   <View
     style={
       Object {
+        "alignItems": "center",
+        "flexDirection": "row",
         "marginHorizontal": 34.285714285714285,
         "marginVertical": 19.285714285714285,
       }
     }
   >
+    <Text
+      allowFontScaling={false}
+      style={
+        Array [
+          Object {
+            "color": undefined,
+            "fontSize": 18,
+          },
+          Array [
+            Object {
+              "marginRight": 21.428571428571427,
+            },
+            Object {
+              "color": "#000000",
+            },
+          ],
+          Object {
+            "fontFamily": "icomoon",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
+        ]
+      }
+    >
+      
+    </Text>
     <Text
       style={
         Object {

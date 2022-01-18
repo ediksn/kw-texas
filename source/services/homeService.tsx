@@ -119,6 +119,19 @@ export default {
       }
     })
   },
+  getAllGroups: async (size: number = 10) => {
+    const axiosInstance = await axiosInstanceTokens()
+    return axiosInstance.post('/connect-groups-api/graphql', {
+      query:
+        '\n    query getAllGroups($page:PaggerFilter) {\n  getAllGroups(page: $page) {\n    id\n    name\n    description\n    postCount\n    membersCount\n    status\n    icon {\n      url\n      id\n   filename\n    }\n    members\n    {\n    kwUid\n    firstName\n    lastName\n    photoUrl\n    }\n  }\n}\n    ',
+      variables: {
+        page: {
+          page: 0,
+          size
+        }
+      }
+    })
+  },
   getGroupInfo: async (id: string) => {
     const axiosInstance = await axiosInstanceTokens()
     return axiosInstance.post('/connect-groups-api/graphql', {

@@ -8,6 +8,24 @@ jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
 }))
 
+jest.mock('@react-navigation/native', () => ({
+  createNavigatorFactory: jest.fn(),
+  useNavigation: () => ({
+    navigate: jest.fn(),
+    dispatch: jest.fn(),
+    goBack: jest.fn(),
+    setOptions: jest.fn()
+  }),
+  useRoute: () => ({
+    params: {
+      editMode: false,
+      idPost: '1',
+      groupId: '1'
+    }
+  }),
+  useFocusEffect: jest.fn()
+}))
+
 describe('Render Group Slider Test', () => {
   let rendered: RenderAPI
   const mockOnPressGroup = jest.fn()

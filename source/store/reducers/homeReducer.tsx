@@ -16,6 +16,9 @@ const {
   GET_GROUPS,
   GET_GROUPS_SUCCESS,
   GET_GROUPS_FAILURE,
+  GET_ALL_GROUPS,
+  GET_ALL_GROUPS_SUCCESS,
+  GET_ALL_GROUPS_FAILURE,
   CREATE_POST,
   CREATE_POST_SUCCESS,
   CREATE_POST_FAILURE,
@@ -91,6 +94,16 @@ const REDUCERS = {
   },
   [GET_GROUPS_FAILURE]: ({ draftState }: PostReducerProps) => {
     draftState.groups.isLoading = false
+  },
+  [GET_ALL_GROUPS]: ({ draftState }: PostReducerProps) => {
+    draftState.groupsInteresting.isLoading = true
+  },
+  [GET_ALL_GROUPS_SUCCESS]: ({ draftState, payload }: PostReducerProps) => {
+    draftState.groupsInteresting = { ...draftState.groupsInteresting, ...payload }
+    draftState.groupsInteresting.isLoading = false
+  },
+  [GET_ALL_GROUPS_FAILURE]: ({ draftState }: PostReducerProps) => {
+    draftState.groupsInteresting.isLoading = false
   },
   [CREATE_POST]: ({ draftState }: PostReducerProps) => {
     draftState.posts.isLoading = true

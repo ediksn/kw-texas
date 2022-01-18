@@ -145,5 +145,11 @@
   "Home_NewPost_Tags_Peoples_Header_Text_Right": "Done",
   "components_NewPost_Title_Tags": "PEOPLE",
   "components_NewPost_Tagged_People": "TAGGED PEOPLE",
-  "components_Home_Header_Groups": "YOUR GROUPS"
+  "components_Home_Header_Groups": "YOUR GROUPS",
+  "components_Group_invitations": "Invitations",
+  "components_Group_interesting": "Interesting",
+  "components_Group_join": "Join a Group",
+  "components_Group_left": "Left the Group",
+  "components_Group_interesting_you": "Interesting for you",
+  "components_Group_participants": "Participants"
 }

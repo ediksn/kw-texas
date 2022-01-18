@@ -145,5 +145,10 @@
   "Home_NewPost_Tags_Peoples_Header_Text_Right": "Guardar",
   "components_NewPost_Title_Tags": "PERSONAS",
   "components_NewPost_Tagged_People": "PERSONAS TAGEADAS",
-  "components_Home_Header_Groups": "TUS GRUPOS"
+  "components_Home_Header_Groups": "TUS GRUPOS",
+  "component_Groups_invitations": "Invitaciones",
+  "component_Groups_interesting": "Intereses",
+  "components_Group_join": "Unirse a un Grupo",
+  "components_Group_left": "Abandonar Grupo",
+  "components_Group_interesting_you": "Puede interesarte"
 }

@@ -13,6 +13,11 @@ export const styles = StyleSheet.create({
     marginVertical: scale(9),
     marginHorizontal: scale(16),
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  containerText: {
+    flexDirection: 'row',
     alignItems: 'center'
   },
   headerTextGroup: {
@@ -35,5 +40,8 @@ export const styles = StyleSheet.create({
   },
   headerIcon: {
     marginRight: scale(10)
+  },
+  headerRightIcon: {
+    marginRight: scale(5)
   }
 })

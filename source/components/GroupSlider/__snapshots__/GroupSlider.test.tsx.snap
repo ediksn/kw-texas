@@ -7,53 +7,203 @@ Array [
       Object {
         "alignItems": "center",
         "flexDirection": "row",
+        "justifyContent": "space-around",
         "marginHorizontal": 34.285714285714285,
         "marginVertical": 19.285714285714285,
       }
     }
   >
-    <Text
-      allowFontScaling={false}
-      style={
-        Array [
-          Object {
-            "color": undefined,
-            "fontSize": 18,
-          },
-          Array [
-            Object {
-              "marginRight": 21.428571428571427,
-            },
-            Object {
-              "color": "#000000",
-            },
-          ],
-          Object {
-            "fontFamily": "icomoon",
-            "fontStyle": "normal",
-            "fontWeight": "normal",
-          },
-          Object {},
-        ]
-      }
-    >
-      
-    </Text>
-    <Text
+    <View
       style={
         Object {
-          "color": "#3D424D",
-          "fontFamily": "Mulish-Regular",
-          "fontSize": 22,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "letterSpacing": 0,
-          "textAlign": "left",
+          "alignItems": "center",
+          "flexDirection": "row",
         }
       }
     >
-      components_Home_Header_Groups
-    </Text>
+      <Text
+        allowFontScaling={false}
+        style={
+          Array [
+            Object {
+              "color": undefined,
+              "fontSize": 18,
+            },
+            Array [
+              Object {
+                "marginRight": 21.428571428571427,
+              },
+              Object {
+                "color": "#000000",
+              },
+            ],
+            Object {
+              "fontFamily": "icomoon",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#3D424D",
+            "fontFamily": "Mulish-Regular",
+            "fontSize": 22,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "letterSpacing": 0,
+            "textAlign": "left",
+          }
+        }
+      >
+        components_Home_Header_Groups
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 18,
+              },
+              Array [
+                Object {
+                  "marginRight": 10.714285714285714,
+                },
+                Object {
+                  "color": "#006C84",
+                },
+              ],
+              Object {
+                "fontFamily": "icomoon",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#3D424D",
+                "fontFamily": "Mulish-Regular",
+                "fontSize": 22,
+                "fontStyle": "normal",
+                "fontWeight": "700",
+                "letterSpacing": 0,
+                "textAlign": "left",
+              },
+              Object {
+                "color": "#006C84",
+                "marginRight": 10.714285714285714,
+              },
+            ]
+          }
+        >
+          components_Group_interesting
+        </Text>
+      </View>
+      <View
+        accessible={true}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 18,
+              },
+              Array [
+                Object {
+                  "marginRight": 10.714285714285714,
+                },
+                Object {
+                  "color": "#006C84",
+                },
+              ],
+              Object {
+                "fontFamily": "icomoon",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#3D424D",
+                "fontFamily": "Mulish-Regular",
+                "fontSize": 22,
+                "fontStyle": "normal",
+                "fontWeight": "700",
+                "letterSpacing": 0,
+                "textAlign": "left",
+              },
+              Object {
+                "color": "#006C84",
+              },
+            ]
+          }
+        >
+          components_Group_invitations
+        </Text>
+      </View>
+    </View>
   </View>,
   <View
     style={

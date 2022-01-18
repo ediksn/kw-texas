@@ -98,6 +98,23 @@ const actionCreators = {
       dispatch({ type: GET_GROUPS_FAILURE, payload: error })
     }
   },
+  getAllGroups:
+    (size: number = 10) =>
+    async (dispatch: AppDispatch) => {
+      const { GET_ALL_GROUPS, GET_ALL_GROUPS_SUCCESS, GET_ALL_GROUPS_FAILURE } = HOME_TYPES
+      dispatch({ type: GET_ALL_GROUPS })
+      try {
+        const response = await homeService.getAllGroups(size)
+        dispatch({
+          type: GET_ALL_GROUPS_SUCCESS,
+          payload: {
+            data: response?.data.data.getAllGroups
+          }
+        })
+      } catch (error) {
+        dispatch({ type: GET_ALL_GROUPS_FAILURE, payload: error })
+      }
+    },
   getGroupInfo: (id: string) => async (dispatch: AppDispatch) => {
     const { GET_GROUP_INFO, GET_GROUP_INFO_SUCCESS, GET_GROUP_INFO_FAILURE } = HOME_TYPES
     dispatch({ type: GET_GROUP_INFO })

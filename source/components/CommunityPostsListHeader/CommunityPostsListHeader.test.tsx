@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { cleanup, RenderAPI, render } from '@testing-library/react-native'
 import createTestStore from '../../../__mocks__/store'
 import CommunityPostsListHeader from './index'
+import { TEST_IDS } from '~/constants'
 
 afterEach(cleanup)
 
@@ -52,17 +53,29 @@ jest.mock('react-i18next', () => ({
 describe('Render Community Detail Test', () => {
   let component: RenderAPI
   let storeReducers
+  const currentGroupSelectedMock = {
+    key: '0001',
+    isTitle: true,
+    handleOption: () => null,
+    title: 'Title Mock',
+    color: '#ffffff'
+  }
 
   beforeEach(() => {
     storeReducers = createTestStore()
     component = render(
       <Provider store={storeReducers}>
-        <CommunityPostsListHeader avatarUri='' />
+        <CommunityPostsListHeader avatarUri='' currentGroupSelected={currentGroupSelectedMock} />
       </Provider>
     )
   })
 
+  it('Match with the snapshot', () => {
+    expect(component.toJSON()).toMatchSnapshot()
+  })
+
   it('Renders correctly', () => {
     expect(component).toBeDefined()
+    expect(component.queryAllByTestId(TEST_IDS.COMMUNITY.HOME.HEADER).length).toEqual(1)
   })
 })

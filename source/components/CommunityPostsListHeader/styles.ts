@@ -4,12 +4,10 @@ import { theme } from '~/constants'
 
 export const styles = StyleSheet.create({
   typeSomething: {
-    fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: theme.fonts.MEDIUM_SIZE,
     color: theme.darkGreenColor,
     marginLeft: moderateScale(10),
-    fontFamily: 'Mulish',
-    flex: 1
+    fontFamily: 'Mulish-Bold'
   },
   headerListContainer: {
     backgroundColor: theme.greenLightColor,

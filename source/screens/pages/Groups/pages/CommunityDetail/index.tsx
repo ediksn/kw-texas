@@ -126,6 +126,9 @@ const CommunityDetail = () => {
     return myGroups
   }
 
+  const getCurrentGroupSelected = () =>
+    getMyGroupsFormatted().find(group => group.key === selectedCommunity?.id || null)
+
   const onEndReached = () => dispatch(homeActions.fetchSelectedCommunityPosts(limit + 10, id, true))
   const renderCommunityLocation = useCallback(() => {
     if (!communityInfo || !communityInfo?.location) {
@@ -252,7 +255,9 @@ const CommunityDetail = () => {
           }
           showsVerticalScrollIndicator={posts?.length > 0}
           style={styles.animatedFlatListStyle}
-          ListHeaderComponent={<CommunityPostsListHeader avatarUri={avatarUri} />}
+          ListHeaderComponent={
+            <CommunityPostsListHeader avatarUri={avatarUri} currentGroupSelected={getCurrentGroupSelected()} />
+          }
           ListFooterComponent={<ListFooterComponent loadingPosts={!pullRefresh && isLoadingPosts} />}
           keyExtractor={keyExtractor}
         />

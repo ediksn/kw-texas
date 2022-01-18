@@ -38,7 +38,7 @@ const NewPost = () => {
   const { navigate } = navigation
   const dispatch = useDispatch()
   const { params } = useRoute()
-  const { editMode, idPost, groupId, currentGroupSelected, tags }: any = params
+  const { fromCommunity, editMode, idPost, groupId, currentGroupSelected, tags }: any = params
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
   const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
   const posts: PostInterface[] = useSelector((state: RootState) => state.home.posts.data)
@@ -247,7 +247,7 @@ const NewPost = () => {
         title={t(`${editMode ? t('components_NewPost_Header_Edit_Post') : t('components_NewPost_Header_Create_Post')}`)}
         style={styles.header}
         leftButton={leftButton}
-        onClickLeft={() => navigate(NAVIGATION.SCREEN.HOME)}
+        onClickLeft={navigation.goBack}
         rightButton={rightButton}
         onClickRight={hasValidForm ? () => handleSubmit() : null}
         rigthStyle={editMode && !edited ? styles.disabled : {}}
@@ -298,9 +298,13 @@ const NewPost = () => {
                 <TouchableOpacity
                   ref={buttonRef}
                   style={styles.dropTouch}
-                  onPress={() => setShowDropDown(!showDropDown)}
+                  onPress={() => !fromCommunity && setShowDropDown(!showDropDown)}
                 >
-                  <Text style={[styles.group, editMode && styles.disabled]} ellipsizeMode='tail' numberOfLines={1}>
+                  <Text
+                    style={[styles.group, (editMode || fromCommunity) && styles.disabled]}
+                    ellipsizeMode='tail'
+                    numberOfLines={1}
+                  >
                     {groupSelected?.title}
                   </Text>
                   <Icon

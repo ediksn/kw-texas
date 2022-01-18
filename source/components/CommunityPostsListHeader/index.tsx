@@ -1,22 +1,34 @@
 import { useTranslation } from 'react-i18next'
-import { Text, View } from 'react-native'
+import { Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import { styles } from './styles'
 import Avatar from '~/components/Avatar'
+import { NAVIGATION } from '~/constants/navigation'
+import { OptionInterface } from '~/interfaces/groupInterface'
+import { TEST_IDS } from '~/constants'
 
 interface ListHeaderComponentProps {
   avatarUri: string
+  currentGroupSelected: OptionInterface
 }
 
-const CommunityPostsListHeader = ({ avatarUri }: ListHeaderComponentProps) => {
+const CommunityPostsListHeader = ({ avatarUri, currentGroupSelected }: ListHeaderComponentProps) => {
   const { t } = useTranslation()
+  const navigation = useNavigation()
 
   return (
-    <View style={styles.headerListContainer}>
+    <View testID={TEST_IDS.COMMUNITY.HOME.HEADER} style={styles.headerListContainer}>
       <View style={styles.headerCard}>
         <View style={styles.typeSomethingRow}>
           <Avatar uri={avatarUri} />
-          <Text style={styles.typeSomething}>{t('components_NewPost_Share_today')}</Text>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate(NAVIGATION.SCREEN.NEWPOST, { fromCommunity: true, currentGroupSelected })
+            }
+          >
+            <Text style={styles.typeSomething}>{t('components_NewPost_Share_today')}</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

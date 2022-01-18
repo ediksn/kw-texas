@@ -2,19 +2,16 @@ import React from 'react'
 import { StatusBar, Text, View, TouchableOpacity } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigation } from '@react-navigation/native'
 import { IS_IOS } from '~/constants/statis'
 import Avatar from '~/components/Avatar'
 import { RootState } from '../../../../../../store/index'
 import { homeActions } from '~/store/actions'
 import { styles } from './styles'
 import { Icon, Header } from '~/components'
-import { NAVIGATION } from '../../../../../../constants/navigation'
 
 const GroupsHeader = () => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
-  const navigation = useNavigation()
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
   const usrData: any = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
 
@@ -48,7 +45,7 @@ const GroupsHeader = () => {
       <TouchableOpacity style={styles.search}>
         <Icon name='search-icon' size={20} />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.bookmarkIcon} onPress={() => navigation.navigate(NAVIGATION.SCREEN.BOOKMARKS)}>
+      <TouchableOpacity style={styles.bookmarkIcon} onPress={() => null}>
         <Icon name='add-icon' size={20} />
       </TouchableOpacity>
     </View>

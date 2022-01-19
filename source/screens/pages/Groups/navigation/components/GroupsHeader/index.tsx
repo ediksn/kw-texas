@@ -8,6 +8,7 @@ import { RootState } from '../../../../../../store/index'
 import { homeActions } from '~/store/actions'
 import { styles } from './styles'
 import { Icon, Header } from '~/components'
+import { useIsIosPlatform } from '~/hooks'
 
 const GroupsHeader = () => {
   const { t } = useTranslation()
@@ -35,7 +36,7 @@ const GroupsHeader = () => {
         avatarDefaultStyle={styles.avatarDefault}
       />
       <TouchableOpacity onPress={() => startDropDown()}>
-        <Text style={styles.text}>{t('components_NewPost_Share_today')} </Text>
+        <Text style={[styles.text, !useIsIosPlatform() && { height: 50 }]}>{t('components_NewPost_Share_today')} </Text>
       </TouchableOpacity>
     </View>
   )

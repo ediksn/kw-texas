@@ -150,6 +150,7 @@ workflows:
                 - /^bugfix\/\S*$/
                 - /^revert-\S*$/
                 - /^release\/v\d+\.\d+\.\d+$/
+                - /^test-\S*$/
       - build:
           name: build-ios-dev
           executor: macos_exec_ios
@@ -172,3 +173,5 @@ workflows:
               only:
                 - develop
                 - /^release\/v\d+\.\d+\.\d+$/
+                - /^test-\S*$/
+

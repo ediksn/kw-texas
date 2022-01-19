@@ -4,7 +4,6 @@ import emptyImage from 'assets/images/emptyImage.png'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { scale } from 'react-native-size-matters'
-import LinearGradient from 'react-native-linear-gradient'
 import { styles } from './styles'
 import Avatar from '~/components/Avatar'
 import { RootState } from '~/store'
@@ -15,11 +14,12 @@ import { theme } from '~/constants'
 export const ProfileDetail = () => {
   const { t } = useTranslation()
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
-  const usrData: ProfileInterface = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
+  const user: ProfileInterface = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
+  const { profileDetail } = user || {}
 
   const renderRoles = useCallback(
     () =>
-      usrData?.profileDetail.roles.map((rol: string, i: number) => {
+      profileDetail?.roles.map((rol: string, i: number) => {
         return (
           <View style={styles.role} key={`rol${0 + i}`}>
             <Icon name='role' size={18} viewStyle={styles.icon} />
@@ -68,33 +68,24 @@ export const ProfileDetail = () => {
   }, [])
 
   const renderImage = useCallback(
-    (url: string, image: string, color: string) => (
+    (url: string, image: string) => (
       <TouchableHighlight onPress={() => openURL(url)} underlayColor='transparent'>
-        <Icon name={image} size={image === 'instagram' ? 30 : 50} color={color} />
+        <View style={styles.imageCircle}>
+          <Icon name={image} size={20} color={theme.darkGreenColor} />
+        </View>
       </TouchableHighlight>
     ),
     []
   )
 
   const renderSocial = useCallback(() => {
-    const profile = usrData?.profileDetail
     return (
       <View style={styles.logosContainer}>
-        {profile?.twitter?.length > 0 && renderImage(profile.twitter, 'twitter', theme.twitter)}
-        {profile?.facebook.length > 0 && renderImage(profile.facebook, 'facebook', theme.facebook)}
-        {profile?.linkedin?.length > 0 && renderImage(profile.linkedin, 'linkedin', theme.linkedin)}
-        {profile?.youtube?.length > 0 && renderImage(profile.youtube, 'youtube', theme.youtube)}
-        {profile?.google_plus?.length > 0 && renderImage(profile.google_plus, 'google', theme.google)}
-        {profile?.instagram?.length > 0 && (
-          <LinearGradient
-            start={{ x: 0, y: 0.9 }}
-            end={{ x: 0.5, y: 0 }}
-            colors={['#fccc63', '#fbad50', '#cd486b', '#8a3ab9']}
-            style={{ borderRadius: 30, height: 50, width: 50, alignItems: 'center', justifyContent: 'center' }}
-          >
-            {renderImage(profile.instagram, 'instagram', theme.instagram)}
-          </LinearGradient>
-        )}
+        {profileDetail?.twitter?.length > 0 && renderImage(profileDetail.twitter, 'twitter-icon')}
+        {profileDetail?.instagram?.length > 0 && renderImage(profileDetail.instagram, 'instagram-icon')}
+        {profileDetail?.facebook.length > 0 && renderImage(profileDetail.facebook, 'facebook-icon')}
+        {profileDetail?.linkedin?.length > 0 && renderImage(profileDetail.linkedin, 'linkedin-icon')}
+        {profileDetail?.youtube?.length > 0 && renderImage(profileDetail.youtube, 'youtube-icon')}
       </View>
     )
   }, [])
@@ -107,28 +98,24 @@ export const ProfileDetail = () => {
     <>
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.imageContainer}>
-          {usrData?.profileDetail.banner.length > 0 ? (
-            <Image
-              resizeMode='cover'
-              style={styles.banner}
-              source={{ uri: handleBannerUrl(usrData?.profileDetail.banner) }}
-            />
+          {profileDetail?.banner.length > 0 ? (
+            <Image resizeMode='cover' style={styles.banner} source={{ uri: handleBannerUrl(profileDetail?.banner) }} />
           ) : (
             <Image source={emptyImage} />
           )}
         </View>
         <View style={styles.avatarContainer}>
-          <Avatar avatarStyle={styles.avatarStyle} uri={usrData?.userProfile.photo} />
+          <Avatar avatarStyle={styles.avatarStyle} uri={profileDetail?.photo_url} />
         </View>
-        <Text style={styles.nameStyle}>{usrData?.profileDetail.name}</Text>
+        <Text style={styles.nameStyle}>{profileDetail?.name}</Text>
         <View style={styles.rolesContainer}>{renderRoles()}</View>
         <View style={styles.detailContainer}>
-          {renderField('components_Profile_kwuid', usrData?.profileDetail.kw_uid.toString())}
-          {renderField('components_Profile_email', usrData?.profileDetail.email)}
-          {renderField('components_Profile_primary_phone', usrData?.profileDetail.phone)}
-          {renderField('components_Profile_mobile_phone', usrData?.profileDetail.mobile_phone || '')}
-          {renderAreas('components_Profile_service_areas', usrData?.profileDetail.service_area)}
-          {renderField('components_Profile_bio', usrData?.profileDetail.bio)}
+          {renderField('components_Profile_kwuid', profileDetail?.kw_uid.toString())}
+          {renderField('components_Profile_email', profileDetail?.email)}
+          {renderField('components_Profile_primary_phone', profileDetail?.phone)}
+          {renderField('components_Profile_mobile_phone', profileDetail?.mobile_phone || '')}
+          {renderAreas('components_Profile_service_areas', profileDetail?.service_area)}
+          {renderField('components_Profile_bio', profileDetail?.bio)}
           {renderSocial()}
         </View>
       </ScrollView>

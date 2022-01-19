@@ -45,6 +45,10 @@ export const styles = StyleSheet.create({
     marginBottom: verticalScale(4),
     fontSize: 12
   },
+  errorContainer: {
+    position: 'relative',
+    top: scale(6)
+  },
   error: {
     color: theme.red,
     fontWeight: 'bold',

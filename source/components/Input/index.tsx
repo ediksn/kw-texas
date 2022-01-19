@@ -58,9 +58,9 @@ const Input = forwardRef<TextInput, Props>((props: Props, ref: ForwardedRef<Text
   const errorComponent = (
     <>
       {required && empty && (
-        <View style={styles.title}>
+        <View style={[styles.title, styles.errorContainer]}>
           <Text style={styles.error}>{title}</Text>
-          <Text style={styles.error}> {t('input_is_requiredd')}</Text>
+          <Text style={styles.error}> {t('input_is_required')}</Text>
         </View>
       )}
     </>
@@ -88,6 +88,7 @@ const Input = forwardRef<TextInput, Props>((props: Props, ref: ForwardedRef<Text
           <View style={styles.title}>
             <Text style={[styles.titleText, styleTitle]}>{t(title)}</Text>
             {required && <Text style={[styles.titleText, styleTitle]}>*</Text>}
+            {errorComponent}
           </View>
           <TextInput
             ref={ref}
@@ -109,7 +110,6 @@ const Input = forwardRef<TextInput, Props>((props: Props, ref: ForwardedRef<Text
         </View>
         <IconPassword />
       </View>
-      {errorComponent}
     </View>
   )
 })

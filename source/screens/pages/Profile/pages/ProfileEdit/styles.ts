@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native'
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
 import { theme } from '~/constants'
+import { useDeviceWidth } from '~/hooks'
+
+const DEVICE_WIDTH = useDeviceWidth() - 20
 
 export const styles = StyleSheet.create({
   container: {
@@ -49,7 +52,7 @@ export const styles = StyleSheet.create({
     lineHeight: theme.fonts.MEDIUM_SIZE
   },
   subText: {
-    fontFamily: 'Mulish-Regular',
+    fontFamily: 'Mulish',
     fontWeight: '400',
     fontSize: theme.fonts.SMALL_SIZE,
     color: theme.darkGrey,
@@ -68,6 +71,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: scale(10)
   },
   icon: {
+    width: 20,
+    height: 20,
     marginRight: moderateScale(5),
     alignSelf: 'flex-end'
   },
@@ -95,25 +100,73 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     marginRight: scale(5)
   },
-  imageCircle: {
-    borderRadius: scale(20),
-    borderColor: theme.darkGreenColor,
-    borderWidth: 1,
-    width: scale(35),
-    height: scale(35),
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: scale(5)
-  },
   logosContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     width: '100%'
   },
   banner: {
     width: '100%',
     height: '100%',
     resizeMode: 'cover'
+  },
+  imageEditButton: {
+    flexDirection: 'row',
+    borderRadius: 5,
+    borderColor: theme.backgroundWhite,
+    borderWidth: 1,
+    width: scale(100),
+    height: scale(40),
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    bottom: scale(15),
+    left: scale(15)
+  },
+  imageCoverText: {
+    fontFamily: 'Mulish',
+    fontWeight: '400',
+    fontSize: 14,
+    lineHeight: 20,
+    color: theme.backgroundWhite
+  },
+  inputStyle: {
+    marginVertical: verticalScale(4),
+    width: DEVICE_WIDTH - scale(10)
+  },
+  inputContainer: {
+    paddingVertical: verticalScale(8),
+    alignItems: 'center'
+  },
+  bioStyle: {
+    height: verticalScale(220),
+    marginVertical: verticalScale(4)
+  },
+  bioTextStyle: {
+    height: verticalScale(200),
+    marginVertical: scale(15),
+    textAlignVertical: 'top'
+  },
+  areasOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-end'
+  },
+  textStyle: {
+    marginLeft: scale(5),
+    color: theme.darkGreenColor,
+    fontSize: theme.fonts.MEDIUM_SIZE,
+    fontFamily: 'Mulish-Bold'
+  },
+  addBotton: {
+    marginRight: scale(5)
+  },
+  bioLengthText: {
+    fontFamily: 'Mulish',
+    color: theme.greenColor,
+    fontSize: theme.fonts.SMALL_SIZE,
+    alignSelf: 'flex-end',
+    paddingRight: scale(10)
   }
 })

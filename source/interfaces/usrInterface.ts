@@ -35,7 +35,7 @@ export interface ProfileInterface {
   isPersonal: boolean
   isDefault: boolean
   userProfile: UserProfileInterface
-  profileDetail: ProfileDetail
+  profileDetail: ProfileDetailInterface
 }
 interface OrgTypeInterface {
   id: number
@@ -76,7 +76,7 @@ export interface UsrProfileReducerProps {
   payload?: any
 }
 
-export interface ProfileDetail {
+export interface ProfileDetailInterface {
   kw_uid: number
   name: string
   username: string

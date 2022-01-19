@@ -1,5 +1,5 @@
 import { PostInterface } from '~/interfaces/postInterface'
-import { ProfileDetail } from '~/interfaces/usrInterface'
+import { ProfileDetailInterface } from '~/interfaces/usrInterface'
 import { CommentInterface } from '~/interfaces/commentInterface'
 import { GroupInterface } from '~/interfaces/groupInterface'
 
@@ -33,7 +33,7 @@ export const postMockObject: PostInterface = {
   userHasAlreadyLiked: false
 }
 
-export const profileDetailMock: ProfileDetail = {
+export const profileDetailMock: ProfileDetailInterface = {
   kw_uid: 0,
   name: 'Test',
   username: 'Test',

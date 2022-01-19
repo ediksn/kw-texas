@@ -3,7 +3,7 @@ import { usrProfileService } from '~/services'
 import { USR_TYPES } from '~/store/types'
 import { ORG_TYPE } from '~/constants'
 import { AppDispatch } from '..'
-import { AccountInterface } from '~/interfaces/usrInterface'
+import { AccountInterface, ProfileDetailInterface } from '~/interfaces/usrInterface'
 
 const actionCreators = {
   getUsrProfile: () => async (dispatch: AppDispatch) => {
@@ -57,6 +57,10 @@ const actionCreators = {
       type: CHANGE_ACTIVE_ACCOUNT_SUCCESS,
       payload: index
     })
+  },
+  updateProfile: (profileDetail: ProfileDetailInterface, index: number) => async (dispatch: AppDispatch) => {
+    const { UPDATE_USERPROFILE } = USR_TYPES
+    dispatch({ type: UPDATE_USERPROFILE, payload: { profileDetail, index } })
   }
 }
 

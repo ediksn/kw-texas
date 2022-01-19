@@ -2,7 +2,7 @@ import React from 'react'
 import { render, cleanup, RenderAPI } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
 import createTestStore from '~/../__mocks__/store'
-import { ProfileDetail } from './ProfileDetail'
+import { ProfileDetail } from './index'
 
 afterEach(cleanup)
 

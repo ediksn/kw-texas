@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
@@ -82,10 +82,23 @@ const PostView = () => {
     return <ActivityIndicator color={theme.post.green} size={20} />
   }
 
-  const { creatorfirstName, createdAt, creatorLastName, creatorPhoto, groupInfo } = selectedPost
+  const { creatorfirstName, createdAt, updatedAt, creatorLastName, creatorPhoto, groupInfo } = selectedPost
   const author = `${creatorfirstName} ${creatorLastName}`
   const date = moment(createdAt).format('MM/DD/YY')
+
   const ANDROID_PADDING = keyboardOpen ? 0 : 40
+
+  const getPostDate = useCallback(() => {
+    const timeCreated = moment(createdAt)
+    const timeUpdated = moment(updatedAt)
+    const dateUpdated = moment(updatedAt).format('MM/DD/YY')
+    const edited = moment(timeUpdated).diff(moment(timeCreated), 'seconds')
+    if (edited > 0) {
+      return `${t('components_Post_Edited')} ${dateUpdated} | `
+    }
+
+    return `${t('components_Post_Posted')} ${date} | `
+  }, [createdAt, updatedAt])
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -96,9 +109,9 @@ const PostView = () => {
             <Text testID={authorPost} style={styles.name}>
               {author}
             </Text>
-            <Text numberOfLines={1} ellipsizeMode='tail' testID={datePost} style={styles.date}>{`${t(
-              'components_Post_Posted'
-            )} ${date} | ${groupInfo?.name}`}</Text>
+            <Text numberOfLines={1} ellipsizeMode='tail' testID={datePost} style={styles.date}>{`${getPostDate()} ${
+              groupInfo?.name
+            }`}</Text>
           </View>
         </View>
       </HeaderPostView>

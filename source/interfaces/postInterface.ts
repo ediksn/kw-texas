@@ -34,6 +34,7 @@ export interface PostInterface {
   creatorId: string
   creatorPhoto: string
   createdAt: string
+  updatedAt: string
   deleted: boolean
   detail: {
     attachments?: UploadImageInterface[]

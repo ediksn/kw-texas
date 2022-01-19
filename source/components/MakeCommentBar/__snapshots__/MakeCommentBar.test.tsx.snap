@@ -120,7 +120,7 @@ exports[`Render Make Comment Bar Test Match with the snapshot 1`] = `
             ]
           }
         >
-          
+          
         </Text>
       </View>
     </View>

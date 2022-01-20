@@ -141,7 +141,8 @@ export const styles = StyleSheet.create({
   },
   bioStyle: {
     height: verticalScale(220),
-    marginVertical: verticalScale(4)
+    marginVertical: verticalScale(4),
+    width: DEVICE_WIDTH - scale(10)
   },
   bioTextStyle: {
     height: verticalScale(200),

@@ -16,7 +16,7 @@ export const ProfileEdit = () => {
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
   const usrData: ProfileInterface = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount]) || {}
   const [data, setData] = useState<ProfileDetailInterface>(usrData.profileDetail)
-  const serviceAreas = data?.service_area?.split(';') || []
+  const serviceAreas = data?.service_area?.split(';') || ['']
   const [areas, setAreas] = useState(serviceAreas)
   const handleBannerUrl = useCallback((url: string): string => {
     return `https:${url}`
@@ -167,7 +167,7 @@ export const ProfileEdit = () => {
           maxLength={3999}
           onChangeText={text => handleInputChange('bio', text)}
         />
-        <Text style={styles.bioLengthText}>{3999 - data?.bio?.length}/3999</Text>
+        <Text style={styles.bioLengthText}>{3999 - data?.bio?.length || 3999}/3999</Text>
         <Input
           title={t('components_Profile_twitter')}
           value={data?.twitter}

@@ -36,7 +36,6 @@ export const styles = StyleSheet.create({
     width: moderateScale(30)
   },
   touchableHighlight: {
-    paddingVertical: '3%',
     paddingHorizontal: '3%',
     marginHorizontal: '3%',
     borderRadius: 50

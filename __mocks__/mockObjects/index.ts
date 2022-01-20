@@ -14,12 +14,8 @@ export const postMockObject: PostInterface = {
   creatorfirstName: 'Irene',
   deleted: false,
   detail: {
-    images: [
-      {
-        url: 'some url',
-        id: 'saddsas'
-      }
-    ]
+    links: [],
+    attachments: []
   },
   groupInfo: { id: '60f5c7224ad3ae0019a91973', name: 'Trending Group' },
   id: '61a0f2c1f48c2600181c8add',
@@ -30,7 +26,9 @@ export const postMockObject: PostInterface = {
   repliesCount: 0,
   type: 'FILE',
   userHasAlreadyBookmarked: false,
-  userHasAlreadyLiked: false
+  userHasAlreadyLiked: false,
+  updatedAt: '',
+  userHasAlreadyFlagged: false
 }
 
 export const profileDetailMock: ProfileDetailInterface = {
@@ -108,7 +106,7 @@ export const commentMockObject: CommentInterface = {
     edited: false,
     likesCount: 0,
     userHasAlreadyLiked: false,
-    media: null
+    attachment: null
   }
 }
 
@@ -121,6 +119,7 @@ export const groupMockObject: GroupInterface = {
     url: 'https://avatar.kwconnect.com/556397.jpeg'
   },
   membersCount: 1,
+  members: [],
   name: 'Test',
   postCount: 1,
   status: 1

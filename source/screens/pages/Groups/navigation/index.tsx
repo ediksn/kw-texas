@@ -8,6 +8,7 @@ import CommunityDetailHeader from '~/screens/pages/Groups/navigation/components/
 import CommunityDetail from '~/screens/pages/Groups/pages/CommunityDetail'
 import GroupInteresting from '../pages/GroupsInteresting'
 import { Icon } from '~/components'
+import { styles } from './styles'
 
 const GroupsStackScreen = () => {
   const { t } = useTranslation()
@@ -26,7 +27,7 @@ const GroupsStackScreen = () => {
         options={{
           headerTitle: t('components_Group_interesting_you'),
           headerTitleContainerStyle: { alignItems: 'center' },
-          headerTitleStyle: { color: theme.darkGreenColor, fontSize: theme.fonts.MEDIUM_SIZE },
+          headerTitleStyle: styles.headerTitle,
           headerRight: () => <Icon name='search-icon' size={20} viewStyle={{ marginRight: 20 }} />,
           headerBackImage: () => <Icon name='arrow-back' size={20} />
         }}

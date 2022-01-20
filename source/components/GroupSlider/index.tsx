@@ -33,13 +33,13 @@ const GroupSlider = ({ groups, onPressGroup, onPressMoreGroups }: GroupSliderPro
   const headerGroup = () => (
     <View style={styles.containerHeaderGroup}>
       <View style={styles.containerText}>
-        <Icon name='people-icon' size={18} viewStyle={styles.headerIcon} />
+        <Icon name='groups' size={18} viewStyle={styles.headerIcon} />
         <Text style={styles.headerTextGroup}>{t('components_Home_Header_Groups')}</Text>
       </View>
       <View style={styles.containerText}>
         <TouchableWithoutFeedback onPress={goToInterest}>
           <View style={styles.containerText}>
-            <Icon name='people-icon' size={18} viewStyle={styles.headerRightIcon} color={theme.darkGreenColor} />
+            <Icon name='interest' size={18} viewStyle={styles.headerRightIcon} color={theme.darkGreenColor} />
             <Text style={[styles.headerTextGroup, { color: theme.darkGreenColor, marginRight: scale(5) }]}>
               {t('components_Group_interesting')}
             </Text>

@@ -12070,17 +12070,10 @@
   "resolved" "https://registry.npmjs.org/react-native-extra-dimensions-android/-/react-native-extra-dimensions-android-1.2.5.tgz"
   "version" "1.2.5"
 
-<<<<<<< HEAD
 "react-native-fast-image@^8.5.11":
   "integrity" "sha512-cNW4bIJg3nvKaheG8vGMfqCt5LMWX9MS5+wMudgKIHbGO51spRr4sgnlhVgwHLcZ5aeNOVJ8CPRxDIWKRq/0QA=="
   "resolved" "https://registry.npmjs.org/react-native-fast-image/-/react-native-fast-image-8.5.11.tgz"
   "version" "8.5.11"
-=======
-react-native-fast-image@^8.5.11:
-  version "8.5.11"
-  resolved "https://registry.npmjs.org/react-native-fast-image/-/react-native-fast-image-8.5.11.tgz"
-  integrity sha512-cNW4bIJg3nvKaheG8vGMfqCt5LMWX9MS5+wMudgKIHbGO51spRr4sgnlhVgwHLcZ5aeNOVJ8CPRxDIWKRq/0QA==
->>>>>>> 0e7b6e7b8347af5626efd24ad33f42e7fbb98a07
 
 "react-native-gesture-handler@*", "react-native-gesture-handler@^1.10.3", "react-native-gesture-handler@>= 1.0.0":
   "integrity" "sha512-cBGMi1IEsIVMgoox4RvMx7V2r6bNKw0uR1Mu1o7NbuHS6BRSVLq0dP34l2ecnPlC+jpWd3le6Yg1nrdCjby2Mw=="
@@ -12154,10 +12147,10 @@ react-native-fast-image@^8.5.11:
   "resolved" "https://registry.npmjs.org/react-native-permissions/-/react-native-permissions-3.0.5.tgz"
   "version" "3.0.5"
 
-react-native-reanimated@2.2.4:
-  version "2.2.4"
-  resolved "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.2.4.tgz"
-  integrity sha512-Nn648MfEEnTCEiWsl1YmfkojiLyV0NMY0EiRdDRbZNfJVfxBuyqhCxI/4Jd7aBi162qpgf8XK2mByYgvF4zLrQ==
+"react-native-reanimated@>= 1.0.0", "react-native-reanimated@2.2.4":
+  "integrity" "sha512-Nn648MfEEnTCEiWsl1YmfkojiLyV0NMY0EiRdDRbZNfJVfxBuyqhCxI/4Jd7aBi162qpgf8XK2mByYgvF4zLrQ=="
+  "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.2.4.tgz"
+  "version" "2.2.4"
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.10.4"
     "fbjs" "^3.0.0"

@@ -5,11 +5,12 @@ import { theme } from '~/constants'
 export const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
-    paddingHorizontal: scale(5),
+    paddingHorizontal: scale(10),
     paddingVertical: scale(5),
     flexDirection: 'row',
     alignItems: 'center',
-    display: 'flex'
+    display: 'flex',
+    backgroundColor: theme.backgrounds.darkGreyBackground
   },
   textContainer: {
     flexDirection: 'row',
@@ -68,16 +69,18 @@ export const styles = StyleSheet.create({
     fontFamily: 'Mulish',
     fontSize: theme.fonts.MEDIUM_SIZE,
     fontWeight: '700',
-    lineHeight: theme.fonts.MEDIUM_SIZE,
+    lineHeight: scale(20),
     textAlign: 'left',
     color: theme.darkBackground
   },
   counterText: {
     fontFamily: 'Mulish',
-    fontSize: moderateScale(10),
+    fontSize: theme.fonts.VERY_SMALL_SIZE,
+    fontWeight: '400',
     lineHeight: theme.fonts.SMALL_SIZE,
     textAlign: 'left',
     color: theme.greenColor,
     marginLeft: scale(5)
   }
 })
+moderateScale(10)

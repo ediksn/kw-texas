@@ -50,6 +50,7 @@ exports[`Render Post Info Test Match with the snapshot 1`] = `
         }
       }
     >
+      0
       <View
         style={
           Object {
@@ -202,7 +203,7 @@ exports[`Render Post Info Test Match with the snapshot 1`] = `
               ]
             }
           >
-            
+            
           </Text>
         </View>
         <Text
@@ -298,7 +299,7 @@ exports[`Render Post Info Test Match with the snapshot 1`] = `
               ]
             }
           >
-            
+            
           </Text>
         </View>
         <Text
@@ -394,7 +395,7 @@ exports[`Render Post Info Test Match with the snapshot 1`] = `
               ]
             }
           >
-            
+            
           </Text>
         </View>
         <Text

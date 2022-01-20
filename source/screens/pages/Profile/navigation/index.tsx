@@ -24,7 +24,7 @@ const ProfileStackScreen = () => {
   const activeAccount: number = useSelector((state: RootState) => state.usrProfile.activeAccount)
   const usrData: ProfileInterface = useSelector((state: RootState) => state.usrProfile.profiles[activeAccount])
   const rightButton = <Text style={styles.textStyle}>{t('components_NewPost_Edit')}</Text>
-  const leftButton = <Icon name='arrow-back' size={theme.fonts.BIG_SIZE} />
+  const leftButton = <Icon name='arrow-back' size={22} color={theme.darkGrey} />
   const rightButtonEdit = <Text style={styles.textStyle}>{t('components_Conversations_Save')}</Text>
   const lefttButtonEdit = <Text style={styles.textStyle}>{t('components_Profile_cancel')}</Text>
 

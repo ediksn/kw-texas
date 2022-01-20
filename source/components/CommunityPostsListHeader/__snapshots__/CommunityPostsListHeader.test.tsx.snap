@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Community Detail Test Match with the snapshot 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#F7F7F8",
+      "marginBottom": 9.808823529411764,
+      "paddingHorizontal": 28.285714285714285,
+    }
+  }
+  testID="communityHeader"
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 4,
+        "elevation": 4,
+        "marginBottom": 7.857142857142857,
+        "marginHorizontal": 3.142857142857143,
+        "marginTop": 7.857142857142857,
+        "paddingVertical": 9.808823529411764,
+        "shadowColor": "#000000",
+        "shadowOffset": Object {
+          "height": 3,
+          "width": 0,
+        },
+        "shadowOpacity": 0.23,
+        "shadowRadius": 3,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "flexDirection": "row",
+          "paddingHorizontal": 15.714285714285714,
+        }
+      }
+    >
+      <Image
+        resizeMode="cover"
+        source={
+          Object {
+            "process": [Function],
+          }
+        }
+        style={
+          Array [
+            Object {
+              "height": 62.857142857142854,
+              "opacity": 0.5,
+              "width": 62.857142857142854,
+            },
+            undefined,
+          ]
+        }
+      />
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#006C84",
+              "fontFamily": "Mulish-Bold",
+              "fontSize": 22,
+              "marginLeft": 15.714285714285714,
+            }
+          }
+        >
+          components_NewPost_Share_today
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

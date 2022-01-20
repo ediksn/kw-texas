@@ -27,7 +27,7 @@ import Fade from '~/components/Fade'
 import Message from '../../../../../../assets/images/message.png'
 import { useDeviceWidth } from '~/hooks'
 import CommunityPostsListHeader from '~/components/CommunityPostsListHeader'
-import emptyImage from '../../../../../../assets/images/emptyImage.png'
+import emptyImageWhite from '../../../../../../assets/images/emptyImageWhite.png'
 
 interface ListFooterComponentProps {
   loadingPosts: boolean
@@ -126,6 +126,9 @@ const CommunityDetail = () => {
     return myGroups
   }
 
+  const getCurrentGroupSelected = () =>
+    getMyGroupsFormatted().find(group => group.key === selectedCommunity?.id || null)
+
   const onEndReached = () => dispatch(homeActions.fetchSelectedCommunityPosts(limit + 10, id, true))
   const renderCommunityLocation = useCallback(() => {
     if (!communityInfo || !communityInfo?.location) {
@@ -144,7 +147,7 @@ const CommunityDetail = () => {
         <Text style={styles.locationText}>{[city, state, country].join(', ')}</Text>
       </View>
     )
-  }, [])
+  }, [communityInfo])
 
   const renderMembersAvatars = useCallback(() => {
     if (communityInfo?.members && communityInfo?.members.length > 0) {
@@ -162,7 +165,7 @@ const CommunityDetail = () => {
       )
     }
     return null
-  }, [])
+  }, [communityInfo])
 
   const init = async () => {
     const res: any = await dispatch(homeActions.getCommunity(id))
@@ -200,7 +203,7 @@ const CommunityDetail = () => {
                     uri: icon?.url,
                     priority: FastImage.priority.normal
                   }
-                : emptyImage
+                : emptyImageWhite
             }
             resizeMode={icon?.url ? FastImage.resizeMode.cover : FastImage.resizeMode.contain}
           />
@@ -252,7 +255,9 @@ const CommunityDetail = () => {
           }
           showsVerticalScrollIndicator={posts?.length > 0}
           style={styles.animatedFlatListStyle}
-          ListHeaderComponent={<CommunityPostsListHeader avatarUri={avatarUri} />}
+          ListHeaderComponent={
+            <CommunityPostsListHeader avatarUri={avatarUri} currentGroupSelected={getCurrentGroupSelected()} />
+          }
           ListFooterComponent={<ListFooterComponent loadingPosts={!pullRefresh && isLoadingPosts} />}
           keyExtractor={keyExtractor}
         />

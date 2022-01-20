@@ -28,6 +28,11 @@ export const TEST_IDS = {
   TOAST: {
     ICON_ID: 'toastIconId',
     TITLE_ID: 'toastTitleId'
+  },
+  COMMUNITY: {
+    HOME: {
+      HEADER: 'communityHeader'
+    }
   }
 }
 

@@ -1,14 +1,15 @@
 import React, { memo } from 'react'
-import FastImage, { ImageStyle } from 'react-native-fast-image'
+import FastImage, { ImageStyle, ResizeMode } from 'react-native-fast-image'
 import { styles } from './styles'
 
 interface FastImageAvatarProps {
   uri: string | undefined
   avatarStyle?: ImageStyle
   source?: any
+  resizeMode?: ResizeMode
 }
 
-const Index = ({ uri, avatarStyle, source }: FastImageAvatarProps) => {
+const Index = ({ uri, avatarStyle, source, resizeMode = FastImage.resizeMode.cover }: FastImageAvatarProps) => {
   if (!uri && source) {
     return <FastImage style={[styles.avatar, avatarStyle]} source={source} resizeMode={FastImage.resizeMode.cover} />
   }
@@ -20,7 +21,7 @@ const Index = ({ uri, avatarStyle, source }: FastImageAvatarProps) => {
         uri,
         priority: FastImage.priority.normal
       }}
-      resizeMode={FastImage.resizeMode.cover}
+      resizeMode={resizeMode}
     />
   )
 }

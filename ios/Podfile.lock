@@ -468,7 +468,7 @@ PODS:
     - React-Core
   - RNPermissions (3.0.5):
     - React-Core
-  - RNReanimated (2.3.1):
+  - RNReanimated (2.2.4):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -494,6 +494,7 @@ PODS:
     - React-RCTNetwork
     - React-RCTSettings
     - React-RCTText
+    - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
   - RNScreens (3.4.0):
@@ -724,7 +725,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: 4359ef8f21a8904be608f5fde200ab3e0050276e
+  FBReactNativeSpec: 0d43928b32b1a4cc0f1ef782e2f4b7338d32bffa
   Firebase: 73c3e3b216ec1ecbc54d2ffdd4670c65c749edb1
   FirebaseAnalytics: dcb92c7c9ef4fa7ffac276e8f87bd4fc8c97f1b8
   FirebaseCore: 3f09591d51292843e2a46f18358d60bf4e996255
@@ -788,7 +789,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNLocalize: 82a569022724d35461e2dc5b5d015a13c3ca995b
   RNPermissions: 7043bacbf928eae25808275cfe73799b8f618911
-  RNReanimated: 7f143675d94978c3555345d5bfa8ed6ae800c5d3
+  RNReanimated: 024eff8202342abf4b24e11575a16afc441dabfe
   RNScreens: 21b73c94c9117e1110a79ee0ee80c93ccefed8ce
   RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
@@ -798,4 +799,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 94bfb5258830df633a53451558d84c8b973c227f
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.11.2

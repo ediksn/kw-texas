@@ -1,3 +1,4 @@
+import { ProfileDetailInterface } from '~/interfaces/usrInterface'
 import { axiosInstanceTokens } from './config'
 
 export default {
@@ -24,6 +25,21 @@ export default {
   getProfileDetails: async (kwuId: number) => {
     const axiosInstance = await axiosInstanceTokens()
     const response = await axiosInstance.get(`connect/profile/${kwuId}`)
+    return response.data
+  },
+  updateProfile: async (data: ProfileDetailInterface) => {
+    let newData: ProfileDetailInterface = data
+    Object.keys(newData).forEach(name => {
+      const key = name as keyof ProfileDetailInterface
+      if (!newData[key]) {
+        newData = {
+          ...newData,
+          [key]: ''
+        }
+      }
+    })
+    const axiosInstance = await axiosInstanceTokens()
+    const response = await axiosInstance.patch('connect/profile', JSON.stringify(newData))
     return response.data
   }
 }

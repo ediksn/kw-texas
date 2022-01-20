@@ -11,7 +11,8 @@ const {
   GET_ACCOUNTS,
   GET_ACCOUNTS_SUCCESS,
   GET_ACCOUNTS_FAILURE,
-  CHANGE_ACTIVE_ACCOUNT_SUCCESS
+  CHANGE_ACTIVE_ACCOUNT_SUCCESS,
+  UPDATE_USERPROFILE
 } = USR_TYPES
 
 const REDUCERS = {
@@ -37,6 +38,13 @@ const REDUCERS = {
   },
   [CHANGE_ACTIVE_ACCOUNT_SUCCESS]: ({ draftState, payload }: UsrProfileReducerProps) => {
     draftState.activeAccount = payload
+  },
+  [UPDATE_USERPROFILE]: ({ draftState, payload }: UsrProfileReducerProps) => {
+    draftState.profileDetail = payload.profileDetail
+    draftState.profiles[payload.index] = {
+      ...draftState.profiles[payload.index],
+      profileDetail: payload.profileDetail
+    }
   }
 }
 

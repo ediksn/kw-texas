@@ -44,7 +44,8 @@ const Post = ({ post, onPostPress, containerStyle }: PostProps) => {
     userHasAlreadyBookmarked,
     groupInfo,
     userHasAlreadyLiked,
-    detail
+    detail,
+    updatedAt
   } = post
   const [userHasAlreadyBookmarkedLocal, setUserHasAlreadyBookmarkedLocal] = useState(userHasAlreadyBookmarked)
   const author = `${creatorfirstName.toUpperCase()} ${creatorLastName.toUpperCase()}`
@@ -195,6 +196,18 @@ const Post = ({ post, onPostPress, containerStyle }: PostProps) => {
     return isUserCreatorOfThePost ? myOptions : options
   }
 
+  const getPostDate = useCallback(() => {
+    const timeCreated = moment(createdAt)
+    const timeUpdated = moment(updatedAt)
+    const dateUpdated = moment(updatedAt).format('MM/DD/YY')
+    const edited = moment(timeUpdated).diff(moment(timeCreated), 'seconds')
+    if (edited > 0) {
+      return `${t('components_Post_Edited')} ${dateUpdated} | `
+    }
+
+    return `${t('components_Post_Posted')} ${date} | `
+  }, [createdAt, updatedAt])
+
   const HorizontalLine = () => <View style={styles.horizontalLine} />
 
   const Buttons = () => (
@@ -251,7 +264,7 @@ const Post = ({ post, onPostPress, containerStyle }: PostProps) => {
                 {author}
               </Text>
               <Text numberOfLines={1} ellipsizeMode='tail' testID={datePost} style={styles.date}>
-                {`${t('components_Post_Posted')} ${date} | `}
+                {getPostDate()}
                 {groupInfo.name && groupInfo.name.trim().length > 1 ? groupInfo.name : t('components_General_NoName')}
               </Text>
             </View>

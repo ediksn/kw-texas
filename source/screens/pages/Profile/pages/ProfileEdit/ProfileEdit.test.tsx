@@ -1,9 +1,8 @@
 import React from 'react'
+import { render, cleanup, RenderAPI } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
-import { cleanup, RenderAPI, render } from '@testing-library/react-native'
-import createTestStore from '../../../__mocks__/store'
-import CommunityPostsListHeader from './index'
-import { TEST_IDS } from '~/constants'
+import createTestStore from '~/../__mocks__/store'
+import { ProfileEdit } from './index'
 
 afterEach(cleanup)
 
@@ -14,13 +13,6 @@ jest.mock('@react-navigation/native', () => ({
     dispatch: jest.fn(),
     goBack: jest.fn(),
     setOptions: jest.fn()
-  }),
-  useRoute: () => ({
-    params: {
-      editMode: false,
-      idPost: '1',
-      groupId: '1'
-    }
   }),
   useFocusEffect: jest.fn()
 }))
@@ -50,32 +42,20 @@ jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: any) => key })
 }))
 
-describe('Render Community Detail Test', () => {
+describe('Render Profile Edit Test', () => {
   let component: RenderAPI
   let storeReducers
-  const currentGroupSelectedMock = {
-    key: '0001',
-    isTitle: true,
-    handleOption: () => null,
-    title: 'Title Mock',
-    color: '#ffffff'
-  }
 
   beforeEach(() => {
     storeReducers = createTestStore()
     component = render(
       <Provider store={storeReducers}>
-        <CommunityPostsListHeader avatarUri='' currentGroupSelected={currentGroupSelectedMock} />
+        <ProfileEdit />
       </Provider>
     )
   })
 
-  it('Match with the snapshot', () => {
-    expect(component.toJSON()).toMatchSnapshot()
-  })
-
   it('Renders correctly', () => {
     expect(component).toBeDefined()
-    expect(component.queryAllByTestId(TEST_IDS.COMMUNITY.HOME.HEADER).length).toEqual(1)
   })
 })

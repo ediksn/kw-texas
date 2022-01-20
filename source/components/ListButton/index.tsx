@@ -5,6 +5,7 @@ import { GestureResponderEvent, Image, Text, TouchableOpacity, View } from 'reac
 import { useTranslation } from 'react-i18next'
 import { Icon } from '~/components'
 import { styles } from './styles'
+import { theme } from '~/constants'
 
 interface Props {
   title: string
@@ -34,7 +35,7 @@ const ListButton = ({ title, icon, onPress, arrow, svg, svgTitle, svgSize, svgCo
         </View>
         {arrow && (
           <View>
-            <Icon name='arrow-right' size={18} />
+            <Icon name='arrow-right' size={20} color={theme.darkGrey} />
           </View>
         )}
       </View>

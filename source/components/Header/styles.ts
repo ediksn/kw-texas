@@ -36,12 +36,17 @@ export const styles = StyleSheet.create({
     width: moderateScale(30)
   },
   touchableHighlight: {
-    paddingVertical: '3%',
     paddingHorizontal: '3%',
     marginHorizontal: '3%',
     borderRadius: 50
   },
   text: {
+    fontFamily: 'Mulish-Bold',
+    fontSize: theme.fonts.LARGE_SIZE,
+    lineHeight: 24,
+    fontWeight: '700'
+  },
+  textFixed: {
     fontFamily: 'Mulish-Bold',
     fontSize: theme.fonts.LARGE_SIZE,
     lineHeight: 24,

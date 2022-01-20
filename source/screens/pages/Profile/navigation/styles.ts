@@ -6,5 +6,10 @@ export const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.backgroundWhite,
     height: verticalScale(56)
+  },
+  textStyle: {
+    color: theme.darkGreenColor,
+    fontSize: theme.fonts.LARGE_SIZE,
+    fontFamily: 'Mulish-Bold'
   }
 })
